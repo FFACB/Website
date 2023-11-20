@@ -2,15 +2,24 @@ import express from 'express';
 import { createServer } from 'http';
 import { handler } from './build-node/handler.js';
 import { log } from 'console';
-import * as middlewares from './modules/server/middlewares/index.js';
-// import Middlewares from './modules/server/sharp/index.js';
+import dotenv from 'dotenv';
+import path from 'path';
+import  middlewares from './modules/server/middlewares/index.js';
 
-const port = 3000;
+dotenv.config();
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+const { PORT, UPLOADS_FOLDER_NAME } = process.env;
+
+const port = PORT | 3000;
 const app = express();
 const server = createServer(app);
 
+middlewares(app,__dirname)
 
-middlewares(app)
+app.use(`/${UPLOADS_FOLDER_NAME}`, express.static(UPLOADS_FOLDER_NAME));
+
 app.use(handler);
 server.listen(port, () => {
     log("listening on port", port);

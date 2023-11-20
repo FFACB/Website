@@ -1,19 +1,13 @@
-import express from 'express';
-import sharpen from '../middlewares/index.js';
+
+import sharpen from '../sharp/index.js';
 import dotenv from 'dotenv';
 import path from 'path';
 
 dotenv.config();
 
 const { BUILD_FOLDER_NAME, UPLOADS_FOLDER_NAME } = process.env;
-const __filename = new URL(import.meta.url).pathname;
-const __dirname = path.dirname(__filename);
-    
-export default  middleaware = (app) => {
 
-
-
-
+const middlewares = function(app,__dirname)  {
 
 	app.use('/images/:path?/:filename/:width?/:height?', (req, res, next) => {
 		const { path: imagePath, filename, width, height } = req.params;
@@ -37,13 +31,15 @@ export default  middleaware = (app) => {
 		});
 	});
 
-	app.use('/uploads/:path?/:filename/:width?/:height?', (req, res, next) => {
-		const { path: imagePath, filename, width, height } = req.params;
+	app.use('/uploads/:middlepath?/:filename/:width?/:height?', (req, res, next) => {
+
+		const { middlepath, filename, width, height } = req.params;
 
 		// Construire le chemin complet de l'image
-		const basePath = imagePath ? path.join(UPLOADS_FOLDER_NAME, imagePath) : UPLOADS_FOLDER_NAME;
-		const fullpath = path.join(__dirname, basePath, filename);
-
+		const basePath = middlepath ? path.join(UPLOADS_FOLDER_NAME, middlepath) : UPLOADS_FOLDER_NAME;
+		console.log(basePath)
+		const fullpath = path.join(__dirname, basePath, filename).replace(/\\/g, '/').replace("/D", 'D');
+	
 		sharpen({
 			fullpath,
 			width,
@@ -59,6 +55,6 @@ export default  middleaware = (app) => {
 	});
 
 
-    app.use(`/${UPLOADS_FOLDER_NAME}`, express.static(UPLOADS_FOLDER_NAME));
-
 };
+
+export default middlewares;
