@@ -1,1 +1,0 @@
-import{f as p,g as s,t as o}from"../chunks/disclose-version.ba38736e.js";import{b as r,p as g}from"../chunks/runtime.b23a58cc.js";var l=o("<div>Logged</div>");function f(e,t){r(t,!1);var a=s(e,!0,l);p(e,a),g()}export{f as component};

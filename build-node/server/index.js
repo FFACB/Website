@@ -1,6 +1,6 @@
-import { r as render, d as define_property, a as render_effect, p as push$1, c as current_component_context, b as pop$1, e as array_from, f as destroy_signal, g as push, h as copy_payload, i as assign_payload, j as bind_props, k as pop, l as get_descriptor, m as is_array, s as source, n as safe_equal, o as get, q as set, t as create_anchor } from './chunks/index2-85734922.js';
-import { s as setContext } from './chunks/main-client-a102e273.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/ssr-5b868ac4.js';
 import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-0087e825.js';
+import { w as writable, r as readable } from './chunks/index2-22e5d63f.js';
 
 let base = "";
 let assets = base;
@@ -15,511 +15,135 @@ function set_private_env(environment) {
 function set_public_env(environment) {
   public_env = environment;
 }
-function set_current_hydration_fragment(fragment) {
+function afterUpdate() {
 }
-function get_hydration_fragment(node) {
-  const fragment = [];
-  let current_node = node;
-  let target_depth = null;
-  while (current_node !== null) {
-    const node_type = current_node.nodeType;
-    const next_sibling = current_node.nextSibling;
-    if (node_type === 8) {
-      const data = (
-        /** @type {Comment} */
-        current_node.data
-      );
-      if (data.startsWith("ssr:")) {
-        const depth = data.slice(4);
-        if (target_depth === null) {
-          target_depth = depth;
-        } else if (depth === target_depth) {
-          return fragment;
-        } else {
-          fragment.push(
-            /** @type {Text | Comment | Element} */
-            current_node
-          );
-        }
-        current_node = next_sibling;
-        continue;
-      }
-    }
-    if (target_depth !== null) {
-      fragment.push(
-        /** @type {Text | Comment | Element} */
-        current_node
-      );
-    }
-    current_node = next_sibling;
-  }
-  return null;
-}
-var node_prototype;
-var element_prototype;
-var text_prototype;
-var map_prototype;
-function init_operations() {
-  if (node_prototype !== void 0) {
-    return;
-  }
-  node_prototype = Node.prototype;
-  element_prototype = Element.prototype;
-  text_prototype = Text.prototype;
-  map_prototype = Map.prototype;
-  node_prototype.appendChild;
-  node_prototype.cloneNode;
-  map_prototype.set;
-  map_prototype.get;
-  map_prototype.delete;
-  element_prototype.__click = void 0;
-  text_prototype.__nodeValue = " ";
-  element_prototype.__className = "";
-  // @ts-ignore
-  get_descriptor(node_prototype, "firstChild").get;
-  // @ts-ignore
-  get_descriptor(node_prototype, "nextSibling").get;
-  // @ts-ignore
-  get_descriptor(node_prototype, "textContent").set;
-  // @ts-ignore
-  get_descriptor(element_prototype, "className").set;
-}
-const ROOT_BLOCK = 0;
-function create_root_block(intro) {
-  return {
-    // dom
-    d: null,
-    // effect
-    e: null,
-    // intro
-    i: intro,
-    // parent
-    p: null,
-    // transition
-    r: null,
-    // type
-    t: ROOT_BLOCK
-  };
-}
-const PassiveDelegatedEvents = ["touchstart", "touchmove", "touchend"];
-function remove(current) {
-  var first_node = current;
-  if (is_array(current)) {
-    var i = 0;
-    var node;
-    for (; i < current.length; i++) {
-      node = current[i];
-      if (i === 0) {
-        first_node = node;
-      }
-      if (node.isConnected) {
-        node.remove();
-      }
-    }
-  } else if (current.isConnected) {
-    current.remove();
-  }
-  return (
-    /** @type {Element | Comment | Text} */
-    first_node
-  );
-}
-const all_registerd_events = /* @__PURE__ */ new Set();
-const root_event_handles = /* @__PURE__ */ new Set();
-function empty() {
-  return document.createTextNode("");
-}
-function handle_event_propagation(root_element, event) {
-  const event_name = event.type;
-  const path = event.composedPath?.() || [];
-  let current_target = (
-    /** @type {null | Element} */
-    path[0] || event.target
-  );
-  if (event.target !== current_target) {
-    define_property(event, "target", {
-      configurable: true,
-      value: current_target
-    });
-  }
-  let path_idx = 0;
-  const handled_at = event.__root;
-  if (handled_at) {
-    const at_idx = path.indexOf(handled_at);
-    if (at_idx < path.indexOf(root_element)) {
-      path_idx = at_idx;
-    }
-  }
-  current_target = /** @type {Element} */
-  path[path_idx] || event.target;
-  define_property(event, "currentTarget", {
-    configurable: true,
-    get() {
-      return current_target || document;
-    }
-  });
-  while (current_target !== null) {
-    const parent_element = current_target.parentNode || /** @type {any} */
-    current_target.host || null;
-    const internal_prop_name = "__" + event_name;
-    const delegated = current_target[internal_prop_name];
-    if (delegated !== void 0 && !/** @type {any} */
-    current_target.disabled) {
-      if (is_array(delegated)) {
-        const [fn, ...data] = delegated;
-        fn.apply(current_target, [event, ...data]);
-      } else {
-        delegated.call(current_target, event);
-      }
-    }
-    if (event.cancelBubble || parent_element === root_element) {
-      break;
-    }
-    current_target = parent_element;
-  }
-  event.__root = root_element;
-}
-function createRoot(component, options2) {
-  const _props = {};
-  const _sources = {};
-  function add_prop(name, value) {
-    const prop = source(
-      value,
-      options2.immutable ? (
-        /**
-         * @param {any} a
-         * @param {any} b
-         */
-        (a, b) => a === b
-      ) : safe_equal
-    );
-    _sources[name] = prop;
-    define_property(_props, name, {
-      get() {
-        return get(prop);
-      },
-      enumerable: true
-    });
-  }
-  for (const prop in options2.props || {}) {
-    add_prop(
-      prop,
-      // @ts-expect-error TS doesn't understand this properly
-      options2.props[prop]
-    );
-  }
-  const props_proxy = new Proxy(_props, {
-    /**
-     * @param {any} target
-     * @param {any} property
-     */
-    get: (target, property) => {
-      if (typeof property !== "string")
-        return target[property];
-      if (!(property in _sources)) {
-        add_prop(property, void 0);
-      }
-      return _props[property];
-    }
-  });
-  const props_source = source(
-    props_proxy,
-    // We're resetting the same proxy instance for updates, therefore bypass equality checks
-    () => false
-  );
-  let [accessors, $destroy] = mount(component, {
-    ...options2,
-    // @ts-expect-error We hide the "the props object could be a signal" fact from the public typings
-    props: props_source
-  });
-  const result = (
-    /** @type {Exports & { $destroy: () => void; $set: (props: Partial<Props>) => void; }} */
-    {
-      $set: (props) => {
-        for (const [prop, value] of Object.entries(props)) {
-          if (prop in _sources) {
-            set(_sources[prop], value);
-          } else {
-            add_prop(prop, value);
-            set(props_source, props_proxy);
-          }
-        }
-      },
-      $destroy
-    }
-  );
-  for (const key of Object.keys(accessors || {})) {
-    define_property(result, key, {
-      get() {
-        return accessors[key];
-      },
-      /** @param {any} value */
-      set(value) {
-        accessors[key] = value;
-      },
-      enumerable: true
-    });
-  }
-  return result;
-}
-function mount(component, options2) {
-  init_operations();
-  const registered_events = /* @__PURE__ */ new Set();
-  const container = options2.target;
-  const block = create_root_block(options2.intro || false);
-  const first_child = (
-    /** @type {ChildNode} */
-    container.firstChild
-  );
-  const hydration_fragment = get_hydration_fragment(first_child);
-  let accessors = void 0;
-  try {
-    let anchor = null;
-    if (hydration_fragment === null) {
-      anchor = empty();
-      container.appendChild(anchor);
-    }
-    set_current_hydration_fragment(hydration_fragment);
-    const effect = render_effect(
-      () => {
-        if (options2.context) {
-          push$1({});
-          current_component_context.c = options2.context;
-        }
-        accessors = component(anchor, options2.props || {}, options2.events || {});
-        if (options2.context) {
-          pop$1();
-        }
-      },
-      block,
-      true
-    );
-    block.e = effect;
-  } catch (error) {
-    if (options2.recover !== false && hydration_fragment !== null) {
-      console.error(
-        "Hydration failed because the initial UI does not match what was rendered on the server.",
-        error
-      );
-      remove(hydration_fragment);
-      first_child.remove();
-      hydration_fragment.at(-1)?.nextSibling?.remove();
-      return mount(component, options2);
-    } else {
-      throw error;
-    }
-  } finally {
-  }
-  const bound_event_listener = handle_event_propagation.bind(null, container);
-  const event_handle = (events) => {
-    for (let i = 0; i < events.length; i++) {
-      const event_name = events[i];
-      if (!registered_events.has(event_name)) {
-        registered_events.add(event_name);
-        container.addEventListener(
-          event_name,
-          bound_event_listener,
-          PassiveDelegatedEvents.includes(event_name) ? {
-            passive: true
-          } : void 0
-        );
-      }
-    }
-  };
-  event_handle(array_from(all_registerd_events));
-  root_event_handles.add(event_handle);
-  return [
-    accessors,
-    () => {
-      for (const event_name of registered_events) {
-        container.removeEventListener(event_name, bound_event_listener);
-      }
-      root_event_handles.delete(event_handle);
-      const dom = block.d;
-      if (dom !== null) {
-        remove(dom);
-      }
-      if (hydration_fragment !== null) {
-        remove(hydration_fragment);
-      }
-      destroy_signal(
-        /** @type {import('./types.js').EffectSignal} */
-        block.e
-      );
-    }
-  ];
-}
-function asClassComponent$1(component) {
-  return class extends Svelte4Component {
-    /** @param {any} options */
-    constructor(options2) {
-      super({
-        component,
-        ...options2
-      });
-    }
-  };
-}
-class Svelte4Component {
-  /** @type {any} */
-  #events = {};
-  /** @type {ReturnType<typeof $.createRoot>} */
-  #instance;
-  /**
-   * @param {import('../main/public.js').ComponentConstructorOptions & {
-   *  component: any;
-   * 	immutable?: boolean;
-   * 	recover?: false;
-   * }} options
-   */
-  constructor(options2) {
-    this.#instance = createRoot(options2.component, {
-      target: options2.target,
-      props: { ...options2.props, $$events: this.#events },
-      context: options2.context,
-      immutable: options2.immutable,
-      intro: options2.intro,
-      recover: options2.recover
-    });
-    for (const key of Object.keys(this.#instance)) {
-      if (key === "$set" || key === "$destroy")
-        continue;
-      define_property(this, key, {
-        get() {
-          return this.#instance[key];
-        },
-        /** @param {any} value */
-        set(value) {
-          this.#instance[key] = value;
-        },
-        enumerable: true
-      });
-    }
-  }
-  /** @param {Record<string, any>} props */
-  $set(props) {
-    this.#instance.$set(props);
-  }
-  /**
-   * @param {string} event
-   * @param {(...args: any[]) => any} callback
-   * @returns {any}
-   */
-  $on(event, callback) {
-    this.#events[event] = this.#events[event] || [];
-    const cb = (...args) => callback.call(this, ...args);
-    this.#events[event].push(cb);
-    return () => {
-      this.#events[event] = this.#events[event].filter(
-        /** @param {any} fn */
-        (fn) => fn !== cb
-      );
-    };
-  }
-  $destroy() {
-    this.#instance.$destroy();
-  }
-}
-function asClassComponent(component) {
-  const component_constructor = asClassComponent$1(component);
-  const _render = (props, { context } = {}) => {
-    const result = render(component, { props, context });
-    return {
-      css: { code: "", map: null },
-      head: result.head,
-      html: result.html
-    };
-  };
-  component_constructor.render = _render;
-  return component_constructor;
-}
-function Root($$payload, $$props) {
-  push(true);
-  let { stores, page, constructors, components = [], form, data_0 = null, data_1 = null } = $$props;
+const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { stores } = $$props;
+  let { page } = $$props;
+  let { constructors } = $$props;
+  let { components = [] } = $$props;
+  let { form } = $$props;
+  let { data_0 = null } = $$props;
+  let { data_1 = null } = $$props;
+  let { data_2 = null } = $$props;
+  let { data_3 = null } = $$props;
   {
     setContext("__svelte__", stores);
   }
-  {
-    stores.page.set(page);
-  }
-  let $$settled = true;
-  let $$inner_payload;
-  function $$render_inner($$payload2) {
-    const anchor = create_anchor($$payload2);
-    const anchor_4 = create_anchor($$payload2);
-    $$payload2.out += `${anchor}`;
-    if (constructors[1]) {
-      $$payload2.out += "<!--ssr:if:true-->";
-      const anchor_1 = create_anchor($$payload2);
-      $$payload2.out += `${anchor_1}`;
-      constructors[0]?.($$payload2, {
-        get this() {
-          return components[0];
-        },
-        set this($$value) {
-          components[0] = $$value;
-          $$settled = false;
-        },
-        data: data_0,
-        children: ($$payload3, $$slotProps) => {
-          const anchor_2 = create_anchor($$payload3);
-          $$payload3.out += `${anchor_2}`;
-          constructors[1]?.($$payload3, {
-            get this() {
-              return components[1];
-            },
-            set this($$value) {
-              components[1] = $$value;
-              $$settled = false;
-            },
-            data: data_1,
-            form
-          });
-          $$payload3.out += `${anchor_2}`;
-        }
-      });
-      $$payload2.out += `${anchor_1}`;
-    } else {
-      $$payload2.out += "<!--ssr:if:false-->";
-      const anchor_3 = create_anchor($$payload2);
-      $$payload2.out += `${anchor_3}`;
-      constructors[0]?.($$payload2, {
-        get this() {
-          return components[0];
-        },
-        set this($$value) {
-          components[0] = $$value;
-          $$settled = false;
-        },
-        data: data_0,
-        form
-      });
-      $$payload2.out += `${anchor_3}`;
-    }
-    $$payload2.out += `${anchor} ${anchor_4}`;
-    {
-      $$payload2.out += "<!--ssr:if:false-->";
-    }
-    $$payload2.out += `${anchor_4}`;
-  }
+  afterUpdate(stores.page.notify);
+  if ($$props.stores === void 0 && $$bindings.stores && stores !== void 0)
+    $$bindings.stores(stores);
+  if ($$props.page === void 0 && $$bindings.page && page !== void 0)
+    $$bindings.page(page);
+  if ($$props.constructors === void 0 && $$bindings.constructors && constructors !== void 0)
+    $$bindings.constructors(constructors);
+  if ($$props.components === void 0 && $$bindings.components && components !== void 0)
+    $$bindings.components(components);
+  if ($$props.form === void 0 && $$bindings.form && form !== void 0)
+    $$bindings.form(form);
+  if ($$props.data_0 === void 0 && $$bindings.data_0 && data_0 !== void 0)
+    $$bindings.data_0(data_0);
+  if ($$props.data_1 === void 0 && $$bindings.data_1 && data_1 !== void 0)
+    $$bindings.data_1(data_1);
+  if ($$props.data_2 === void 0 && $$bindings.data_2 && data_2 !== void 0)
+    $$bindings.data_2(data_2);
+  if ($$props.data_3 === void 0 && $$bindings.data_3 && data_3 !== void 0)
+    $$bindings.data_3(data_3);
+  let $$settled;
+  let $$rendered;
+  let previous_head = $$result.head;
   do {
     $$settled = true;
-    $$inner_payload = copy_payload($$payload);
-    $$render_inner($$inner_payload);
+    $$result.head = previous_head;
+    {
+      stores.page.set(page);
+    }
+    $$rendered = `  ${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+      $$result,
+      { data: data_0, this: components[0] },
+      {
+        this: ($$value) => {
+          components[0] = $$value;
+          $$settled = false;
+        }
+      },
+      {
+        default: () => {
+          return `${constructors[2] ? `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
+            $$result,
+            { data: data_1, this: components[1] },
+            {
+              this: ($$value) => {
+                components[1] = $$value;
+                $$settled = false;
+              }
+            },
+            {
+              default: () => {
+                return `${constructors[3] ? `${validate_component(constructors[2] || missing_component, "svelte:component").$$render(
+                  $$result,
+                  { data: data_2, this: components[2] },
+                  {
+                    this: ($$value) => {
+                      components[2] = $$value;
+                      $$settled = false;
+                    }
+                  },
+                  {
+                    default: () => {
+                      return `${validate_component(constructors[3] || missing_component, "svelte:component").$$render(
+                        $$result,
+                        { data: data_3, form, this: components[3] },
+                        {
+                          this: ($$value) => {
+                            components[3] = $$value;
+                            $$settled = false;
+                          }
+                        },
+                        {}
+                      )}`;
+                    }
+                  }
+                )}` : `${validate_component(constructors[2] || missing_component, "svelte:component").$$render(
+                  $$result,
+                  { data: data_2, form, this: components[2] },
+                  {
+                    this: ($$value) => {
+                      components[2] = $$value;
+                      $$settled = false;
+                    }
+                  },
+                  {}
+                )}`}`;
+              }
+            }
+          )}` : `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
+            $$result,
+            { data: data_1, form, this: components[1] },
+            {
+              this: ($$value) => {
+                components[1] = $$value;
+                $$settled = false;
+              }
+            },
+            {}
+          )}`}`;
+        }
+      }
+    )}` : `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+      $$result,
+      { data: data_0, form, this: components[0] },
+      {
+        this: ($$value) => {
+          components[0] = $$value;
+          $$settled = false;
+        }
+      },
+      {}
+    )}`} ${``}`;
   } while (!$$settled);
-  assign_payload($$payload, $$inner_payload);
-  bind_props($$props, {
-    stores,
-    page,
-    constructors,
-    components,
-    form,
-    data_0,
-    data_1
-  });
-  pop();
-}
-const root = asClassComponent(Root);
+  return $$rendered;
+});
 const options = {
   app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
@@ -531,10 +155,10 @@ const options = {
   hooks: null,
   // added lazily, via `get_hooks`
   preload_strategy: "modulepreload",
-  root,
+  root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + "\n	</head>\n\n	" + body + "\n\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -606,7 +230,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1ms1ufm"
+  version_hash: "50bpcu"
 };
 function get_hooks() {
   return import('./chunks/hooks.server-b3cc824e.js');
@@ -1813,67 +1437,6 @@ async function stream_to_string(stream) {
     result += decoder.decode(value);
   }
   return result;
-}
-const subscriber_queue = [];
-function noop() {
-}
-function readable(value, start) {
-  return {
-    subscribe: writable(value, start).subscribe
-  };
-}
-function safe_not_equal(a, b) {
-  return a != a ? (
-    // eslint-disable-next-line eqeqeq
-    b == b
-  ) : a !== b || a && typeof a === "object" || typeof a === "function";
-}
-function writable(value, start = noop) {
-  let stop = null;
-  const subscribers = /* @__PURE__ */ new Set();
-  function set(new_value) {
-    if (safe_not_equal(value, new_value)) {
-      value = new_value;
-      if (stop) {
-        const run_queue = !subscriber_queue.length;
-        for (const subscriber of subscribers) {
-          subscriber[1]();
-          subscriber_queue.push(subscriber, value);
-        }
-        if (run_queue) {
-          for (let i = 0; i < subscriber_queue.length; i += 2) {
-            subscriber_queue[i][0](subscriber_queue[i + 1]);
-          }
-          subscriber_queue.length = 0;
-        }
-      }
-    }
-  }
-  function update(fn) {
-    set(fn(
-      /** @type {T} */
-      value
-    ));
-  }
-  function subscribe(run, invalidate = noop) {
-    const subscriber = [run, invalidate];
-    subscribers.add(subscriber);
-    if (subscribers.size === 1) {
-      stop = start(set, update) || noop;
-    }
-    run(
-      /** @type {T} */
-      value
-    );
-    return () => {
-      subscribers.delete(subscriber);
-      if (subscribers.size === 0 && stop) {
-        stop();
-        stop = null;
-      }
-    };
-  }
-  return { set, update, subscribe };
 }
 function hash(...values) {
   let hash2 = 5381;
