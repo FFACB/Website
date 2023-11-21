@@ -10,3 +10,4 @@ vite.config.ts.timestamp-*
 prisma/dev.db
 dev.db
 !uploads/.gitkeep 
+uploads/*
