@@ -1,5 +1,6 @@
-import { r as render, d as define_property, a as render_effect, p as push$1, c as current_component_context, b as pop$1, e as array_from, f as destroy_signal, g as push, h as copy_payload, i as assign_payload, j as bind_props, k as pop, l as get_descriptor, m as is_array, s as source, n as safe_equal, o as get, q as set, t as create_anchor } from './chunks/index-85734922.js';
-import { s as setContext } from './chunks/main-client-565a94f2.js';
+import { r as render, d as define_property, a as render_effect, p as push$1, c as current_component_context, b as pop$1, e as array_from, f as destroy_signal, g as push, h as copy_payload, i as assign_payload, j as bind_props, k as pop, l as get_descriptor, m as is_array, s as source, n as safe_equal, o as get, q as set, t as create_anchor } from './chunks/index2-c72fb9c6.js';
+import { s as setContext } from './chunks/main-client-07b30246.js';
+import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-2b68e648.js';
 
 let base = "";
 let assets = base;
@@ -348,6 +349,17 @@ function mount(component, options2) {
     }
   ];
 }
+const snippet_symbol = Symbol.for("svelte.snippet");
+function add_snippet_symbol(fn) {
+  fn[snippet_symbol] = true;
+  return fn;
+}
+function validate_component(component_fn) {
+  if (component_fn?.[snippet_symbol] === true) {
+    throw new Error("A snippet must be rendered with `{@render ...}`");
+  }
+  return component_fn;
+}
 function asClassComponent$1(component) {
   return class extends Svelte4Component {
     /** @param {any} options */
@@ -451,7 +463,7 @@ function Root($$payload, $$props) {
       $$payload2.out += "<!--ssr:if:true-->";
       const anchor_1 = create_anchor($$payload2);
       $$payload2.out += `${anchor_1}`;
-      constructors[0]?.($$payload2, {
+      validate_component(constructors[0])?.($$payload2, {
         get this() {
           return components[0];
         },
@@ -460,10 +472,10 @@ function Root($$payload, $$props) {
           $$settled = false;
         },
         data: data_0,
-        children: ($$payload3, $$slotProps) => {
+        children: add_snippet_symbol(($$payload3, $$slotProps) => {
           const anchor_2 = create_anchor($$payload3);
           $$payload3.out += `${anchor_2}`;
-          constructors[1]?.($$payload3, {
+          validate_component(constructors[1])?.($$payload3, {
             get this() {
               return components[1];
             },
@@ -475,14 +487,14 @@ function Root($$payload, $$props) {
             form
           });
           $$payload3.out += `${anchor_2}`;
-        }
+        })
       });
       $$payload2.out += `${anchor_1}`;
     } else {
       $$payload2.out += "<!--ssr:if:false-->";
       const anchor_3 = create_anchor($$payload2);
       $$payload2.out += `${anchor_3}`;
-      constructors[0]?.($$payload2, {
+      validate_component(constructors[0])?.($$payload2, {
         get this() {
           return components[0];
         },
@@ -518,6 +530,9 @@ function Root($$payload, $$props) {
   });
   pop();
 }
+Root.render = function() {
+  throw new Error("Component.render(...) is no longer valid in Svelte 5. See https://svelte-5-preview.vercel.app/docs/breaking-changes#components-are-no-longer-classes for more information");
+};
 const root = asClassComponent(Root);
 const options = {
   app_template_contains_nonce: false,
@@ -533,7 +548,7 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -605,13 +620,13 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "2dkpma"
+  version_hash: "1i4lrmf"
 };
 function get_hooks() {
-  return {};
+  return import('./chunks/hooks.server-fe1788fd.js');
 }
 
-const DEV = false;
+const DEV = true;
 const SVELTE_KIT_ASSETS = "/_svelte_kit_assets";
 const ENDPOINT_METHODS = /* @__PURE__ */ new Set([
   "GET",
@@ -670,45 +685,6 @@ function is_form_content_type(request) {
     "text/plain"
   );
 }
-class HttpError {
-  /**
-   * @param {number} status
-   * @param {{message: string} extends App.Error ? (App.Error | string | undefined) : App.Error} body
-   */
-  constructor(status, body) {
-    this.status = status;
-    if (typeof body === "string") {
-      this.body = { message: body };
-    } else if (body) {
-      this.body = body;
-    } else {
-      this.body = { message: `Error: ${status}` };
-    }
-  }
-  toString() {
-    return JSON.stringify(this.body);
-  }
-}
-class Redirect {
-  /**
-   * @param {300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308} status
-   * @param {string} location
-   */
-  constructor(status, location) {
-    this.status = status;
-    this.location = location;
-  }
-}
-class ActionFailure {
-  /**
-   * @param {number} status
-   * @param {T} [data]
-   */
-  constructor(status, data) {
-    this.status = status;
-    this.data = data;
-  }
-}
 function exec(match, params, matchers) {
   const result = {};
   const values = match.slice(1);
@@ -748,42 +724,6 @@ function exec(match, params, matchers) {
     return;
   return result;
 }
-function error(status, body) {
-  if (isNaN(status) || status < 400 || status > 599) {
-    throw new Error(`HTTP error status codes must be between 400 and 599 — ${status} is invalid`);
-  }
-  return new HttpError(status, body);
-}
-function json(data, init2) {
-  const body = JSON.stringify(data);
-  const headers = new Headers(init2?.headers);
-  if (!headers.has("content-length")) {
-    headers.set("content-length", encoder$3.encode(body).byteLength.toString());
-  }
-  if (!headers.has("content-type")) {
-    headers.set("content-type", "application/json");
-  }
-  return new Response(body, {
-    ...init2,
-    headers
-  });
-}
-const encoder$3 = new TextEncoder();
-function text(body, init2) {
-  const headers = new Headers(init2?.headers);
-  if (!headers.has("content-length")) {
-    const encoded = encoder$3.encode(body);
-    headers.set("content-length", encoded.byteLength.toString());
-    return new Response(encoded, {
-      ...init2,
-      headers
-    });
-  }
-  return new Response(body, {
-    ...init2,
-    headers
-  });
-}
 function coalesce_to_error(err) {
   return err instanceof Error || err && /** @type {any} */
   err.name && /** @type {any} */
@@ -816,6 +756,9 @@ function allowed_methods(mod) {
 }
 function static_error_page(options2, status, message) {
   let page = options2.templates.error({ status, message });
+  {
+    page = page.replace("</head>", '<script type="module" src="/@vite/client"><\/script></head>');
+  }
   return text(page, {
     headers: { "content-type": "text/html; charset=utf-8" },
     status
@@ -1677,6 +1620,14 @@ async function unwrap_promises(object) {
   }
   return object;
 }
+function validate_depends(route_id, dep) {
+  const match = /^(moz-icon|view-source|jar):/.exec(dep);
+  if (match) {
+    console.warn(
+      `${route_id}: Calling \`depends('${dep}')\` will throw an error in Firefox because \`${match[1]}\` is a special URI scheme`
+    );
+  }
+}
 const INVALIDATED_PARAM = "x-sveltekit-invalidated";
 const TRAILING_SLASH_PARAM = "x-sveltekit-trailing-slash";
 async function load_server_data({
@@ -1689,6 +1640,7 @@ async function load_server_data({
 }) {
   if (!node?.server)
     return null;
+  let done = false;
   const uses = {
     dependencies: /* @__PURE__ */ new Set(),
     params: /* @__PURE__ */ new Set(),
@@ -1697,6 +1649,11 @@ async function load_server_data({
     url: false
   };
   const url = make_trackable(event.url, () => {
+    if (done && !uses.url) {
+      console.warn(
+        `${node.server_id}: Accessing URL properties in a promise handler after \`load(...)\` has returned will not cause the function to re-run when the URL changes`
+      );
+    }
     uses.url = true;
   });
   if (state.prerendering) {
@@ -1706,6 +1663,11 @@ async function load_server_data({
     ...event,
     fetch: (info, init2) => {
       const url2 = new URL(info instanceof Request ? info.url : info, event.url);
+      if (done && !uses.dependencies.has(url2.href)) {
+        console.warn(
+          `${node.server_id}: Calling \`event.fetch(...)\` in a promise handler after \`load(...)\` has returned will not cause the function to re-run when the dependency is invalidated`
+        );
+      }
       if (track_server_fetches) {
         uses.dependencies.add(url2.href);
       }
@@ -1715,11 +1677,26 @@ async function load_server_data({
     depends: (...deps) => {
       for (const dep of deps) {
         const { href } = new URL(dep, event.url);
+        {
+          validate_depends(node.server_id, dep);
+          if (done && !uses.dependencies.has(href)) {
+            console.warn(
+              `${node.server_id}: Calling \`depends(...)\` in a promise handler after \`load(...)\` has returned will not cause the function to re-run when the dependency is invalidated`
+            );
+          }
+        }
         uses.dependencies.add(href);
       }
     },
     params: new Proxy(event.params, {
       get: (target, key2) => {
+        if (done && typeof key2 === "string" && !uses.params.has(key2)) {
+          console.warn(
+            `${node.server_id}: Accessing \`params.${String(
+              key2
+            )}\` in a promise handler after \`load(...)\` has returned will not cause the function to re-run when the param changes`
+          );
+        }
         uses.params.add(key2);
         return target[
           /** @type {string} */
@@ -1728,11 +1705,23 @@ async function load_server_data({
       }
     }),
     parent: async () => {
+      if (done && !uses.parent) {
+        console.warn(
+          `${node.server_id}: Calling \`parent(...)\` in a promise handler after \`load(...)\` has returned will not cause the function to re-run when parent data changes`
+        );
+      }
       uses.parent = true;
       return parent();
     },
     route: new Proxy(event.route, {
       get: (target, key2) => {
+        if (done && typeof key2 === "string" && !uses.route) {
+          console.warn(
+            `${node.server_id}: Accessing \`route.${String(
+              key2
+            )}\` in a promise handler after \`load(...)\` has returned will not cause the function to re-run when the route changes`
+          );
+        }
         uses.route = true;
         return target[
           /** @type {'id'} */
@@ -1743,6 +1732,7 @@ async function load_server_data({
     url
   });
   const data = result ? await unwrap_promises(result) : null;
+  done = true;
   return {
     type: "data",
     data,
@@ -2665,6 +2655,21 @@ async function render_response({
   }) || "";
   if (!chunks) {
     headers.set("etag", `"${hash(transformed)}"`);
+  }
+  {
+    if (page_config.csr) {
+      if (transformed.split("<!--").length < html.split("<!--").length) {
+        console.warn(
+          "\x1B[1m\x1B[31mRemoving comments in transformPageChunk can break Svelte's hydration\x1B[39m\x1B[22m"
+        );
+      }
+    } else {
+      if (chunks) {
+        console.warn(
+          "\x1B[1m\x1B[31mReturning promises from server `load` functions will only work if `csr === true`\x1B[39m\x1B[22m"
+        );
+      }
+    }
   }
   return !chunks ? text(transformed, {
     status,
@@ -3818,6 +3823,41 @@ function normalize_fetch_input(info, init2, url) {
   }
   return new Request(typeof info === "string" ? new URL(info, url) : info, init2);
 }
+function validator(expected) {
+  function validate(module, file) {
+    if (!module)
+      return;
+    for (const key2 in module) {
+      if (key2[0] === "_" || expected.has(key2))
+        continue;
+      const values = [...expected.values()];
+      const hint = hint_for_supported_files(key2, file?.slice(file.lastIndexOf("."))) ?? `valid exports are ${values.join(", ")}, or anything with a '_' prefix`;
+      throw new Error(`Invalid export '${key2}'${file ? ` in ${file}` : ""} (${hint})`);
+    }
+  }
+  return validate;
+}
+function hint_for_supported_files(key2, ext = ".js") {
+  const supported_files = [];
+  if (valid_layout_exports.has(key2)) {
+    supported_files.push(`+layout${ext}`);
+  }
+  if (valid_page_exports.has(key2)) {
+    supported_files.push(`+page${ext}`);
+  }
+  if (valid_layout_server_exports.has(key2)) {
+    supported_files.push(`+layout.server${ext}`);
+  }
+  if (valid_page_server_exports.has(key2)) {
+    supported_files.push(`+page.server${ext}`);
+  }
+  if (valid_server_exports.has(key2)) {
+    supported_files.push(`+server${ext}`);
+  }
+  if (supported_files.length > 0) {
+    return `'${key2}' is a valid export in ${supported_files.slice(0, -1).join(", ")}${supported_files.length > 1 ? " or " : ""}${supported_files.at(-1)}`;
+  }
+}
 const valid_layout_exports = /* @__PURE__ */ new Set([
   "load",
   "prerender",
@@ -3826,9 +3866,28 @@ const valid_layout_exports = /* @__PURE__ */ new Set([
   "trailingSlash",
   "config"
 ]);
-/* @__PURE__ */ new Set([...valid_layout_exports, "entries"]);
+const valid_page_exports = /* @__PURE__ */ new Set([...valid_layout_exports, "entries"]);
 const valid_layout_server_exports = /* @__PURE__ */ new Set([...valid_layout_exports]);
-/* @__PURE__ */ new Set([...valid_layout_server_exports, "actions", "entries"]);
+const valid_page_server_exports = /* @__PURE__ */ new Set([...valid_layout_server_exports, "actions", "entries"]);
+const valid_server_exports = /* @__PURE__ */ new Set([
+  "GET",
+  "POST",
+  "PATCH",
+  "PUT",
+  "DELETE",
+  "OPTIONS",
+  "HEAD",
+  "fallback",
+  "prerender",
+  "trailingSlash",
+  "config",
+  "entries"
+]);
+const validate_layout_exports = validator(valid_layout_exports);
+const validate_page_exports = validator(valid_page_exports);
+const validate_layout_server_exports = validator(valid_layout_server_exports);
+const validate_page_server_exports = validator(valid_page_server_exports);
+const validate_server_exports = validator(valid_server_exports);
 const default_transform = ({ html }) => html;
 const default_filter = () => false;
 const default_preload = ({ type }) => type === "js" || type === "css";
@@ -3939,14 +3998,47 @@ async function respond(request, options2, manifest, state) {
           ...route.page.layouts.map((n) => n == void 0 ? n : manifest._.nodes[n]()),
           manifest._.nodes[route.page.leaf]()
         ]);
-        if (DEV)
-          ;
+        if (DEV) {
+          const layouts = nodes.slice(0, -1);
+          const page = nodes.at(-1);
+          for (const layout of layouts) {
+            if (layout) {
+              validate_layout_server_exports(
+                layout.server,
+                /** @type {string} */
+                layout.server_id
+              );
+              validate_layout_exports(
+                layout.universal,
+                /** @type {string} */
+                layout.universal_id
+              );
+            }
+          }
+          if (page) {
+            validate_page_server_exports(
+              page.server,
+              /** @type {string} */
+              page.server_id
+            );
+            validate_page_exports(
+              page.universal,
+              /** @type {string} */
+              page.universal_id
+            );
+          }
+        }
         trailing_slash = get_option(nodes, "trailingSlash");
       } else if (route.endpoint) {
         const node = await route.endpoint();
         trailing_slash = node.trailingSlash;
-        if (DEV)
-          ;
+        if (DEV) {
+          validate_server_exports(
+            node,
+            /** @type {string} */
+            route.endpoint_id
+          );
+        }
       }
       if (!is_data_request) {
         const normalized = normalize_path(url.pathname, trailing_slash ?? "never");
@@ -4228,7 +4320,13 @@ class Server {
         };
       } catch (error2) {
         {
-          throw error2;
+          this.#options.hooks = {
+            handle: () => {
+              throw error2;
+            },
+            handleError: ({ error: error3 }) => console.error(error3),
+            handleFetch: ({ request, fetch: fetch2 }) => fetch2(request)
+          };
         }
       }
     }

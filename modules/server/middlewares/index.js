@@ -7,15 +7,16 @@ dotenv.config();
 
 const { BUILD_FOLDER_NAME, UPLOADS_FOLDER_NAME } = process.env;
 
-const middlewares = function(app,__dirname)  {
+const middlewares = function(app)  {
 
 	app.use('/images/:path?/:filename/:width?/:height?', (req, res, next) => {
-		const { path: imagePath, filename, width, height } = req.params;
+		const { middlepath, filename, width, height } = req.params;
 
-		const basePath = imagePath
-			? path.join(`${BUILD_FOLDER_NAME}/client/images`, imagePath)
+		const basePath = middlepath
+			? path.join(`${BUILD_FOLDER_NAME}/client/images`, middlepath)
 			: `${BUILD_FOLDER_NAME}/client/images`;
-		const fullpath = path.join(__dirname, basePath, filename);
+
+		const fullpath = path.join(basePath, filename);
 
 		sharpen({
 			fullpath,
@@ -31,14 +32,12 @@ const middlewares = function(app,__dirname)  {
 		});
 	});
 
-	app.use('/uploads/:middlepath?/:filename/:width?/:height?', (req, res, next) => {
+	app.use(`/${UPLOADS_FOLDER_NAME}/:middlepath?/:filename/:width?/:height?`, (req, res, next) => {
 
 		const { middlepath, filename, width, height } = req.params;
 
-		// Construire le chemin complet de l'image
 		const basePath = middlepath ? path.join(UPLOADS_FOLDER_NAME, middlepath) : UPLOADS_FOLDER_NAME;
-		console.log(basePath)
-		const fullpath = path.join(__dirname, basePath, filename).replace(/\\/g, '/').replace("/D", 'D');
+		const fullpath = path.join( basePath, filename)
 	
 		sharpen({
 			fullpath,

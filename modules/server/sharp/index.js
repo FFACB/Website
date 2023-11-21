@@ -26,7 +26,6 @@ const sharpen = function ({
         fullpath
     }
 
-    console.log(localConfig);
 
     sharp(fullpath)
         .resize({

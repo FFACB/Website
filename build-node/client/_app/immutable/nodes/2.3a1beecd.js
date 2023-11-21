@@ -1,1 +1,0 @@
-import{d as p,f as s,j as o}from"../chunks/disclose-version.23df6a65.js";import{p as r,c as l}from"../chunks/runtime.bbe7a613.js";var n=o("<div>Front</div>");function f(e,t){r(t,!1);var a=s(e,!0,n);p(e,a),l()}export{f as component};
