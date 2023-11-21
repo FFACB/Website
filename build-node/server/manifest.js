@@ -10,12 +10,14 @@ return {
 	assets: new Set(["favicon.png","images/exper-bleu.png","main.css","main.scss","styles/base.scss","styles/reset.scss"]),
 	mimeTypes: {".png":"image/png",".css":"text/css"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.0583543d.js","app":"_app/immutable/entry/app.ebe914ed.js","imports":["_app/immutable/entry/start.0583543d.js","_app/immutable/chunks/main-client.9959a0b5.js","_app/immutable/chunks/runtime.bbe7a613.js","_app/immutable/chunks/singletons.8e2deb5f.js","_app/immutable/entry/app.ebe914ed.js","_app/immutable/chunks/runtime.bbe7a613.js","_app/immutable/chunks/disclose-version.ac9f713d.js","_app/immutable/chunks/validate.b0d5a885.js","_app/immutable/chunks/main-client.9959a0b5.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.56d4b241.js","app":"_app/immutable/entry/app.7ccac719.js","imports":["_app/immutable/entry/start.56d4b241.js","_app/immutable/chunks/main-client.aebd5097.js","_app/immutable/chunks/runtime.b23a58cc.js","_app/immutable/chunks/singletons.b850a235.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.7ccac719.js","_app/immutable/chunks/runtime.b23a58cc.js","_app/immutable/chunks/disclose-version.ba38736e.js","_app/immutable/chunks/main-client.aebd5097.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
-			__memo(() => import('./chunks/0-54ce8cec.js')),
-			__memo(() => import('./chunks/1-d9b66385.js')),
-			__memo(() => import('./chunks/2-edce59ae.js')),
-			__memo(() => import('./chunks/3-3796eea1.js'))
+			__memo(() => import('./chunks/0-b97a5e93.js')),
+			__memo(() => import('./chunks/1-e5dcb5f3.js')),
+			__memo(() => import('./chunks/2-bde10cf7.js')),
+			__memo(() => import('./chunks/3-d1906ca6.js')),
+			__memo(() => import('./chunks/4-cc760ec9.js')),
+			__memo(() => import('./chunks/5-c7a478d5.js'))
 		],
 		routes: [
 			{
@@ -26,10 +28,24 @@ return {
 				endpoint: null
 			},
 			{
-				id: "/(back)/admin",
-				pattern: /^\/admin\/?$/,
+				id: "/(admin)/admin/(back)/home",
+				pattern: /^\/admin\/home\/?$/,
 				params: [],
 				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				endpoint: null
+			},
+			{
+				id: "/(admin)/admin/login",
+				pattern: /^\/admin\/login\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				endpoint: null
+			},
+			{
+				id: "/(admin)/admin/logout",
+				pattern: /^\/admin\/logout\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 5 },
 				endpoint: null
 			}
 		],

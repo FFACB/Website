@@ -12,8 +12,9 @@ const config = {
         }
 	})],
 	kit: {
+	
 		csrf: {
-			checkOrigin: true,
+			checkOrigin: false,
 		},
 		
 		adapter: adapterNode({

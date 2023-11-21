@@ -1,11 +1,8 @@
 <script type="ts">
 
-    export let data;
-    const { user } = data
-    debugger
 </script>
 
-<div>{user}</div>
+<div></div>
 
 <style lang="scss">
 

@@ -1,10 +1,12 @@
+
 import { sveltekit } from '@sveltejs/kit/vite';
-// import { defineConfig } from 'vitest/config';
 import {defineConfig, searchForWorkspaceRoot } from 'vite';
+import authkit from './auth.config'; 
+
 
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [sveltekit(),authkit()],
 	server: {
 		fs: {
 			allow: [searchForWorkspaceRoot(process.cwd()) + '/uploads']
