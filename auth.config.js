@@ -6,9 +6,9 @@ import { PrismaClient } from "@prisma/client"
 import dotenv from 'dotenv';
 dotenv.config();
 
-const { SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD } = process.env;
+const { SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD , NODE_ENV} = process.env;
 
-if(SECRET_ADMIN_EMAIL == null || SECRET_ADMIN_PASSWORD == null){
+if(SECRET_ADMIN_EMAIL == null || SECRET_ADMIN_PASSWORD == null || NODE_ENV == null){
     throw new Error("SECRET_ADMIN_EMAIL or SECRET_ADMIN_PASSWORD is not defined")
 }
 
@@ -24,7 +24,7 @@ export default () => {
 				const auth = lucia({
 					adapter: adapter.prisma(prisma),
 					middleware: sveltekit(),
-					env:  'DEV' ,
+					env:  NODE_ENV == "production" ? "PROD" : "DEV" ,
 					getUserAttributes: (data) => {
 						return {
 							email: data.email

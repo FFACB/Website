@@ -5,16 +5,14 @@
 	let errorMsg: string | null = null;
 </script>
 
-
-
 <div class="container mx-auto p-8 space-y-8">
-	<h1 class="h1">Login</h1>
+	<h1 class="h1 text-6xl">Login</h1>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 	<section>
-		
-
-                
-        <form method="POST" action="?/login" use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+		<form
+			method="POST"
+			action="?/login"
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
             const { email, password } = Object.fromEntries(formData);
 
             if (email == null || typeof email !== 'string' || email.length < 1) {
@@ -45,23 +43,25 @@
 
                 await update();
             };
-        }}>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="text" />
-        </div>
+        }}
+		>
+			<div class="form">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input  placeholder="Email" id="email" name="email" type="text" />
+				</div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" name="password" type="text" />
-        </div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input placeholder="Pass" id="password" name="password" type="password" />
+				</div>
 
-        {#if errorMsg != null}
-            <div class="error">{errorMsg}</div>
-        {/if}
+				{#if errorMsg != null}
+					<div class="msgError">{errorMsg}</div>
+				{/if}
 
-        <button type="submit" value="login" class="submit-button">Connexion</button>
-        </form>
+				<button type="submit" value="login" class="btn">Connexion</button>
+			</div>
+		</form>
 	</section>
 </div>
-

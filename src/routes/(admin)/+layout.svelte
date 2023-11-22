@@ -1,10 +1,10 @@
 
-<body data-theme="seafoam" data-sveltekit-preload-data="hover">
-    <div style="display: contents">
-
-
+<script>
+    import "../../app.pcss";
+</script>
+<body data-theme="backoffice" data-sveltekit-preload-data="hover">
+  
         <slot/>
 
-    </div>
 </body>
 

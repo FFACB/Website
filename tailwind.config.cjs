@@ -1,5 +1,7 @@
-// 1. Import the Skeleton plugin
+
+import forms from '@tailwindcss/forms';
 const { skeleton } = require('@skeletonlabs/tw-plugin');
+import { backoffice } from './themes/back/custom'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -20,8 +22,13 @@ module.exports = {
 	},
 	
 	plugins: [
+		forms,
 		skeleton({
-			themes: { preset: [ "seafoam" ] }
+			themes: {
+				custom: [
+					backoffice
+				]
+			}
 		}),
 	]
 }
