@@ -2,6 +2,7 @@
 import forms from '@tailwindcss/forms';
 const { skeleton } = require('@skeletonlabs/tw-plugin');
 import { backoffice } from './themes/back/custom'
+import { limeTheme } from './themes/back/lime';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -18,6 +19,9 @@ module.exports = {
 	],
 
 	theme: {
+		borderRadius: {
+			'3xl': '2rem',
+		},
 		extend: {},
 	},
 	
@@ -26,7 +30,8 @@ module.exports = {
 		skeleton({
 			themes: {
 				custom: [
-					backoffice
+					// backoffice
+					limeTheme
 				]
 			}
 		}),

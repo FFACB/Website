@@ -2,7 +2,7 @@
 <script>
     import "../../app.pcss";
 </script>
-<body data-theme="backoffice" data-sveltekit-preload-data="hover">
+<body class="bg-surface-500 dark:bg-surface-900" data-theme="lime" data-sveltekit-preload-data="hover">
   
         <slot/>
 

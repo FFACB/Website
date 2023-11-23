@@ -10,22 +10,23 @@ return {
 	assets: new Set(["favicon.png","images/exper-bleu.png","main.scss","styles/base.scss","styles/reset.scss"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.92da861d.js","app":"_app/immutable/entry/app.7363b39e.js","imports":["_app/immutable/entry/start.92da861d.js","_app/immutable/chunks/scheduler.ac6ecc1c.js","_app/immutable/chunks/singletons.d831195b.js","_app/immutable/chunks/index.b95c7ae7.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.7363b39e.js","_app/immutable/chunks/scheduler.ac6ecc1c.js","_app/immutable/chunks/index.6bb7e777.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.1b041a9f.js","app":"_app/immutable/entry/app.0673074c.js","imports":["_app/immutable/entry/start.1b041a9f.js","_app/immutable/chunks/scheduler.005c20cf.js","_app/immutable/chunks/singletons.133142ae.js","_app/immutable/chunks/index.1aff895d.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.0673074c.js","_app/immutable/chunks/scheduler.005c20cf.js","_app/immutable/chunks/index.2f9bf333.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
-			__memo(() => import('./chunks/0-be86c78f.js')),
-			__memo(() => import('./chunks/1-c7ccfb5b.js')),
-			__memo(() => import('./chunks/2-87121502.js')),
-			__memo(() => import('./chunks/3-080ebbeb.js')),
-			__memo(() => import('./chunks/4-c3bc4457.js')),
-			__memo(() => import('./chunks/5-616905ed.js')),
-			__memo(() => import('./chunks/6-72f0d9dd.js'))
+			__memo(() => import('./chunks/0-333e492d.js')),
+			__memo(() => import('./chunks/1-8ea3d1d6.js')),
+			__memo(() => import('./chunks/2-cc67535e.js')),
+			__memo(() => import('./chunks/3-d8dbe10d.js')),
+			__memo(() => import('./chunks/4-b939068b.js')),
+			__memo(() => import('./chunks/5-b3b0e0c7.js')),
+			__memo(() => import('./chunks/6-a67f29cc.js')),
+			__memo(() => import('./chunks/7-6ef74609.js'))
 		],
 		routes: [
 			{
-				id: "/",
-				pattern: /^\/$/,
+				id: "/(front)",
+				pattern: /^\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				page: { layouts: [0,4,], errors: [1,,], leaf: 7 },
 				endpoint: null
 			},
 			{

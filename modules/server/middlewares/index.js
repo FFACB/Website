@@ -9,8 +9,9 @@ const { BUILD_FOLDER_NAME, UPLOADS_FOLDER_NAME } = process.env;
 
 const middlewares = function(app)  {
 
-	app.use('/images/:path?/:filename/:width?/:height?', (req, res, next) => {
-		const { middlepath, filename, width, height } = req.params;
+	app.use('/images/:path?/:filename', (req, res, next) => {
+		const {width, height} = req.query;
+		const { middlepath, filename } = req.params;
 
 		const basePath = middlepath
 			? path.join(`${BUILD_FOLDER_NAME}/client/images`, middlepath)
@@ -32,9 +33,10 @@ const middlewares = function(app)  {
 		});
 	});
 
-	app.use(`/${UPLOADS_FOLDER_NAME}/:middlepath?/:filename/:width?/:height?`, (req, res, next) => {
+	app.use(`/${UPLOADS_FOLDER_NAME}/:middlepath?/:filename`, (req, res, next) => {
 
-		const { middlepath, filename, width, height } = req.params;
+		const {width, height} = req.query;
+		const { middlepath, filename} = req.params;
 
 		const basePath = middlepath ? path.join(UPLOADS_FOLDER_NAME, middlepath) : UPLOADS_FOLDER_NAME;
 		const fullpath = path.join( basePath, filename)
