@@ -15,6 +15,10 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
+		"@editorjs/editorjs": "^2.28.2",
+		"@editorjs/header": "^2.8.1",
+		"@editorjs/image": "^2.9.0",
+		"@editorjs/nested-list": "^1.4.1",
 		"@iconify/svelte": "^3.1.4",
 		"@playwright/test": "^1.40.0",
 		"@skeletonlabs/skeleton": "^2.5.1",

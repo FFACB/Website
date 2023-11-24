@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { AppBar } from '@skeletonlabs/skeleton';
 	import Icon from '@iconify/svelte';
@@ -7,24 +7,33 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { redirect } from '@sveltejs/kit';
+	import { initializeStores ,Toast} from '@skeletonlabs/skeleton';
+
+	initializeStores();
 
 	const { links = {} } = $page.data;
-	const { titre = 'Titre' } = $page.data;
+	const { titre = '' } = $page.data;
     const { active = ''} = $page.data;
 </script>
 
-<AppShell regionPage="relative" slotPageHeader="sticky top-0 z-10" slotSidebarLeft="bg-surface-50 w-56 p-4 m-4 rounded-3xl">
+<Toast position="t" padding="p-4" />
+
+<AppShell regionPage="relative" slotPageHeader=" sticky top-0 z-10" slotSidebarLeft="dark:bg-surface-700 bg-surface-50 w-56 p-4 m-4 rounded-3xl">
 	<svelte:fragment slot="sidebarLeft">
 		<!-- Insert the list: -->
 		<nav class="list-nav">
 			<ul>
 				<li><a class="{active == "home" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/home">Home</a></li>
+
+
+				<li><a class="{active == "actualite" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/actualites">Actualite</a></li>
+
 			</ul>
 		</nav>
 		<!-- --- -->
 	</svelte:fragment>
 	<div class="h-full w-full flex flex-col p-4 pl-0">
-		<AppBar class="bg-surface-50 p-4 rounded-3xl w-full sticky top-4 z-10">
+		<AppBar class="dark:bg-surface-700 bg-surface-50 p-4 rounded-3xl w-full sticky top-4 z-10">
 			<svelte:fragment slot="lead">
 				{#if links.back}
 					<a href="/admin/home" class="btn variant-ghost-secondary p-1 pl-4 pr-4 rounded-m">
@@ -59,7 +68,7 @@
 						title="Deconnexion"
 						class="btn variant-ghost-secondary bg-tertiary-100 ring-tertiary-400 p-1 pl-4 pr-4 rounded-m"
 					>
-						<Icon class="text-tertiary-400 " icon="solar:login-broken" width="32" height="32" />
+						<Icon class="text-tertiary-400 dark:text-white" icon="solar:login-broken" width="32" height="32" />
 					</button>
 				</form>
 			</svelte:fragment>

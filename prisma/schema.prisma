@@ -35,3 +35,18 @@ model Key {
 
   @@index([user_id])
 }
+
+
+
+//BO
+model Actualite {
+  id                String   @id @default(uuid())
+  titre             String
+  photo             String   @default("")
+  redacteur         String
+  tempsLecture      String
+  descriptionCourte String   @default("Aucune description")
+  contenu           String
+  createdAt         DateTime @default(now())
+}
+
