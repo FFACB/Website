@@ -1,9 +1,9 @@
 
 import { page } from '$app/stores';
-import type { PageServerLoad } from '../$types';
 import { auth } from '$lib/server/lucia'
 import type { ServerLoadEvent } from '@sveltejs/kit';
 import { error, fail, redirect } from "@sveltejs/kit"
+import type { PageServerLoad } from './home/$types';
 
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 	

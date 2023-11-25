@@ -1,21 +1,29 @@
 <script lang="ts">
 	
 	import { enhance } from '$app/forms';
-	import Layout from '../../+layout.svelte';
-	
+	import type { ActionResult } from '@sveltejs/kit';
+	import { getToastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	const toastStore = getToastStore();
 	export let data;
 	let { actualites } = data;
+	
+	const toast: ToastSettings = {message: '', background: ''};
 
 
 	const submitDeleteNote  = () => {
-		return async ({ result, update }) => {
+		return  async  ({ result , update } : { result: ActionResult, update: (data?: any) => Promise<void> } ) => {
 			switch (result.type) {
 				case 'success':
-					toast.success('Actualité supprimé!');
+					toast.message = 'Actualité supprimé!';
+					toast.background = 'variant-filled-success';
+					toastStore.trigger(toast);
 					await update(result);
 					break;
 				case 'failure':
-					toast.error("Erreur lors de la suppression");
+					toast.message = 'Erreur lors de la suppression';
+					toast.background = 'variant-filled-danger';
+					toastStore.trigger(toast);
 					await update();
 					break;
 				default:
@@ -28,10 +36,6 @@
 
 </script>
 
-<Layout>
-	<div slot="buttons">
-		<a href="/admin/actualite" class="create-button" ><span>Créer une actualite</span></a>
-	</div>
 	<div class="grid-view">
 		<h1>
 			{actualites.length == 0 ? 'Aucune actualité' : 'Liste des actualites'}
@@ -78,8 +82,6 @@
 			</tbody>
 		</table>
 	</div>
-</Layout>
-
 <style lang="scss">
 
 

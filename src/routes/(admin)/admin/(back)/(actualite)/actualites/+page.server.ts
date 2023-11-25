@@ -1,38 +1,45 @@
-import { fail, redirect } from '@sveltejs/kit'
-import { IsStringNotEmpty,} from "$lib/utils/type";
+import { fail, redirect, type Actions } from '@sveltejs/kit'
 import { prisma } from '$lib/server/prisma'
-import type { PageServerLoad } from "../../../$types"
+import { auth } from '$lib/server/lucia'
+import type { PageServerLoad } from './$types';
+import type { Actualite } from '@prisma/client';
 
 
-
-export const load: PageServerLoad = async (event) =>{
+export const load = async (event : PageServerLoad) =>{
    
-
   const actualites = await prisma.actualite.findMany()
-  return {
+ 
+  return{
+		links:{
+			back:'/admin/home'
+		},
+		titre:'Actualites',
+		active:'actualite',
     actualites
-  }
+	}
 }
 
-export const actions = {
+export const actions : Actions= {
   
-  delete: async ({ request, locals}) => {
+  delete: async (event) => {
     
-
+    const { request, locals} = event
 
     const data = Object.fromEntries(await request.formData());
 
-    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+    const authRequest = auth.handleRequest(event);
+    const session = await authRequest.validate();
+  
+    if (!session ) {
       return fail(400, {
         data: data,
         errorMsg: "Vous n'etes pas connecté",
       });
     }
 
-    
-    const { id = null } = data
+    const { id } = data
 
-    if (!IsStringNotEmpty(id)) {
+    if (id == null || id == "" ) {
       return fail(400, {
         data: data,
         errorMsg: "❌ L'identifiant de l'actualité est requis",
@@ -41,11 +48,11 @@ export const actions = {
 
     try {
 
-      const actualiteToDelete = await db.actualite.findUnique({
+      const actualiteToDelete : Actualite | null = await prisma.actualite.findUnique({
         where: {
-          id
-        }
-      })
+          id: typeof id === 'string' ? id : id.toString(),
+        },
+      });
 
       if (actualiteToDelete == null) {
         return fail(400, {
@@ -54,9 +61,9 @@ export const actions = {
         });
       }
 
-      await db.actualite.delete({
+      await prisma.actualite.delete({
         where: {
-          id
+          id : typeof id === 'string' ? id : id.toString(),
         },
       })
 

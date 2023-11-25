@@ -23,10 +23,8 @@
 		<!-- Insert the list: -->
 		<nav class="list-nav">
 			<ul>
-				<li><a class="{active == "home" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/home">Home</a></li>
-
-
-				<li><a class="{active == "actualite" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/actualites">Actualite</a></li>
+				<li><a data-sveltekit-reload class="{active == "home" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/home">Home</a></li>
+				<li><a data-sveltekit-reload class="{active == "actualite" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/actualites">Actualite</a></li>
 
 			</ul>
 		</nav>
@@ -36,7 +34,7 @@
 		<AppBar class="dark:bg-surface-700 bg-surface-50 p-4 rounded-3xl w-full sticky top-4 z-10">
 			<svelte:fragment slot="lead">
 				{#if links.back}
-					<a href="/admin/home" class="btn variant-ghost-secondary p-1 pl-4 pr-4 rounded-m">
+					<a data-sveltekit-reload href="{links.back}" class="btn variant-ghost-secondary p-1 pl-4 pr-4 rounded-m">
 						<Icon
 							class="text-secondary-500 "
 							icon="solar:alt-arrow-left-bold-duotone"
