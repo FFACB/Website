@@ -1,46 +1,54 @@
-import { fail, redirect } from '@sveltejs/kit'
-import { IsJsonString, IsEmptyFile, IsString, IsStringNotEmpty, IsObject, IsPhoto, IsFile, GetExtension } from "$lib/utils/type";
 
-import bcrypt from 'bcrypt'
-import { db } from '$lib/database'
+import { fail, redirect, type Actions } from '@sveltejs/kit'
+import { prisma } from '$lib/server/prisma'
+import { auth } from '$lib/server/lucia'
+import { IsPhoto } from '$lib/client/utils/type.js';
 import { writeFileSync,existsSync, mkdirSync } from 'fs';
+import type { Actualite } from '@prisma/client';
 
 const FULL_UPLOAD_PATH = `uploads/actualites/`
 const PARTIAL_UPLOAD_PATH = "/uploads/actualites/"
 
 
-export const load = async (serverloadEvent) => {
-
-  let { locals } = serverloadEvent;
-  if (!locals.user) {
-    throw redirect(302, '/admin/login')
-  }
-
-  const { params } = serverloadEvent
+export const load = async (event) =>{
+  
+  const { params } = event
   const { idActualite = '' } = params
-  let actualite = await db.actualite.findUnique({
+
+  let actualite : Actualite | null = await prisma.actualite.findUnique({
     where: {
       id: idActualite
     }
   })
 
-  actualite = actualite == null ? {} : actualite
 
   return {
+    links:{
+			back:'/admin/home'
+		},
+		titre:'Actualites',
+		active:'actualite',
     actualite
   }
 }
 
 
-export const actions = {
+
+export const actions : Actions = {
 
  
 
-  create: async ({ request, locals}) => {
+  create: async (event) => {
     
  
+    const {request} = event
+
     const data = Object.fromEntries(await request.formData());
-    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+
+    const authRequest = auth.handleRequest(event);
+    const session = await authRequest.validate();
+  
+    if (!session ) {
       return fail(400, {
         data: data,
         errorMsg: "Vous n'etes pas connecté",
@@ -49,38 +57,63 @@ export const actions = {
 
     let { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photo, photoFile } = data
 
-    if (titre.length < 1) {
+    
+    if ( id != null &&  id != undefined &&  typeof id !== 'string') {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ L'Id doit être null ou une chaine de caractère",
+      });
+    }
+
+    if ( titre == null || typeof titre !== 'string' || titre.length < 1) {
       return fail(400, {
         data: data,
         errorMsg: "❌ Le titre ne doit pas être vide",
       });
     }
 
-    if (redacteur.length < 1) {
+    if (redacteur == null || typeof redacteur !== 'string' || redacteur.length < 1) {
       return fail(400, {
         data: data,
         errorMsg: "❌ Le redacteur ne doit pas être vide",
       });
     }
 
-    if (tempsLecture.length < 1) {
+    if (tempsLecture == null || typeof tempsLecture !== 'string' || tempsLecture.length < 1) {
       return fail(400, {
         data: data,
         errorMsg: "❌ Le temps de lecture ne doit pas être vide",
       });
     }
 
-    if (descriptionCourte.length < 1) {
+    if (descriptionCourte == null || typeof descriptionCourte !== 'string' || descriptionCourte.length < 1) {
       return fail(400, {
         data: data,
         errorMsg: "❌ La description courte ne doit pas être vide",
       });
     }
 
+    if ( photo != null &&  photo != undefined &&  typeof photo !== 'string') {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ La photo doit être null ou une chaine de caractère",
+      });
+    }
+
+    
+    if ( contenu != null &&  contenu != undefined &&  typeof contenu !== 'string') {
+      return fail(400, {
+        data: data,
+        errorMsg: "❌ Le contenu doit être null ou une chaine de caractère",
+      });
+    }
+
     try {
 
       
-      if (IsPhoto(photoFile)) {
+      if (IsPhoto(photoFile) && photoFile instanceof File) {
+
+
 
         if (!existsSync(FULL_UPLOAD_PATH)){
           mkdirSync(FULL_UPLOAD_PATH);
@@ -96,9 +129,12 @@ export const actions = {
 
       }
 
-      const actualite = await db.actualite.upsert({
+
+      
+
+      const actualite = await prisma.actualite.upsert({
         where: {
-          id
+          id 
         },
         create: {
           titre,
@@ -138,11 +174,16 @@ export const actions = {
   },
 
 
-  delete: async ({ request, locals}) => {
+  delete: async (event) => {
+
+    const { request, locals} = event
 
     const data = Object.fromEntries(await request.formData());
 
-    if (!locals.user || locals.user.role == null || locals.user.role != "ADMIN" ) {
+    const authRequest = auth.handleRequest(event);
+    const session = await authRequest.validate();
+  
+    if (!session ) {
       return fail(400, {
         data: data,
         errorMsg: "Vous n'etes pas connecté",
@@ -151,7 +192,7 @@ export const actions = {
 
     const { id = null } = data
 
-    if (!IsStringNotEmpty(id)) {
+    if (id == null || typeof id !== 'string' ||  id == "") {
       return fail(400, {
         data: data,
         errorMsg: "❌ L'identifiant de l'actualité est requis",
@@ -160,7 +201,7 @@ export const actions = {
 
     try {
 
-      const actualiteToDelete = await db.actualite.findUnique({
+      const actualiteToDelete = await prisma.actualite.findUnique({
         where: {
           id
         }
@@ -173,7 +214,7 @@ export const actions = {
         });
       }
 
-      await db.actualite.delete({
+      await prisma.actualite.delete({
         where: {
           id
         },
