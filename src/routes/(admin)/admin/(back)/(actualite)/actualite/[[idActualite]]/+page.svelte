@@ -5,6 +5,7 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
+
 	const toastStore = getToastStore();
 
 	const toast: ToastSettings = {message: '', background: ''};
@@ -157,20 +158,20 @@
 	};
 </script>
 
-<div slot="buttons">
+<!-- <div slot="buttons">
 	<button
 		class="back-button"
 		on:click={() => {
 			goto('/admin/actualites');
 		}}>Retour aux actualites</button
 	>
-	{#if actualite.id != null && actualite.id.length != 0}
+	{#if actualite != null && actualite.id != null && actualite.id.length != 0}
 		<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
 			<input type="hidden" name="id" value={actualite.id} />
 			<button type="submit" class="delete-button">Supprimer</button>
 		</form>
 	{/if}
-</div>
+</div> -->
 
 <div>
 	<h1>Formulaire d'Actualité</h1>
