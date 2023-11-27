@@ -11,6 +11,10 @@
 
 	initializeStores();
 
+	export let data;
+	const { LayoutConfig } = data
+	const { admin, sidebar } = LayoutConfig
+
 	const { links = {} } = $page.data;
 	const { titre = '' } = $page.data;
     const { active = ''} = $page.data;
@@ -23,6 +27,11 @@
 		<!-- Insert the list: -->
 		<nav class="list-nav">
 			<ul>
+
+				{#each sidebar as bar,index}
+					
+				{/each}
+
 				<li><a class="{active == "home" ? "underline" : ""} underline-offset-4 decoration-secondary-500" href="/admin/home">Home</a></li>
 
 

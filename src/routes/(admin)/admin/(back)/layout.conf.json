@@ -1,0 +1,20 @@
+{
+    "admin":{
+        "slug":"/admin"
+    },
+    "sidebar":[
+        {
+            "bartitle":"Accueil",
+            "link":"/home",
+            "linkactive":"home",
+            "item":[]
+        },
+        {
+            "bartitle":"Actualités",
+            "link":"/actualites",
+            "linkactive":"actualites",
+            "item":[]
+        }
+
+    ]
+}

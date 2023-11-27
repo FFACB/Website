@@ -45,7 +45,7 @@ model Actualite {
   photo             String   @default("")
   redacteur         String
   tempsLecture      String
-  descriptionCourte String   @default("Aucune description")
+  descriptionCourte String 
   contenu           String
   createdAt         DateTime @default(now())
 }

@@ -5,7 +5,7 @@ CREATE TABLE "Actualite" (
     "photo" TEXT NOT NULL DEFAULT '',
     "redacteur" TEXT NOT NULL,
     "tempsLecture" TEXT NOT NULL,
-    "descriptionCourte" TEXT NOT NULL DEFAULT 'Aucune description',
+    "descriptionCourte" TEXT NOT NULL,
     "contenu" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
