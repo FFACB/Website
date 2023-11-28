@@ -5,14 +5,6 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 
-	
-	const authRequest = auth.handleRequest(event);
-	const session = await authRequest.validate();
-
-	if (!session ) {
-		throw redirect(301, '/admin/login')
-	}
-
 	return{
 
 		backlink:null,
