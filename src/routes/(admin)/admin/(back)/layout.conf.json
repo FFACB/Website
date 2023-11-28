@@ -5,15 +5,16 @@
     "sidebar":[
         {
             "bartitle":"Accueil",
-            "link":"/home",
+            "slug":"/home",
             "linkactive":"home",
-            "item":[]
+            "items":[
+            ]
         },
         {
             "bartitle":"Actualités",
-            "link":"/actualites",
+            "slug":"/actualites",
             "linkactive":"actualites",
-            "item":[]
+            "items":[]
         }
 
     ]

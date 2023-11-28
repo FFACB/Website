@@ -14,10 +14,8 @@ export const load: PageServerLoad = async (event) => {
 	}
 
 	return{
-		links:{
-			back:''
-		},
-		titre:'Accueil',
+
+		backlink:null,
 		active:'home',
 
 	}

@@ -23,10 +23,7 @@ export const load = async (event) =>{
 
 
   return {
-    links:{
-			back:'/admin/home'
-		},
-		titre:'Actualites',
+    backlink:'/admin/actualites',
 		active:'actualite',
     actualite
   }

@@ -4,7 +4,7 @@ import { auth } from '$lib/server/lucia'
 import type { ServerLoadEvent } from '@sveltejs/kit';
 import { error, fail, redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from './home/$types';
-import Config from './layout.conf.json'
+import config from './layout.conf.json'
 import type { LayoutConfig } from '$lib/client/utils/ambiant';
 
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 	}
 
 	return {
-		config: Config as LayoutConfig
+		config:config as LayoutConfig
 	}
 	
 };

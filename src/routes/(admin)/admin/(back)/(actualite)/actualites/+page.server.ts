@@ -10,11 +10,8 @@ export const load = async (event : PageServerLoad) =>{
   const actualites = await prisma.actualite.findMany()
  
   return{
-		links:{
-			back:'/admin/home'
-		},
-		titre:'Actualites',
-		active:'actualite',
+    backlink:'/admin/home',
+		active:'actualites',
     actualites
 	}
 }

@@ -5,9 +5,9 @@ export type LayoutAdmin = {
 
 export type LayoutSidebarItem = {
     bartitle: string,
-    link: string,
+    slug: string,
     linkactive: string,
-    item: LayoutSidebarItem[]
+    items: LayoutSidebarItem[]
 }
 
 export type LayoutConfig = {

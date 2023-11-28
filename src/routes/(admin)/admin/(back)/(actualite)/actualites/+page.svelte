@@ -4,6 +4,9 @@
 	import type { ActionResult } from '@sveltejs/kit';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	import Content from '$lib/components/admin/content/Content.svelte';
+	import ButtonCreate from '$lib/components/admin/buttons/create/ButtonCreate.svelte';
+
 	const toastStore = getToastStore();
 	export let data;
 	let { actualites } = data;
@@ -12,6 +15,9 @@
 
 
 	const submitDeleteNote  = () => {
+
+		debugger
+
 		return  async  ({ result , update } : { result: ActionResult, update: (data?: any) => Promise<void> } ) => {
 			switch (result.type) {
 				case 'success':
@@ -35,6 +41,18 @@
 	};
 
 </script>
+
+<Content>
+
+	<svelte:fragment slot="buttons">
+		
+		<ButtonCreate titre="Créer" link="/admin/actualite" target="_blank"/>
+		<!--  type="submit" value="Update" form="delete" -->
+		<!-- Buttons ici -->
+		
+	</svelte:fragment>
+
+
 
 	<div class="grid-view">
 		<h1>
@@ -82,6 +100,7 @@
 			</tbody>
 		</table>
 	</div>
+</Content>
 <style lang="scss">
 
 
