@@ -11,7 +11,7 @@
 	// @ts-ignore
 	import ImageTool from '@editorjs/image';
 	// @ts-ignore
-	import { IsJsonString } from '$lib/utils/type';
+	import { IsJsonString } from '$lib/client/utils/type';
 	// @ts-ignore
 	import ButtonTool from '$lib/client/editor/button/ButtonTool.js';
 	// @ts-ignore

@@ -7,7 +7,7 @@
 </script>
 
 {#if backlink != null && backlink.length > 0}
-	<a data-sveltekit-reload href={backlink}	class="back-a">
+	<a href={backlink}	class="back-a">
 		<Icon
 			class="back-icon"
 			icon="solar:alt-arrow-left-bold-duotone"

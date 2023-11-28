@@ -1,15 +1,24 @@
 <script lang="ts">
+	import { onNavigate, afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { LayoutConfig, LayoutSidebarItem } from '$lib/client/utils/ambiant.js';
 	import './sidebar.pcss';
+
 	export let config: LayoutConfig;
+
 	const { admin, sidebar } = config;
-	const { active = '' } = $page.data;
+	let { active = '' } = $page.data;
+	let sidebarHtml = initSidebar(sidebar);
+
+	afterNavigate((url) => {
+		active = $page.data.active;
+		sidebarHtml = initSidebar(sidebar);
+	});
 
 	function initSidebar(sidebarItem: LayoutSidebarItem[]) {
 		let sidebarItems = sidebarItem
 			.map((item) => {
-				let local = `<li class='li'><a data-sveltekit-reload class="${
+				let local = `<li class='li'><a class="${
 					active == item.linkactive ? 'active' : ''
 				}  " href="${admin.slug}${item.slug}">${item.bartitle}</a></li>`;
 
@@ -28,6 +37,6 @@
 
 <nav class="list-nav">
 	<ul class="ul-parent">
-		{@html initSidebar(sidebar)}
+		{@html sidebarHtml}
 	</ul>
 </nav>
