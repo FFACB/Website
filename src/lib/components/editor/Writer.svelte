@@ -4,31 +4,23 @@
 
 	import { onMount } from 'svelte';
 	import { IsJsonString } from '$lib/client/utils/type';
+	import ButtonTool from '$lib/client/editor/button/ButtonTool.js';
+	import ParagraphTool from '$lib/client/editor/paragraph/ParagraphTool.js';
+	
+	let EditorJS = null, Header, NestedList, ImageTool;
 
-	let EditorJS = null, Header, NestedList, ImageTool, ButtonTool, ParagraphTool;
-
-	// @ts-ignore
 	export let contenu;
-
-	// @ts-ignore
 	let editor;
-	// @ts-ignore
 	onMount(async (_) => {
 
 		EditorJS = (await import('@editorjs/editorjs')).default;
+		Header = (await import('@editorjs/header')).default;
+		NestedList = (await import('@editorjs/nested-list')).default;
+		ImageTool = (await import('@editorjs/image')).default;
 		
-		// @ts-ignore
-		Header = await import('@editorjs/header');
-		// @ts-ignore
-		NestedList = await import('@editorjs/nested-list');
-		// @ts-ignore
-		ImageTool = await import('@editorjs/image');
-		ButtonTool = await import('$lib/client/editor/button/ButtonTool.js');
-		ParagraphTool = await import('$lib/client/editor/paragraph/ParagraphTool.js');
-		// @ts-ignore
+		
 		contenu = typeof contenu == 'string' ? JSON.parse(contenu) : contenu;
 
-		// @ts-ignore
 		editor = new EditorJS({
 			holder: 'writer',
 			tools: {
@@ -61,7 +53,6 @@
 					}
 				}
 			},
-			data: contenu,
 			defaultBlock: 'paragraph'
 		});
 	});
@@ -105,4 +96,4 @@
 	};
 </script>
 
-<textarea id="writer" />
+<div id="writer" />

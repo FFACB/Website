@@ -18,6 +18,7 @@ const authAction = async (event: RequestEvent): Promise<boolean> => {
 
 export const action_upsert = async (event: RequestEvent) => {
 
+	console.log("action_upsert")
     if (!(await authAction(event))) {
 		return fail(400, {
 			data: undefined,

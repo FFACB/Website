@@ -1,21 +1,23 @@
 <script lang="ts">
 	import { enhance, applyAction } from '$app/forms';
+	import { page } from '$app/stores';
 	import { IsEmptyString } from '$lib/client/utils/type.js';
 	import Writer from '$lib/components/editor/Writer.svelte';
-	import { goto } from '$app/navigation';
-	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
+	import { ListBoxItem, getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import { error, type ActionResult } from '@sveltejs/kit';
 	import type { Actualite } from '@prisma/client';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
+	
 
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
-	let { actualite } = data;
+	let {actualite } = data
 
 	let { 
 		id = null,
@@ -26,9 +28,14 @@
 		descriptionCourte = '',
 		contenu,
 		createdAt
-	} = actualite ?? {};
+	} = $page.form?.data ?? actualite ??  {};
+
+	$: () =>{
+		titre.value = $page.form?.data?.titre.value ?? titre.value;
+	}
 
 	let writerMethods;
+
 
 	const submitCreateNote = async ({
 		form,
@@ -42,7 +49,7 @@
 		cancel: () => void;
 	}) => {
 
-		debugger
+		
 		const { titre, redacteur, tempsLecture, descriptionCourte, photoFile } =
 			Object.fromEntries(data);
 
@@ -75,7 +82,7 @@
 		}
 
 		data.append('contenu', (await writerMethods.saveContenu()) ?? '');
-
+		
 		return async ({
 			result,
 			update
@@ -88,14 +95,11 @@
 					toast.message = 'Enregistrement effectué !';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
-					await applyAction(result);
-
+					await update(result);
 					if (typeof result.data !== 'undefined') {
-						actualite = result.data.data;
-						if (actualite != null && actualite.id != null && actualite.id.length != 0) {
-							goto(`/admin/actualite/${actualite.id}`, { invalidateAll: true });
-							writerMethods.loadContenu(actualite.contenu);
-						}
+ 
+						// goto(`/admin/actualite/${result.id}`, { invalidateAll: true , replaceState:true});
+					
 					}
 
 					break;
@@ -114,8 +118,7 @@
 				default:
 					break;
 			}
-
-			await update();
+			await applyAction(result);
 		};
 	};
 
@@ -188,7 +191,7 @@
 				<input
 					id="titre"
 					name="titre"
-					bind:value={titre}
+					bind:this={titre}
 					contenteditable="true"
 					type="text"
 				/>
