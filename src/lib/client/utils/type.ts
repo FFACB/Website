@@ -7,9 +7,9 @@ export function IsJsonString(str : string) {
     return true;
 }
 
-export function IsEmptyString(str : string | null | undefined) {
+export function IsEmptyString(str : string | null | undefined | FormDataEntryValue) {
     try {
-        return (str != null && typeof str === 'string' && str.length > 0)
+        return (str == null || typeof str !== 'string' || str.length <= 0)
     } catch (e) {
         return false;
     }

@@ -7,7 +7,9 @@ import authkit from './auth.config';
 
 export default defineConfig({
 	plugins: [sveltekit(),authkit()],
+	
 	server: {
+		hmr: false,
 		fs: {
 			allow: [searchForWorkspaceRoot(process.cwd()) + '/uploads']
 		}

@@ -17,7 +17,7 @@
 <AppShell
 	regionPage="relative"
 	slotPageHeader=" sticky top-0 z-10"
-	slotSidebarLeft="dark:bg-surface-700 bg-surface-50 w-56 p-4 m-4 rounded-3xl"
+	slotSidebarLeft="dark:bg-surface-800 bg-surface-50 w-56 p-4 m-4 rounded-container-token"
 >
 	<svelte:fragment slot="sidebarLeft">
 		<!-- Insert the list: -->

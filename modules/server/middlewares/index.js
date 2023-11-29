@@ -5,7 +5,7 @@ import path from 'path';
 
 dotenv.config();
 
-const { BUILD_FOLDER_NAME, UPLOADS_FOLDER_NAME } = process.env;
+const { BUILD_FOLDER_NAME, PUBLIC_UPLOADS_FOLDER_NAME } = process.env;
 
 const middlewares = function(app)  {
 
@@ -33,12 +33,12 @@ const middlewares = function(app)  {
 		});
 	});
 
-	app.use(`/${UPLOADS_FOLDER_NAME}/:middlepath?/:filename`, (req, res, next) => {
+	app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}/:middlepath?/:filename`, (req, res, next) => {
 
 		const {width, height} = req.query;
 		const { middlepath, filename} = req.params;
 
-		const basePath = middlepath ? path.join(UPLOADS_FOLDER_NAME, middlepath) : UPLOADS_FOLDER_NAME;
+		const basePath = middlepath ? path.join(PUBLIC_UPLOADS_FOLDER_NAME, middlepath) : PUBLIC_UPLOADS_FOLDER_NAME;
 		const fullpath = path.join( basePath, filename)
 	
 		sharpen({

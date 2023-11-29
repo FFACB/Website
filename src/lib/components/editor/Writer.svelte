@@ -1,21 +1,11 @@
-<script  >
 
-	import EditorJS from '@editorjs/editorjs';
-	// @ts-ignore
-	// @ts-ignore
-	import Header from '@editorjs/header';
-	// @ts-ignore
-	// @ts-ignore
-	import NestedList from '@editorjs/nested-list';
-	// @ts-ignore
-	// @ts-ignore
-	import ImageTool from '@editorjs/image';
-	// @ts-ignore
-	import { IsJsonString } from '$lib/client/utils/type';
-	// @ts-ignore
-	import ButtonTool from '$lib/client/editor/button/ButtonTool.js';
-	// @ts-ignore
+<script>
+// @ts-nocheck
+
 	import { onMount } from 'svelte';
+	import { IsJsonString } from '$lib/client/utils/type';
+
+	let EditorJS = null, Header, NestedList, ImageTool, ButtonTool, ParagraphTool;
 
 	// @ts-ignore
 	export let contenu;
@@ -23,10 +13,22 @@
 	// @ts-ignore
 	let editor;
 	// @ts-ignore
-	onMount((_) => {
+	onMount(async (_) => {
+
+		EditorJS = (await import('@editorjs/editorjs')).default;
+		
+		// @ts-ignore
+		Header = await import('@editorjs/header');
+		// @ts-ignore
+		NestedList = await import('@editorjs/nested-list');
+		// @ts-ignore
+		ImageTool = await import('@editorjs/image');
+		ButtonTool = await import('$lib/client/editor/button/ButtonTool.js');
+		ParagraphTool = await import('$lib/client/editor/paragraph/ParagraphTool.js');
 		// @ts-ignore
 		contenu = typeof contenu == 'string' ? JSON.parse(contenu) : contenu;
 
+		// @ts-ignore
 		editor = new EditorJS({
 			holder: 'writer',
 			tools: {
@@ -39,6 +41,7 @@
 					},
 					shortcut: 'CMD+SHIFT+H'
 				},
+				paragraph: ParagraphTool,
 				button: {
 					// @ts-ignore
 					class: ButtonTool
@@ -66,6 +69,7 @@
 	export const methods = {
 		loadContenu: (contenu = null) => {
 			// @ts-ignore
+			debugger
 			if (editor != null && contenu != null) {
 
 				
@@ -101,4 +105,4 @@
 	};
 </script>
 
-<div id="writer" />
+<textarea id="writer" />

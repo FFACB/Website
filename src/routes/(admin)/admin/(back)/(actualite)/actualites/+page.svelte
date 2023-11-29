@@ -16,8 +16,6 @@
 
 	const submitDeleteNote  = () => {
 
-		debugger
-
 		return  async  ({ result , update } : { result: ActionResult, update: (data?: any) => Promise<void> } ) => {
 			switch (result.type) {
 				case 'success':
@@ -46,12 +44,11 @@
 
 	<svelte:fragment slot="buttons">
 		
-		<ButtonCreate titre="Créer" link="/admin/actualite" target="_blank"/>
+		<ButtonCreate titre="Créer" link="/admin/actualite" />
 		<!--  type="submit" value="Update" form="delete" -->
 		<!-- Buttons ici -->
 		
 	</svelte:fragment>
-
 
 
 	<div class="grid-view">

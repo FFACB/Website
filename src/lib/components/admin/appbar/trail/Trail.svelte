@@ -6,7 +6,7 @@
 </script>
 
 
-<div class="rounded-3xl border-2 border-secondary-500 w-fit">
+<div class="rounded-container-token border-2 border-secondary-500 w-fit">
 	<LightSwitch />
 </div>
 

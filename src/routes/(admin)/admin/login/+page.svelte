@@ -9,9 +9,9 @@
 
 <div class="flex items-center justify-center h-full w-full">
 	<section
-		class="container dark:bg-surface-700 bg-surface-50 rounded-3xl w-full md:w-1/2 lg:w-1/3 p-0 md:p-8"
+		class="container dark:bg-surface-700 bg-surface-50 rounded-container-token w-full md:w-1/2 lg:w-1/3 p-0 md:p-8"
 	>
-		<div class="rounded-3xl border-2 m-4 border-secondary-500 w-fit">
+		<div class="rounded-container-token border-2 m-4 border-secondary-500 w-fit">
 			<LightSwitch />
 		</div>
 

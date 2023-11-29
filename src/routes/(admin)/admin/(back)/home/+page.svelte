@@ -17,7 +17,7 @@
 	</svelte:fragment>
 
 
-<div class="dark:bg-surface-700 bg-surface-300 p-4 rounded-3xl w-full h-full slot-container">
+<div class="dark:bg-surface-800 bg-surface-50 p-4 rounded-container-token w-full h-full slot-container">
 	<h1 class="h1">Home</h1>
 </div>
 

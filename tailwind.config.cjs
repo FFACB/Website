@@ -19,9 +19,7 @@ module.exports = {
 	],
 
 	theme: {
-		borderRadius: {
-			'3xl': '2rem',
-		},
+	
 		extend: {},
 	},
 	

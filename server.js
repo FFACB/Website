@@ -10,7 +10,7 @@ dotenv.config();
 
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-const { PORT, UPLOADS_FOLDER_NAME } = process.env;
+const { PORT, PUBLIC_UPLOADS_FOLDER_NAME } = process.env;
 
 const port = PORT | 3000;
 const app = express();
@@ -18,7 +18,7 @@ const server = createServer(app);
 
 middlewares(app,__dirname)
 
-app.use(`/${UPLOADS_FOLDER_NAME}`, express.static(UPLOADS_FOLDER_NAME));
+app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}`, express.static(PUBLIC_UPLOADS_FOLDER_NAME));
 
 app.use(handler);
 server.listen(port, () => {
