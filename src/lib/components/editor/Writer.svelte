@@ -18,9 +18,9 @@
 		NestedList = (await import('@editorjs/nested-list')).default;
 		ImageTool = (await import('@editorjs/image')).default;
 		
+		if(contenu != null && IsJsonString(contenu))
+			contenu = JSON.parse(contenu)
 		
-		contenu = typeof contenu == 'string' ? JSON.parse(contenu) : contenu;
-
 		editor = new EditorJS({
 			holder: 'writer',
 			tools: {
@@ -53,7 +53,8 @@
 					}
 				}
 			},
-			defaultBlock: 'paragraph'
+			defaultBlock: 'paragraph',
+			data: contenu
 		});
 	});
 

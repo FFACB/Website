@@ -1,41 +1,23 @@
 <script lang="ts">
 	import { enhance, applyAction } from '$app/forms';
-	import { page } from '$app/stores';
 	import { IsEmptyString } from '$lib/client/utils/type.js';
 	import Writer from '$lib/components/editor/Writer.svelte';
-	import { goto, invalidate, invalidateAll } from '$app/navigation';
-	import { ListBoxItem, getToastStore } from '@skeletonlabs/skeleton';
+	import { goto } from '$app/navigation';
+	import {  getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
-	import { error, type ActionResult } from '@sveltejs/kit';
-	import type { Actualite } from '@prisma/client';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
-	
+	import type { ActionResult } from '@sveltejs/kit';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { message: '', background: '' };
+	const toast: ToastSettings = { message: '', background: '' ,timeout:3000};
 
 	export let data;
-	let {actualite } = data
+	let { actualite } = data;
 
-	let { 
-		id = null,
-		titre = '',
-		photo = '',
-		redacteur = '',
-		tempsLecture = '',
-		descriptionCourte = '',
-		contenu,
-		createdAt
-	} = $page.form?.data ?? actualite ??  {};
-
-	$: () =>{
-		titre.value = $page.form?.data?.titre.value ?? titre.value;
-	}
-
-	let writerMethods;
-
+	// @ts-ignore
+	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
 
 	const submitCreateNote = async ({
 		form,
@@ -48,9 +30,7 @@
 		action: URL;
 		cancel: () => void;
 	}) => {
-
-		
-		const { titre, redacteur, tempsLecture, descriptionCourte, photoFile } =
+		const { titre, redacteur, tempsLecture, descriptionCourte } =
 			Object.fromEntries(data);
 
 		if (IsEmptyString(titre)) {
@@ -81,8 +61,9 @@
 			cancel();
 		}
 
-		data.append('contenu', (await writerMethods.saveContenu()) ?? '');
 		
+		data.append('contenu', (await writerMethods.saveContenu()) ?? '');
+
 		return async ({
 			result,
 			update
@@ -95,11 +76,12 @@
 					toast.message = 'Enregistrement effectué !';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
-					await update(result);
 					if (typeof result.data !== 'undefined') {
- 
-						// goto(`/admin/actualite/${result.id}`, { invalidateAll: true , replaceState:true});
-					
+						actualite = result.data?.data;
+						goto(`/admin/actualite/${actualite?.id ?? ''}`, {
+							invalidateAll: true,
+							replaceState: true
+						});
 					}
 
 					break;
@@ -123,7 +105,6 @@
 	};
 
 	const submitDeleteNote = () => {
-
 		return async ({
 			result,
 			update
@@ -163,118 +144,105 @@
 <Content>
 	<svelte:fragment slot="buttons">
 		<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
-		{#if id != null}
-		
-		<ButtonDelete type="submit" value="Update" form="delete" />
+		{#if actualite?.id != null}
+			<ButtonDelete type="submit" value="Update" form="delete" />
 
 			<div class="hidden">
 				<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteNote}>
-					<input type="hidden" name="id" value={id} />
-				
+					<input type="hidden" name="id" value={actualite.id} />
 				</form>
 			</div>
-			
 		{/if}
-
 	</svelte:fragment>
 
-	<div class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token p-8">
-		<h1 class="h1">Formulaire d'Actualité</h1>
+	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
+		<h1 class="h1 font-bold text-2xl">{actualite?.id == null ? "Créer" : "Modifier"} l'Actualité</h1>
 	</div>
 
-	<div class="mt-4 w-full bg-surface-50 dark:bg-surface-800 rounded-container-token p-8">
-
-
-		<form method="POST" action="?/upsert" id="upsert" class="actualite-form" use:enhance={submitCreateNote}>
-			<div class="form-group">
-				<label for="titre">Titre</label>
+	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
+		<form
+			method="POST"
+			action="?/upsert"
+			id="upsert"
+			class="actualite-form"
+			use:enhance={submitCreateNote}
+		>
+			<label class="label mb-4" for="titre">
+				<span class="ml-3 font-semibold ">Titre</span>
 				<input
+					class="input"
 					id="titre"
 					name="titre"
-					bind:this={titre}
+					value={actualite?.titre?? ''}
 					contenteditable="true"
 					type="text"
 				/>
-			</div>
+			</label>
 
-			<div class="form-group">
-				<label for="file">Image</label>
+			<label class="label mb-4" for="file">
+				<span class="ml-3 font-semibold">Image</span>
 				<input
+					class="input"
 					type="file"
 					id="file"
 					name="photoFile"
 					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
 				/>
-				{#if photo != null && photo.length != 0}
-					<img src={photo} alt={titre} />
-				{/if}
-			</div>
+			</label>
 
-			<div class="form-group">
-				<label for="redacteur">Rédacteur</label>
+			{#if actualite?.photo != null && actualite.photo.length != 0}
+				<div class="mt-2 mb-4">
+					<img class="card h-80 w-full bg-cover object-cover" alt="actualite" src={actualite.photo} />
+				</div>
+			{/if}
+
+			<label class="label mb-4" for="redacteur">
+				<span class="ml-3 font-semibold">Rédacteur</span>
 				<input
+					class="input"
 					id="redacteur"
 					name="redacteur"
-					bind:value={redacteur}
+					value={actualite?.redacteur?? ''}
 					contenteditable="true"
 					type="text"
 				/>
-			</div>
-			<div class="form-group">
-				<label for="tempsLecture">Temps de Lecture (en minutes)</label>
+			</label>
+
+			<label class="label mb-4" for="tempsLecture">
+				<span class="ml-3 font-semibold">Temps de Lecture (en minutes)</span>
 				<input
+					class="input"
 					id="tempsLecture"
 					name="tempsLecture"
-					bind:value={tempsLecture}
+					value={actualite?.tempsLecture ?? ''}
 					contenteditable="true"
 					type="number"
 				/>
-			</div>
+			</label>
 
-			<div class="form-group">
-				<label for="descriptionCourte">Description courte (200 caracteres max)</label>
+			<label class="label mb-4" for="descriptionCourte">
+				<span class="ml-3 font-semibold">Description courte (200 caracteres max)</span>
 				<textarea
+					class="textarea"
 					id="descriptionCourte"
 					rows="3"
 					cols="45"
 					maxlength="200"
 					name="descriptionCourte"
-					bind:value={descriptionCourte}
+					value={actualite?.descriptionCourte ?? ''}
 					contenteditable="true"
 				/>
-			</div>
+			</label>
 
-			<div class="form-group">
-				<label for="contenu">Contenu</label>
-
-				<div id="contenu" class="contenu"  >
-					<Writer contenu={contenu}  bind:methods={writerMethods}/>
-					
+			<label class="label" for="contenu">
+				<span class="ml-3 font-semibold">Contenu</span>
+				<div class="textarea contenu" id="contenu">
+					<Writer contenu={actualite?.contenu ?? ''} bind:methods={writerMethods} />
 				</div>
-			</div>
-			<input type="hidden" name="id" value={id} />
-			<input type="hidden" name="photo" value={photo} />
-		</form> 
+			</label>
 
+			<input type="hidden" name="id" value={actualite?.id ?? null} />
+			<input type="hidden" name="photo" value={actualite?.photo ?? ''} />
+		</form>
 	</div>
 </Content>
-<!-- <div slot="buttons">
-	<button
-		class="back-button"
-		on:click={() => {
-			goto('/admin/actualites');
-		}}>Retour aux actualites</button
-	>
-	{#if actualite != null && actualite.id != null && actualite.id.length != 0}
-		<form action="?/delete" method="POST" use:enhance={submitDeleteNote}>
-			<input type="hidden" name="id" value={actualite.id} />
-			<button type="submit" class="delete-button">Supprimer</button>
-		</form>
-	{/if}
-</div> -->
-<!-- 
-<div>
-	
-
-	
-</div> -->

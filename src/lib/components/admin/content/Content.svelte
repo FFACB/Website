@@ -1,5 +1,6 @@
 <script lang="ts">
     import { AppBar } from '@skeletonlabs/skeleton';
+
 	import Lead from '$lib/components/admin/appbar/lead/Lead.svelte';
 	import Trail from '$lib/components/admin/appbar/trail/Trail.svelte';
     import "./content.pcss"
@@ -11,8 +12,9 @@
 
 
 
-<AppBar class="appbar">
+<AppBar gap="gap-0" class="appbar">
     <svelte:fragment slot="lead">
+
         <Lead {backlink} />
     </svelte:fragment>
     <slot name="buttons" >

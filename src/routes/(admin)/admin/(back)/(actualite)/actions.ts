@@ -18,7 +18,6 @@ const authAction = async (event: RequestEvent): Promise<boolean> => {
 
 export const action_upsert = async (event: RequestEvent) => {
 
-	console.log("action_upsert")
     if (!(await authAction(event))) {
 		return fail(400, {
 			data: undefined,
@@ -118,13 +117,11 @@ export const action_upsert = async (event: RequestEvent) => {
 			}
 		});
 
-        console.log(actualite)
 		return {
 			data: actualite,
 			errorMsg: undefined
 		};
 	} catch (err) {
-        console.log(err)
 		return fail(400, {
 			data: undefined,
 			errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité"

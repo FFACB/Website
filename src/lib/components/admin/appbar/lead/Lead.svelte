@@ -1,10 +1,28 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import {  getDrawerStore } from '@skeletonlabs/skeleton';
+
     import "./lead.pcss"
-	
+
     export let backlink : string | null;
 
+
+	const drawerStore = getDrawerStore();
+
+	function drawerOpen() {
+		drawerStore.open({});
+	}
 </script>
+
+<button class="lg:hidden btn-menu" on:click={drawerOpen}>
+	<Icon
+	class="text-tertiary-500 dark:text-surface-100 "
+	icon="solar:hamburger-menu-broken"
+	width="32"
+	height="32"
+	/>
+</button>
+
 
 {#if backlink != null && backlink.length > 0}
 	<a href={backlink}	class="back-a">
