@@ -1,9 +1,23 @@
 import { json } from "@sveltejs/kit";
+import { SECRET_RECAPCHA_KEY } from "$env/static/private";
+import type { RequestHandler } from "./$types";
 
-export async function POST(request: Request) {
+export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 
 	try {
-		return json({ message: 'Formulaire soumis avec succès!' });
+
+		const data = await request.json();
+		
+		const url = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_RECAPCHA_KEY}&response=${data.token}`;
+
+		const recapchaPostResponse = await  fetch(url, {
+			method: 'post'
+		})
+		const recacpchaResponse = await recapchaPostResponse.json()
+		console.log(recacpchaResponse);
+		return json({ recacpchaResponse })
+
+
 	} catch (error) {
 		console.error('Erreur lors de la gestion de la requête:', error);
 		return {
