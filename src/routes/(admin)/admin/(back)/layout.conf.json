@@ -15,6 +15,18 @@
             "slug":"/actualites",
             "linkactive":"actualites",
             "items":[]
+        },
+        {
+            "bartitle":"Formulaires",
+            "linkactive":"formulaires",
+            "items":[
+                {
+                    "bartitle":"Contacts",
+                    "slug":"/contacts",
+                    "linkactive":"contacts",
+                    "items":[]
+                }
+            ]
         }
 
     ]

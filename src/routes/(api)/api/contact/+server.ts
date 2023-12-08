@@ -1,13 +1,13 @@
-
-import { SECRET_RECAPCHA_KEY } from "$env/static/private";
 import type { RequestHandler } from "./$types";
+import { SECRET_RECAPCHA_KEY } from "$env/static/private";
 import { IsEmptyString } from "$lib/client/utils/type";
+import { prisma } from '$lib/server/prisma';
 
 export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 
 	try {
 		const formData = await request.formData()
-		const {nom,token} =  Object.fromEntries(formData);
+		const {nom,prenom, email,telephone,message,token} =  Object.fromEntries(formData);
 
 		if(IsEmptyString(token)){
 			return new Response(JSON.stringify({ type:"error",errorMsg: "Le token recapcha ne doit pas être vide" }), { status: 400 });
@@ -16,6 +16,23 @@ export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 		if(IsEmptyString(nom)){
 			return new Response(JSON.stringify({ type:"error",errorMsg: "Le nom ne doit pas être vide" }), { status: 400 });
 		}
+
+		if(IsEmptyString(prenom)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "Le prenom ne doit pas être vide" }), { status: 400 });
+		}
+
+		if(IsEmptyString(email)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "L'email ne doit pas être vide" }), { status: 400 });
+		}
+
+		if(IsEmptyString(telephone)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "Le telephone ne doit pas être vide" }), { status: 400 });
+		}
+
+		if(IsEmptyString(message)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "Le message ne doit pas être vide" }), { status: 400 });
+		}
+
 	 
 		const url = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_RECAPCHA_KEY}&response=${token}`;
 
@@ -26,7 +43,18 @@ export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 			return new Response(JSON.stringify({type:"error", errorMsg: "Erreur recapcha" }), { status: 400 });
 		}
 
-		return new Response(JSON.stringify({type:"success",}), { status: 200 });
+
+		const contact = await prisma.contact.create({
+			data:{
+				nom:nom as string,
+				prenom:prenom as string,
+				email:email as string,
+				telephone:telephone as string,
+				message:message as string,
+			}
+		})
+		
+		return new Response(JSON.stringify({type:"success",message:"Formulaire envoyé !"}), { status: 200 });
 
 
 	} catch (error) {

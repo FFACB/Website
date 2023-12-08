@@ -20,7 +20,7 @@
 			.map((item) => {
 				let local = `<li class='li'><a class="${
 					active == item.linkactive ? 'active' : ''
-				}  " href="${admin.slug}${item.slug}">${item.bartitle}</a></li>`;
+				}" ${item.slug != null ? `href='${admin.slug}${item.slug}'` : ''}>${item.bartitle}</a></li>`;
 
 				if (item.items.length > 0) {
 					local += `<ul>`;
