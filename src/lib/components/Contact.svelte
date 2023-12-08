@@ -4,43 +4,7 @@
 	import { enhance, applyAction } from '$app/forms';
 	import { PUBLIC_RECAPCHA_SITEKEY } from '$env/static/public';
 	import { IsEmptyString } from '$lib/client/utils/type';
-	import { error } from '@sveltejs/kit';
-
-	let formData = {
-		nom: ''
-	};
-
-	async function handleSubmit() {
-		try {
-			grecaptcha.ready(async () => {
-				const token = await grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY, { action: 'contact' });
-				var data = {
-					formData,
-					token: token
-				};
-
-				const response = await fetch('/api/contact', {
-					method: 'POST',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
-				});
-
-				if (response.ok) {
-					console.log('Formulaire soumis avec succès!');
-					// Effectuez d'autres actions en cas de succès
-				} else {
-					console.error('Erreur lors de la soumission du formulaire.');
-					// Gérez les erreurs ici
-				}
-			});
-		} catch (error) {
-			console.error("Une erreur s'est produite:", error);
-			// Gérez les erreurs ici
-		}
-	}
+	
 </script>
 
 <svelte:head>
@@ -62,12 +26,12 @@
 			}
 
 			await new Response((resolve, reject) => {
-				grecaptcha.ready(async () => {
+				window.grecaptcha.ready(async () => {
 					resolve();
 				});
 			});
 
-			const token = await grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY, { action: 'contact' });
+			const token = await window.grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY, { action: 'contact' });
 			if (IsEmptyString(token)) {
 				cancel();
 				return;

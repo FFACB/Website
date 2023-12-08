@@ -50,3 +50,12 @@ model Actualite {
   createdAt         DateTime @default(now())
 }
 
+model Contact {
+  id        String   @id @default(uuid())
+  email     String
+  nom       String
+  prenom    String
+  telephone String
+  message   String
+  createdAt DateTime @default(now())
+}
