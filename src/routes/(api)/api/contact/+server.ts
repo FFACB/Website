@@ -1,28 +1,35 @@
-import { json } from "@sveltejs/kit";
+import { ActionFailure, fail, json } from "@sveltejs/kit";
 import { SECRET_RECAPCHA_KEY } from "$env/static/private";
 import type { RequestHandler } from "./$types";
+import { IsEmptyString } from "$lib/client/utils/type";
 
 export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 
 	try {
+		const formData = await request.formData()
+		const {nom,token} =  Object.fromEntries(formData);
 
-		const data = await request.json();
-		
-		const url = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_RECAPCHA_KEY}&response=${data.token}`;
+		if(IsEmptyString(token)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "Le token recapcha ne doit pas être vide" }), { status: 400 });
+		}
 
-		const recapchaPostResponse = await  fetch(url, {
-			method: 'post'
-		})
+		if(IsEmptyString(nom)){
+			return new Response(JSON.stringify({ type:"error",errorMsg: "Le nom ne doit pas être vide" }), { status: 400 });
+		}
+	 
+		const url = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_RECAPCHA_KEY}&response=${token}`;
+
+		const recapchaPostResponse = await fetch(url, {method: 'post'})
 		const recacpchaResponse = await recapchaPostResponse.json()
-		console.log(recacpchaResponse);
-		return json({ recacpchaResponse })
+
+		if(!recacpchaResponse.success){
+			return new Response(JSON.stringify({type:"error", errorMsg: "Erreur recapcha" }), { status: 400 });
+		}
+
+		return new Response(JSON.stringify({type:"success",}), { status: 200 });
 
 
 	} catch (error) {
-		console.error('Erreur lors de la gestion de la requête:', error);
-		return {
-			status: 500,
-			body: { error: "Une erreur s'est produite lors de la soumission du formulaire." }
-		};
+		return new Response(JSON.stringify({ type:"error",errorMsg: error instanceof Error ? error.message : "Erreur survenue" }), { status: 500 });
 	}
 }
