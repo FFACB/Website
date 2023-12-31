@@ -46,8 +46,6 @@
 <Content>
 	<svelte:fragment slot="buttons">
 		<ButtonCreate titre="Créer" link="/admin/actualite" />
-		<!--  type="submit" value="Update" form="delete" -->
-		<!-- Buttons ici -->
 	</svelte:fragment>
 
 	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4">
@@ -75,7 +73,7 @@
 			</span>
 
 			{#if actualite.photo != null && actualite.photo.length > 0}
-				<img src="{actualite.photo}" alt="{actualite.titre}" class="w-32 h-full rounded-container-token" />
+				<img src="{actualite.photo}" alt="{actualite.titre}" class="w-32 h-full object-cover rounded-container-token" />
 			{/if}
 
 			</div>

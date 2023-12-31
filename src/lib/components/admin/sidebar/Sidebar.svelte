@@ -2,6 +2,7 @@
 	import { onNavigate, afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { LayoutConfig, LayoutSidebarItem } from '$lib/client/utils/ambiant.js';
+	import ButtonDisconnect from '$lib/components/admin/buttons/disconnect/ButtonDisconnect.svelte';
 	import './sidebar.pcss';
 
 	export let config: LayoutConfig;
@@ -18,9 +19,9 @@
 	function initSidebar(sidebarItem: LayoutSidebarItem[]) {
 		let sidebarItems = sidebarItem
 			.map((item) => {
-				let local = `<li class='li'><a class="${
-					active == item.linkactive ? 'active' : ''
-				}" ${item.slug != null ? `href='${admin.slug}${item.slug}'` : ''}>${item.bartitle}</a></li>`;
+				let local = `<li class='li'><a class="${active == item.linkactive ? 'active' : ''}" ${
+					item.slug != null ? `href='${admin.slug}${item.slug}'` : ''
+				}>${item.bartitle}</a></li>`;
 
 				if (item.items.length > 0) {
 					local += `<ul>`;
@@ -35,8 +36,13 @@
 	}
 </script>
 
-<nav class="list-nav">
-	<ul class="ul-parent">
-		{@html sidebarHtml}
-	</ul>
-</nav>
+<div class="relative h-full">
+	<nav class="list-nav">
+		<ul class="ul-parent">
+			{@html sidebarHtml}
+		</ul>
+	</nav>
+	<div class="absolute bottom-0 w-full right-0">
+		<ButtonDisconnect class="w-full" />
+	</div>
+</div>

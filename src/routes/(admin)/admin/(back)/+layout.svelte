@@ -4,11 +4,11 @@
 	import { initializeStores, Toast, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
 
+
 	initializeStores();
 
 	export let data;
 	const { config } = data;
-
 </script>
 
 <Toast position="t" padding="p-4" />
@@ -25,15 +25,14 @@
 		<!-- --- -->
 	</svelte:fragment>
 
-	<Drawer  width="w-56">
-		<div class="dark:bg-surface-800 bg-surface-50 w-full p-4 rounded-container-token">
+	<Drawer width="w-56">
+		<div class="dark:bg-surface-800 bg-surface-50 w-full p-4 h-full rounded-container-token">
 			<Sidebar {config} />
+
 		</div>
-	
 	</Drawer>
 
 	<div class="h-full w-full flex flex-col p-4 lg:pl-0">
-		<slot/>
+		<slot />
 	</div>
-
 </AppShell>
