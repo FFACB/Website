@@ -24,7 +24,7 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Actualité supprimé!';
+					toast.message = 'Contact supprimé!';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
 					await update(result);

@@ -27,7 +27,13 @@
                     "items":[]
                 }
             ]
+        },
+        {
+            "bartitle":"Paramètres",
+            "slug":"/parametres",
+            "linkactive":"parametres",
+            "items":[
+            ]
         }
-
     ]
 }

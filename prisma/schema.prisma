@@ -1,6 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
+//Core
 generator client {
   provider = "prisma-client-js"
 }
@@ -36,7 +34,11 @@ model Key {
   @@index([user_id])
 }
 
-
+model Parametre {
+  key String @id @unique
+  label String
+  value String
+}
 
 //BO
 model Actualite {
@@ -59,3 +61,4 @@ model Contact {
   message   String
   createdAt DateTime @default(now())
 }
+

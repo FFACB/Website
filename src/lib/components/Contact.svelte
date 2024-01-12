@@ -2,14 +2,16 @@
 
 	//@ts-nocheck
 	import { enhance, applyAction } from '$app/forms';
-	import { PUBLIC_RECAPCHA_SITEKEY } from '$env/static/public';
 	import { IsEmptyString } from '$lib/client/utils/type';
+	import type { ParmetreReponse } from '$lib/client/utils/ambiant';
 
+
+	export let PUBLIC_RECAPCHA_SITEKEY : ParmetreReponse
 
 </script>
 
 <svelte:head>
-	<script src="https://www.google.com/recaptcha/api.js?render={PUBLIC_RECAPCHA_SITEKEY}"></script>
+	<script src="https://www.google.com/recaptcha/api.js?render={PUBLIC_RECAPCHA_SITEKEY.value}"></script>
 </svelte:head>
 
 <form
@@ -33,7 +35,7 @@
 				});
 			}) ;
 
-			const token = await window.grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY, { action: 'contact' });
+			const token = await window.grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY.value, { action: 'contact' });
 			if (IsEmptyString(token)) {
 				cancel();
 				return;

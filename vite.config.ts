@@ -1,12 +1,12 @@
 
 import { sveltekit } from '@sveltejs/kit/vite';
 import {defineConfig, searchForWorkspaceRoot } from 'vite';
-import authkit from './auth.config'; 
-
+import authKit from './conf/auth/auth.config'; 
+import parametresKit from './conf/parametres/parametres.config';
 
 
 export default defineConfig({
-	plugins: [sveltekit(),authkit()],
+	plugins: [sveltekit(),authKit(),parametresKit()],
 	
 	server: {
 		hmr: false,

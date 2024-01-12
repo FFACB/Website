@@ -14,3 +14,11 @@ export type LayoutConfig = {
     admin: LayoutAdmin,
     sidebar: LayoutSidebarItem[],
 }
+
+
+
+type ParmetreReponse = {
+    success : boolean
+    key:string
+    value : string
+}
