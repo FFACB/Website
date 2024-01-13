@@ -16,95 +16,8 @@
 	export let data;
 	let { contact } = data;
 
-	// @ts-ignore
-	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
-
-	const submitCreateNote = async ({
-		form,
-		data,
-		action,
-		cancel
-	}: {
-		form: HTMLElement;
-		data: FormData;
-		action: URL;
-		cancel: () => void;
-	}) => {
-		const { titre, redacteur, tempsLecture, descriptionCourte } =
-			Object.fromEntries(data);
-
-		if (IsEmptyString(titre)) {
-			toast.message = '❌ Le titre ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
-			cancel();
-		}
-
-		if (IsEmptyString(redacteur)) {
-			toast.message = '❌ Le rédacteur ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
-			cancel();
-		}
-
-		if (IsEmptyString(tempsLecture)) {
-			toast.message = '❌ Le temps de lecture ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
-			cancel();
-		}
-
-		if (IsEmptyString(descriptionCourte)) {
-			toast.message = '❌ La description courte ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
-			cancel();
-		}
-
+	const Delete = () => {
 		
-		data.append('contenu', (await writerMethods.saveContenu()) ?? '');
-
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
-			switch (result.type) {
-				case 'success':
-					toast.message = 'Enregistrement effectué !';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
-					if (typeof result.data !== 'undefined') {
-						contact = result.data?.data;
-						goto(`/admin/contact/${contact?.id ?? ''}`, {
-							invalidateAll: true,
-							replaceState: true
-						});
-					}
-
-					break;
-				case 'failure':
-					toast.message = result.data?.errorMsg;
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
-
-					break;
-				case 'error':
-					toast.message = "Erreur serveur lors de l'enregistrement";
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
-
-					break;
-				default:
-					break;
-			}
-			await applyAction(result);
-		};
-	};
-
-	const submitDeleteNote = () => {
 		return async ({
 			result,
 			update
@@ -147,7 +60,7 @@
 			<ButtonDelete type="submit" value="Update" form="delete" />
 
 			<div class="hidden">
-				<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteNote}>
+				<form action="?/delete" method="POST" id="delete" use:enhance={Delete}>
 					<input type="hidden" name="id" value={contact.id} />
 				</form>
 			</div>

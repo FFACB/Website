@@ -7,14 +7,14 @@
 
 
 
-<a id="create" {...$$restProps} href="{link}">
+<a data-button="create" {...$$restProps} href="{link}">
 
     <div>
         {titre}
     </div>
 
     <Icon
-    id="icon"
+    data-button-icon="create"
     icon="solar:add-circle-broken"
     width="32"
     height="32"

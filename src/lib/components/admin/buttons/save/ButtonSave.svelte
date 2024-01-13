@@ -6,14 +6,14 @@
 
 
 
-<button id="save" {...$$restProps}>
+<button data-button="save" {...$$restProps}>
 
     <div>
         {titre}
     </div>
 
     <Icon
-    id="icon"
+    data-button-icon="save"
     icon="solar:check-circle-broken"
     width="32"
     height="32"

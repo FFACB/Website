@@ -1,15 +1,32 @@
 <script lang="ts">
 	import { AppShell } from '@skeletonlabs/skeleton';
-	import Content from '$lib/components/admin/content/Content.svelte';
 	import { initializeStores, Toast, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
 
+	//Setup theme
+	function setInitialClassState() {
+		const elemHtmlClasses = document.documentElement.classList;
+		// Conditions
+		const condLocalStorageUserPrefs = localStorage.getItem('modeUserPrefers') === 'false';
+		const condLocalStorageUserPrefsExists = !('modeUserPrefers' in localStorage);
+		const condMatchMedia = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		// Add/remove `.dark` class to HTML element
+		if (condLocalStorageUserPrefs || (condLocalStorageUserPrefsExists && condMatchMedia)) {
+			elemHtmlClasses.add('dark');
+		} else {
+			elemHtmlClasses.remove('dark');
+		}
+	}
 
 	initializeStores();
 
 	export let data;
 	const { config } = data;
 </script>
+
+<svelte:head>
+	{@html `<\u{73}cript nonce="%sveltekit.nonce%">(${setInitialClassState.toString()})();</script>`}
+</svelte:head>
 
 <Toast position="t" padding="p-4" />
 
@@ -28,7 +45,6 @@
 	<Drawer width="w-56">
 		<div class="dark:bg-surface-800 bg-surface-50 w-full p-4 h-full rounded-container-token">
 			<Sidebar {config} />
-
 		</div>
 	</Drawer>
 

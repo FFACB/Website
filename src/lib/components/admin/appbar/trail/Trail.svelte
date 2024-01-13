@@ -1,11 +1,9 @@
 <script lang="ts">
+	import ButtonWebsite from '$lib/components/admin/buttons/website/ButtonWebsite.svelte';
 	import Icon from '@iconify/svelte';
     import "./trail.pcss";
-	import { LightSwitch } from '@skeletonlabs/skeleton';
-	import { enhance } from '$app/forms';
+
 </script>
 
+<ButtonWebsite />
 
-<div class="rounded-container-token border-2 border-secondary-500 w-fit">
-	<LightSwitch />
-</div>

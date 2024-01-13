@@ -5,7 +5,6 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
-	import ButtonCreate from '$lib/components/admin/buttons/create/ButtonCreate.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 
 	const toastStore = getToastStore();
@@ -14,7 +13,8 @@
 
 	const toast: ToastSettings = { message: '', background: '' };
 
-	const submitDeleteNote = () => {
+	const Delete = () => {
+
 		return async ({
 			result,
 			update
@@ -74,7 +74,7 @@
 					<div>
 						<ButtonDelete class="!mr-0" type="submit" value="Update" form="delete" />
 						<div class="!hidden">
-							<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteNote}>
+							<form action="?/delete" method="POST" id="delete" use:enhance={Delete}>
 								<input type="hidden" name="id" value={contact.id} />
 							</form>
 						</div>

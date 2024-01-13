@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { enhance ,applyAction} from '$app/forms';
+	import { enhance, applyAction } from '$app/forms';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 
@@ -12,24 +13,13 @@
 
 	const toast: ToastSettings = { message: '', background: '' };
 
-
-
 	const UpdateParametre = async ({
-		form,
 		data,
-		action,
-		cancel
 	}: {
-		form: HTMLElement;
 		data: FormData;
-		action: URL;
-		cancel: () => void;
 	}) => {
-		const { } =
-			Object.fromEntries(data);
+		const {} = Object.fromEntries(data);
 
-	
-	
 		return async ({
 			result,
 			update
@@ -62,8 +52,6 @@
 			await applyAction(result);
 		};
 	};
-
-
 </script>
 
 <Content>
@@ -76,38 +64,47 @@
 	</div>
 
 	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
-		<dl class="list-dl">
-			{#each parametres as parametre,index}
-
+		<div>
+			{#each parametres as parametre, index}
 				<form
 					method="POST"
 					action="?/update"
 					id="update-{index}"
 					class="actualite-form"
-					use:enhance={UpdateParametre}>
-			
-				<label class="label mb-4" for="value-{index}">
-					<span class="ml-3 font-semibold">{parametre.label}</span>
-					<div>
-						<input
-						class="input"
-						id="value-{index}"
-						name="value"
-						value={parametre.value}
-						contenteditable="true"
-						type="text"
-					/>
-					<input type="hidden" name="key" value={parametre.key} />
-					<ButtonSave  class="min-w-48" titre="Enregistrer" type="submit" value="update-{index}" form="update-{index}" />
-
-					</div>
-				
-				</label>
-
-				
-			</form>
+					use:enhance={UpdateParametre}
+				>
+					<label class="label mb-4" for="value-{index}">
+						<span class="ml-3 font-semibold">{parametre.label}</span>
+						<div class="flex flex-col md:flex-row">
+							<input
+								class="input w-full mb-4 md:mb-0"
+								id="value-{index}"
+								name="value"
+								value={parametre.value}
+								contenteditable="true"
+								type="text"
+							/>
+							<input type="hidden" name="key" value={parametre.key} />
+							<ButtonSave
+								class="min-w-48 m-0 md:ml-4"
+								titre="Enregistrer"
+								type="submit"
+								value="update-{index}"
+								form="update-{index}"
+							/>
+						</div>
+					</label>
+				</form>
 			{/each}
-		</dl>
+
+			<label class="label mb-4" for="light-dark">
+				<span class="ml-3 font-semibold">Theme sombre / lumineux</span>
+				<div>
+					<div class="rounded-container-token border-2 border-secondary-500 w-fit ">
+						<LightSwitch />
+					</div>
+				</div>
+			</label>
+		</div>
 	</div>
-	
 </Content>

@@ -5,11 +5,11 @@
 
 @layer components {
    
-    #save{
-        @apply  btn variant-filled-primary  mr-3  p-1 pl-4 pr-4 rounded-container-token
+    [data-button="save"]{
+        @apply  btn !variant-filled-primary  mr-3  p-1 pl-4 pr-4 rounded-container-token
     }
 
-    #icon{
-        @apply  text-tertiary-500 p-1 dark:text-surface-900
+     [data-button-icon="save"]{
+        @apply   p-1 dark:text-tertiary-900
     }
 }

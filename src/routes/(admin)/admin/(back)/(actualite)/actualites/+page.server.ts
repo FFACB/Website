@@ -4,7 +4,7 @@ import { prisma } from '$lib/server/prisma'
 import type { Actions, PageServerLoad } from './$types';
 import type { Actualite } from '@prisma/client';
 
-export const load = async (event : PageServerLoad) =>{
+export const load : PageServerLoad= async (event) =>{
    
   const actualites : Actualite[] = await prisma.actualite.findMany()
  

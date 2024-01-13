@@ -11,7 +11,7 @@
 	import type { ActionResult } from '@sveltejs/kit';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { message: '', background: '' ,timeout:3000};
+	const toast: ToastSettings = { message: '', background: ''};
 
 	export let data;
 	let { actualite } = data;
@@ -20,14 +20,10 @@
 	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
 
 	const submitCreateNote = async ({
-		form,
 		data,
-		action,
 		cancel
 	}: {
-		form: HTMLElement;
 		data: FormData;
-		action: URL;
 		cancel: () => void;
 	}) => {
 		const { titre, redacteur, tempsLecture, descriptionCourte } =

@@ -2,8 +2,6 @@
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { auth } from '$lib/server/lucia';
-import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import type { Contact } from '@prisma/client';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {

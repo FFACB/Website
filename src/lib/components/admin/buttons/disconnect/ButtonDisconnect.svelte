@@ -13,9 +13,9 @@
 		};
 	}}
 >
-	<button id="disconnect" {...$$restProps} type="submit" value="logout" title="Deconnexion">
+	<button data-button="disconect" {...$$restProps} type="submit" value="logout" title="Deconnexion">
 		<div>Déconnexion</div>
 
-		<Icon id="icon" icon="solar:user-cross-linear" width="32" height="32" />
+		<Icon data-button-icon="disconect" icon="solar:user-cross-linear" width="32" height="32" />
 	</button>
 </form>

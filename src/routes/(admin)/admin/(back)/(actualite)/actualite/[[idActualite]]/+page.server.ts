@@ -1,14 +1,12 @@
 
 
 import { prisma } from '$lib/server/prisma'
-import { auth } from '$lib/server/lucia'
-import { IsPhoto } from '$lib/client/utils/type.js';
-import { writeFileSync,existsSync, mkdirSync } from 'fs';
 import type { Actualite } from '@prisma/client';
 import { action_upsert, action_delete } from '../../actions.js';
 import type { Actions } from './$types.js';
+import type { PageServerLoad } from './$types';
 
-export const load = async (event) =>{
+export const load :PageServerLoad = async (event) =>{
   
   const { params } = event
   const { idActualite = '' } = params

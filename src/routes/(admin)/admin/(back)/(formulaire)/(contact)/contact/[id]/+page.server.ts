@@ -1,15 +1,13 @@
 
 
 import { prisma } from '$lib/server/prisma'
-import { auth } from '$lib/server/lucia'
-import { IsPhoto } from '$lib/client/utils/type.js';
-import { writeFileSync,existsSync, mkdirSync } from 'fs';
 import type { Contact } from '@prisma/client';
 import {  action_delete } from '../../actions.js';
-import type { Actions } from '../$types.js';
+import type { Actions } from './$types';
+import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 
-export const load = async (event) =>{
+export const load : PageServerLoad= async (event) =>{
   
   const { params } = event
   const { id = '' } = params
