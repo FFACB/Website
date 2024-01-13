@@ -1,14 +1,14 @@
 [
-    {
-        "key":"PUBLIC_RECAPCHA_SITEKEY",
-        "label":"Clé ReCapcha publique",
-        "default_value":"",
-        "env_key":"PUBLIC_RECAPCHA_SITEKEY"
-    },
-    {
-        "key":"SECRET_RECAPCHA_KEY",
-        "label":"Clé ReCapcha privée",
-        "default_value":"",
-        "env_key":"SECRET_RECAPCHA_KEY"
-    }
+	{
+		"key": "PUBLIC_RECAPCHA_SITEKEY",
+		"label": "Clé ReCapcha publique",
+		"default_value": "",
+		"env_key": "PUBLIC_RECAPCHA_SITEKEY"
+	},
+	{
+		"key": "SECRET_RECAPCHA_KEY",
+		"label": "Clé ReCapcha privée",
+		"default_value": "",
+		"env_key": "SECRET_RECAPCHA_KEY"
+	}
 ]

@@ -86,19 +86,19 @@
 					class="actualite-form"
 					use:enhance={UpdateParametre}>
 			
-				<label class="label mb-4" for="value">
+				<label class="label mb-4" for="value-{index}">
 					<span class="ml-3 font-semibold">{parametre.label}</span>
 					<div>
 						<input
 						class="input"
-						id="value"
+						id="value-{index}"
 						name="value"
 						value={parametre.value}
 						contenteditable="true"
 						type="text"
 					/>
 					<input type="hidden" name="key" value={parametre.key} />
-					<ButtonSave  titre="Enregistrer" type="submit" value="Update" form="update-{index}" />
+					<ButtonSave  class="min-w-48" titre="Enregistrer" type="submit" value="update-{index}" form="update-{index}" />
 
 					</div>
 				

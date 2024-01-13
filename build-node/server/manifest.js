@@ -7,28 +7,31 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","images/exper-bleu.png","main.scss","styles/base.scss","styles/reset.scss"]),
+	assets: new Set(["favicon.png","main.scss","styles/base.scss","styles/reset.scss"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.86ea7e7f.js","app":"_app/immutable/entry/app.7d3f867a.js","imports":["_app/immutable/entry/start.86ea7e7f.js","_app/immutable/chunks/scheduler.dbe3b3e1.js","_app/immutable/chunks/singletons.5103e5bf.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.7d3f867a.js","_app/immutable/chunks/preload-helper.a4192956.js","_app/immutable/chunks/scheduler.dbe3b3e1.js","_app/immutable/chunks/index.29622050.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.5f952dfb.js","app":"_app/immutable/entry/app.d873d83c.js","imports":["_app/immutable/entry/start.5f952dfb.js","_app/immutable/chunks/scheduler.aa555894.js","_app/immutable/chunks/singletons.d80b9a2e.js","_app/immutable/chunks/parse.bee59afc.js","_app/immutable/entry/app.d873d83c.js","_app/immutable/chunks/preload-helper.a4192956.js","_app/immutable/chunks/scheduler.aa555894.js","_app/immutable/chunks/index.571fe745.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
-			__memo(() => import('./chunks/0-6f203baf.js')),
-			__memo(() => import('./chunks/1-f68cefa8.js')),
-			__memo(() => import('./chunks/2-549f9cc3.js')),
-			__memo(() => import('./chunks/3-c88fb0dc.js')),
-			__memo(() => import('./chunks/4-395adcb6.js')),
-			__memo(() => import('./chunks/5-6b851087.js')),
-			__memo(() => import('./chunks/6-27b11532.js')),
-			__memo(() => import('./chunks/7-69f38ed6.js')),
-			__memo(() => import('./chunks/8-d5340f0e.js')),
-			__memo(() => import('./chunks/9-70f0684c.js'))
+			__memo(() => import('./chunks/0-c256c781.js')),
+			__memo(() => import('./chunks/1-8f9040c9.js')),
+			__memo(() => import('./chunks/2-541de34e.js')),
+			__memo(() => import('./chunks/3-c02d76f4.js')),
+			__memo(() => import('./chunks/4-f45412d8.js')),
+			__memo(() => import('./chunks/5-08028a3a.js')),
+			__memo(() => import('./chunks/6-e80d06e6.js')),
+			__memo(() => import('./chunks/7-2c466720.js')),
+			__memo(() => import('./chunks/8-609e856b.js')),
+			__memo(() => import('./chunks/9-34d638ae.js')),
+			__memo(() => import('./chunks/10-b79b1800.js')),
+			__memo(() => import('./chunks/11-b408e7a9.js')),
+			__memo(() => import('./chunks/12-8483846c.js'))
 		],
 		routes: [
 			{
 				id: "/(front)",
 				pattern: /^\/?$/,
 				params: [],
-				page: { layouts: [0,4,], errors: [1,,], leaf: 9 },
+				page: { layouts: [0,4,], errors: [1,,], leaf: 12 },
 				endpoint: null
 			},
 			{
@@ -46,17 +49,31 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/(admin)/admin/(back)/(formulaire)/(contact)/contacts",
+				pattern: /^\/admin\/contacts\/?$/,
+				params: [],
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 8 },
+				endpoint: null
+			},
+			{
+				id: "/(admin)/admin/(back)/(formulaire)/(contact)/contact/[id]",
+				pattern: /^\/admin\/contact\/([^/]+?)\/?$/,
+				params: [{"name":"id","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 7 },
+				endpoint: null
+			},
+			{
 				id: "/(admin)/admin/(back)/home",
 				pattern: /^\/admin\/home\/?$/,
 				params: [],
-				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 7 },
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/(admin)/admin/login",
 				pattern: /^\/admin\/login\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
@@ -64,7 +81,21 @@ return {
 				pattern: /^\/admin\/logout\/?$/,
 				params: [],
 				page: null,
-				endpoint: __memo(() => import('./chunks/_server.ts-e3a3ca02.js'))
+				endpoint: __memo(() => import('./chunks/_server.ts-61623d3d.js'))
+			},
+			{
+				id: "/(admin)/admin/(back)/(parametre)/parametres",
+				pattern: /^\/admin\/parametres\/?$/,
+				params: [],
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 9 },
+				endpoint: null
+			},
+			{
+				id: "/(api)/api/contact",
+				pattern: /^\/api\/contact\/?$/,
+				params: [],
+				page: null,
+				endpoint: __memo(() => import('./chunks/_server.ts-22e858e6.js'))
 			}
 		],
 		matchers: async () => {

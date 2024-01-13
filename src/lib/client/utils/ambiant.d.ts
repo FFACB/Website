@@ -1,24 +1,21 @@
-
 export type LayoutAdmin = {
-    slug: string
-}
+	slug: string;
+};
 
 export type LayoutSidebarItem = {
-    bartitle: string,
-    slug: string,
-    linkactive: string,
-    items: LayoutSidebarItem[]
-}
+	bartitle: string;
+	slug: string;
+	linkactive: string;
+	items: LayoutSidebarItem[];
+};
 
 export type LayoutConfig = {
-    admin: LayoutAdmin,
-    sidebar: LayoutSidebarItem[],
-}
-
-
+	admin: LayoutAdmin;
+	sidebar: LayoutSidebarItem[];
+};
 
 type ParmetreReponse = {
-    success : boolean
-    key:string
-    value : string
-}
+	success: boolean;
+	key: string;
+	value: string;
+};

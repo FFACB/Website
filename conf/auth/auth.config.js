@@ -1,20 +1,20 @@
 // initScriptPlugin.ts
-import { lucia } from "lucia";
-import * as adapter from "@lucia-auth/adapter-prisma";
-import { sveltekit } from "lucia/middleware";
-import { PrismaClient } from "@prisma/client"
+import { lucia } from 'lucia';
+import * as adapter from '@lucia-auth/adapter-prisma';
+import { sveltekit } from 'lucia/middleware';
+import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
+import "lucia/polyfill/node";
 dotenv.config();
 
-const { SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD , NODE_ENV} = process.env;
+const { SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD, NODE_ENV } = process.env;
 
-if(SECRET_ADMIN_EMAIL == null || SECRET_ADMIN_PASSWORD == null || NODE_ENV == null){
-    throw new Error("SECRET_ADMIN_EMAIL or SECRET_ADMIN_PASSWORD is not defined")
+if (SECRET_ADMIN_EMAIL == null || SECRET_ADMIN_PASSWORD == null || NODE_ENV == null) {
+	throw new Error('SECRET_ADMIN_EMAIL or SECRET_ADMIN_PASSWORD is not defined');
 }
 
-
-const prisma = new PrismaClient()
-export { prisma }
+const prisma = new PrismaClient();
+export { prisma };
 
 export default () => {
 	return {
@@ -24,7 +24,7 @@ export default () => {
 				const auth = lucia({
 					adapter: adapter.prisma(prisma),
 					middleware: sveltekit(),
-					env:  NODE_ENV == "production" ? "PROD" : "DEV" ,
+					env: NODE_ENV == 'production' ? 'PROD' : 'DEV',
 					getUserAttributes: (data) => {
 						return {
 							email: data.email
@@ -43,7 +43,7 @@ export default () => {
 					}
 				});
 			} catch (err) {
-				console.log("Admin user already exists")
+				console.log('Admin user already exists');
 			}
 		}
 	};
