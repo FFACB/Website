@@ -11,4 +11,6 @@ prisma/dev.db
 dev.db
 !uploads/.gitkeep 
 uploads/*
+!logs/.gitkeep 
+logs/*
 /build-node

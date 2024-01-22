@@ -1,30 +1,45 @@
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import ParametresJson from './parametres.config.json';
-
+import { logger } from '../../modules/server/logs';
 dotenv.config();
 const prisma = new PrismaClient();
 
+/**
+ *
+ * @example initialize()
+ * @returns {void}
+ */
+
 export function initialize() {
 	try {
+		console.log('Initialisation des parametres');
+		logger.debug('Initialisation des parametres');
+
 		ParametresJson.forEach(async (_parametre) => {
 			const { key, label, default_value, env_key } = _parametre;
 
 			const parametreFound = await get(key);
 
 			if (parametreFound != null) {
-				console.log(`Parametre \x1b[32m${parametreFound.key}\x1b[0m déjà existant, skipped`);
+				logger.debug(`Parametre ${parametreFound.key} deja existant, skipped`);
 				return;
 			}
 
 			let initialValue = process.env[env_key] ?? default_value;
-
 			const parametreCree = await create(key, label, initialValue);
 
-			console.log(`Parametre \x1b[32m${parametreCree?.key}\x1b[0m à été crée`);
+			if (parametreCree == null) {
+				throw new Error(`Erreur lors de la création du parametre ${key}`);
+				
+			}
+
+			logger.debug(`Parametre ${parametreCree.key} à été crée`);
 		});
-	} catch (err) {
-		console.log('\x1b[31m%s\x1b[0m', err);
+	} catch (error) {
+		if (error instanceof Error) logger.error(`${error.message}`);
+		else logger.error(`${error}`);
+		process.exit(1);
 	}
 }
 
@@ -38,25 +53,34 @@ export function initialize() {
  */
 
 export async function create(KEY, LABEL, VALUE) {
+	let data = null;
+
 	try {
-		if (!KEY || !LABEL || !VALUE) {
-			throw new Error('Paramètre manquant');
+		if (!KEY) {
+			throw new Error('Parametre KEY manquant');
 		}
 
-		return await prisma.parametre
-			.create({
-				data: {
-					key: KEY,
-					label: LABEL,
-					value: VALUE
-				}
-			})
-			.then((parametre) => {
-				return parametre;
-			});
-	} catch (err) {
-		console.log('\x1b[31m%s\x1b[0m', err);
-		return null;
+		if (!LABEL) {
+			throw new Error('Parametre LABEL manquant');
+		}
+
+		if (!VALUE) {
+			throw new Error('Parametre VALUE manquant');
+		}
+
+		data = await prisma.parametre.create({
+			data: {
+				key: KEY,
+				label: LABEL,
+				value: VALUE
+			}
+		});
+	} catch (error) {
+		if (error instanceof Error) logger.error(`${error.message}`);
+		else logger.error(`${error}`);
+
+	} finally {
+		return data;
 	}
 }
 
@@ -68,12 +92,10 @@ export async function create(KEY, LABEL, VALUE) {
  */
 
 export async function get(KEY) {
-
-    let data = null;
-
+	let data = null;
 	try {
 		if (!KEY) {
-			throw new Error('Paramètre KEY manquant');
+			throw new Error('Parametre KEY manquant');
 		}
 
 		data = await prisma.parametre.findUnique({
@@ -81,12 +103,11 @@ export async function get(KEY) {
 				key: KEY
 			}
 		});
+	} catch (error) {
+		if (error instanceof Error) logger.error(`${error.message}`);
+		else logger.error(`${error}`);
 
-	} catch (err) {
-		console.log('\x1b[31m%s\x1b[0m', err);
-		data = null;
-
-	}finally{
-        return data;
-    }
+	} finally {
+		return data;
+	}
 }

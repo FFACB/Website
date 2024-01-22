@@ -9,7 +9,7 @@ export default () => {
 	return {
 		name: 'run-init-script',
 		async buildStart() {
-			initialize()
+			await initialize()
 		}
 	};
 };

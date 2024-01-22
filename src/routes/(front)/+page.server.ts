@@ -1,7 +1,7 @@
 
 import type { PageServerLoad } from "./$types"
 import { getParametre } from '$lib/server/parametres/parametres';
-
+import { logger } from "$lib/server/logs";
 export const load = async (event: PageServerLoad) => {
 
     return {

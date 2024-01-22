@@ -32,6 +32,7 @@
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"pino-pretty": "^10.3.1",
 		"postcss": "^8.4.33",
 		"postcss-load-config": "^4.0.2",
 		"prettier": "^3.2.1",
@@ -54,6 +55,7 @@
 		"dotenv": "^16.3.1",
 		"express": "^4.18.2",
 		"lucia": "^2.7.6",
+		"pino": "^8.17.2",
 		"sharp": "^0.32.6",
 		"svelte-preprocess": "^5.1.3"
 	}
