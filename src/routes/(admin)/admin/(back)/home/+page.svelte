@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
-	import { redirect } from '@sveltejs/kit';
 	import Content from '$lib/components/admin/content/Content.svelte';
 
 	

@@ -5,6 +5,7 @@ import { sveltekit } from 'lucia/middleware';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import "lucia/polyfill/node";
+import { PrismaClientKnownRequestError  } from '@prisma/client/runtime/library';
 dotenv.config();
 
 const { SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD, NODE_ENV } = process.env;
@@ -43,7 +44,10 @@ export default () => {
 					}
 				});
 			} catch (err) {
-				console.log('Admin user already exists');
+				if(err instanceof PrismaClientKnownRequestError && err.code == "P2002")
+					console.log('Admin user already exists');
+				else
+					console.log(err)
 			}
 		}
 	};
