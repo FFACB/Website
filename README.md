@@ -68,7 +68,12 @@ cms/<br>
 │ ├ params/<br>
 │ │ └ [your param matchers]<br>
 │ ├ routes/<br>
-│ │ └ [your routes]<br>
+│ │ ├ (admin)/<br>
+│ │ │ └ [back-office files]/<br>
+│ │ ├ (api)/<br>
+│ │ │ └ [api files]/<br>
+│ │ ├ (front)/<br>
+│ │ │ └ [client side files]/<br>
 │ ├ app.html<br>
 │ ├ error.html<br>
 │ ├ hooks.client.js<br>
@@ -114,7 +119,7 @@ une fois fait, vous pouvez désormais utiliser votre nouvelle table doc ici : [p
 
 __! Attention PrismaClient est disponible uniquement coté serveur !__
 
-```
+```js
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
