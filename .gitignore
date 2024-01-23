@@ -13,4 +13,4 @@ dev.db
 uploads/*
 !logs/.gitkeep 
 logs/*
-/build-node
+build-node/*

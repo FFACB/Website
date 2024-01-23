@@ -34,7 +34,7 @@ export function initialize() {
 				
 			}
 
-			logger.debug(`Parametre ${parametreCree.key} à été crée`);
+			logger.debug(`Parametre ${parametreCree.key} cree avec succes`);
 		});
 	} catch (error) {
 		if (error instanceof Error) logger.error(`${error.message}`);

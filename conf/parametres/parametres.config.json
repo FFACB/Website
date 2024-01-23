@@ -6,7 +6,7 @@
 		"env_key": "PUBLIC_RECAPCHA_SITEKEY"
 	},
 	{
-		"key": "",
+		"key": "SECRET_RECAPCHA_SITEKEY",
 		"label": "Clé ReCapcha privée",
 		"default_value": "",
 		"env_key": "SECRET_RECAPCHA_KEY"
