@@ -40,7 +40,61 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ## Utilisation
 
+
+### Back-office
+
+* Connectez vous en tant qu'administrateur pour gerer votre site internet depuis le panel Admin.
+
+* En développement accedez avec `http://localhost:<PORT (dev=5173|build=3000)>/admin/login` à votre administration.
+* Connectez vous avec les crédentials indiqués dans le fichier .env (SECRET_ADMIN_EMAIL:SECRET_ADMIN_PASSWORD)
+
+*Vous voila connecté. Depuis l'administration vous avez accès :*
+
+- Homepage
+- Actualités
+- Formulaires
+- Paramètres
+
+### Prisma models
+
+Pour ajouter des tables (models) vous pouver créer de nouveaux models dans le schema.prisma. Une fois celui-ci ajouté, voici les commandes à effectuer pour déployer les modifications : 
+
+`1. $ npx prisma migrate dev --name <nomModification> --create-only`<br>
+`2. $ npx prisma migrate deploy`<br>
+`3. $ npx prisma generate`<br>
+
+une fois fait, vous pouvez désormais utiliser votre nouvelle table doc ici : [prisma CRUD](https://www.prisma.io/docs/orm/prisma-client/queries/crud).
+
+__! Attention PrismaClient est disponible uniquement coté serveur !__
+
+```js
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+const user = await prisma.user.create({
+  data: {
+    email: 'elsa@prisma.io',
+    name: 'Elsa Prisma',
+  },
+})
+```
+
+
+## Conventions de nommage / structure
+
+### Conventions
+
+Les conventions utilisés sont : 
+- [Javascript](https://google.github.io/styleguide/jsguide.html)  
+- [git](https://www.conventionalcommits.org/en/v1.0.0/)  
+
+
+### Structure
+
+
 ### Architecture
+
+Voici la structure du projet :
 
 cms/<br>
 ├ conf/<br>
@@ -92,43 +146,3 @@ cms/<br>
 ├ tailwind.config.cjs<br>
 ├ tsconfig.json<br>
 └ vite.config.js<br>
-
-### Back-office
-
-* Connectez vous en tant qu'administrateur pour gerer votre site internet depuis le panel Admin.
-
-* En développement accedez avec `http://localhost:<PORT (dev=5173|build=3000)>/admin/login` à votre administration.
-* Connectez vous avec les crédentials indiqués dans le fichier .env (SECRET_ADMIN_EMAIL:SECRET_ADMIN_PASSWORD)
-
-*Vous voila connecté. Depuis l'administration vous avez accès :*
-
-- Homepage
-- Actualités
-- Formulaires
-- Paramètres
-
-### Prisma models
-
-Pour ajouter des tables (models) vous pouver créer de nouveaux models dans le schema.prisma. Une fois celui-ci ajouté, voici les commandes à effectuer pour déployer les modifications : 
-
-`1. $ npx prisma migrate dev --name <nomModification> --create-only`<br>
-`2. $ npx prisma migrate deploy`<br>
-`3. $ npx prisma generate`<br>
-
-une fois fait, vous pouvez désormais utiliser votre nouvelle table doc ici : [prisma CRUD](https://www.prisma.io/docs/orm/prisma-client/queries/crud).
-
-__! Attention PrismaClient est disponible uniquement coté serveur !__
-
-```js
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
-const user = await prisma.user.create({
-  data: {
-    email: 'elsa@prisma.io',
-    name: 'Elsa Prisma',
-  },
-})
-```
-
-
