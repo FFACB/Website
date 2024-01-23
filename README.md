@@ -106,15 +106,15 @@ cms/<br>
 
 Pour ajouter des tables (models) vous pouver créer de nouveaux models dans le schema.prisma. Une fois celui-ci ajouté, voici les commandes à effectuer pour déployer les modifications : 
 
-`1. $ npx prisma migrate dev --name <nomModification> --create-only`
-`2. $ npx prisma migrate deploy`
-`3. $ npx prisma generate`
+`1. $ npx prisma migrate dev --name <nomModification> --create-only`<br>
+`2. $ npx prisma migrate deploy`<br>
+`3. $ npx prisma generate`<br>
 
 une fois fait, vous pouvez désormais utiliser votre nouvelle table doc ici : [prisma CRUD](https://www.prisma.io/docs/orm/prisma-client/queries/crud).
 
 __! Attention PrismaClient est disponible uniquement coté serveur !__
 
-`
+```
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
@@ -124,6 +124,6 @@ const user = await prisma.user.create({
     name: 'Elsa Prisma',
   },
 })
-`
+```
 
 
