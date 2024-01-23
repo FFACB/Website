@@ -11,21 +11,21 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ## Prérequis
 
-1. [node](https://nodejs.org/en) >= 18.0.0
-2. [pnpm](https://pnpm.io/fr/installation) >= 8.0.0
-3. [prisma CLI](https://www.prisma.io/docs/orm/tools/prisma-cli)  >= 5.8.0
+1. [node](https://nodejs.org/en) >= 18.0.0<br>
+2. [pnpm](https://pnpm.io/fr/installation) >= 8.0.0<br>
+3. [prisma CLI](https://www.prisma.io/docs/orm/tools/prisma-cli)  >= 5.8.0<br>
 
 ## Déploiement
 
 ### Setup
 
-`1. Télécharger le code en tant que fichier .zip`
-`2. Extraire le zip téléchargé`
-`3. Copier le .env.exemple en .env et changer les valeurs`
-`4. $ pnpm add prisma --save-dev`
-`5. $ pnpm install`
-`6. $ npx prisma migrate deploy`
-`7. $ npx prisma generate`
+`1. Télécharger le code en tant que fichier .zip`<br>
+`2. Extraire le zip téléchargé`<br>
+`3. Copier le .env.exemple en .env et changer les valeurs`<br>
+`4. $ pnpm add prisma --save-dev`<br>
+`5. $ pnpm install`<br>
+`6. $ npx prisma migrate deploy`<br>
+`7. $ npx prisma generate`<br>
 
 
 ### Developpement
@@ -34,7 +34,7 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ### Build
 
-`1. $ pnpm run build`
+`1. $ pnpm run build`<br>
 `2. $ node server.js`
 
 
@@ -42,51 +42,51 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ### Architecture
 
-cms/
-├ conf/
-│ ├ auth/
-│ ├ parametes/
-├ logs/app.log
-├ prisma/
-│ ├ migrations/
-│ └ schema.prisma
-├ themes/
-│ └ [back-office themes]
-├ uploads/
-│ └ [back-office uploads files]
-├ modules/server/
-│ ├ logs/
-│ ├ middlewares/
-│ ├ sharp/
-├ src/
-│ ├ lib/
-│ │ ├ client/
-│ │ ├ components/
-│ │ ├ server/
-│ │ │ └ [your server-only lib files]
-│ │ └ [your lib files]
-│ ├ params/
-│ │ └ [your param matchers]
-│ ├ routes/
-│ │ └ [your routes]
-│ ├ app.html
-│ ├ error.html
-│ ├ hooks.client.js
-│ ├ hooks.server.js
-│ └ service-worker.js
-├ static/
-│ └ [your static assets]
-├ tests/
-│ └ [your tests]
-├ package.json
-├ svelte.config.js
-├ gsap-bonus.tgz
-├ pnpm-lock.yaml
-├ postcss.config.cjs
-├ server.js
-├ tailwind.config.cjs
-├ tsconfig.json
-└ vite.config.js
+cms/<br>
+├ conf/<br>
+│ ├ auth/<br>
+│ ├ parametes/<br>
+├ logs/app.log<br>
+├ prisma/<br>
+│ ├ migrations/<br>
+│ └ schema.prisma<br>
+├ themes/<br>
+│ └ [back-office themes]<br>
+├ uploads/<br>
+│ └ [back-office uploads files]<br>
+├ modules/server/<br>
+│ ├ logs/<br>
+│ ├ middlewares/<br>
+│ ├ sharp/<br>
+├ src/<br>
+│ ├ lib/<br>
+│ │ ├ client/<br>
+│ │ ├ components/<br>
+│ │ ├ server/<br>
+│ │ │ └ [your server-only lib files]<br>
+│ │ └ [your lib files]<br>
+│ ├ params/<br>
+│ │ └ [your param matchers]<br>
+│ ├ routes/<br>
+│ │ └ [your routes]<br>
+│ ├ app.html<br>
+│ ├ error.html<br>
+│ ├ hooks.client.js<br>
+│ ├ hooks.server.js<br>
+│ └ service-worker.js<br>
+├ static/<br>
+│ └ [your static assets]<br>
+├ tests/<br>
+│ └ [your tests]<br>
+├ package.json<br>
+├ svelte.config.js<br>
+├ gsap-bonus.tgz<br>
+├ pnpm-lock.yaml<br>
+├ postcss.config.cjs<br>
+├ server.js<br>
+├ tailwind.config.cjs<br>
+├ tsconfig.json<br>
+└ vite.config.js<br>
 
 ### Back-office
 
@@ -95,7 +95,7 @@ cms/
 * En développement accedez avec `http://localhost:<PORT (dev=5173|build=3000)>/admin/login` à votre administration.
 * Connectez vous avec les crédentials indiqués dans le fichier .env (SECRET_ADMIN_EMAIL:SECRET_ADMIN_PASSWORD)
 
-* Vous voila connecté. Depuis l'administration vous avez accès :
+*Vous voila connecté. Depuis l'administration vous avez accès :*
 
 - Homepage
 - Actualités
@@ -112,9 +112,9 @@ Pour ajouter des tables (models) vous pouver créer de nouveaux models dans le s
 
 une fois fait, vous pouvez désormais utiliser votre nouvelle table doc ici : [prisma CRUD](https://www.prisma.io/docs/orm/prisma-client/queries/crud).
 
-__Attention PrismaClient est disponible uniquement coté serveur__
+__! Attention PrismaClient est disponible uniquement coté serveur !__
 
-``
+`
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
@@ -124,6 +124,6 @@ const user = await prisma.user.create({
     name: 'Elsa Prisma',
   },
 })
-``
+`
 
 
