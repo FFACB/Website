@@ -21,7 +21,8 @@ const config = {
 			polyfill: true
 		}),
 		prerender: {
-			crawl: true
+			crawl: true,
+			
 		}
 	}
 };

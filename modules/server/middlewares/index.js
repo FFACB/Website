@@ -1,58 +1,71 @@
-import sharpen from '../sharp/index.js';
 import dotenv from 'dotenv';
 import path from 'path';
-
+import sharpen from '../sharp/index.js';
 dotenv.config();
 
 const { BUILD_FOLDER_NAME, PUBLIC_UPLOADS_FOLDER_NAME } = process.env;
 
-const middlewares = function (app) {
-	app.use('/images/:path?/:filename', (req, res, next) => {
-		const { width, height } = req.query;
-		const { middlepath, filename } = req.params;
+const middlewares = function (app,dirname) {
+	app.use((req, res, next) => {
+	
+		const imageRegex = /\.(jpg|jpeg|png|bmp|webp)$/i;
 
-		const basePath = middlepath
-			? path.join(`${BUILD_FOLDER_NAME}/client/images`, middlepath)
-			: `${BUILD_FOLDER_NAME}/client/images`;
+		if (imageRegex.test(req.url)) {
 
-		const fullpath = path.join(basePath, filename);
+			const { width, height } = req.query;
+			const fullpath = path.join(dirname,req.url).replace("\\","")
 
-		sharpen({
-			fullpath,
-			width,
-			height,
-			callback: (err, data, info, format) => {
-				if (err) {
-					return next(err);
+			sharpen({
+				fullpath,
+				width,
+				height,
+				callback: (err, data, info, format) => {
+					if (err) {
+						return next(err);
+					}
+
+					res.type(format).send(data);
 				}
+			});
 
-				res.type(format).send(data);
-			}
-		});
+		} else {
+			next();
+		}
 	});
 
-	app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}/:middlepath?/:filename`, (req, res, next) => {
-		const { width, height } = req.query;
-		const { middlepath, filename } = req.params;
+	// ["/.*jpg$/","/.*jpeg$/","uploads/.*\.png$/","/.*webp$/"]
 
-		const basePath = middlepath
-			? path.join(PUBLIC_UPLOADS_FOLDER_NAME, middlepath)
-			: PUBLIC_UPLOADS_FOLDER_NAME;
-		const fullpath = path.join(basePath, filename);
+	// app.use('/images/:path?/:filename', (req, res, next) => {
 
-		sharpen({
-			fullpath,
-			width,
-			height,
-			callback: (err, data, info, format) => {
-				if (err) {
-					return next(err);
-				}
+	// 	const { width, height } = req.query;
+	// 	const { middlepath, filename } = req.params;
 
-				res.type(format).send(data);
-			}
-		});
-	});
+	// 	const basePath = middlepath
+	// 		? path.join(`${BUILD_FOLDER_NAME}/client/images`, middlepath)
+	// 		: `${BUILD_FOLDER_NAME}/client/images`;
+
+	// app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}/:middlepath?/:filename`, (req, res, next) => {
+	// 	const { width, height } = req.query;
+	// 	const { middlepath, filename } = req.params;
+
+	// 	const basePath = middlepath
+	// 		? path.join(PUBLIC_UPLOADS_FOLDER_NAME, middlepath)
+	// 		: PUBLIC_UPLOADS_FOLDER_NAME;
+	// 	const fullpath = path.join(basePath, filename);
+
+	// 	sharpen({
+	// 		fullpath,
+	// 		width,
+	// 		height,
+	// 		callback: (err, data, info, format) => {
+	// 			if (err) {
+	// 				return next(err);
+	// 			}
+
+	// 			res.type(format).send(data);
+	// 		}
+	// 	});
+	// });
 };
 
 export default middlewares;

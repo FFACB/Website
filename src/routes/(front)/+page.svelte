@@ -7,6 +7,7 @@
     
 </script>
 
-
+<img alt="s" src="/images/1.png">
+<img alt="s" src="/uploads/1.png">
 <h1 class="font-extrabold ">Home</h1>
 <Contact {PUBLIC_RECAPCHA_SITEKEY} />

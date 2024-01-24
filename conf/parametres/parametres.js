@@ -1,9 +1,8 @@
-import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import ParametresJson from './parametres.config.json';
 import { logger } from '../../modules/server/logs';
+import { prisma } from '../../modules/server/database';
 dotenv.config();
-const prisma = new PrismaClient();
 
 /**
  *
