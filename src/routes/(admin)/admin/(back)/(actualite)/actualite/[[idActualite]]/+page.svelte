@@ -20,14 +20,14 @@
 	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
 
 	const submitCreateNote = async ({
-		data,
+		formData,
 		cancel
 	}: {
-		data: FormData;
+		formData: FormData;
 		cancel: () => void;
 	}) => {
 		const { titre, redacteur, tempsLecture, descriptionCourte } =
-			Object.fromEntries(data);
+			Object.fromEntries(formData);
 
 		if (IsEmptyString(titre)) {
 			toast.message = '❌ Le titre ne doit pas être vide';
@@ -58,7 +58,7 @@
 		}
 
 		
-		data.append('contenu', (await writerMethods.saveContenu()) ?? '');
+		formData.append('contenu', (await writerMethods.saveContenu()) ?? '');
 
 		return async ({
 			result,
@@ -161,6 +161,7 @@
 			action="?/upsert"
 			id="upsert"
 			class="actualite-form"
+			enctype="multipart/form-data"
 			use:enhance={submitCreateNote}
 		>
 			<label class="label mb-4" for="titre">
@@ -178,6 +179,7 @@
 			<label class="label mb-4" for="file">
 				<span class="ml-3 font-semibold">Image</span>
 				<input
+					
 					class="input"
 					type="file"
 					id="file"

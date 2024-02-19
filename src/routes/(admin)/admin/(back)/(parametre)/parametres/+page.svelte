@@ -14,11 +14,11 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	const UpdateParametre = async ({
-		data,
+		formData,
 	}: {
-		data: FormData;
+		formData: FormData;
 	}) => {
-		const {} = Object.fromEntries(data);
+		const {} = Object.fromEntries(formData);
 
 		return async ({
 			result,
