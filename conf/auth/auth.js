@@ -1,7 +1,7 @@
-import { lucia } from 'lucia';
-import 'lucia/polyfill/node';
-import * as adapter from '@lucia-auth/adapter-prisma';
-import { sveltekit } from 'lucia/middleware';
+import { Lucia } from 'lucia';
+import { webcrypto } from "node:crypto";
+
+import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { logger } from '../../modules/server/logs';
 import { prisma } from '../../modules/server/database';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -17,27 +17,28 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 export async function initialize(environement, adminEmail, adminPassword) {
 	try {
-		const auth = lucia({
-			adapter: adapter.prisma(prisma),
-			middleware: sveltekit(),
-			env: environement == 'PROD' ? 'PROD' : 'DEV',
-			getUserAttributes: (data) => {
+		const adapter = new PrismaAdapter(prisma.session, prisma.user);
+		const lucia = new Lucia(adapter,{
+			sessionCookie: {
+				attributes: {
+					secure: environement == 'PROD',
+				}
+			},
+			// @ts-ignore
+			getUserAttributes: ({username}) => {
 				return {
-					email: data.email
+					username
 				};
 			}
 		});
 
-		await auth.createUser({
-			key: {
-				providerId: 'email',
-				providerUserId: adminEmail,
+	    let user = await prisma.user.create({
+			data: {
+				username: adminEmail,
 				password: adminPassword
-			},
-			attributes: {
-				email: adminEmail
 			}
 		});
+
 	} catch (err) {
 		if (err instanceof PrismaClientKnownRequestError && err.code == 'P2002')
 			logger.debug('Super Admin existant, skipped');

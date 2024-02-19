@@ -1,16 +1,15 @@
-import { auth } from '$lib/server/lucia';
+import { lucia } from '$lib/server/lucia';
 import type { Action, Actions, RequestEvent, ServerLoadEvent } from '@sveltejs/kit';
 import { fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
+import { prisma } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
-	const authRequest = auth.handleRequest(event);
-	const session = await authRequest.validate();
 
-	if (session) {
-		throw redirect(302, '/admin/home');
+
+	if (event.locals.user) {
+		throw redirect(302, "/admin/home");
 	}
-
 	return {};
 };
 
@@ -34,14 +33,30 @@ export const actions: Actions = {
 		}
 
 		try {
-			let key = await auth.useKey('email', email, password);
-
-			const session = await auth.createSession({
-				userId: key.userId,
-				attributes: {}
+		
+		    let user = await prisma.user.findUnique({
+				where: {
+					username: email,
+					password: password
+				}
 			});
 
-			locals.auth.setSession(session);
+
+			if (!user) {
+				return fail(400, {
+					data: data,
+					errorMsg: 'Identifiants incorrects'
+				});
+			}
+
+			const session = await lucia.createSession(user.id, {});
+			const sessionCookie = lucia.createSessionCookie(session.id);
+			cookies.set(sessionCookie.name, sessionCookie.value, {
+				path: '.',
+				...sessionCookie.attributes
+			});
+
+
 		} catch (err) {
 			return fail(400, {
 				data: data,

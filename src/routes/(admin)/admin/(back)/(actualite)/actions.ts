@@ -1,7 +1,7 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { auth } from '$lib/server/lucia';
+import { lucia } from '$lib/server/lucia';
 import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import type { Actualite } from '@prisma/client';
@@ -11,9 +11,7 @@ const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`
 const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
-	const authRequest = auth.handleRequest(event);
-	const session = await authRequest.validate();
-	return session != null;
+	return event.locals.user != null;
 };
 
 export const action_upsert = async (event: RequestEvent) => {

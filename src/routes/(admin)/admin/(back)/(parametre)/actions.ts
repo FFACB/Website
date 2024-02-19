@@ -1,15 +1,13 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { auth } from '$lib/server/lucia';
+import { lucia } from '$lib/server/lucia';
 import { IsEmptyString } from '$lib/client/utils/type.js';
 
-const authAction = async (event: RequestEvent): Promise<boolean> => {
-	const authRequest = auth.handleRequest(event);
-	const session = await authRequest.validate();
-	return session != null;
-};
 
+const authAction = async (event: RequestEvent): Promise<boolean> => {
+	return event.locals.user != null;
+};
 export const action_update = async (event: RequestEvent) => {
 
     if (!(await authAction(event))) {

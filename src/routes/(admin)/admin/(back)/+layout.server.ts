@@ -1,4 +1,4 @@
-import { auth } from '$lib/server/lucia'
+import { lucia } from '$lib/server/lucia'
 import type { ServerLoadEvent } from '@sveltejs/kit';
 import {  redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from './home/$types';
@@ -7,15 +7,13 @@ import type { LayoutConfig } from '$lib/client/utils/ambiant';
 
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 	
-	const authRequest = auth.handleRequest(event);
-	const session = await authRequest.validate();
 
-	if (!session ) {
-		throw redirect(301, '/admin/login')
+	if (!event.locals.user) {
+		throw redirect(302, "/admin/login");
 	}
-
 	return {
 		config:config as LayoutConfig
-	}
+	};
+
 	
 };

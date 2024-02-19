@@ -1,22 +1,21 @@
-import { lucia } from "lucia";
-import * as adapter from "@lucia-auth/adapter-prisma";
-import { dev } from "$app/environment";
-import { prisma } from "$lib/server/prisma";
-import { sveltekit } from "lucia/middleware";
+import { Lucia } from 'lucia';
+import { dev } from '$app/environment';
+import { prisma } from '$lib/server/prisma';
+import { webcrypto } from 'node:crypto';
+import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 
-
-export const auth = lucia({
-
-    adapter: adapter.prisma(prisma),
-    middleware: sveltekit(),
-    env: dev ? "DEV" : "PROD",
-	getUserAttributes: (data) => {
-		return {
-			email: data.email
-		};
+const adapter = new PrismaAdapter(prisma.session, prisma.user);
+export const lucia = new Lucia(adapter, {
+	sessionCookie: {
+		attributes: {
+			secure: true
+		}
 	},
-    
-    
-})
+	// @ts-ignore
+	getUserAttributes: ({username}) => {
+		return {
+			username
+		};
+	}
+});
 
-export type Auth = typeof auth;

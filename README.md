@@ -11,7 +11,7 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ## Prérequis
 
-1. [node](https://nodejs.org/en) >= 18.0.0<br>
+1. [node](https://nodejs.org/en) >= 20.0.0<br>
 2. [pnpm](https://pnpm.io/fr/installation) >= 8.0.0<br>
 3. [prisma CLI](https://www.prisma.io/docs/orm/tools/prisma-cli)  >= 5.8.0<br>
 
@@ -30,7 +30,7 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 
 ### Developpement
 
-`1. $ pnpm run devSECRET_ADMIN_EMAIL:`
+`1. $ pnpm run dev`
 
 ### Build
 

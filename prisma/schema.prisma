@@ -8,34 +8,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
-  id           String    @id @unique
-  email        String    @unique
-  auth_session Session[]
-  key          Key[]
+  id       String    @id @default(uuid())
+  username String @unique
+  password String
+  sessions Session[]
 }
 
 model Session {
-  id             String @id @unique
-  user_id        String
-  active_expires BigInt
-  idle_expires   BigInt
-  user           User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
-
-  @@index([user_id])
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
-model Key {
-  id              String  @id @unique
-  hashed_password String?
-  user_id         String
-  user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
-
-  @@index([user_id])
-}
 
 model Parametre {
-  key String @id @unique
+  key   String @id @unique
   label String
   value String
 }
@@ -47,7 +37,7 @@ model Actualite {
   photo             String   @default("")
   redacteur         String
   tempsLecture      String
-  descriptionCourte String 
+  descriptionCourte String
   contenu           String
   createdAt         DateTime @default(now())
 }
@@ -63,18 +53,18 @@ model Contact {
 }
 
 model Photo {
-  id String @id @default(uuid())
-  path String
-  resolution  Resolution[]
-  createdAt DateTime @default(now())
-
+  id         String       @id @default(uuid())
+  path       String
+  resolution Resolution[]
+  createdAt  DateTime     @default(now())
 }
 
 model Resolution {
-  id String @id @default(uuid())
-  label String
-  width String
-  height String
+  id      String @id @default(uuid())
+  label   String
+  width   String
+  height  String
   quality String
-  photo Photo @relation(fields: [photoId], references: [id])
+  photoId String
+  photo   Photo  @relation(fields: [photoId], references: [id])
 }

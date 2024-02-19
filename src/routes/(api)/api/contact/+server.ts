@@ -12,7 +12,7 @@ export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 		const {nom,prenom, email,telephone,message,token} =  Object.fromEntries(formData);
 
 
-		const ParamReCapchaSecret =await getParametre("SECRET_RECAPCHA_KEY")
+		const ParamReCapchaSecret =await getParametre("SECRET_RECAPCHA_SITEKEY")
 
 		if(!ParamReCapchaSecret.success){
 			return new Response(JSON.stringify({ type:"error",errorMsg: "La clé recapcha est invalide !" }), { status: 400 });
@@ -48,7 +48,7 @@ export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 	
 		const recapchaPostResponse = await fetch(url, {method: 'post'})
 		const recacpchaResponse = await recapchaPostResponse.json()
-
+		console.log(recacpchaResponse)
 		if(!recacpchaResponse.success){
 			return new Response(JSON.stringify({type:"error", errorMsg: "Erreur recapcha" }), { status: 400 });
 		}
