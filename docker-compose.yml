@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: deploy-node
     networks:
       - traefik-net
     labels:
@@ -17,9 +16,12 @@ services:
       - "traefik.http.routers.${PROJECT_NAME}-secure.tls=false"
       - "traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=3000"
     volumes:
-      # - type: bind
-      #   source: ./prisma/dev.db
-      #   target: /app/dev.db
+      - type: bind
+        source: ./logs
+        target: /app/logs
+      - type: bind
+        source: ./prisma/db
+        target: /app/db
       - type: bind
         source: ./uploads/
         target: /app/uploads/
