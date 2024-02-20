@@ -235,6 +235,7 @@
 			<label class="label" for="contenu">
 				<span class="ml-3 font-semibold">Contenu</span>
 				<div class="textarea contenu" id="contenu">
+				
 					<Writer contenu={actualite?.contenu ?? ''} bind:methods={writerMethods} />
 				</div>
 			</label>

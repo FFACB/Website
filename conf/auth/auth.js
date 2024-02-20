@@ -1,5 +1,4 @@
 import { Lucia } from 'lucia';
-import { webcrypto } from "node:crypto";
 
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { logger } from '../../modules/server/logs';

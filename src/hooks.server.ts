@@ -1,7 +1,8 @@
-// import { handleHooks } from "@lucia-auth/sveltekit"
+import { logger } from '$lib/server/logs';
 import { lucia } from '$lib/server/lucia';
-import type { Handle } from '@sveltejs/kit';
-// import { sequence } from "@sveltejs/kit/hooks"
+import { redirect, type Handle } from '@sveltejs/kit';
+import type { HandleServerError } from '@sveltejs/kit';
+import utils from 'util';
 
 export const handle: Handle = async ({event,resolve}) => {
 
@@ -32,4 +33,13 @@ export const handle: Handle = async ({event,resolve}) => {
 	event.locals.session = session;
 	return resolve(event);
 	
+};
+
+export const handleError: HandleServerError = async ({ error, event, status, message }) => {
+
+	logger.error({message,status,uri:event.url},message);
+
+	return {
+		message: 'Whoops an error occured!',
+	};
 };

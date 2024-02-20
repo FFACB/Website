@@ -5,7 +5,7 @@
 Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 - Un combiné entre du svelte , scss et du tailwind pour accélerer le développement front.
 - Un ORM Prisma pour la gestion des données en SQLite.
-- Un back-office personnalisé pour les clients avec une authentification sécurisé utilisant Lucia-Auth. 
+- Un back-office personnalisé pour les clients avec une authentification sécurisé utilisant Lucia-Auth 3.0. 
 - Une librairie UI pour la partie ergonomique du back-office.
 - Du typescript permettant une meilleur gestion d'erreurs pour l'api ainsi qu'une gestion des logs.
 
@@ -22,6 +22,7 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 `1. Télécharger le code en tant que fichier .zip`<br>
 `2. Extraire le zip téléchargé`<br>
 `3. Copier le .env.exemple en .env et changer les valeurs`<br>
+`4. Télécharger la version correct de node avec pnpm : $ pnpm env use --global 20.11.1`<br>
 `4. $ pnpm add prisma --save-dev`<br>
 `5. $ pnpm install`<br>
 `6. $ npx prisma migrate deploy`<br>

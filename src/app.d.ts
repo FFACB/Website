@@ -13,7 +13,7 @@ declare global {
 	var __prisma: PrismaClient;
 
 	/// <reference types="lucia-auth" />
-	export interface DatabaseUser {
+	export type DatabaseUser = {
 		id: string;
 		username: string;
 		password: string;
