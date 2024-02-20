@@ -37,7 +37,6 @@ export const handle: Handle = async ({event,resolve}) => {
 
 export const handleError: HandleServerError = async ({ error, event, status, message }) => {
 
-	console.log(error)
 	logger.error({message,status,uri:event.url},message);
 
 	return {
