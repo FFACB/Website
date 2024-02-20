@@ -4,9 +4,12 @@ WORKDIR /app
 COPY . .
 RUN rm -rf package-lock.json
 RUN rm -rf node_modules
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
-RUN pnpm install
-RUN pnpm run build
+#RUN npm install yarn
+RUN yarn install
+RUN yarn add prisma --save-dev
+RUN npx prisma generate
+RUN npx prisma migrate deploy
+RUN yarn run build
 
 FROM node:20.11.1-alpine AS deploy-node
 WORKDIR /app
@@ -20,10 +23,11 @@ COPY --from=build /app/prisma .
 COPY --from=build /app/.env .
 COPY --from=build /app/server.js .
 
-RUN npm add prisma --save-dev
-RUN npx prisma generate
-RUN npx prisma migrate deploy
-RUN node ./post-deploy.js
+
+#RUN npm add prisma --save-dev
+#RUN npx prisma generate
+#RUN npx prisma migrate deploy
+#RUN node ./post-deploy.js
 CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it website-sogocom-1 bash #If debug

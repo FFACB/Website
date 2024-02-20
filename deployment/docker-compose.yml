@@ -17,9 +17,9 @@ services:
       - "traefik.http.routers.${PROJECT_NAME}-secure.tls=false"
       - "traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=3000"
     volumes:
-      - type: bind
-        source: ./prisma/dev.db
-        target: /app/dev.db
+      # - type: bind
+      #   source: ./prisma/dev.db
+      #   target: /app/dev.db
       - type: bind
         source: ./uploads/
         target: /app/uploads/
