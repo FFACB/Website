@@ -1,13 +1,14 @@
-FROM node:18-alpine AS build
+FROM node:20.11.1-alpine AS build
 
 WORKDIR /app
 COPY . .
 RUN rm -rf package-lock.json
 RUN rm -rf node_modules
-RUN npm install
-RUN npm run build
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN pnpm install
+RUN pnpm run build
 
-FROM node:18-alpine AS deploy-node
+FROM node:20.11.1-alpine AS deploy-node
 WORKDIR /app
 RUN rm -rf ./*
 
@@ -18,7 +19,7 @@ COPY --from=build /app/uploads ./uploads
 COPY --from=build /app/prisma .
 COPY --from=build /app/.env .
 COPY --from=build /app/server.js .
-RUN apk update && apk add bash
+
 RUN npm add prisma --save-dev
 RUN npx prisma generate
 RUN npx prisma migrate deploy
