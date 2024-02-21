@@ -44,7 +44,7 @@ export const logger = pino({
 
 const jsonLogger = pino(
 	pino.destination({
-		sync: false,
+		sync: true,
 		mkdir: true,
 		dest: 'app.log'
 	})
