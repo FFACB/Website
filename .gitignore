@@ -11,6 +11,10 @@ vite.config.ts.timestamp-*
 uploads/*
 !prisma/db/.gitkeep 
 prisma/db/*
-!logs/.gitkeep 
 logs/*
+logs/old/*
+!logs/.gitkeep 
+!logs/old/.gitkeep
+!logs/old
+
 build-node
