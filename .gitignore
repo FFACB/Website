@@ -7,10 +7,10 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-prisma/dev.db
-dev.db
 !uploads/.gitkeep 
 uploads/*
+!prisma/db/.gitkeep 
+prisma/db/*
 !logs/.gitkeep 
 logs/*
 build-node
