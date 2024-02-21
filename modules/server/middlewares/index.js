@@ -2,21 +2,23 @@ import dotenv from 'dotenv';
 import path from 'path';
 import sharpen from '../sharp/index.js';
 import { inspect } from 'util';
+import {logger} from'../logs/index.js'
 dotenv.config();
 
 const { BUILD_FOLDER_NAME, PUBLIC_UPLOADS_FOLDER_NAME } = process.env;
 
-const middlewares = function (app,dirname) {
+const middlewares = function (app, dirname) {
 
 
-	app.use(['/uploads','/images'],(req, res, next) => {
-	
-		const imageRegex = /\.(jpg|jpeg|png|bmp|webp|avif)$/i;
+
+	app.use(['/uploads', '/images'], (req, res, next) => {
+
+		const imageRegex = /\.(jpg|jpeg|png|bmp|webp|avif|svg)$/i;
 
 		if (imageRegex.test(req.url)) {
 
 			const { width, height } = req.query;
-			const fullpath = path.join(dirname,req.baseUrl.includes("images") ? "static" :"" ,req.baseUrl,req.url).replace("\\","")
+			const fullpath = path.join(dirname, req.baseUrl.includes("images") ? "static" : "", req.baseUrl, req.url).replace("\\", "")
 			console.log(fullpath)
 			sharpen({
 				fullpath,
@@ -35,6 +37,18 @@ const middlewares = function (app,dirname) {
 			next();
 		}
 	});
+
+
+	const errorHandler = (error, request, response, next) => {
+		
+		if(error instanceof Error){
+			logger.error(error.stack,error.message,request.url)
+		}
+		const status = error.status || 400
+		response.status(status).send(error.message)
+	}
+
+	app.use(errorHandler)
 
 };
 

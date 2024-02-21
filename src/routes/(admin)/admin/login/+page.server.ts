@@ -4,8 +4,10 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 
+import { logger } from "$lib/server/logs/index.js";
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 
+    logger.info({},"Homepage cached")
 
 	if (event.locals.user) {
 		throw redirect(302, "/admin/home");

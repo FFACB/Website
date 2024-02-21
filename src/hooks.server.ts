@@ -2,7 +2,6 @@ import { logger } from '$lib/server/logs';
 import { lucia } from '$lib/server/lucia';
 import { redirect, type Handle } from '@sveltejs/kit';
 import type { HandleServerError } from '@sveltejs/kit';
-import utils from 'util';
 
 export const handle: Handle = async ({event,resolve}) => {
 
