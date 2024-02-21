@@ -46,6 +46,6 @@ const jsonLogger = pino(
 	pino.destination({
 		sync: false,
 		mkdir: true,
-		dest: 'logs/app.log'
+		dest: 'app.log'
 	})
 );
