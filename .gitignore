@@ -12,5 +12,5 @@ uploads/*
 !prisma/db/.gitkeep 
 prisma/db/*
 !logs/.gitkeep 
-logs/*
+
 build-node
