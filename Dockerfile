@@ -11,6 +11,7 @@ RUN npx prisma generate
 RUN npx prisma migrate deploy
 RUN yarn run build
 
-CMD ["node", "server.js"]
+ENTRYPOINT node server.js
+#CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it CMS sh #If debug
