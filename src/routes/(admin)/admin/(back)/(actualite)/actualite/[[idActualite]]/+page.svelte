@@ -10,7 +10,7 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import {hideSpinner, showSpinner} from '$lib/client/spinner/index.js';
-	
+
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: ''};
 
@@ -20,7 +20,7 @@
 	// @ts-ignore
 	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
 
-	const submitCreateNote = async ({
+	const submitCreateActualite = async ({
 		formData,
 		cancel
 	}: {
@@ -103,7 +103,7 @@
 		};
 	};
 
-	const submitDeleteNote = () => {
+	const submitDeleteActualite = () => {
 		return async ({
 			result,
 			update
@@ -149,7 +149,7 @@
 			<ButtonDelete type="submit" value="Update" form="delete" />
 
 			<div class="hidden">
-				<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteNote}>
+				<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteActualite}>
 					<input type="hidden" name="id" value={actualite.id} />
 				</form>
 			</div>
@@ -167,7 +167,7 @@
 			id="upsert"
 			class="actualite-form"
 			enctype="multipart/form-data"
-			use:enhance={submitCreateNote}
+			use:enhance={submitCreateActualite}
 		>
 			<label class="label mb-4" for="titre">
 				<span class="ml-3 font-semibold ">Titre</span>
