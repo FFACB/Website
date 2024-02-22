@@ -5,6 +5,8 @@ COPY . .
 RUN rm -rf package-lock.json
 RUN rm -rf node_modules
 
+ENV BODY_SIZE_LIMIT=Infinity
+
 RUN yarn install
 RUN yarn add prisma --save-dev
 RUN npx prisma generate
