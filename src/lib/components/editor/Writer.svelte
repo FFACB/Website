@@ -9,18 +9,21 @@
 	
 	let EditorJS = null, Header, NestedList, ImageTool;
 
-	export let contenu;
+	let contenu = null;
 	let editor;
 	onMount(async (_) => {
+		await loadEditor();
+
+	});
+
+ 	async function loadEditor() {
 
 		EditorJS = (await import('@editorjs/editorjs')).default;
 		Header = (await import('@editorjs/header')).default;
 		NestedList = (await import('@editorjs/nested-list')).default;
 		ImageTool = (await import('@editorjs/image')).default;
 		
-		if(contenu != null && IsJsonString(contenu))
-			contenu = JSON.parse(contenu)
-		
+	
 		editor = new EditorJS({
 			holder: 'writer',
 			tools: {
@@ -56,24 +59,22 @@
 			defaultBlock: 'paragraph',
 			data: contenu
 		});
-	});
+	}
 
 	export const methods = {
-		loadContenu: (contenu = null) => {
+		loadContenu: (_contenu = null) => {
 			// @ts-ignore
-			debugger
-			if (editor != null && contenu != null) {
+			if(_contenu == null || _contenu.length == 0 || !IsJsonString(contenu))
+				return
 
-				
-				if (IsJsonString(contenu)) {
-					contenu = JSON.parse(contenu);
-				}
+			contenu = JSON.parse(_contenu);
 
-				// @ts-ignore
-				if(contenu.blocks == null || contenu.blocks.length == 0)
-					return
+			if(_contenu.blocks == null || _contenu.blocks.length == 0)
+				return
 				
-				// @ts-ignore
+			
+			if (editor != null ) {
+
 				editor.isReady.then(() => {
 					// @ts-ignore
 					editor.render(contenu);

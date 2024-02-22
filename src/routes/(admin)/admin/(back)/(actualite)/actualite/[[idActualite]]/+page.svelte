@@ -10,6 +10,7 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import {hideSpinner, showSpinner} from '$lib/client/spinner/index.js';
+	import { onMount, type SvelteComponent } from 'svelte';
 
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: ''};
@@ -17,8 +18,11 @@
 	export let data;
 	let { actualite } = data;
 
-	// @ts-ignore
-	let writerMethods: { saveContenu: () => string | Blob | PromiseLike<string | Blob>; };
+	let writer : SvelteComponent | null = null;
+
+	onMount(()=>{
+		writer?.methods.loadContenu(actualite?.contenu ?? '');
+	})
 
 	const submitCreateActualite = async ({
 		formData,
@@ -59,7 +63,7 @@
 		}
 
 		
-		formData.append('contenu', (await writerMethods.saveContenu()) ?? '');
+		formData.append('contenu', (await writer?.methods.saveContenu()) ?? '');
 		
 		showSpinner()
 		return async ({
@@ -241,7 +245,7 @@
 				<span class="ml-3 font-semibold">Contenu</span>
 				<div class="textarea contenu" id="contenu">
 				
-					<Writer contenu={actualite?.contenu ?? ''} bind:methods={writerMethods} />
+					<Writer bind:this={writer} />
 				</div>
 			</label>
 
