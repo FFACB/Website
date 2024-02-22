@@ -3,6 +3,7 @@ import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { lucia } from '$lib/server/lucia';
 import type { Contact } from '@prisma/client';
+import { logger } from '$lib/server/logs';
 
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
@@ -10,7 +11,11 @@ const authAction = async (event: RequestEvent): Promise<boolean> => {
 };
 
 export const action_delete = async (event: RequestEvent) => {
+
+	
 	if (!(await authAction(event))) {
+
+		logger.error({},"Vous n'etes pas connecté","/admin/contact");
 		return fail(400, {
 			data: undefined,
 			errorMsg: "Vous n'etes pas connecté"
@@ -22,6 +27,8 @@ export const action_delete = async (event: RequestEvent) => {
 	const { id } = data;
 
 	if (id == null || id == '') {
+
+		logger.warn({},"L'identifiant du contact est requis","/admin/contact");
 		return fail(400, {
 			data: data,
 			errorMsg: "❌ L'identifiant du contact est requis"
@@ -36,6 +43,8 @@ export const action_delete = async (event: RequestEvent) => {
 		});
 
 		if (contactToDelete == null) {
+
+			logger.warn({},"Le contact n'existe pas","/admin/contact");
 			return fail(400, {
 				data: data,
 				errorMsg: "Le contact n'existe pas"
@@ -53,6 +62,7 @@ export const action_delete = async (event: RequestEvent) => {
 			errorMsg: undefined
 		};
 	} catch (err) {
+		logger.error(err,"/admin/contact");
 		return fail(400, {
 			data: data,
 			errorMsg: "❌ Une erreur est survenue lors de la suppression du contact"

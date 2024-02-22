@@ -2,7 +2,7 @@ import { scheduleJob } from 'node-schedule';
 import { copyFileSync ,truncateSync} from 'fs';
 import { logger } from '../logs/index.js';
 
-export const saveLogs = (rule = "0 30 * * *") => {
+export const saveLogs = (rule = "30 0 30 * * *") => {
    
     const job = scheduleJob(rule, function () {
         try {

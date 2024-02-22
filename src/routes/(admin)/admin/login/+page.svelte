@@ -3,11 +3,17 @@
 	import { goto } from '$app/navigation';
     import Icon from '@iconify/svelte';
     import { LightSwitch } from '@skeletonlabs/skeleton';
+	import Spinner from '$lib/components/admin/Spinner.svelte';
+	import type { SvelteComponent } from 'svelte';
 
 	let errorMsg: string | null = null;
+	let spinner: SvelteComponent | null = null;
+
 </script>
 
 <div class="flex items-center justify-center h-full w-full">
+
+	<Spinner bind:this={spinner}></Spinner>
 	<section
 		class="container dark:bg-surface-700 bg-surface-50 rounded-container-token w-full md:w-1/2 lg:w-1/3 p-0 md:p-8"
 	>
@@ -20,6 +26,7 @@
 			method="POST"
 			action="?/login"
 			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+
             const { email, password } = Object.fromEntries(formData);
 
             if (email == null || typeof email !== 'string' || email.length < 1) {
@@ -35,7 +42,8 @@
             }
 
             errorMsg = null;
-
+			spinner?.show();
+			
             return async ({ result, update }) => {
                 switch (result.type) {
                     case 'success':
@@ -55,6 +63,7 @@
                 }
 
                 await update();
+				spinner?.hide();
             };
         }}
 		>

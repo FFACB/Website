@@ -42,7 +42,7 @@ const middlewares = function (app, dirname) {
 	const errorHandler = (error, request, response, next) => {
 		
 		if(error instanceof Error){
-			logger.error(error.stack,error.message,request.url)
+			logger.warn(error.stack,error.message,request.url)
 		}
 		const status = error.status || 400
 		response.status(status).send(error.message)
