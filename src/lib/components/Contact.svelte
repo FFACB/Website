@@ -21,6 +21,7 @@
 	id="contact"
 	use:enhance={async ({  formData,  cancel }) => {
 		try {
+			
 			const { nom,prenom, email,telephone,message} = Object.fromEntries(formData);
 			
 			if (IsEmptyString(nom) || IsEmptyString(prenom) || IsEmptyString(email) || IsEmptyString(telephone) || IsEmptyString(message)) {
