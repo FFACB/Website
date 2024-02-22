@@ -9,7 +9,8 @@
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
-
+	import {hideSpinner, showSpinner} from '$lib/client/spinner/index.js';
+	
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: ''};
 
@@ -59,7 +60,8 @@
 
 		
 		formData.append('contenu', (await writerMethods.saveContenu()) ?? '');
-
+		
+		showSpinner()
 		return async ({
 			result,
 			update
@@ -96,6 +98,7 @@
 				default:
 					break;
 			}
+			hideSpinner()
 			await applyAction(result);
 		};
 	};
@@ -132,10 +135,12 @@
 					break;
 			}
 			await update();
+		
 			goto('/admin/actualites', { invalidateAll: true });
 		};
 	};
 </script>
+
 
 <Content>
 	<svelte:fragment slot="buttons">

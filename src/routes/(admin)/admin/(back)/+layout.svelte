@@ -2,6 +2,9 @@
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { initializeStores, Toast, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
+	import Spinner from '$lib/components/admin/Spinner.svelte';
+	import { subscribeSpinner } from '$lib/client/spinner/index.js';
+	import type { SvelteComponent } from 'svelte';
 
 	//Setup theme
 	function setInitialClassState() {
@@ -22,6 +25,15 @@
 
 	export let data;
 	const { config } = data;
+
+	//Main Spinner
+	let spinner : SvelteComponent | null = null;
+	subscribeSpinner((value : boolean) => {
+		if (spinner) {
+			spinner.toggle(value);
+		}
+	});
+
 </script>
 
 <svelte:head>
@@ -29,7 +41,7 @@
 </svelte:head>
 
 <Toast position="t" padding="p-4" />
-
+<Spinner id="main-spinner" bind:this={spinner}></Spinner>
 <AppShell
 	regionPage="relative"
 	slotPageHeader=" sticky top-0 z-10"

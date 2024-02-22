@@ -1,14 +1,17 @@
 <script lang="ts">
+	import { writable } from 'svelte/store';
+
+	writable
 
 	let spinner : HTMLDivElement | null = null;
 
-	export function show() {
-		if(spinner)
-			spinner.style.display = 'flex';
-	}
+	export function toggle(value:boolean) {
+		if(!spinner)
+			return;
 
-	export function hide() {
-		if(spinner)
+		if(value)
+			spinner.style.display = 'flex';
+		else
 			spinner.style.display = 'none';
 	}
 
