@@ -42,7 +42,7 @@
             }
 
             errorMsg = null;
-			spinner?.show();
+			spinner?.toggle(true);
 			
             return async ({ result, update }) => {
                 switch (result.type) {
@@ -63,7 +63,7 @@
                 }
 
                 await update();
-				spinner?.hide();
+				spinner?.toggle(false);
             };
         }}
 		>
