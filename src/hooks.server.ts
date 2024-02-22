@@ -34,11 +34,11 @@ export const handle: Handle = async ({event,resolve}) => {
 	
 };
 
-export const handleError: HandleServerError = async ({ error, event, status, message }) => {
+// export const handleError: HandleServerError = async ({ error, event, status, message }) => {
 
-	logger.error({message,status,uri:event.url},message);
+// 	logger.error({message,status,uri:event.url},message);
 
-	return {
-		message: 'Whoops an error occured!',
-	};
-};
+// 	return {
+// 		message: 'Whoops an error occured!',
+// 	};
+// };
