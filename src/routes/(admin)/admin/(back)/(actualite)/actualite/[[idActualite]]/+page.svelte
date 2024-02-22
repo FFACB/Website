@@ -158,7 +158,7 @@
 	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
 		<form
 			method="POST"
-			action="?/upsert"
+			action="/admin/actualite?/upsert"
 			id="upsert"
 			class="actualite-form"
 			enctype="multipart/form-data"
