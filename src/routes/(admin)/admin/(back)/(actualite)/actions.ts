@@ -145,6 +145,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			errorMsg: undefined
 		};
 	} catch (err) {
+		console.log(err)
 		logger.error(err,"/admin/actualite");
 		
 		return fail(400, {

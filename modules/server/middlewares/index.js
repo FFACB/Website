@@ -39,16 +39,16 @@ const middlewares = function (app, dirname) {
 	});
 
 
-	// const errorHandler = (error, request, response, next) => {
+	const errorHandler = (error, request, response, next) => {
 		
-	// 	if(error instanceof Error){
-	// 		logger.warn(error.stack,error.message,request.url)
-	// 	}
-	// 	const status = error.status || 400
-	// 	response.status(status).send(error.message)
-	// }
+		if(error instanceof Error){
+			logger.warn(error.stack,error.message,request.url)
+		}
+		const status = error.status || 400
+		response.status(status).send(error.message)
+	}
 
-	// app.use(errorHandler)
+	app.use(errorHandler)
 
 };
 
