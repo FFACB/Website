@@ -6,7 +6,7 @@
 
 <a data-button="website" {...$$restProps} target="_blank" href="/">
 
-    <div>
+    <div class="hidden sm:block">
         Voir le site
     </div>
 

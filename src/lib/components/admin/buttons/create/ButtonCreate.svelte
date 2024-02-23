@@ -9,7 +9,7 @@
 
 <a data-button="create" {...$$restProps} href="{link}">
 
-    <div>
+    <div class="hidden sm:block">
         {titre}
     </div>
 
