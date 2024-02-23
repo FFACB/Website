@@ -1,17 +1,24 @@
-FROM node:20.11.1-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 COPY . .
 RUN rm -rf package-lock.json
 RUN rm -rf node_modules
+RUN rm -rf .npmrc
 
 ENV BODY_SIZE_LIMIT=Infinity
 
-RUN yarn install
-RUN yarn add prisma --save-dev
+RUN npm install -g pnpm
+RUN apk add --no-cache libc6-compat
+RUN apk update
+
+ENV PNPM_HOME=/app/.pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
+RUN pnpm install
 RUN npx prisma generate
 RUN npx prisma migrate deploy
-RUN yarn run build
+RUN pnpm run build
 
 ENTRYPOINT node server.js
 #CMD ["node", "server.js"]
