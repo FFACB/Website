@@ -30,7 +30,7 @@ model Parametre {
   value String
 }
 
-//BO
+//BO (Actualite)
 model Actualite {
   id                String   @id @default(uuid())
   titre             String
@@ -42,6 +42,7 @@ model Actualite {
   createdAt         DateTime @default(now())
 }
 
+//BO (Formulaires)
 model Contact {
   id        String   @id @default(uuid())
   email     String
@@ -52,6 +53,7 @@ model Contact {
   createdAt DateTime @default(now())
 }
 
+//BO (Galerie)
 model Photo {
   id         String       @id @default(uuid())
   path       String
