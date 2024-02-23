@@ -9,6 +9,6 @@ export const POST: RequestHandler = async ({ locals }) => {
 		lucia.invalidateSession(locals.session.id)
 		
 	}
-	throw redirect(302, "/admin/login");
+	redirect(302, "/admin/login");
 
 }

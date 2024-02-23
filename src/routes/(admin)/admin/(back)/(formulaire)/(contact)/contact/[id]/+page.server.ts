@@ -19,7 +19,7 @@ export const load : PageServerLoad= async (event) =>{
   })
 
   if(contact == null){
-    throw redirect(301,'/admin/contacts')
+    redirect(301,'/admin/contacts')
   }
 
   return {

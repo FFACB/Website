@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 	
 
 	if (!event.locals.user) {
-		throw redirect(302, "/admin/login");
+		redirect(302, "/admin/login");
 	}
 	return {
 		config:config as LayoutConfig

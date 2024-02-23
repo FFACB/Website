@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event: ServerLoadEvent) => {
 
  
 	if (event.locals.user) {
-		throw redirect(302, "/admin/home");
+		redirect(302, "/admin/home");
 	}
 	return {};
 };

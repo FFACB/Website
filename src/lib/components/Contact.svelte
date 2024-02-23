@@ -7,7 +7,7 @@
 
 
 	export let PUBLIC_RECAPCHA_SITEKEY : ParmetreReponse
-
+	let errorMsg = '';
 </script>
 
 <svelte:head>
@@ -50,19 +50,20 @@
 		}
 
 		return async ({ result, update }) => {
-			
+				
 			switch (result.type) {
 				case 'success':
 					await update(result.data);
-					console.log(result.message);
+					await applyAction(result);
+				
 					break;
 				case 'error':
-					console.log(result.errorMsg);
+					errorMsg = result.errorMsg;
 					break;
 				default:
 					break;
 			}
-			await applyAction(result);
+			
 		};
 	}}
 >
@@ -94,6 +95,12 @@
 		<input class="input" name="message"  type="text" required />
 	</label>
 
+
+	<div class="error" aria-live="polite">
+		{#if errorMsg && errorMsg.length > 0}
+			<p>{errorMsg}</p>
+		{/if}
+	</div>
 
 	<label class="label" for="envoyer">
 		<button type="submit">Envoyer</button>
