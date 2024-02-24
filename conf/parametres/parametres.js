@@ -16,7 +16,7 @@ export function initialize() {
 		logger.debug('Initialisation des parametres');
 
 		ParametresJson.forEach(async (_parametre) => {
-			const { key, label, default_value, env_key } = _parametre;
+			const { key, label, default_value, env_key, order } = _parametre;
 
 			const parametreFound = await get(key);
 
@@ -26,7 +26,7 @@ export function initialize() {
 			}
 
 			let initialValue = process.env[env_key] ?? default_value;
-			const parametreCree = await create(key, label, initialValue);
+			const parametreCree = await create(key, label,order, initialValue);
 
 			if (parametreCree == null) {
 				throw new Error(`Erreur lors de la création du parametre ${key}`);
@@ -45,13 +45,14 @@ export function initialize() {
 /**
  * @param {string} KEY
  * @param {string} LABEL
+ * @param {number} ORDER
  * @param {string} VALUE
  *
  * @example create('KEY','label description','VALUE')
- * @returns {Promise<{ key: string; label: string; value: string; } | null>}
+ * @returns {Promise<{ key: string; label: string; order:number; value: string; } | null>}
  */
 
-export async function create(KEY, LABEL, VALUE) {
+export async function create(KEY, LABEL,ORDER, VALUE) {
 	let data = null;
 
 	try {
@@ -63,11 +64,16 @@ export async function create(KEY, LABEL, VALUE) {
 			throw new Error('Parametre LABEL manquant');
 		}
 
+		if (!ORDER) {
+			throw new Error('Parametre ORDER manquant');
+		}
+
 
 		data = await prisma.parametre.create({
 			data: {
 				key: KEY,
 				label: LABEL,
+				order: ORDER,
 				value: VALUE
 			}
 		});

@@ -17,6 +17,7 @@ CREATE TABLE "Session" (
 CREATE TABLE "Parametre" (
     "key" TEXT NOT NULL PRIMARY KEY,
     "label" TEXT NOT NULL,
+    "order" INTEGER NOT NULL,
     "value" TEXT
 );
 

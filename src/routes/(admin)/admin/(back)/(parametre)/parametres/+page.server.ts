@@ -6,7 +6,11 @@ import type { Parametre } from '@prisma/client';
 
 export const load : PageServerLoad= async (event) =>{
    
-  const parametres : Parametre[] = await prisma.parametre.findMany()
+  const parametres : Parametre[] = await prisma.parametre.findMany({
+    orderBy:{
+      order : "asc"
+    }
+  })
 
   return{
     backlink:'/admin/home',

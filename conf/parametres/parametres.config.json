@@ -3,24 +3,28 @@
 		"key": "PUBLIC_RECAPCHA_SITEKEY",
 		"label": "Clé ReCapcha publique",
 		"default_value": "",
-		"env_key": "PUBLIC_RECAPCHA_SITEKEY"
+		"env_key": "PUBLIC_RECAPCHA_SITEKEY",
+		"order":1
 	},
 	{
 		"key": "SECRET_RECAPCHA_SITEKEY",
 		"label": "Clé ReCapcha privée",
 		"default_value": "",
-		"env_key": "SECRET_RECAPCHA_KEY"
+		"env_key": "SECRET_RECAPCHA_KEY",
+		"order":2
 	},
 	{
 		"key": "PUBLIC_HEAD_TAG_MANAGER",
 		"label": "Script head du tag manager",
 		"default_value": "",
-		"env_key": ""
+		"env_key": "PUBLIC_HEAD_TAG_MANAGER",
+		"order":3
 	},
 	{
 		"key": "PUBLIC_BODY_TAG_MANAGER",
 		"label": "Script body du tag manager",
 		"default_value": "",
-		"env_key": ""
+		"env_key": "PUBLIC_BODY_TAG_MANAGER",
+		"order":4
 	}
 ]
