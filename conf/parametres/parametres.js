@@ -63,9 +63,6 @@ export async function create(KEY, LABEL, VALUE) {
 			throw new Error('Parametre LABEL manquant');
 		}
 
-		if (!VALUE) {
-			throw new Error('Parametre VALUE manquant');
-		}
 
 		data = await prisma.parametre.create({
 			data: {

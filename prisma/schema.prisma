@@ -27,7 +27,7 @@ model Session {
 model Parametre {
   key   String @id @unique
   label String
-  value String
+  value String? 
 }
 
 //BO (Actualite)

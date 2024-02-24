@@ -34,14 +34,6 @@ export const action_update = async (event: RequestEvent) => {
 		});
 	}
 
-	if (IsEmptyString(value)) {
-
-		logger.warn({},`La valeur de la clé "${key}" ne doit pas être vide`,"/admin/parametre");
-		return fail(400, {
-			data: data,
-			errorMsg: `❌ La valeur de la clé "${key}" ne doit pas être vide`
-		});
-	}
 
 	await prisma.parametre.update({
 		where:{

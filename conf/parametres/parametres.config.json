@@ -10,5 +10,17 @@
 		"label": "Clé ReCapcha privée",
 		"default_value": "",
 		"env_key": "SECRET_RECAPCHA_KEY"
+	},
+	{
+		"key": "PUBLIC_HEAD_TAG_MANAGER",
+		"label": "Script head du tag manager",
+		"default_value": "",
+		"env_key": ""
+	},
+	{
+		"key": "PUBLIC_BODY_TAG_MANAGER",
+		"label": "Script body du tag manager",
+		"default_value": "",
+		"env_key": ""
 	}
 ]
