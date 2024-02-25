@@ -21,7 +21,7 @@ services:
         target: /app/logs
       - type: bind
         source: ./prisma/db
-        target: /app/db
+        target: /app/prisma/db
       - type: bind
         source: ./uploads/
         target: /app/uploads/

@@ -90,7 +90,7 @@ export async function create(KEY, LABEL,ORDER, VALUE) {
  * @param {string} KEY
  *
  * @example get('KEY')
- * @returns {Promise<{ key: string; label: string; value: string; } | null>}
+ * @returns {Promise<{ key: string; label: string; order:number; value: string; } | null>}
  */
 
 export async function get(KEY) {
