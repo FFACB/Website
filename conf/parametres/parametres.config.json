@@ -63,5 +63,13 @@
 		"default_value": "",
 		"env_key": "PUBLIC_SMTP_SENDER",
 		"order":9
+	},
+	{
+		"key": "PUBLIC_SMTP_SENDER_NAME",
+		"label": "Nom de l'expéditeur (Nom visible par le client lors de la réception)",
+		"default_value": "",
+		"env_key": "PUBLIC_SMTP_SENDER_NAME",
+		"order":10
 	}
+	
 ]
