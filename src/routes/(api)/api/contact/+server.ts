@@ -3,8 +3,9 @@ import { IsEmptyString } from "$lib/client/utils/type";
 import { prisma } from '$lib/server/prisma';
 import { getParametre } from "$lib/server/parametres/parametres";
 import { logger } from "$lib/server/logs";
+import Mailer from "$lib/server/mail";
 
-export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
+export const POST: RequestHandler = async ({ request, url }) : Promise<Response> => {
 
 	try {
 
@@ -79,6 +80,11 @@ export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 			}
 		})
 		
+
+		const mailer = new Mailer()
+		await mailer.init(request.url.startsWith("https://"))
+		mailer.sendMail(email as string,"Request from cms","Demande de contact reçu","Demande de contact reçu")
+
 		logger.info({},"Formulaire de contact envoyé","/api/contact");
 		return new Response(JSON.stringify({type:"success",message:"Formulaire envoye !"}), { status: 200 });
 
