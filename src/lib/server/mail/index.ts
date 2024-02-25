@@ -15,7 +15,7 @@ class Mailer {
         this.senderName = "";
     }
 
-    async init(secure? : boolean) {
+    async init() {
 
 
         try {
@@ -39,7 +39,7 @@ class Mailer {
             this.transporter = nodemailer.createTransport({
                 host: PUBLIC_SMTP_HOST.value,
                 port: PUBLIC_SMTP_PORT.value,
-                secure,
+                secure:false,
                 auth: {
                     user: PUBLIC_SMTP_IDENTIFIANT.value,
                     pass: SECRET_SMTP_PASSWORD.value,

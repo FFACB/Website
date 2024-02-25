@@ -82,7 +82,7 @@ export const POST: RequestHandler = async ({ request, url }) : Promise<Response>
 		
 
 		const mailer = new Mailer()
-		await mailer.init(request.url.startsWith("https://"))
+		await mailer.init()
 		mailer.sendMail(email as string,"Request from cms","Demande de contact reçu","Demande de contact reçu")
 
 		logger.info({},"Formulaire de contact envoyé","/api/contact");
