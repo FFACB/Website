@@ -3,26 +3,26 @@
 	import { IsEmptyString } from '$lib/client/utils/type.js';
 	import Writer from '$lib/components/editor/Writer.svelte';
 	import { goto } from '$app/navigation';
-	import {  getToastStore } from '@skeletonlabs/skeleton';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
-	import {hideSpinner, showSpinner} from '$lib/client/spinner/index.js';
+	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
 	import { onMount, type SvelteComponent } from 'svelte';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { message: '', background: ''};
+	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
 	let { actualite } = data;
 
-	let writer : SvelteComponent | null = null;
+	let writer: SvelteComponent | null = null;
 
-	onMount(()=>{
+	onMount(() => {
 		writer?.methods.loadContenu(actualite?.contenu ?? '');
-	})
+	});
 
 	const submitCreateActualite = async ({
 		formData,
@@ -31,8 +31,7 @@
 		formData: FormData;
 		cancel: () => void;
 	}) => {
-		const { titre, redacteur, tempsLecture, descriptionCourte } =
-			Object.fromEntries(formData);
+		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
 		if (IsEmptyString(titre)) {
 			toast.message = '❌ Le titre ne doit pas être vide';
@@ -62,17 +61,10 @@
 			cancel();
 		}
 
-		
 		formData.append('contenu', (await writer?.methods.saveContenu()) ?? '');
-		
-		showSpinner()
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+
+		showSpinner();
+		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Enregistrement effectué !';
@@ -102,7 +94,7 @@
 				default:
 					break;
 			}
-			hideSpinner()
+			hideSpinner();
 			await applyAction(result);
 		};
 	};
@@ -139,12 +131,11 @@
 					break;
 			}
 			await update();
-		
+
 			goto('/admin/actualites', { invalidateAll: true });
 		};
 	};
 </script>
-
 
 <Content>
 	<svelte:fragment slot="buttons">
@@ -161,7 +152,9 @@
 	</svelte:fragment>
 
 	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
-		<h1 class="h1 font-bold text-2xl">{actualite?.id == null ? "Créer" : "Modifier"} l'Actualité</h1>
+		<h1 class="h1 font-bold text-2xl">
+			{actualite?.id == null ? 'Créer' : 'Modifier'} l'Actualité
+		</h1>
 	</div>
 
 	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
@@ -174,12 +167,12 @@
 			use:enhance={submitCreateActualite}
 		>
 			<label class="label mb-4" for="titre">
-				<span class="ml-3 font-semibold ">Titre</span>
+				<span class="ml-3 font-semibold">Titre</span>
 				<input
 					class="input"
 					id="titre"
 					name="titre"
-					value={actualite?.titre?? ''}
+					value={actualite?.titre ?? ''}
 					contenteditable="true"
 					type="text"
 				/>
@@ -188,7 +181,6 @@
 			<label class="label mb-4" for="file">
 				<span class="ml-3 font-semibold">Image</span>
 				<input
-					
 					class="input"
 					type="file"
 					id="file"
@@ -199,7 +191,11 @@
 
 			{#if actualite?.photo != null && actualite.photo.length != 0}
 				<div class="mt-2 mb-4">
-					<img class="card h-80 w-full bg-cover object-cover" alt="actualite" src={actualite.photo} />
+					<img
+						class="card h-80 w-full bg-cover object-cover"
+						alt="actualite"
+						src={actualite.photo}
+					/>
 				</div>
 			{/if}
 
@@ -209,7 +205,7 @@
 					class="input"
 					id="redacteur"
 					name="redacteur"
-					value={actualite?.redacteur?? ''}
+					value={actualite?.redacteur ?? ''}
 					contenteditable="true"
 					type="text"
 				/>
@@ -244,7 +240,6 @@
 			<label class="label" for="contenu">
 				<span class="ml-3 font-semibold">Contenu</span>
 				<div class="textarea contenu" id="contenu">
-				
 					<Writer bind:this={writer} />
 				</div>
 			</label>

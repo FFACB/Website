@@ -7,8 +7,8 @@
 <form
 	method="POST"
 	action="/admin/logout"
-	use:enhance={ () => {
-		return  () => {
+	use:enhance={() => {
+		return () => {
 			window.location.href = '/admin/login';
 		};
 	}}

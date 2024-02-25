@@ -15,7 +15,7 @@ export function IsEmptyString(str: string | null | undefined | FormDataEntryValu
 	}
 }
 
-export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp','bmp','avif','svg'];
+export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp', 'bmp', 'avif', 'svg'];
 
 export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {

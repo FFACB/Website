@@ -1,17 +1,17 @@
 <script lang="ts">
-
 	//@ts-nocheck
 	import { enhance, applyAction } from '$app/forms';
 	import { IsEmptyString } from '$lib/client/utils/type';
 	import type { ParmetreReponse } from '$lib/client/utils/ambiant';
 
-
-	export let PUBLIC_RECAPCHA_SITEKEY : ParmetreReponse
+	export let PUBLIC_RECAPCHA_SITEKEY: ParmetreReponse;
 	let errorMsg = '';
 </script>
 
 <svelte:head>
-	<script src="https://www.google.com/recaptcha/api.js?render={PUBLIC_RECAPCHA_SITEKEY.value}"></script>
+	<script
+		src="https://www.google.com/recaptcha/api.js?render={PUBLIC_RECAPCHA_SITEKEY.value}"
+	></script>
 </svelte:head>
 
 <form
@@ -19,43 +19,47 @@
 	action="/api/contact"
 	name="contact"
 	id="contact"
-	use:enhance={async ({  formData,  cancel }) => {
+	use:enhance={async ({ formData, cancel }) => {
 		try {
-			
-			const { nom,prenom, email,telephone,message} = Object.fromEntries(formData);
-			
-			if (IsEmptyString(nom) || IsEmptyString(prenom) || IsEmptyString(email) || IsEmptyString(telephone) || IsEmptyString(message)) {
+			const { nom, prenom, email, telephone, message } = Object.fromEntries(formData);
+
+			if (
+				IsEmptyString(nom) ||
+				IsEmptyString(prenom) ||
+				IsEmptyString(email) ||
+				IsEmptyString(telephone) ||
+				IsEmptyString(message)
+			) {
 				cancel();
 				return;
 			}
 
-			await new Promise ((resolve)  => {
-
+			await new Promise((resolve) => {
 				window.grecaptcha.ready(async () => {
 					resolve();
 				});
-			}) ;
+			});
 
-			const token = await window.grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY.value, { action: 'contact' });
+			const token = await window.grecaptcha.execute(PUBLIC_RECAPCHA_SITEKEY.value, {
+				action: 'contact'
+			});
 			if (IsEmptyString(token)) {
 				cancel();
 				return;
 			}
 
 			formData.append('token', token);
-			
 		} catch (error) {
 			cancel();
 			return;
 		}
 
 		return async ({ result, update }) => {
-				
 			switch (result.type) {
 				case 'success':
 					await update(result.data);
 					await applyAction(result);
-				
+
 					break;
 				case 'error':
 					errorMsg = result.errorMsg;
@@ -63,13 +67,9 @@
 				default:
 					break;
 			}
-			
 		};
 	}}
 >
-
-	
-
 	<label class="label" for="nom">
 		<span class="ml-3 font-semibold">Nom</span>
 		<input class="input" name="nom" contenteditable="true" type="text" required />
@@ -92,9 +92,8 @@
 
 	<label class="label" for="message">
 		<span class="ml-3 font-semibold">Message</span>
-		<input class="input" name="message"  type="text" required />
+		<input class="input" name="message" type="text" required />
 	</label>
-
 
 	<div class="error" aria-live="polite">
 		{#if errorMsg && errorMsg.length > 0}

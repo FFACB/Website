@@ -1,29 +1,28 @@
-
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import { onMount } from 'svelte';
 	import { IsJsonString } from '$lib/client/utils/type';
 	import ButtonTool from '$lib/client/editor/button/ButtonTool.js';
 	import ParagraphTool from '$lib/client/editor/paragraph/ParagraphTool.js';
-	
-	let EditorJS = null, Header, NestedList, ImageTool;
+
+	let EditorJS = null,
+		Header,
+		NestedList,
+		ImageTool;
 
 	let contenu = null;
 	let editor;
 	onMount(async () => {
 		await loadEditor();
-
 	});
 
- 	async function loadEditor() {
-
+	async function loadEditor() {
 		EditorJS = (await import('@editorjs/editorjs')).default;
 		Header = (await import('@editorjs/header')).default;
 		NestedList = (await import('@editorjs/nested-list')).default;
 		ImageTool = (await import('@editorjs/image')).default;
-		
-	
+
 		editor = new EditorJS({
 			holder: 'writer',
 			tools: {
@@ -50,8 +49,8 @@
 					class: ImageTool,
 					config: {
 						endpoints: {
-							byFile: '/api/editorjs', 
-							byUrl: '/api/editorjs',
+							byFile: '/api/editorjs',
+							byUrl: '/api/editorjs'
 						}
 					}
 				}
@@ -64,17 +63,13 @@
 	export const methods = {
 		loadContenu: (_contenu = null) => {
 			// @ts-ignore
-			if(_contenu == null || _contenu.length == 0 || !IsJsonString(contenu))
-				return
+			if (_contenu == null || _contenu.length == 0 || !IsJsonString(contenu)) return;
 
 			contenu = JSON.parse(_contenu);
 
-			if(_contenu.blocks == null || _contenu.blocks.length == 0)
-				return
-				
-			
-			if (editor != null ) {
+			if (_contenu.blocks == null || _contenu.blocks.length == 0) return;
 
+			if (editor != null) {
 				editor.isReady.then(() => {
 					// @ts-ignore
 					editor.render(contenu);
@@ -93,7 +88,7 @@
 				});
 			}
 
-			return  JSON.stringify(contenuSaved);
+			return JSON.stringify(contenuSaved);
 		}
 	};
 </script>

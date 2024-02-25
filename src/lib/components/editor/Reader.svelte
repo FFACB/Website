@@ -1,8 +1,6 @@
 <script>
-
 	export let contenu;
 	const { blocks = [] } = contenu;
-	
 </script>
 
 <div id="contenu">
@@ -20,7 +18,7 @@
 			{#if block.type == 'header' && block.data.level == 4}
 				<h4>{block.data.text}</h4>
 			{/if}
-		
+
 			{#if block.type == 'list'}
 				<ul>
 					{#each block.data.items as item}
@@ -33,7 +31,11 @@
 			{/if}
 			{#if block.type == 'image'}
 				<div class="w-full max-h-96 overflow-hidden">
-					<img class="w-full h-full bg-cover object-cover" src={block.data.file.url} alt={block.data.caption} />
+					<img
+						class="w-full h-full bg-cover object-cover"
+						src={block.data.file.url}
+						alt={block.data.caption}
+					/>
 					<blockquote>{block.data.caption}</blockquote>
 				</div>
 			{/if}

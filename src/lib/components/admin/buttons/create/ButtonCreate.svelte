@@ -1,22 +1,14 @@
 <script lang="ts">
-    import Icon from '@iconify/svelte';
-    import "./button-create.pcss"
-    export let titre : string;
-    export let link : string;
+	import Icon from '@iconify/svelte';
+	import './button-create.pcss';
+	export let titre: string;
+	export let link: string;
 </script>
 
+<a data-button="create" {...$$restProps} href={link}>
+	<div class="hidden sm:block">
+		{titre}
+	</div>
 
-
-<a data-button="create" {...$$restProps} href="{link}">
-
-    <div class="hidden sm:block">
-        {titre}
-    </div>
-
-    <Icon
-    data-button-icon="create"
-    icon="solar:add-circle-broken"
-    width="32"
-    height="32"
-    />
+	<Icon data-button-icon="create" icon="solar:add-circle-broken" width="32" height="32" />
 </a>

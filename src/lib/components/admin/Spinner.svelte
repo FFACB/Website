@@ -1,31 +1,27 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 
-	writable
+	writable;
 
-	let spinner : HTMLDivElement | null = null;
+	let spinner: HTMLDivElement | null = null;
 
-	export function toggle(value:boolean) {
-		if(!spinner)
-			return;
+	export function toggle(value: boolean) {
+		if (!spinner) return;
 
-		if(value)
-			spinner.style.display = 'flex';
-		else
-			spinner.style.display = 'none';
+		if (value) spinner.style.display = 'flex';
+		else spinner.style.display = 'none';
 	}
-
 </script>
-<div bind:this={spinner} class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-50" {...$$restProps} >
 
-	<div class="absolute left-0 top-0 w-full h-full z-10 bg-black opacity-20">
-	</div>
-	
+<div
+	bind:this={spinner}
+	class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-50"
+	{...$$restProps}
+>
+	<div class="absolute left-0 top-0 w-full h-full z-10 bg-black opacity-20"></div>
+
 	<span class="loader z-20 before:text-primary-500 after:text-secondary-500"></span>
-
 </div>
-
-
 
 <style>
 	.loader {

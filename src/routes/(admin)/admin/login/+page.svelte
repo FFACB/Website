@@ -1,18 +1,16 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-    import Icon from '@iconify/svelte';
-    import { LightSwitch } from '@skeletonlabs/skeleton';
+	import Icon from '@iconify/svelte';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import Spinner from '$lib/components/admin/Spinner.svelte';
 	import type { SvelteComponent } from 'svelte';
 
 	let errorMsg: string | null = null;
 	let spinner: SvelteComponent | null = null;
-
 </script>
 
 <div class="flex items-center justify-center h-full w-full">
-
 	<Spinner bind:this={spinner}></Spinner>
 	<section
 		class="container dark:bg-surface-700 bg-surface-50 rounded-container-token w-full md:w-1/2 lg:w-1/3 p-0 md:p-8"
@@ -25,47 +23,46 @@
 			class="flex flex-col h-full items-center w-full justify-center"
 			method="POST"
 			action="?/login"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+			use:enhance={async ({ formData, cancel }) => {
+				const { email, password } = Object.fromEntries(formData);
 
-            const { email, password } = Object.fromEntries(formData);
+				if (email == null || typeof email !== 'string' || email.length < 1) {
+					errorMsg = 'Email invalide';
+					cancel();
+					return;
+				}
 
-            if (email == null || typeof email !== 'string' || email.length < 1) {
-                errorMsg = 'Email invalide';
-                cancel();
-                return
-            }
+				if (password == null || typeof password !== 'string' || password.length < 1) {
+					errorMsg = 'Mot de passe invalide';
+					cancel();
+					return;
+				}
 
-            if (password == null || typeof password !== 'string' || password.length < 1) {
-                errorMsg = 'Mot de passe invalide';
-                cancel();
-                return
-            }
+				errorMsg = null;
+				spinner?.toggle(true);
 
-            errorMsg = null;
-			spinner?.toggle(true);
-			
-            return async ({ result, update }) => {
-                switch (result.type) {
-                    case 'success':
-                        goto('/admin/home', { invalidateAll: true });
-                        break;
-                    case 'failure':
-                        errorMsg = 'Erreur inconnue';
-                        if (result.data && typeof result.data.errorMsg === 'string') {
-                            errorMsg = result.data.errorMsg;
-                        }
-                        break;
-                    case 'error':
-                        errorMsg = 'Erreur inconnue';
-                        break;
-                    default:
-                        break;
-                }
+				return async ({ result, update }) => {
+					switch (result.type) {
+						case 'success':
+							goto('/admin/home', { invalidateAll: true });
+							break;
+						case 'failure':
+							errorMsg = 'Erreur inconnue';
+							if (result.data && typeof result.data.errorMsg === 'string') {
+								errorMsg = result.data.errorMsg;
+							}
+							break;
+						case 'error':
+							errorMsg = 'Erreur inconnue';
+							break;
+						default:
+							break;
+					}
 
-                await update();
-				spinner?.toggle(false);
-            };
-        }}
+					await update();
+					spinner?.toggle(false);
+				};
+			}}
 		>
 			<h1 class="h1 text-8xl dark:text-surface-200 text-center text-black m-8">Login</h1>
 

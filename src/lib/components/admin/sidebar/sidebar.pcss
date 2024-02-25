@@ -1,20 +1,16 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .li a{
-        @apply underline-offset-4 decoration-secondary-500;
+	.li a {
+		@apply decoration-secondary-500 underline-offset-4;
+	}
+	.li a.active {
+		@apply underline;
+	}
 
-    }
-    .li a.active{
-        @apply underline;
-    }
-
-    .ul-parent ul {
-        @apply ml-4;
-    }
-
-
+	.ul-parent ul {
+		@apply ml-4;
+	}
 }

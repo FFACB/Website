@@ -1,15 +1,13 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-   
-    [data-button="save"]{
-        @apply  btn !variant-filled-primary  mr-3  p-1 pl-4 pr-4 rounded-container-token
-    }
+	[data-button='save'] {
+		@apply !variant-filled-primary btn  mr-3  p-1 pl-4 pr-4 rounded-container-token;
+	}
 
-     [data-button-icon="save"]{
-        @apply   p-1 dark:text-tertiary-900
-    }
+	[data-button-icon='save'] {
+		@apply p-1 dark:text-tertiary-900;
+	}
 }

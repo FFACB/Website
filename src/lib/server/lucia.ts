@@ -10,10 +10,9 @@ export const lucia = new Lucia(adapter, {
 		}
 	},
 	// @ts-ignore
-	getUserAttributes: ({username}) => {
+	getUserAttributes: ({ username }) => {
 		return {
 			username
 		};
 	}
 });
-

@@ -3,10 +3,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: [
-		vitePreprocess({}),
-		
-	],
+	preprocess: [vitePreprocess({})],
 	kit: {
 		csrf: {
 			checkOrigin: false
@@ -16,12 +13,10 @@ const config = {
 			out: 'build-node', //Must be the same name as the one in dockerfile COPY --from=build /app/build-node
 			precompress: false,
 			envPrefix: '',
-			polyfill: true,
-			
+			polyfill: true
 		}),
 		prerender: {
-			crawl: true,
-			
+			crawl: true
 		}
 	}
 };

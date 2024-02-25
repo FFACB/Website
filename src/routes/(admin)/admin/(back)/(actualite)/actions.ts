@@ -7,18 +7,16 @@ import type { Actualite } from '@prisma/client';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import { logger } from '$lib/server/logs';
 
-const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`
-const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`
+const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
+const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
 };
 
 export const action_upsert = async (event: RequestEvent) => {
-
-    if (!(await authAction(event))) {
-
-		logger.error({},"Vous n'etes pas connecté","/admin/actualite");
+	if (!(await authAction(event))) {
+		logger.error({}, "Vous n'etes pas connecté", '/admin/actualite');
 
 		return fail(400, {
 			data: undefined,
@@ -26,15 +24,13 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
-
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
 	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photoFile } = data;
 	let { photo } = data;
 
-	if ( id != null && id != undefined && typeof id !== 'string') {
-
-		logger.warn({},"L'Id doit être null ou une chaine de caractère","/admin/actualite");
+	if (id != null && id != undefined && typeof id !== 'string') {
+		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -43,8 +39,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (IsEmptyString(titre)) {
-
-		logger.warn({},"Le titre ne doit pas être vide","/admin/actualite");
+		logger.warn({}, 'Le titre ne doit pas être vide', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -53,8 +48,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (IsEmptyString(redacteur)) {
-
-		logger.warn({},"Le redacteur ne doit pas être vide","/admin/actualite");
+		logger.warn({}, 'Le redacteur ne doit pas être vide', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -63,8 +57,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (IsEmptyString(tempsLecture)) {
-
-		logger.warn({},"Le temps de lecture ne doit pas être vide","/admin/actualite");
+		logger.warn({}, 'Le temps de lecture ne doit pas être vide', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -73,8 +66,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (IsEmptyString(descriptionCourte)) {
-
-		logger.warn({},"La description courte ne doit pas être vide","/admin/actualite");
+		logger.warn({}, 'La description courte ne doit pas être vide', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -83,8 +75,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (photo != null && photo != undefined && typeof photo !== 'string') {
-
-		logger.warn({},"La photo doit être null ou une chaine de caractère","/admin/actualite");
+		logger.warn({}, 'La photo doit être null ou une chaine de caractère', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -93,8 +84,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	if (contenu != null && contenu != undefined && typeof contenu !== 'string') {
-
-		logger.warn({},"Le contenu doit être null ou une chaine de caractère","/admin/actualite");
+		logger.warn({}, 'Le contenu doit être null ou une chaine de caractère', '/admin/actualite');
 
 		return fail(400, {
 			data: data,
@@ -103,8 +93,6 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	try {
-
-
 		if (IsPhoto(photoFile) && photoFile instanceof File) {
 			if (!existsSync(FULL_UPLOAD_PATH)) {
 				mkdirSync(FULL_UPLOAD_PATH);
@@ -122,19 +110,19 @@ export const action_upsert = async (event: RequestEvent) => {
 				id
 			},
 			create: {
-				titre : titre as string,
-				redacteur  : redacteur as string,
-				tempsLecture  : tempsLecture as string,
-				descriptionCourte  : descriptionCourte as string,
+				titre: titre as string,
+				redacteur: redacteur as string,
+				tempsLecture: tempsLecture as string,
+				descriptionCourte: descriptionCourte as string,
 				photo,
 				contenu
 			},
 			update: {
-                titre : titre as string,
-				redacteur  : redacteur as string,
-				tempsLecture  : tempsLecture as string,
-				descriptionCourte  : descriptionCourte as string,
-                photo,
+				titre: titre as string,
+				redacteur: redacteur as string,
+				tempsLecture: tempsLecture as string,
+				descriptionCourte: descriptionCourte as string,
+				photo,
 				contenu
 			}
 		});
@@ -144,8 +132,8 @@ export const action_upsert = async (event: RequestEvent) => {
 			errorMsg: undefined
 		};
 	} catch (err) {
-		logger.error(err,"/admin/actualite");
-		
+		logger.error(err, '/admin/actualite');
+
 		return fail(400, {
 			data: undefined,
 			errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité"
@@ -154,8 +142,7 @@ export const action_upsert = async (event: RequestEvent) => {
 };
 export const action_delete = async (event: RequestEvent) => {
 	if (!(await authAction(event))) {
-
-		logger.error({},"Vous n'etes pas connecté","/admin/actualite");
+		logger.error({}, "Vous n'etes pas connecté", '/admin/actualite');
 		return fail(400, {
 			data: undefined,
 			errorMsg: "Vous n'etes pas connecté"
@@ -167,8 +154,7 @@ export const action_delete = async (event: RequestEvent) => {
 	const { id } = data;
 
 	if (id == null || id == '') {
-
-		logger.warn({},"L'identifiant de l'actualité est requis","/admin/actualite");
+		logger.warn({}, "L'identifiant de l'actualité est requis", '/admin/actualite');
 		return fail(400, {
 			data: data,
 			errorMsg: "❌ L'identifiant de l'actualité est requis"
@@ -183,8 +169,7 @@ export const action_delete = async (event: RequestEvent) => {
 		});
 
 		if (actualiteToDelete == null) {
-
-			logger.warn({},"L'actualité n'existe pas","/admin/actualite");
+			logger.warn({}, "L'actualité n'existe pas", '/admin/actualite');
 			return fail(400, {
 				data: data,
 				errorMsg: "L'actualité n'existe pas"
@@ -202,7 +187,7 @@ export const action_delete = async (event: RequestEvent) => {
 			errorMsg: undefined
 		};
 	} catch (err) {
-		logger.error(err,"/admin/actualite");
+		logger.error(err, '/admin/actualite');
 		return fail(400, {
 			data: data,
 			errorMsg: "❌ Une erreur est survenue lors de la suppression de l'actualité"

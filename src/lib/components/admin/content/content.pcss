@@ -1,17 +1,13 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .appbar{
-        @apply  dark:bg-surface-700 bg-surface-50 p-4 rounded-container-token w-full sticky top-4 z-10;
-    }
+	.appbar {
+		@apply sticky top-4 z-10 w-full bg-surface-50 p-4 rounded-container-token dark:bg-surface-700;
+	}
 
-
-    .appcontent{
-        @apply h-full mt-4;
-    }
-
-
+	.appcontent {
+		@apply mt-4 h-full;
+	}
 }

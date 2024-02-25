@@ -1,6 +1,6 @@
 import { Lucia } from 'lucia';
 
-import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
+import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { logger } from '../../modules/server/logs';
 import { prisma } from '../../modules/server/database';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -17,28 +17,27 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 export async function initialize(environement, adminEmail, adminPassword) {
 	try {
 		const adapter = new PrismaAdapter(prisma.session, prisma.user);
-		new Lucia(adapter,{
+		new Lucia(adapter, {
 			sessionCookie: {
 				attributes: {
-					secure: environement == 'PROD',
+					secure: environement == 'PROD'
 				}
 			},
-			
+
 			// @ts-ignore
-			getUserAttributes: ({username}) => {
+			getUserAttributes: ({ username }) => {
 				return {
 					username
 				};
 			}
 		});
 
-	    await prisma.user.create({
+		await prisma.user.create({
 			data: {
 				username: adminEmail,
 				password: adminPassword
 			}
 		});
-
 	} catch (err) {
 		if (err instanceof PrismaClientKnownRequestError && err.code == 'P2002')
 			logger.debug('Super Admin existant, skipped');

@@ -4,11 +4,9 @@ export const logger = pino({
 	level: 'trace',
 	hooks: {
 		logMethod(inputArgs, method, level) {
-			switch(level){
-
-
+			switch (level) {
 				case 30:
-					jsonLogger.info(inputArgs);	
+					jsonLogger.info(inputArgs);
 					break;
 
 				case 40:
@@ -26,13 +24,12 @@ export const logger = pino({
 				default:
 					jsonLogger.info(inputArgs);
 					break;
-
 			}
 
-			return method.apply(this, inputArgs)
+			return method.apply(this, inputArgs);
 		}
 	},
-    
+
 	transport: {
 		target: 'pino-pretty',
 		options: {

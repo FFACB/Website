@@ -6,8 +6,7 @@
 	import ButtonCreate from '$lib/components/admin/buttons/create/ButtonCreate.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
-	import { goto } from '$app/navigation';
-	import { enhance, applyAction } from '$app/forms';
+	import { enhance } from '$app/forms';
 
 	const toastStore = getToastStore();
 	export let data;
@@ -68,7 +67,9 @@
 			<div class="w-full block p-2 bg-surface-100 dark:bg-surface-800 rounded-container-token">
 				<div class="h-16 w-full flex justify-between">
 					<div class="h-full">
-						<a href="/admin/actualite/{actualite.id}" class="group badge variant-outline-secondary hover:variant-outline-primary transition-all ease-out duration-300"
+						<a
+							href="/admin/actualite/{actualite.id}"
+							class="group badge variant-outline-secondary hover:variant-outline-primary transition-all ease-out duration-300"
 							><Icon
 								icon="solar:double-alt-arrow-right-bold-duotone"
 								class="text-secondary-500 transition-all ease-out duration-300 group-hover:text-primary-500"

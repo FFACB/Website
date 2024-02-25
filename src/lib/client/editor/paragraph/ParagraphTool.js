@@ -195,10 +195,6 @@ export default class Paragraph {
 		return true;
 	}
 
-	static get isReadOnlySupported() {
-		return true;
-	}
-
 	/**
 	 * Sanitizer rules
 	 */

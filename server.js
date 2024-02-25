@@ -22,7 +22,7 @@ middlewares(app, __dirname);
 app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}`, express.static(PUBLIC_UPLOADS_FOLDER_NAME));
 app.use(handler);
 
-saveLogs()
+saveLogs();
 
 server.listen(port, () => {
 	log('listening on port', port);

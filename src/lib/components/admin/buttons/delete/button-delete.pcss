@@ -1,15 +1,13 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-   
-    [data-button="delete"]{
-        @apply  btn !variant-filled-error bg-error-400  mr-3 p-1 pl-4 pr-4 rounded-container-token
-    }
+	[data-button='delete'] {
+		@apply !variant-filled-error btn mr-3  bg-error-400 p-1 pl-4 pr-4 rounded-container-token;
+	}
 
-    [data-button-icon="delete"]{
-        @apply  text-tertiary-500 p-1
-    }
+	[data-button-icon='delete'] {
+		@apply p-1 text-tertiary-500;
+	}
 }

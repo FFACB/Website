@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AppShell } from '@skeletonlabs/skeleton';
-	import { initializeStores, Toast, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import { initializeStores, Toast, Drawer } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
 	import Spinner from '$lib/components/admin/Spinner.svelte';
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
@@ -27,13 +27,12 @@
 	const { config } = data;
 
 	//Main Spinner
-	let spinner : SvelteComponent | null = null;
-	subscribeSpinner((value : boolean) => {
+	let spinner: SvelteComponent | null = null;
+	subscribeSpinner((value: boolean) => {
 		if (spinner) {
 			spinner.toggle(value);
 		}
 	});
-
 </script>
 
 <svelte:head>

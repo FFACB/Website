@@ -26,11 +26,10 @@ export function initialize() {
 			}
 
 			let initialValue = process.env[env_key] ?? default_value;
-			const parametreCree = await create(key, label,order, initialValue);
+			const parametreCree = await create(key, label, order, initialValue);
 
 			if (parametreCree == null) {
 				throw new Error(`Erreur lors de la création du parametre ${key}`);
-				
 			}
 
 			logger.debug(`Parametre ${parametreCree.key} cree avec succes`);
@@ -52,7 +51,7 @@ export function initialize() {
  * @returns {Promise<{ key: string; label: string; order:number; value: string | null; } | null>}
  */
 
-export async function create(KEY, LABEL,ORDER, VALUE) {
+export async function create(KEY, LABEL, ORDER, VALUE) {
 	let data = null;
 
 	try {
@@ -68,7 +67,6 @@ export async function create(KEY, LABEL,ORDER, VALUE) {
 			throw new Error('Parametre ORDER manquant');
 		}
 
-
 		data = await prisma.parametre.create({
 			data: {
 				key: KEY,
@@ -80,7 +78,6 @@ export async function create(KEY, LABEL,ORDER, VALUE) {
 	} catch (error) {
 		if (error instanceof Error) logger.error(`${error.message}`);
 		else logger.error(`${error}`);
-
 	} finally {
 		return data;
 	}
@@ -108,7 +105,6 @@ export async function get(KEY) {
 	} catch (error) {
 		if (error instanceof Error) logger.error(`${error.message}`);
 		else logger.error(`${error}`);
-
 	} finally {
 		return data;
 	}

@@ -14,7 +14,6 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	const Delete = () => {
-
 		return async ({
 			result,
 			update
@@ -57,7 +56,7 @@
 		{#each contacts as contact}
 			<div class="w-full block p-2 bg-surface-100 dark:bg-surface-800 rounded-container-token">
 				<div class="h-16 w-full !justify-between">
-					<a class="flex flex-row " href="/admin/contact/{contact.id}">
+					<a class="flex flex-row" href="/admin/contact/{contact.id}">
 						<span class="badge variant-outline-secondary"
 							><Icon
 								icon="solar:double-alt-arrow-right-bold-duotone"

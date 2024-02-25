@@ -1,17 +1,13 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-  
-    [data-button="website"]{
-        @apply btn variant-ghost-secondary ring-tertiary-400 p-1 pl-4 pr-4 rounded-container-token bg-surface-50
-    }
+	[data-button='website'] {
+		@apply variant-ghost-secondary btn bg-surface-50 p-1 pl-4 pr-4 ring-tertiary-400 rounded-container-token;
+	}
 
-    [data-button-icon="website"]{
-        @apply  text-tertiary-900 dark:text-white p-1 sm:!m-1 !m-0;
-    }
-
-
+	[data-button-icon='website'] {
+		@apply !m-0 p-1 text-tertiary-900 dark:text-white sm:!m-1;
+	}
 }

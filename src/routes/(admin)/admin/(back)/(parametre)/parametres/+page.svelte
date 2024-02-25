@@ -13,20 +13,10 @@
 
 	const toast: ToastSettings = { message: '', background: '' };
 
-	const UpdateParametre = async ({
-		formData,
-	}: {
-		formData: FormData;
-	}) => {
+	const UpdateParametre = async ({ formData }: { formData: FormData }) => {
 		const {} = Object.fromEntries(formData);
 
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Enregistrement effectué !';
@@ -100,7 +90,7 @@
 			<label class="label mb-4" for="light-dark">
 				<span class="ml-3 font-semibold">Theme sombre / lumineux</span>
 				<div>
-					<div class="rounded-container-token border-2 border-secondary-500 w-fit ">
+					<div class="rounded-container-token border-2 border-secondary-500 w-fit">
 						<LightSwitch />
 					</div>
 				</div>
