@@ -12,7 +12,7 @@ export const load : PageServerLoad= async (event) =>{
   const { params } = event
   const { id = '' } = params
 
-  let contact : Contact | null = await prisma.contact.findUnique({
+  const contact : Contact | null = await prisma.contact.findUnique({
     where: {
       id
     }

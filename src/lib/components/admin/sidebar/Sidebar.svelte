@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onNavigate, afterNavigate } from '$app/navigation';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { LayoutConfig, LayoutSidebarItem } from '$lib/client/utils/ambiant.js';
 	import ButtonDisconnect from '$lib/components/admin/buttons/disconnect/ButtonDisconnect.svelte';
@@ -11,7 +11,7 @@
 	let { active = '' } = $page.data;
 	let sidebarHtml = initSidebar(sidebar);
 
-	afterNavigate((url) => {
+	afterNavigate(() => {
 		active = $page.data.active;
 		sidebarHtml = initSidebar(sidebar);
 	});

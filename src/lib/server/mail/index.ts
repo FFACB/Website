@@ -2,6 +2,7 @@ import nodemailer, { type Transporter } from 'nodemailer'
 import { getParametre } from '../parametres/parametres';
 import { logger } from '$lib/server/logs';
 import { page } from '$app/stores';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 class Mailer {
     isInit: boolean;
@@ -36,16 +37,18 @@ class Mailer {
             }
             this.sender = PUBLIC_SMTP_SENDER.value;
             this.senderName = PUBLIC_SMTP_SENDER_NAME.value;
-            this.transporter = nodemailer.createTransport({
+
+            const smtpOption = new SMTPTransport({
                 host: PUBLIC_SMTP_HOST.value,
-                port: PUBLIC_SMTP_PORT.value,
+                port: parseInt(PUBLIC_SMTP_PORT.value),
                 secure:false,
                 auth: {
                     user: PUBLIC_SMTP_IDENTIFIANT.value,
                     pass: SECRET_SMTP_PASSWORD.value,
                 },
-            });
+            })
 
+            this.transporter = nodemailer.createTransport(smtpOption);
             this.isInit = true;
             
         } catch (e) {
@@ -55,7 +58,7 @@ class Mailer {
 
     }
 
-    async sendMail(to: string, subject: string, text: string, html: string): Promise<Boolean> {
+    async sendMail(to: string, subject: string, text: string, html: string): Promise<boolean> {
 
         if (!this.isInit) {
             console.error("Please initialize SMTP connection")

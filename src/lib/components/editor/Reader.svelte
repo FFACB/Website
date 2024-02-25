@@ -6,7 +6,7 @@
 </script>
 
 <div id="contenu">
-	{#each blocks as block, index}
+	{#each blocks as block}
 		<div class="block mb-4 block-{block.type}">
 			{#if block.type == 'paragraph'}
 				<p bind:innerHTML={block.data.text} contenteditable="false" />

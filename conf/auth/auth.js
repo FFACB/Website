@@ -17,12 +17,13 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 export async function initialize(environement, adminEmail, adminPassword) {
 	try {
 		const adapter = new PrismaAdapter(prisma.session, prisma.user);
-		const lucia = new Lucia(adapter,{
+		new Lucia(adapter,{
 			sessionCookie: {
 				attributes: {
 					secure: environement == 'PROD',
 				}
 			},
+			
 			// @ts-ignore
 			getUserAttributes: ({username}) => {
 				return {
@@ -31,7 +32,7 @@ export async function initialize(environement, adminEmail, adminPassword) {
 			}
 		});
 
-	    let user = await prisma.user.create({
+	    await prisma.user.create({
 			data: {
 				username: adminEmail,
 				password: adminPassword

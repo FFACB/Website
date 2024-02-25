@@ -4,7 +4,7 @@ import { logger } from '../logs/index.js';
 
 export const saveLogs = (rule = "30 0 30 * * *") => {
    
-    const job = scheduleJob(rule, function () {
+    scheduleJob(rule, function () {
         try {
             const today = new Date()
             const yesterday = new Date()

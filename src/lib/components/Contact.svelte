@@ -29,7 +29,7 @@
 				return;
 			}
 
-			await new Promise ((resolve, reject)  => {
+			await new Promise ((resolve)  => {
 
 				window.grecaptcha.ready(async () => {
 					resolve();

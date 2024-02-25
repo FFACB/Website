@@ -4,6 +4,12 @@ import type { ParmetreReponse } from '$lib/client/utils/ambiant';
 
 
 
+/**
+ * @param {string} key
+ *
+ * @example getParametre('KEY')
+ * @returns {Promise<ParmetreReponse>}
+ */
 
 const getParametre = async (key : string) : Promise<ParmetreReponse> =>{
 
@@ -32,7 +38,7 @@ const getParametre = async (key : string) : Promise<ParmetreReponse> =>{
         return {
             success:true,
             key:parametre.key,
-            value:parametre.value
+            value:parametre.value ?? ""
         }
     }
 

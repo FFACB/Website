@@ -1,8 +1,7 @@
 
 import type { PageServerLoad } from "./$types"
 import { getParametre } from '$lib/server/parametres/parametres';
-import Mailer from "$lib/server/mail";
-import { page } from '$app/stores';
+
 
 export const load : PageServerLoad= async () => {   
 

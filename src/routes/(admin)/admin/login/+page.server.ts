@@ -39,7 +39,7 @@ export const actions: Actions = {
 
 		try {
 		
-		    let user = await prisma.user.findUnique({
+		    const user = await prisma.user.findUnique({
 				where: {
 					username: email,
 					password: password

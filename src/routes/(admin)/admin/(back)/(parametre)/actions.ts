@@ -22,7 +22,7 @@ export const action_update = async (event: RequestEvent) => {
 
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
-	let { key, value } = data;
+	const { key, value } = data;
 
 
 	if (IsEmptyString(key)) {

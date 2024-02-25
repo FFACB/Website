@@ -1,5 +1,4 @@
 // initScriptPlugin.ts
-import * as adapter from '@lucia-auth/adapter-prisma';
 import { initialize } from './parametres.js'
 
 

@@ -49,7 +49,7 @@ export function initialize() {
  * @param {string} VALUE
  *
  * @example create('KEY','label description','VALUE')
- * @returns {Promise<{ key: string; label: string; order:number; value: string; } | null>}
+ * @returns {Promise<{ key: string; label: string; order:number; value: string | null; } | null>}
  */
 
 export async function create(KEY, LABEL,ORDER, VALUE) {
@@ -90,7 +90,7 @@ export async function create(KEY, LABEL,ORDER, VALUE) {
  * @param {string} KEY
  *
  * @example get('KEY')
- * @returns {Promise<{ key: string; label: string; order:number; value: string; } | null>}
+ * @returns {Promise<{ key: string; label: string; order:number; value: string | null } | null>}
  */
 
 export async function get(KEY) {

@@ -11,7 +11,7 @@
 
 	let contenu = null;
 	let editor;
-	onMount(async (_) => {
+	onMount(async () => {
 		await loadEditor();
 
 	});

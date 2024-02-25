@@ -1,11 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import sharpen from '../sharp/index.js';
-import { inspect } from 'util';
 import {logger} from'../logs/index.js'
 dotenv.config();
-
-const { BUILD_FOLDER_NAME, PUBLIC_UPLOADS_FOLDER_NAME } = process.env;
 
 const middlewares = function (app, dirname) {
 

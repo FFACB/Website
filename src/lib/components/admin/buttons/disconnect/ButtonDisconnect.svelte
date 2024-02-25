@@ -7,8 +7,8 @@
 <form
 	method="POST"
 	action="/admin/logout"
-	use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-		return async ({ result, update }) => {
+	use:enhance={ () => {
+		return  () => {
 			window.location.href = '/admin/login';
 		};
 	}}

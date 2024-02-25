@@ -1,7 +1,6 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { lucia } from '$lib/server/lucia';
 import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import type { Actualite } from '@prisma/client';
@@ -30,8 +29,8 @@ export const action_upsert = async (event: RequestEvent) => {
 
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
-	let { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photo, photoFile } = data;
-
+	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photoFile } = data;
+	let { photo } = data;
 
 	if ( id != null && id != undefined && typeof id !== 'string') {
 

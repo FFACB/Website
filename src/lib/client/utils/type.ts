@@ -29,12 +29,13 @@ export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): bool
 }
 
 export function GetExtension(fname: string) {
-	var pos = fname.lastIndexOf('.');
-	var strlen = fname.length;
+	const pos = fname.lastIndexOf('.');
+	const strlen = fname.length;
+	let extension;
 	if (pos != -1 && strlen != pos + 1) {
-		var ext = fname.split('.');
-		var len = ext.length;
-		var extension = ext[len - 1].toLowerCase();
+		const ext = fname.split('.');
+		const len = ext.length;
+		extension = ext[len - 1].toLowerCase();
 	} else {
 		extension = 'No extension found';
 	}

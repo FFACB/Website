@@ -5,7 +5,7 @@ import { getParametre } from "$lib/server/parametres/parametres";
 import { logger } from "$lib/server/logs";
 import Mailer from "$lib/server/mail";
 
-export const POST: RequestHandler = async ({ request, url }) : Promise<Response> => {
+export const POST: RequestHandler = async ({ request }) : Promise<Response> => {
 
 	try {
 
@@ -70,7 +70,7 @@ export const POST: RequestHandler = async ({ request, url }) : Promise<Response>
 		}
 
 
-		const contact = await prisma.contact.create({
+		await prisma.contact.create({
 			data:{
 				nom:nom as string,
 				prenom:prenom as string,
