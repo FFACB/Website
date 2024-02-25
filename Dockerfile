@@ -16,8 +16,8 @@ ENV PNPM_HOME=/app/.pnpm
 ENV PATH=$PNPM_HOME:$PATH
 
 RUN pnpm install
-RUN npx prisma generate
 RUN npx prisma migrate deploy
+RUN npx prisma generate
 RUN pnpm run build
 
 ENTRYPOINT node server.js
