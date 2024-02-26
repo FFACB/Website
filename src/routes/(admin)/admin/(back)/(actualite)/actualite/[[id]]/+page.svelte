@@ -10,6 +10,7 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
+	import { showPictures, hidePictures } from '$lib/client/uploads/pictures/index.js';
 	import { onMount, type SvelteComponent } from 'svelte';
 
 	const toastStore = getToastStore();
@@ -177,6 +178,20 @@
 					type="text"
 				/>
 			</label>
+
+			<label class="label mb-4" for="file">
+				<span class="ml-3 font-semibold">Galerie</span>
+				<input
+					class="input"
+					type="button"
+					id="gal"
+					name="gal"
+					on:click={() => {
+						showPictures()
+					}}
+				/>
+			</label>
+
 
 			<label class="label mb-4" for="file">
 				<span class="ml-3 font-semibold">Image</span>

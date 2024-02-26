@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
-
-	writable;
 
 	let spinner: HTMLDivElement | null = null;
 

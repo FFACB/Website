@@ -3,7 +3,9 @@
 	import { initializeStores, Toast, Drawer } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
 	import Spinner from '$lib/components/admin/Spinner.svelte';
+	import Pictures from '$lib/components/admin/uploads/pictures/Pictures.svelte';
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
+	import { subscribePictures } from '$lib/client/uploads/pictures/index.js';
 	import type { SvelteComponent } from 'svelte';
 
 	//Setup theme
@@ -33,6 +35,14 @@
 			spinner.toggle(value);
 		}
 	});
+
+	//Pictures
+	let pictures: SvelteComponent | null = null;
+	subscribePictures((value: boolean) => {
+		if (pictures) {
+			pictures.toggle(value);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -41,6 +51,7 @@
 
 <Toast position="t" padding="p-4" />
 <Spinner id="main-spinner" bind:this={spinner}></Spinner>
+<Pictures id="main-spinner" bind:this={pictures}></Pictures>
 <AppShell
 	regionPage="relative"
 	slotPageHeader=" sticky top-0 z-10"
