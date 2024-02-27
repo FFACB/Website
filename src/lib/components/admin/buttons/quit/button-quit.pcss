@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	[data-button='quit'] {
+		@apply !variant-filled-error btn  bg-error-400 p-1 rounded-container-token;
+	}
+
+	[data-button-icon='quit'] {
+		@apply p-1 text-tertiary-500 rotate-45;
+	}
+}
