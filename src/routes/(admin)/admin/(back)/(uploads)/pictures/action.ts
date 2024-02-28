@@ -8,7 +8,6 @@ import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 
 const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/`;
-const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/`;
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -27,16 +26,6 @@ export const action_create = async (event: RequestEvent) => {
 	const data = await request.formData()
     const files = data.getAll('picturesFiles')
 
-	// let { photo } = data;
-
-	// if (photo != null && photo != undefined && typeof photo !== 'string') {
-	// 	logger.warn({}, 'La photo doit être null ou une chaine de caractère', '/admin/actualite');
-
-	// 	return fail(400, {
-	// 		data: data,
-	// 		errorMsg: '❌ La photo doit être null ou une chaine de caractère'
-	// 	});
-	// }
 
 	try {
 
@@ -58,8 +47,12 @@ export const action_create = async (event: RequestEvent) => {
                     .toFormat('webp')
                     .jpeg({ quality: 90 })
                     .toFile(`${FULL_UPLOAD_PATH}${file.name}`);
-              //  photo = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
-                
+           
+				await prisma.picture.create({
+					data:{
+						path: `/${FULL_UPLOAD_PATH}${file.name}`
+					}
+				})
               }
           })
         )
@@ -74,6 +67,45 @@ export const action_create = async (event: RequestEvent) => {
 		return fail(400, {
 			data: undefined,
 			errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité"
+		});
+	}
+};
+
+
+
+export const action_findall = async (event: RequestEvent) => {
+	if (!(await authAction(event))) {
+		logger.error({}, "Vous n'etes pas connecté", '/admin/pictures');
+		return fail(400, {
+			data: undefined,
+			errorMsg: "Vous n'etes pas connecté"
+		});
+	}
+
+
+	try {
+
+	    const pictures = await prisma.picture.findMany({
+			select:{
+				id:true,
+				path:true
+			},
+			orderBy:{
+				createdAt:"desc"
+			}
+		})
+
+		return {
+			data:pictures,
+			errorMsg: undefined
+		};
+		
+	} catch (err) {
+		logger.error(err, '/admin/pictures');
+
+		return fail(400, {
+			data: undefined,
+			errorMsg: "❌ Une erreur est survenue l'obtentions des images"
 		});
 	}
 };

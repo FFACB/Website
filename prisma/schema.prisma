@@ -55,19 +55,8 @@ model Contact {
 }
 
 //BO (Galerie)
-model Photo {
+model Picture {
   id         String       @id @default(uuid())
   path       String
-  resolution Resolution[]
   createdAt  DateTime     @default(now())
-}
-
-model Resolution {
-  id      String @id @default(uuid())
-  label   String
-  width   String
-  height  String
-  quality String
-  photoId String
-  photo   Photo  @relation(fields: [photoId], references: [id])
 }

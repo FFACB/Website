@@ -18,6 +18,12 @@ declare global {
 		username: string;
 		password: string;
 	};
+
+	export type Picture = {
+		id: string;
+		path: string;
+		createdAt: Date;
+	}
 }
 
 export {};
