@@ -1,5 +1,6 @@
 import forms from '@tailwindcss/forms';
 const { skeleton } = require('@skeletonlabs/tw-plugin');
+import scrollbar from 'tailwind-scrollbar';
 import { backoffice } from './themes/back/custom';
 import { limeTheme } from './themes/back/lime';
 
@@ -19,6 +20,7 @@ module.exports = {
 
 	plugins: [
 		forms,
+		scrollbar,
 		skeleton({
 			themes: {
 				custom: [

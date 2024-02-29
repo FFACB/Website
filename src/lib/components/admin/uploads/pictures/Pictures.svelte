@@ -108,7 +108,7 @@
 
 <div
 	bind:this={picturesContainer}
-	class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-40 p-4 backdrop-blur-sm"
+	class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-40 p-4 backdrop-blur-lg backdrop-brightness-75"
 	{...$$restProps}
 >
 	<form
@@ -124,11 +124,11 @@
 	</form>
 
 	<div
-		class="w-full h-full overflow-hidden z-10 dark:bg-surface-800 bg-surface-50 rounded-container-token p-4 relative"
+		class="w-full h-full  z-10 rounded-container-token p-4 relative"
 	>
 		
 		<ButtonQuit
-			class="absolute top-4 right-4"
+			class="absolute top-0 right-0"
 			click={() => {
 				hidePictures();
 			}}
@@ -141,13 +141,13 @@
 
 
 				<div class="w-full h-auto">
-					<div class=" bg-surface-400 rounded-container-token p-4 mb-4">
-						<h2 class="h2">Sélectionnez une image</h2>
+					<div class="rounded-container-token shadow-md p-4 mb-4">
+						<h2 class="h2">Sélectionner une image</h2>
 					</div>
 				</div>
 		
 
-				<div class="h-full w-full overflow-hidden overflow-y-auto flex  flex-col justify-start shadow-2xl rounded-container-token p-4 ">
+				<div class="h-full w-full rounded-container-token shadow-md overflow-hidden overflow-y-auto flex flex-col justify-start p-4 ">
 					
 
 					<div class="flex flex-wrap justify-center">
@@ -164,7 +164,7 @@
 			</div>
 
 			<div class="w-1/3 p-4">
-				<div class="flex flex-col justify-center items-center w-full h-full">
+				<div class="flex flex-col justify-center items-center w-full h-full rounded-container-token shadow-md p-4">
 					<h2 class="h2 pb-4">Importer des images</h2>
 
 					<div class="h-full flex justify-center items-end">
@@ -172,7 +172,7 @@
 						method="POST"
 						action="/admin/pictures?/create"
 						id="create"
-						class="actualite-form p-4"
+						class="actualite-form"
 						enctype="multipart/form-data"
 						use:enhance={submitCreate}
 					>
