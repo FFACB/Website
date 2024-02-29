@@ -49,7 +49,7 @@
 	<div
 		class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"
 	>
-		<h1 class="h1 font-bold text-2xl">Liste des contacts</h1>
+		<h1 class="h1">Liste des contacts</h1>
 	</div>
 
 	<dl class="list-dl">

@@ -134,52 +134,66 @@
 			}}
 		/>
 
-		<div class="flex flex-row h-full flex-wrap p-4">
+	
+		<div class="flex flex-row flex-wrap p-4 h-full">
 
-			<h1 class="h1 font-bold text-2xl text-center w-full">Galerie Photos</h1>
+			<div class="w-2/3  max-h-full p-4  h-full flex flex-col">
 
 
-			<div class="w-4/5  max-h-full p-4 flex flex-col justify-start overflow-hidden overflow-y-auto">
-				<h2 class="h2 font-bold text-xl">Liste des images</h2>
-
-				<div class="flex flex-wrap justify-center">
-					{#if pictures != null && pictures.length > 0}
-						{#each pictures as picture}
-							<div class="rounded-lg basis-1/6 ">
-								<img class="rounded-lg" loading="lazy" src={picture.path} alt="" />
-							</div>
-						{/each}
-					{/if}
+				<div class="w-full h-auto">
+					<div class=" bg-surface-400 rounded-container-token p-4 mb-4">
+						<h2 class="h2">Sélectionnez une image</h2>
+					</div>
 				</div>
+		
+
+				<div class="h-full w-full overflow-hidden overflow-y-auto flex  flex-col justify-start shadow-2xl rounded-container-token p-4 ">
+					
+
+					<div class="flex flex-wrap justify-center">
+						{#if pictures != null && pictures.length > 0}
+							{#each pictures as picture}
+								<div class="rounded-lg basis-1/6 pr-4 pb-4">
+									<img class="rounded-lg" loading="lazy" src={picture.path} alt="" />
+								</div>
+							{/each}
+						{/if}
+					</div>
+				</div>
+				
 			</div>
 
-			<div class="w-1/5 flex flex-col justify-center items-center">
-				<h2 class="h2 font-bold text-xl">Importer des images</h2>
+			<div class="w-1/3 p-4">
+				<div class="flex flex-col justify-center items-center w-full h-full">
+					<h2 class="h2 pb-4">Importer des images</h2>
 
-				<div class="h-full flex justify-center items-end">
-					<form
-					method="POST"
-					action="/admin/pictures?/create"
-					id="create"
-					class="actualite-form p-4"
-					enctype="multipart/form-data"
-					use:enhance={submitCreate}
-				>
-					<label class="label mb-4" for="file">
-						<span class="ml-3 font-semibold">Image</span>
-						<input
-							multiple
-							class="input"
-							type="file"
-							id="file"
-							name="picturesFiles"
-							accept="image/*"
-						/>
-					</label>
-
-					<ButtonSave titre="Enregistrer" type="submit" value="Creer" form="create" />
-				</form>
+					<div class="h-full flex justify-center items-end">
+						<form
+						method="POST"
+						action="/admin/pictures?/create"
+						id="create"
+						class="actualite-form p-4"
+						enctype="multipart/form-data"
+						use:enhance={submitCreate}
+					>
+						<label class="label mb-4" for="file">
+							<span class="ml-3 font-semibold">Image</span>
+							<input
+								multiple
+								class="input"
+								type="file"
+								id="file"
+								name="picturesFiles"
+								accept="image/*"
+							/>
+						</label>
+	
+						<ButtonSave titre="Enregistrer" type="submit" value="Creer" form="create" />
+					</form>
+					</div>
 				</div>
+
+				
 				
 			</div>
 		</div>

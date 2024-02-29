@@ -13,7 +13,7 @@
 	}
 </script>
 
-<button class="lg:hidden btn-menu" on:click={drawerOpen}>
+<button class="btn-menu" on:click={drawerOpen}>
 	<Icon
 		class="text-tertiary-500 dark:text-surface-100 "
 		icon="solar:hamburger-menu-broken"

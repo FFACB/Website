@@ -153,7 +153,7 @@
 	</svelte:fragment>
 
 	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
-		<h1 class="h1 font-bold text-2xl">
+		<h1 class="h1">
 			{actualite?.id == null ? 'Créer' : 'Modifier'} l'Actualité
 		</h1>
 	</div>

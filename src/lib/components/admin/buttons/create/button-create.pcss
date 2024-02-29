@@ -1,13 +1,10 @@
-@tailwind base;
 @tailwind components;
-@tailwind utilities;
-
 @layer components {
 	[data-button='create'] {
 		@apply variant-filled-primary btn  mr-3 p-1 pl-4 pr-4 rounded-container-token;
 	}
 
 	[data-button-icon='create'] {
-		@apply !m-0  p-1 text-tertiary-500 sm:!m-1;
+		@apply p-1 text-tertiary-500 !ml-0 sm:!ml-1;
 	}
 }

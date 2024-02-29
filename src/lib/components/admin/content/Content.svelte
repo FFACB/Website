@@ -9,7 +9,7 @@
 	const { backlink } = $page.data;
 </script>
 
-<AppBar gap="gap-0" class="appbar">
+<AppBar gap="gap-0" class="appbar ">
 	<svelte:fragment slot="lead">
 		<Lead {backlink} />
 	</svelte:fragment>

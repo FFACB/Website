@@ -64,7 +64,7 @@
 	</svelte:fragment>
 
 	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
-		<h1 class="h1 font-bold text-2xl">{contact?.id == null ? 'Créer' : 'Modifier'} le Contact</h1>
+		<h1 class="h1">{contact?.id == null ? 'Créer' : 'Modifier'} le Contact</h1>
 	</div>
 
 	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
