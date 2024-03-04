@@ -1,5 +1,6 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
+import { v4 as uuid } from 'uuid';
 import { prisma } from '$lib/server/prisma';
 import { IsEmptyString, IsPhoto, IsSvg } from '$lib/client/utils/type.js';
 import { logger } from '$lib/server/logs';
@@ -35,22 +36,26 @@ export const action_create = async (event: RequestEvent) => {
 			files.map(async (file, i) => {
 				if (file && file instanceof File) {
 					const arrayBuffer = await file.arrayBuffer();
-
+					let filename = `${uuid()}`
 					if (IsPhoto(file)) {
+
+						filename += '.webp';
 						await sharp(arrayBuffer)
 							.resize(null, null, {
 								fit: 'inside', // 'inside' ensures that the image is not upscaled
 								withoutEnlargement: true // Prevent enlargement of smaller images
 							})
 							.toFormat('webp')
-							.toFile(`${FULL_UPLOAD_PATH}${file.name}`);
+							.toFile(`${FULL_UPLOAD_PATH}${filename}`);
 					} else if (IsSvg(file)) {
-						writeFileSync(`${FULL_UPLOAD_PATH}${file.name}`, Buffer.from(arrayBuffer));
+
+						filename += '.svg';
+						writeFileSync(`${FULL_UPLOAD_PATH}${filename}`, Buffer.from(arrayBuffer));
 					}
 
 					const picture = await prisma.picture.create({
 						data: {
-							path: `/${FULL_UPLOAD_PATH}${file.name}`
+							path: `/${FULL_UPLOAD_PATH}${filename}`
 						}
 					});
 

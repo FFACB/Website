@@ -2,8 +2,9 @@
 	import { enhance, applyAction } from '$app/forms';
 	import ButtonQuit from '$lib/components/admin/buttons/quit/ButtonQuit.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
+	import ButtonRefresh from '$lib/components/admin/buttons/refresh/ButtonRefresh.svelte';
 	import { hidePictures } from '$lib/client/uploads/pictures';
-
+	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
@@ -18,9 +19,6 @@
 
 	let pictures: Picture[]  = [];
 
-	onMount(() => {
-		refreshButton?.click();
-	});
 
 	export function toggle(value: boolean) {
 		if (value) onOpen();
@@ -31,7 +29,7 @@
 		if (!picturesContainer) return;
 		picturesContainer.style.display = 'flex';
 
-		if (pictures == null) {
+		if (pictures.length === 0) {
 			refreshButton?.click();
 		}
 	}
@@ -48,6 +46,8 @@
 		formData: FormData;
 		cancel: () => void;
 	}) => {
+
+		showSpinner()
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
@@ -72,10 +72,12 @@
 			}
 
 			await applyAction(result);
+			hideSpinner()
 		};
 	};
 
 	const submitCreate = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
+		showSpinner();
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
@@ -105,6 +107,7 @@
 			}
 
 			await applyAction(result);
+			hideSpinner()
 		};
 	};
 
@@ -175,8 +178,13 @@
 		<div class="flex flex-row flex-wrap p-4 h-full">
 			<div class="w-full max-h-full p-4 h-full flex flex-col">
 				<div class="w-full h-auto">
-					<div class="rounded-container-token shadow-md p-4 mb-4">
+					<div class="rounded-container-token shadow-md p-4 mb-4 flex flex-row justify-between">
 						<h2 class="h2">Sélectionner une image</h2>
+						<ButtonRefresh
+							class=""
+							type="submit"
+							value="Refresh"
+							form="findall"></ButtonRefresh>
 					</div>
 				</div>
 
