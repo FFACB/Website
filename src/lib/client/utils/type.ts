@@ -15,7 +15,9 @@ export function IsEmptyString(str: string | null | undefined | FormDataEntryValu
 	}
 }
 
-export const PhotoExtensions = ['jpg', 'jpeg', 'png', 'webp', 'bmp', 'avif', 'svg'];
+export const PhotoExtensions = [
+	'heic', 'heif', 'avif', 'jpeg', 'jpg', 'jpe', 'tile', 'dz', 'png', 'raw', 'tiff', 'tif', 'webp', 'gif', 'jp2', 'jpx', 'j2k', 'j2c', 'jxl'
+];
 
 export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
@@ -23,6 +25,17 @@ export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): bool
 
 		const fileExtension = GetExtension(obj.name);
 		return PhotoExtensions.includes(fileExtension);
+	} catch (e) {
+		return false;
+	}
+}
+
+export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolean {
+	try {
+		if (obj == null || typeof obj !== 'object' || !(obj instanceof File)) return false;
+
+		const fileExtension = GetExtension(obj.name);
+		return fileExtension.includes('svg');
 	} catch (e) {
 		return false;
 	}

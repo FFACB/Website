@@ -8,14 +8,15 @@
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
+	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { message: '', background: '' };
+	const toast: ToastSettings = { timeout:1000, message: '', background: '' };
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let picturesContainer: HTMLDivElement | null = null;
 
-	let pictures: Picture[] | null = null;
+	let pictures: Picture[]  = [];
 
 	onMount(() => {
 		refreshButton?.click();
@@ -81,7 +82,9 @@
 					toast.message = 'Enregistrement effectué !';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
+					
 					if (typeof result.data !== 'undefined') {
+						pictures = [...result.data.data,...pictures];
 					}
 
 					break;
@@ -104,6 +107,44 @@
 			await applyAction(result);
 		};
 	};
+
+
+	const submitDelete = () => {
+		return async ({
+			result,
+			update
+		}: {
+			result: ActionResult;
+			update: (data?: any) => Promise<void>;
+		}) => {
+			switch (result.type) {
+				case 'success':
+					toast.message = 'Image supprimé!';
+					toast.background = 'variant-filled-success';
+					toastStore.trigger(toast);
+					
+					pictures = pictures.filter(picture => picture.id !== result.data?.data);
+					break;
+				case 'failure':
+					toast.message = 'Erreur lors de la suppression';
+					toast.background = 'variant-filled-error';
+					toastStore.trigger(toast);
+
+					break;
+
+				case 'error':
+					toast.message = 'Erreur lors de la suppression';
+					toast.background = 'variant-filled-error';
+					toastStore.trigger(toast);
+
+					break;
+				default:
+					break;
+			}
+			await update();
+
+		};
+	};
 </script>
 
 <div
@@ -123,10 +164,7 @@
 		></button>
 	</form>
 
-	<div
-		class="w-full h-full  z-10 rounded-container-token p-4 relative"
-	>
-		
+	<div class="w-full h-full z-10 rounded-container-token p-4 relative">
 		<ButtonQuit
 			class="absolute top-0 right-0"
 			click={() => {
@@ -134,67 +172,70 @@
 			}}
 		/>
 
-	
 		<div class="flex flex-row flex-wrap p-4 h-full">
-
-			<div class="w-2/3  max-h-full p-4  h-full flex flex-col">
-
-
+			<div class="w-full max-h-full p-4 h-full flex flex-col">
 				<div class="w-full h-auto">
 					<div class="rounded-container-token shadow-md p-4 mb-4">
 						<h2 class="h2">Sélectionner une image</h2>
 					</div>
 				</div>
-		
 
-				<div class="h-full w-full rounded-container-token shadow-md overflow-hidden overflow-y-auto flex flex-col justify-start p-4 ">
-					
-
+				<div
+					class="h-full w-full rounded-container-token shadow-md overflow-hidden overflow-y-auto flex flex-col justify-start p-4"
+				>
 					<div class="flex flex-wrap justify-center">
 						{#if pictures != null && pictures.length > 0}
-							{#each pictures as picture}
-								<div class="rounded-lg basis-1/6 pr-4 pb-4">
-									<img class="rounded-lg" loading="lazy" src={picture.path} alt="" />
+							{#each pictures as picture,index}
+								<div class="group rounded-lg  lg:basis-1/4 md:basis-1/3 sm:basis-1/2 basis-full h-96 pr-4 pb-4 relative">
+
+									<ButtonDelete
+										class="!hidden group-hover:!flex absolute top-4 right-4" type="submit" value="delete-{index}" form="delete-{index}"
+									/>
+
+									<div class="hidden">
+										<form action="/admin/pictures?/delete" method="POST" id="delete-{index}" use:enhance={submitDelete}>
+											<input type="hidden" name="id" value={picture.id} />
+										</form>
+									</div>
+
+									<img class="rounded-lg w-full h-full object-cover" loading="lazy" src="{picture.path}?width=300&height=300" alt="" />
 								</div>
 							{/each}
 						{/if}
 					</div>
 				</div>
-				
-			</div>
 
-			<div class="w-1/3 p-4">
-				<div class="flex flex-col justify-center items-center w-full h-full rounded-container-token shadow-md p-4">
-					<h2 class="h2 pb-4">Importer des images</h2>
-
-					<div class="h-full flex justify-center items-end">
-						<form
-						method="POST"
-						action="/admin/pictures?/create"
-						id="create"
-						class="actualite-form"
-						enctype="multipart/form-data"
-						use:enhance={submitCreate}
+				<div class="w-full">
+					<div
+						class="flex flex-col justify-center items-center w-full h-full rounded-container-token shadow-md p-4"
 					>
-						<label class="label mb-4" for="file">
-							<span class="ml-3 font-semibold">Image</span>
-							<input
-								multiple
-								class="input"
-								type="file"
-								id="file"
-								name="picturesFiles"
-								accept="image/*"
-							/>
-						</label>
-	
-						<ButtonSave titre="Enregistrer" type="submit" value="Creer" form="create" />
-					</form>
+						
+						<div class="h-full flex justify-center items-end w-full">
+							<form
+								method="POST"
+								action="/admin/pictures?/create"
+								id="create"
+								class="actualite-form w-full"
+								enctype="multipart/form-data"
+								use:enhance={submitCreate}
+							>
+								<label class="label mb-4" for="file">
+									<span class="ml-3 font-semibold">Importer de nouvelles images</span>
+									<input
+										multiple
+										class="input"
+										type="file"
+										id="file"
+										name="picturesFiles"
+										accept="image/*"
+									/>
+								</label>
+
+								<ButtonSave titre="Importer" type="submit" value="Creer" form="create" />
+							</form>
+						</div>
 					</div>
 				</div>
-
-				
-				
 			</div>
 		</div>
 	</div>

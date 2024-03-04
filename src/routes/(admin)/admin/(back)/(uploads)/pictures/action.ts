@@ -1,9 +1,9 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
+import { IsEmptyString, IsPhoto, IsSvg } from '$lib/client/utils/type.js';
 import { logger } from '$lib/server/logs';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync , writeFileSync,unlinkSync} from 'fs';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 
@@ -23,55 +23,55 @@ export const action_create = async (event: RequestEvent) => {
 	}
 
 	const { request } = event;
-	const data = await request.formData()
-    const files = data.getAll('picturesFiles')
-
+	const data = await request.formData();
+	const files = data.getAll('picturesFiles');
 
 	try {
+		if (!existsSync(FULL_UPLOAD_PATH)) {
+			mkdirSync(FULL_UPLOAD_PATH);
+		}
 
-        if (!existsSync(FULL_UPLOAD_PATH)) {
-            mkdirSync(FULL_UPLOAD_PATH);
-        }
+		const pictures = await Promise.all(
+			files.map(async (file, i) => {
+				if (file && file instanceof File) {
+					const arrayBuffer = await file.arrayBuffer();
 
-
-        await Promise.all(
-            files.map(async (file,i) => {
-    
-              if (file && file instanceof File && IsPhoto(file)) {
-                  
-      
-                const arrayBuffer = await file.arrayBuffer();
-
-                await sharp(arrayBuffer)
-                    .resize(500, 500)
-                    .toFormat('webp')
-                    .jpeg({ quality: 90 })
-                    .toFile(`${FULL_UPLOAD_PATH}${file.name}`);
-           
-				await prisma.picture.create({
-					data:{
-						path: `/${FULL_UPLOAD_PATH}${file.name}`
+					if (IsPhoto(file)) {
+						await sharp(arrayBuffer)
+							.resize(null, null, {
+								fit: 'inside', // 'inside' ensures that the image is not upscaled
+								withoutEnlargement: true // Prevent enlargement of smaller images
+							})
+							.toFormat('webp')
+							.toFile(`${FULL_UPLOAD_PATH}${file.name}`);
+					} else if (IsSvg(file)) {
+						writeFileSync(`${FULL_UPLOAD_PATH}${file.name}`, Buffer.from(arrayBuffer));
 					}
-				})
-              }
-          })
-        )
-	
+
+					const picture = await prisma.picture.create({
+						data: {
+							path: `/${FULL_UPLOAD_PATH}${file.name}`
+						}
+					});
+
+					return picture;
+				}
+			})
+		);
+
 		return {
-			data: {},
+			data: pictures,
 			errorMsg: undefined
 		};
 	} catch (err) {
-		logger.error(err, '/admin/actualite');
+		logger.error(err, '/admin/pictures');
 
 		return fail(400, {
 			data: undefined,
-			errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'actualité"
+			errorMsg: "❌ Une erreur est survenue lors de l'enregistrement de l'image"
 		});
 	}
 };
-
-
 
 export const action_findall = async (event: RequestEvent) => {
 	if (!(await authAction(event))) {
@@ -82,24 +82,21 @@ export const action_findall = async (event: RequestEvent) => {
 		});
 	}
 
-
 	try {
-
-	    const pictures = await prisma.picture.findMany({
-			select:{
-				id:true,
-				path:true
+		const pictures = await prisma.picture.findMany({
+			select: {
+				id: true,
+				path: true
 			},
-			orderBy:{
-				createdAt:"desc"
+			orderBy: {
+				createdAt: 'desc'
 			}
-		})
+		});
 
 		return {
-			data:pictures,
+			data: pictures,
 			errorMsg: undefined
 		};
-		
 	} catch (err) {
 		logger.error(err, '/admin/pictures');
 
@@ -108,4 +105,62 @@ export const action_findall = async (event: RequestEvent) => {
 			errorMsg: "❌ Une erreur est survenue l'obtentions des images"
 		});
 	}
+};
+
+
+
+export const action_delete = async (event: RequestEvent) => {
+	if (!(await authAction(event))) {
+		logger.error({}, "Vous n'etes pas connecté", '/admin/pictures');
+		return fail(400, {
+			data: undefined,
+			errorMsg: "Vous n'etes pas connecté"
+		});
+	}
+	
+	const { request } = event;
+	const data = await request.formData();
+	const {id} = Object.fromEntries(data);
+
+	const picture = await prisma.picture.findUnique({
+		where:{
+			id:id as string
+		}
+	});
+
+	if(picture == null){
+		return fail(400, {
+			data: undefined,
+			errorMsg: "❌ L'image n'existe pas"
+		});
+	}
+	
+
+	try {
+		unlinkSync(`${picture.path.slice(1)}`)
+	} catch (err) {
+		logger.error(err, '/admin/pictures?/delete');
+
+	}
+
+	
+	try {
+		await prisma.picture.delete({
+			where:{
+				id:id as string
+			}
+		});
+	} catch (err) {
+		logger.error(err, '/admin/pictures?/delete');
+
+		return fail(400, {
+			data: undefined,
+			errorMsg: "❌ Une erreur est survenue lors de la suppression virtuelle de l'image"
+		});
+	}
+
+	return {
+		data: id,
+		errorMsg: undefined
+	};
 };
