@@ -1,15 +1,28 @@
 import { writable, type Subscriber } from 'svelte/store';
 
-const pictures = writable(false);
+const picturesPanel = writable(false);
 
-export function subscribePictures(callback: Subscriber<boolean>) {
-	return pictures.subscribe(callback);
+
+export function subscribePicturesPanel(callback: Subscriber<boolean>) {
+	return picturesPanel.subscribe(callback);
 }
 
 export function showPictures() {
-	pictures.set(true);
+	picturesPanel.set(true);
 }
 
 export function hidePictures() {
-	pictures.set(false);
+	picturesPanel.set(false);
+}
+
+
+const pictureId = writable<null | Picture>(null);
+
+export function subscribePicturesId(callback: Subscriber<null | Picture>) {
+	return pictureId.subscribe(callback);
+}
+
+
+export function setPictureId(picture: Picture) {
+	pictureId.set(picture);
 }

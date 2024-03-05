@@ -5,7 +5,7 @@
 	import Spinner from '$lib/components/admin/Spinner.svelte';
 	import Pictures from '$lib/components/admin/uploads/pictures/Pictures.svelte';
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
-	import { subscribePictures } from '$lib/client/uploads/pictures/index.js';
+	import { subscribePicturesPanel } from '$lib/client/uploads/pictures/index.js';
 	import type { SvelteComponent } from 'svelte';
 
 	//Setup theme
@@ -38,7 +38,7 @@
 
 	//Pictures
 	let pictures: SvelteComponent | null = null;
-	subscribePictures((value: boolean) => {
+	subscribePicturesPanel((value: boolean) => {
 		if (pictures) {
 			pictures.toggle(value);
 		}

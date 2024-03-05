@@ -2,9 +2,10 @@
 	import Icon from '@iconify/svelte';
 	import './button-save.pcss';
 	export let titre: string;
+	export let click = () => {};
 </script>
 
-<button data-button="save" {...$$restProps}>
+<button data-button="save" on:click={()=>{click()}} {...$$restProps}>
 	<div>
 		{titre}
 	</div>

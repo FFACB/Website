@@ -2,8 +2,9 @@
 	import { enhance, applyAction } from '$app/forms';
 	import ButtonQuit from '$lib/components/admin/buttons/quit/ButtonQuit.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
+	import ButtonSelect from '$lib/components/admin/buttons/select/ButtonSelect.svelte';
 	import ButtonRefresh from '$lib/components/admin/buttons/refresh/ButtonRefresh.svelte';
-	import { hidePictures } from '$lib/client/uploads/pictures';
+	import { hidePictures, setPictureId } from '$lib/client/uploads/pictures';
 	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
@@ -205,6 +206,14 @@
 											<input type="hidden" name="id" value={picture.id} />
 										</form>
 									</div>
+
+
+									<ButtonSelect click={() => {
+										setPictureId(picture)
+										hidePictures()
+									}}
+										class="!hidden group-hover:!flex absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+									/>
 
 									<img class="rounded-lg w-full h-full object-cover" loading="lazy" src="{picture.path}?width=300&height=300" alt="" />
 								</div>

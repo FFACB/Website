@@ -26,8 +26,7 @@ export const action_upsert = async (event: RequestEvent) => {
 
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
-	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, photoFile } = data;
-	let { photo } = data;
+	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, pictureId } = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
@@ -74,14 +73,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
-	if (photo != null && photo != undefined && typeof photo !== 'string') {
-		logger.warn({}, 'La photo doit être null ou une chaine de caractère', '/admin/actualite');
-
-		return fail(400, {
-			data: data,
-			errorMsg: '❌ La photo doit être null ou une chaine de caractère'
-		});
-	}
 
 	if (contenu != null && contenu != undefined && typeof contenu !== 'string') {
 		logger.warn({}, 'Le contenu doit être null ou une chaine de caractère', '/admin/actualite');
@@ -93,18 +84,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	try {
-		if (IsPhoto(photoFile) && photoFile instanceof File) {
-			if (!existsSync(FULL_UPLOAD_PATH)) {
-				mkdirSync(FULL_UPLOAD_PATH);
-			}
-
-			const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`;
-			const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
-
-			writeFileSync(fsPhotoPath, Buffer.from(await photoFile.arrayBuffer()));
-			photo = dbPhotoPath;
-		}
-
+	
 		const actualite = await prisma.actualite.upsert({
 			where: {
 				id
@@ -114,7 +94,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				photo,
+				pictureId: pictureId as string,
 				contenu
 			},
 			update: {
@@ -122,7 +102,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				photo,
+				pictureId: pictureId as string,
 				contenu
 			}
 		});

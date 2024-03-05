@@ -14,10 +14,20 @@ export const load: PageServerLoad = async (event) => {
 		}
 	});
 
+	let picture = null;
+	if (actualite?.pictureId) {
+		picture = await prisma.picture.findUnique({
+			where: {
+				id: actualite.pictureId
+			}
+		});
+	}
+
 	return {
 		backlink: '/admin/actualites',
 		active: 'actualites',
-		actualite: actualite as Actualite | null
+		actualite: actualite as Actualite | null,
+		picture: picture as Picture | null
 	};
 };
 

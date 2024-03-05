@@ -10,19 +10,26 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
-	import { showPictures, hidePictures } from '$lib/client/uploads/pictures/index.js';
+	import { showPictures, hidePictures , subscribePicturesId} from '$lib/client/uploads/pictures/index.js';
 	import { onMount, type SvelteComponent } from 'svelte';
 
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
-	let { actualite } = data;
-
+	let { actualite, picture} = data;
+	
 	let writer: SvelteComponent | null = null;
 
 	onMount(() => {
 		writer?.methods.loadContenu(actualite?.contenu ?? '');
+	});
+
+	subscribePicturesId((value) => {
+		if(value != null){
+			picture = value;
+			
+		}
 	});
 
 	const submitCreateActualite = async ({
@@ -39,6 +46,7 @@
 			toast.background = 'variant-filled-error';
 			toastStore.trigger(toast);
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(redacteur)) {
@@ -46,6 +54,7 @@
 			toast.background = 'variant-filled-error';
 			toastStore.trigger(toast);
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(tempsLecture)) {
@@ -53,6 +62,7 @@
 			toast.background = 'variant-filled-error';
 			toastStore.trigger(toast);
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(descriptionCourte)) {
@@ -60,12 +70,14 @@
 			toast.background = 'variant-filled-error';
 			toastStore.trigger(toast);
 			cancel();
+			return;
 		}
 
 		formData.append('contenu', (await writer?.methods.saveContenu()) ?? '');
 
 		showSpinner();
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
+		
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Enregistrement effectué !';
@@ -95,8 +107,9 @@
 				default:
 					break;
 			}
-			hideSpinner();
+			
 			await applyAction(result);
+			hideSpinner();
 		};
 	};
 
@@ -193,23 +206,12 @@
 			</label>
 
 
-			<label class="label mb-4" for="file">
-				<span class="ml-3 font-semibold">Image</span>
-				<input
-					class="input"
-					type="file"
-					id="file"
-					name="photoFile"
-					accept={['.jpg', '.jpeg', '.png', '.webp'].join(',')}
-				/>
-			</label>
-
-			{#if actualite?.photo != null && actualite.photo.length != 0}
+			{#if picture != null }
 				<div class="mt-2 mb-4">
 					<img
 						class="card h-80 w-full bg-cover object-cover"
 						alt="actualite"
-						src={actualite.photo}
+						src={picture.path}
 					/>
 				</div>
 			{/if}
@@ -260,7 +262,7 @@
 			</label>
 
 			<input type="hidden" name="id" value={actualite?.id ?? null} />
-			<input type="hidden" name="photo" value={actualite?.photo ?? ''} />
+			<input type="hidden" name="pictureId" value={picture?.id ?? ''} />
 		</form>
 	</div>
 </Content>
