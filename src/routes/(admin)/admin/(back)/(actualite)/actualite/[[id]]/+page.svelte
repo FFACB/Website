@@ -10,25 +10,38 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
-	import { showPictures, hidePictures , subscribePicturesId} from '$lib/client/uploads/pictures/index.js';
+	import { showPictures, hidePictures , subscribePicturesAction} from '$lib/client/uploads/pictures/index.js';
+	import { actions} from '$lib/client/uploads/pictures/actions.js';
 	import { onMount, type SvelteComponent } from 'svelte';
+	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
+
 
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
 	let { actualite, picture} = data;
-	
+	$: actualite = actualite ?? null;
+	$: picture_o = picture ?? null;
+
 	let writer: SvelteComponent | null = null;
 
 	onMount(() => {
 		writer?.methods.loadContenu(actualite?.contenu ?? '');
 	});
 
-	subscribePicturesId((value) => {
-		if(value != null){
-			picture = value;
-			
+	subscribePicturesAction((event) => {
+		const { type } = event;
+		
+		switch(type){
+			case actions.PICKED_PICTURE:
+				picture = event.picture;
+				break;
+			case actions.DELETE_PICTURE:
+				if(event.picture && event.picture.id == picture?.id){
+					picture = null;
+				}
+				break;
 		}
 	});
 
@@ -192,29 +205,7 @@
 				/>
 			</label>
 
-			<label class="label mb-4" for="file">
-				<span class="ml-3 font-semibold">Galerie</span>
-				<input
-					class="input"
-					type="button"
-					id="gal"
-					name="gal"
-					on:click={() => {
-						showPictures()
-					}}
-				/>
-			</label>
-
-
-			{#if picture != null }
-				<div class="mt-2 mb-4">
-					<img
-						class="card h-80 w-full bg-cover object-cover"
-						alt="actualite"
-						src={picture.path}
-					/>
-				</div>
-			{/if}
+			<PicturePicker {picture} />
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>

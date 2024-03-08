@@ -4,22 +4,22 @@
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonSelect from '$lib/components/admin/buttons/select/ButtonSelect.svelte';
 	import ButtonRefresh from '$lib/components/admin/buttons/refresh/ButtonRefresh.svelte';
-	import { hidePictures, setPictureId } from '$lib/client/uploads/pictures';
+	import { hidePictures, triggerPictureAction } from '$lib/client/uploads/pictures';
 	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
+	import { actions } from '$lib/client/uploads/pictures/actions';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { timeout:1000, message: '', background: '' };
+	const toast: ToastSettings = { timeout: 1000, message: '', background: '' };
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let picturesContainer: HTMLDivElement | null = null;
 
-	let pictures: Picture[]  = [];
-
+	let pictures: Picture[] = [];
 
 	export function toggle(value: boolean) {
 		if (value) onOpen();
@@ -40,15 +40,8 @@
 		picturesContainer.style.display = 'none';
 	}
 
-	const submitFindall = async ({
-		formData,
-		cancel
-	}: {
-		formData: FormData;
-		cancel: () => void;
-	}) => {
-
-		showSpinner()
+	const submitFindall = async () => {
+		showSpinner();
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
@@ -73,7 +66,7 @@
 			}
 
 			await applyAction(result);
-			hideSpinner()
+			hideSpinner();
 		};
 	};
 
@@ -85,9 +78,9 @@
 					toast.message = 'Enregistrement effectué !';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
-					
+
 					if (typeof result.data !== 'undefined') {
-						pictures = [...result.data.data,...pictures];
+						pictures = [...result.data.data, ...pictures];
 					}
 
 					break;
@@ -108,12 +101,19 @@
 			}
 
 			await applyAction(result);
-			hideSpinner()
+			hideSpinner();
 		};
 	};
 
+	const submitDelete = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
 
-	const submitDelete = () => {
+		showSpinner();
+
+		const { id } = Object.fromEntries(formData);
+		let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
+		if (pictureToDelete.length > 0)
+			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0]);
+
 		return async ({
 			result,
 			update
@@ -126,8 +126,9 @@
 					toast.message = 'Image supprimé!';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
-					
-					pictures = pictures.filter(picture => picture.id !== result.data?.data);
+
+					pictures = pictures.filter((picture) => picture.id !== result.data?.data);
+
 					break;
 				case 'failure':
 					toast.message = 'Erreur lors de la suppression';
@@ -146,7 +147,7 @@
 					break;
 			}
 			await update();
-
+			hideSpinner();
 		};
 	};
 </script>
@@ -181,11 +182,7 @@
 				<div class="w-full h-auto">
 					<div class="rounded-container-token shadow-md p-4 mb-4 flex flex-row justify-between">
 						<h2 class="h2">Sélectionner une image</h2>
-						<ButtonRefresh
-							class=""
-							type="submit"
-							value="Refresh"
-							form="findall"></ButtonRefresh>
+						<ButtonRefresh class="" type="submit" value="Refresh" form="findall"></ButtonRefresh>
 					</div>
 				</div>
 
@@ -194,28 +191,42 @@
 				>
 					<div class="flex flex-wrap justify-center">
 						{#if pictures != null && pictures.length > 0}
-							{#each pictures as picture,index}
-								<div class="group rounded-lg  lg:basis-1/4 md:basis-1/3 sm:basis-1/2 basis-full h-96 pr-4 pb-4 relative">
-
+							{#each pictures as picture, index}
+								<div
+									class="group rounded-lg lg:basis-1/4 md:basis-1/3 sm:basis-1/2 basis-full h-96 pr-4 pb-4 relative"
+								>
 									<ButtonDelete
-										class="!hidden group-hover:!flex absolute top-4 right-4" type="submit" value="delete-{index}" form="delete-{index}"
+										class="!hidden group-hover:!flex absolute top-4 right-4"
+										type="submit"
+										value="delete-{index}"
+										form="delete-{index}"
 									/>
 
 									<div class="hidden">
-										<form action="/admin/pictures?/delete" method="POST" id="delete-{index}" use:enhance={submitDelete}>
+										<form
+											action="/admin/pictures?/delete"
+											method="POST"
+											id="delete-{index}"
+											use:enhance={submitDelete}
+										>
 											<input type="hidden" name="id" value={picture.id} />
 										</form>
 									</div>
 
-
-									<ButtonSelect click={() => {
-										setPictureId(picture)
-										hidePictures()
-									}}
-										class="!hidden group-hover:!flex absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+									<ButtonSelect
+										click={() => {
+											triggerPictureAction(actions.PICKED_PICTURE, picture);
+											hidePictures();
+										}}
+										class="!hidden group-hover:!flex absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 									/>
 
-									<img class="rounded-lg w-full h-full object-cover" loading="lazy" src="{picture.path}?width=300&height=300" alt="" />
+									<img
+										class="rounded-lg w-full h-full object-cover"
+										loading="lazy"
+										src="{picture.path}?width=300&height=300"
+										alt=""
+									/>
 								</div>
 							{/each}
 						{/if}
@@ -226,7 +237,6 @@
 					<div
 						class="flex flex-col justify-center items-center w-full h-full rounded-container-token shadow-md p-4"
 					>
-						
 						<div class="h-full flex justify-center items-end w-full">
 							<form
 								method="POST"

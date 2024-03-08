@@ -1,4 +1,5 @@
 import { writable, type Subscriber } from 'svelte/store';
+import { actions, type PictureAction } from './actions';
 
 const picturesPanel = writable(false);
 
@@ -16,13 +17,12 @@ export function hidePictures() {
 }
 
 
-const pictureId = writable<null | Picture>(null);
+const pictureActionStore = writable<PictureAction>({type: actions.DEFAULT, picture: null});
 
-export function subscribePicturesId(callback: Subscriber<null | Picture>) {
-	return pictureId.subscribe(callback);
+export function subscribePicturesAction(callback: Subscriber<PictureAction>) {
+	return pictureActionStore.subscribe(callback);
 }
 
-
-export function setPictureId(picture: Picture) {
-	pictureId.set(picture);
+export function triggerPictureAction(type:string, picture: Picture) {
+	pictureActionStore.set({type, picture});
 }
