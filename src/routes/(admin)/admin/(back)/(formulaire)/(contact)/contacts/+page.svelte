@@ -26,19 +26,26 @@
 					toast.message = 'Contact supprimé!';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
+					
+					if(result.data != null && result.data.id != null){
+						const id : string = result.data.id;
+						contacts = contacts.filter((contacts) => contacts.id != id);
+					}
 					await update(result);
 					break;
 				case 'failure':
 					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-danger';
+					toast.background = 'variant-filled-error';
 					toastStore.trigger(toast);
 					await update();
 					break;
 				default:
 					break;
+				
 			}
 
-			window.location.reload();
+		
+
 		};
 	};
 </script>

@@ -28,25 +28,29 @@
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
 
+					if(result.data != null && result.data.id != null){
+						const id : string = result.data.id;
+						actualites = actualites.filter((actualite) => actualite.id != id);
+					}
+					await update(result);
 					break;
 				case 'failure':
 					toast.message = 'Erreur lors de la suppression';
 					toast.background = 'variant-filled-error';
 					toastStore.trigger(toast);
-
+					await update();
 					break;
 
 				case 'error':
 					toast.message = 'Erreur lors de la suppression';
 					toast.background = 'variant-filled-error';
 					toastStore.trigger(toast);
-
+					await update(result);
 					break;
 				default:
 					break;
 			}
-			await update();
-			window.location.reload();
+		
 		};
 	};
 </script>

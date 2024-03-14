@@ -51,7 +51,7 @@ export const action_delete = async (event: RequestEvent) => {
 		});
 
 		return {
-			data: undefined,
+			id,
 			errorMsg: undefined
 		};
 	} catch (err) {
