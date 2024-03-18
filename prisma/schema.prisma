@@ -57,8 +57,9 @@ model Contact {
 model Picture {
   id        String   @id @default(uuid())
   path      String
+  filename  String
+  extension String
   createdAt DateTime @default(now())
-
   //Relations
   relations PictureRelation[]
 }

@@ -260,8 +260,8 @@
 										accept="image/*"
 									/>
 								</label>
-
-								<ButtonSave titre="Importer" type="submit" value="Creer" form="create" />
+<!-- 
+								<ButtonSave titre="Importer" type="submit" value="Creer" form="create" /> -->
 							</form>
 						</div>
 					</div>

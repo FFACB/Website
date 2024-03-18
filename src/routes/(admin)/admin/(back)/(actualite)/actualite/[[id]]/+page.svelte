@@ -38,6 +38,7 @@
 	}) => {
 		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
+		
 		if (IsEmptyString(titre)) {
 			toast.message = '❌ Le titre ne doit pas être vide';
 			toast.background = 'variant-filled-error';
@@ -189,7 +190,7 @@
 				/>
 			</label>
 
-			<PicturePicker {picture} />
+			<PicturePicker {picture} pictureName="Photo" />
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>

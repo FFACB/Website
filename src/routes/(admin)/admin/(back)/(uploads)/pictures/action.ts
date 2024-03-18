@@ -37,25 +37,28 @@ export const action_create = async (event: RequestEvent) => {
 				if (file && file instanceof File) {
 					const arrayBuffer = await file.arrayBuffer();
 					let filename = `${uuid()}`
+					let extension = ""
 					if (IsPhoto(file)) {
 
-						filename += '.webp';
+						extension = '.webp';
 						await sharp(arrayBuffer)
 							.resize(null, null, {
 								fit: 'inside', // 'inside' ensures that the image is not upscaled
 								withoutEnlargement: true // Prevent enlargement of smaller images
 							})
 							.toFormat('webp')
-							.toFile(`${FULL_UPLOAD_PATH}${filename}`);
+							.toFile(`${FULL_UPLOAD_PATH}${filename}${extension}`);
 					} else if (IsSvg(file)) {
 
-						filename += '.svg';
-						writeFileSync(`${FULL_UPLOAD_PATH}${filename}`, Buffer.from(arrayBuffer));
+						extension = '.svg';
+						writeFileSync(`${FULL_UPLOAD_PATH}${filename}${extension}`, Buffer.from(arrayBuffer));
 					}
 
 					const picture = await prisma.picture.create({
 						data: {
-							path: `/${FULL_UPLOAD_PATH}${filename}`
+							path: `/${FULL_UPLOAD_PATH}${filename}${extension}`,
+							extension,
+							filename
 						}
 					});
 

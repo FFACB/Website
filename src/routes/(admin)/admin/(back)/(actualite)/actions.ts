@@ -2,11 +2,11 @@
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
 import type { Actualite } from '@prisma/client';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import { logger } from '$lib/server/logs';
-
+import { v4 as uuid } from 'uuid';
 const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
 const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
 
@@ -26,7 +26,7 @@ export const action_upsert = async (event: RequestEvent) => {
 
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
-	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, pictureId } = data;
+	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, pictureId, pp_id_0, pp_resolution_0, pp_quality_0 } = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
@@ -85,6 +85,71 @@ export const action_upsert = async (event: RequestEvent) => {
 
 	try {
 	
+		let pictureId = ""
+		if(typeof pp_id_0 === 'string' && typeof pp_resolution_0 === 'string' && typeof pp_quality_0 === 'string'){ 
+			
+			const picture = await prisma.picture.findUnique({
+				where:{
+					id:pp_id_0
+				}
+			})
+			pictureId = picture?.id as string
+			
+			// if(picture == null){
+			// 	logger.warn({}, "L'image n'existe pas", '/admin/actualite');
+			// 	return fail(400, {
+			// 		data: data,
+			// 		errorMsg: "L'image n'existe pas"
+			// 	});
+			// }
+
+			// const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/${picture.id}/${pp_resolution_0}/${pp_quality_0}/`
+			// if (!existsSync(filepath)) {
+			// 	mkdirSync(filepath);
+			// }
+
+			// let filename = `${uuid()}`
+			// const readFile = readFileSync(`${picture.path}`);
+	
+			// 		if (IsPhoto(file)) {
+
+			// 			filename += '.webp';
+			// 			await sharp(arrayBuffer)
+			// 				.resize(null, null, {
+			// 					fit: 'inside', // 'inside' ensures that the image is not upscaled
+			// 					withoutEnlargement: true // Prevent enlargement of smaller images
+			// 				})
+			// 				.toFormat('webp')
+			// 				.toFile(`${FULL_UPLOAD_PATH}${filename}`);
+			// 		} else if (IsSvg(file)) {
+
+			// 			filename += '.svg';
+			// 			writeFileSync(`${FULL_UPLOAD_PATH}${filename}`, Buffer.from(arrayBuffer));
+			// 		}
+
+			// 		const picture = await prisma.picture.create({
+			// 			data: {
+			// 				path: `/${FULL_UPLOAD_PATH}${filename}`
+			// 			}
+			// 		});
+
+			// const filename
+			
+			// const readFile = readFileSync(`${picture.path}`);
+			// writeFileSync(`${filepath}${}`, Buffer.from(readFile));
+
+			// if (IsPhoto(photoFile) && photoFile instanceof File) {
+			
+	
+			// 	const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`;
+			// 	const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
+	
+			// 	photo = dbPhotoPath;
+			// }
+	
+			
+		}
+
 		const actualite = await prisma.actualite.upsert({
 			where: {
 				id
