@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { actions } from '$lib/client/uploads/pictures/actions.js';
+	import qualities from '$lib/client/uploads/pictures/quality';
+	import resolutions from '$lib/client/uploads/pictures/resolution';
 	import { onMount, type SvelteComponent } from 'svelte';
 	import {
 		showPictures,
@@ -51,22 +53,19 @@
 			</div>
 			<div  class="basis-1/3 pl-4 pr-4 flex flex-col">
                 <span class="ml-3 font-medium">Qulité</span>
-				<select class="input" name="pp_quality_{index}" value="100">
-					<option value="100">100</option>
-					<option value="90">90</option>
-                    <option value="80">80</option>
-                    <option value="70">70</option>
-                    <option value="60">60</option>
-                    <option value="50">50</option>
+				<select class="input" name="pp_quality_{index}">
+					{#each qualities as quality }
+						<option value="{quality.value()}">{quality.key()}</option>
+					{/each}
+					
 				</select>
 			</div>
 			<div  class="basis-1/3 flex flex-col">
                 <span class="ml-3 font-medium">Résolution</span>
 				<select class="input" name="pp_resolution_{index}">
-					<option value="full">Maximum</option>
-					<option value="1920">Full HD (1920×1080)</option>
-                    <option value="1280">Medium (1280x720)</option>
-                    <option value="720">Low (720x480)</option>
+					{#each resolutions as resolution }
+					<option value="{resolution.value()}">{resolution.key()}</option>
+				{/each}
 				</select>
 			</div>
 		</div>

@@ -3,12 +3,13 @@ import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
-import type { Actualite } from '@prisma/client';
+import type { Actualite, PictureRelation } from '@prisma/client';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import { logger } from '$lib/server/logs';
 import { v4 as uuid } from 'uuid';
-const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
-const PARTIAL_UPLOAD_PATH = `/${PUBLIC_UPLOADS_FOLDER_NAME}/actualites/`;
+import sharp from 'sharp';
+import resolutions, { resolutionMax } from '$lib/client/uploads/pictures/resolution';
+import qualities from '$lib/client/uploads/pictures/quality';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -26,7 +27,18 @@ export const action_upsert = async (event: RequestEvent) => {
 
 	const { request } = event;
 	const data = Object.fromEntries(await request.formData());
-	const { id, titre, redacteur, tempsLecture, descriptionCourte, contenu, pictureId, pp_id_0, pp_resolution_0, pp_quality_0 } = data;
+	const {
+		id,
+		titre,
+		redacteur,
+		tempsLecture,
+		descriptionCourte,
+		contenu,
+		pictureId,
+		pp_id_0,
+		pp_resolution_0,
+		pp_quality_0
+	} = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
@@ -73,7 +85,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
-
 	if (contenu != null && contenu != undefined && typeof contenu !== 'string') {
 		logger.warn({}, 'Le contenu doit être null ou une chaine de caractère', '/admin/actualite');
 
@@ -83,71 +94,105 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
+	let pictureRelation = null;
 	try {
-	
-		let pictureId = ""
-		if(typeof pp_id_0 === 'string' && typeof pp_resolution_0 === 'string' && typeof pp_quality_0 === 'string'){ 
-			
+		let pictureId = '';
+		if (
+			typeof pp_id_0 === 'string' &&
+			typeof pp_resolution_0 === 'string' &&
+			typeof pp_quality_0 === 'string'
+		) {
 			const picture = await prisma.picture.findUnique({
-				where:{
-					id:pp_id_0
+				where: {
+					id: pp_id_0
 				}
-			})
-			pictureId = picture?.id as string
+			});
+
+			pictureId = picture?.id as string;
+
+			if (picture == null) {
+				logger.warn({}, "L'image n'existe pas", '/admin/actualite');
+				return fail(400, {
+					data: data,
+					errorMsg: "L'image n'existe pas"
+				});
+
+				
+			}
+
+			const resolution =  pp_resolution_0.length == 0 ? resolutionMax : resolutions.find((r) => r.value() === parseInt(pp_resolution_0) );
+				
+			if(resolution == null) {
+				logger.warn({}, "La résolution n'existe pas", '/admin/actualite');
+				return fail(400, {
+					data: data,
+					errorMsg: "La résolution n'existe pas"
+				});
+			}
+
+			const quality = qualities.find((q) => q.value() === parseInt(pp_quality_0));
+			if(quality == null) {
+				logger.warn({}, "La qualité n'existe pas", '/admin/actualite');
+				return fail(400, {
+					data: data,
+					errorMsg: "La qualité n'existe pas"
+				});
+			}
+
+			const arrayBuffer = readFileSync(`${picture.path.slice(1)}`);
+			const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/${resolution.toString()}/${quality.toString()}/`;
+			if (!existsSync(filepath)) {
+				mkdirSync(filepath, { recursive: true });
+			}
+
+			let filename = `${picture.id}`;
+
+			if (picture.extension !== 'svg') {
+				filename += '.webp';
+
+				await sharp(arrayBuffer)
+					.resize(
+						resolution.value(),
+						resolution.value(),
+						{
+							fit: 'inside', // 'inside' ensures that the image is not upscaled
+							withoutEnlargement: true // Prevent enlargement of smaller images
+						}
+					)
+
+					.webp({  quality: quality.value()})
+					.toFile(`${filepath}${filename}`);
+			} else {
+				filename += '.svg';
+				writeFileSync(`${filepath}${filename}`, Buffer.from(arrayBuffer));
+			}
+
 			
-			// if(picture == null){
-			// 	logger.warn({}, "L'image n'existe pas", '/admin/actualite');
-			// 	return fail(400, {
-			// 		data: data,
-			// 		errorMsg: "L'image n'existe pas"
-			// 	});
-			// }
+			pictureRelation = await prisma.pictureRelation.create({
+				data: {
+					quality: quality.value() as number,
+					resolution: resolution.value() as number ?? 9999,
+					picture: {
+						connect: {
+							id: pictureId
+						}
+					}
+				}
+			});
 
-			// const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/${picture.id}/${pp_resolution_0}/${pp_quality_0}/`
-			// if (!existsSync(filepath)) {
-			// 	mkdirSync(filepath);
-			// }
-
-			// let filename = `${uuid()}`
-			// const readFile = readFileSync(`${picture.path}`);
-	
-			// 		if (IsPhoto(file)) {
-
-			// 			filename += '.webp';
-			// 			await sharp(arrayBuffer)
-			// 				.resize(null, null, {
-			// 					fit: 'inside', // 'inside' ensures that the image is not upscaled
-			// 					withoutEnlargement: true // Prevent enlargement of smaller images
-			// 				})
-			// 				.toFormat('webp')
-			// 				.toFile(`${FULL_UPLOAD_PATH}${filename}`);
-			// 		} else if (IsSvg(file)) {
-
-			// 			filename += '.svg';
-			// 			writeFileSync(`${FULL_UPLOAD_PATH}${filename}`, Buffer.from(arrayBuffer));
-			// 		}
-
-			// 		const picture = await prisma.picture.create({
-			// 			data: {
-			// 				path: `/${FULL_UPLOAD_PATH}${filename}`
-			// 			}
-			// 		});
 
 			// const filename
-			
+
 			// const readFile = readFileSync(`${picture.path}`);
 			// writeFileSync(`${filepath}${}`, Buffer.from(readFile));
 
 			// if (IsPhoto(photoFile) && photoFile instanceof File) {
-			
-	
+
 			// 	const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`;
 			// 	const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
-	
+
 			// 	photo = dbPhotoPath;
 			// }
-	
-			
 		}
 
 		const actualite = await prisma.actualite.upsert({
@@ -159,7 +204,11 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureId: pictureId as string,
+				picture: {
+					connect: {
+						id: pictureRelation?.id
+					}
+				},
 				contenu
 			},
 			update: {
@@ -167,7 +216,11 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureId: pictureId as string,
+				picture: {
+					connect: {
+						id: pictureRelation?.id
+					}
+				},
 				contenu
 			}
 		});
@@ -177,6 +230,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			errorMsg: undefined
 		};
 	} catch (err) {
+		console.log(err);
 		logger.error(err, '/admin/actualite');
 
 		return fail(400, {
