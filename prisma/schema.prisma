@@ -69,7 +69,7 @@ model PictureRelation {
   id         String   @id @default(uuid())
   createdAt  DateTime @default(now())
   quality    Int
-  resolution Int
+  resolution Int?
   pictureId  String
   picture    Picture  @relation(fields: [pictureId], references: [id], onDelete: Cascade)
 

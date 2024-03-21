@@ -171,7 +171,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			pictureRelation = await prisma.pictureRelation.create({
 				data: {
 					quality: quality.value() as number,
-					resolution: resolution.value() as number ?? 9999,
+					resolution: resolution.value(),
 					picture: {
 						connect: {
 							id: pictureId
