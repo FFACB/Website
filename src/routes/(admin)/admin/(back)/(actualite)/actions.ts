@@ -10,6 +10,7 @@ import { v4 as uuid } from 'uuid';
 import sharp from 'sharp';
 import resolutions, { resolutionMax } from '$lib/client/uploads/pictures/resolution';
 import qualities from '$lib/client/uploads/pictures/quality';
+import { savePicture } from '$lib/server/uploads/picture-upload';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -94,105 +95,17 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
-	let pictureRelation = null;
 	try {
-		let pictureId = '';
-		if (
-			typeof pp_id_0 === 'string' &&
-			typeof pp_resolution_0 === 'string' &&
-			typeof pp_quality_0 === 'string'
-		) {
-			const picture = await prisma.picture.findUnique({
-				where: {
-					id: pp_id_0
-				}
+		
+
+	    const result = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string)
+		if (!result.succes) {
+			logger.warn({}, result.errorMsg, '/admin/actualite');
+
+			return fail(400, {
+				data: data,
+				errorMsg: result.errorMsg
 			});
-
-			pictureId = picture?.id as string;
-
-			if (picture == null) {
-				logger.warn({}, "L'image n'existe pas", '/admin/actualite');
-				return fail(400, {
-					data: data,
-					errorMsg: "L'image n'existe pas"
-				});
-
-				
-			}
-
-			const resolution =  pp_resolution_0.length == 0 ? resolutionMax : resolutions.find((r) => r.value() === parseInt(pp_resolution_0) );
-				
-			if(resolution == null) {
-				logger.warn({}, "La résolution n'existe pas", '/admin/actualite');
-				return fail(400, {
-					data: data,
-					errorMsg: "La résolution n'existe pas"
-				});
-			}
-
-			const quality = qualities.find((q) => q.value() === parseInt(pp_quality_0));
-			if(quality == null) {
-				logger.warn({}, "La qualité n'existe pas", '/admin/actualite');
-				return fail(400, {
-					data: data,
-					errorMsg: "La qualité n'existe pas"
-				});
-			}
-
-			const arrayBuffer = readFileSync(`${picture.path.slice(1)}`);
-			const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/${resolution.toString()}/${quality.toString()}/`;
-			if (!existsSync(filepath)) {
-				mkdirSync(filepath, { recursive: true });
-			}
-
-			let filename = `${picture.id}`;
-
-			if (picture.extension !== 'svg') {
-				filename += '.webp';
-
-				await sharp(arrayBuffer)
-					.resize(
-						resolution.value(),
-						resolution.value(),
-						{
-							fit: 'inside', // 'inside' ensures that the image is not upscaled
-							withoutEnlargement: true // Prevent enlargement of smaller images
-						}
-					)
-
-					.webp({  quality: quality.value()})
-					.toFile(`${filepath}${filename}`);
-			} else {
-				filename += '.svg';
-				writeFileSync(`${filepath}${filename}`, Buffer.from(arrayBuffer));
-			}
-
-			
-			pictureRelation = await prisma.pictureRelation.create({
-				data: {
-					quality: quality.value() as number,
-					resolution: resolution.value(),
-					picture: {
-						connect: {
-							id: pictureId
-						}
-					}
-				}
-			});
-
-
-			// const filename
-
-			// const readFile = readFileSync(`${picture.path}`);
-			// writeFileSync(`${filepath}${}`, Buffer.from(readFile));
-
-			// if (IsPhoto(photoFile) && photoFile instanceof File) {
-
-			// 	const fsPhotoPath = `${FULL_UPLOAD_PATH}${photoFile.name}`;
-			// 	const dbPhotoPath = `${PARTIAL_UPLOAD_PATH}${photoFile.name}`;
-
-			// 	photo = dbPhotoPath;
-			// }
 		}
 
 		const actualite = await prisma.actualite.upsert({
@@ -206,7 +119,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				descriptionCourte: descriptionCourte as string,
 				picture: {
 					connect: {
-						id: pictureRelation?.id
+						id: result.relation?.id
 					}
 				},
 				contenu
@@ -218,7 +131,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				descriptionCourte: descriptionCourte as string,
 				picture: {
 					connect: {
-						id: pictureRelation?.id
+						id:  result.relation?.id
 					}
 				},
 				contenu

@@ -1,5 +1,5 @@
 
-class Quality {
+export class Quality {
     private quality: number;
     private name: string;
     constructor(name:string, quality: number) {
@@ -17,6 +17,26 @@ class Quality {
 
     public toString(): string {
         return this.quality.toString();
+    }
+
+    
+    public static fromInput(quality: null | string | number | Quality): Quality {
+
+        if(quality instanceof Quality) {
+            return quality;
+        }
+
+        if(quality === null || (typeof quality === "number" && isNaN(quality as number))  || (typeof quality === "string" && isNaN(parseInt(quality) as number)) ) {
+            return quality100;
+        }
+
+        const qualitysFound = qualities.find((r) => r.value() === parseInt(quality.toString()));
+
+        if (qualitysFound === undefined)
+            return quality100;
+
+        return qualitysFound;
+
     }
 }
 

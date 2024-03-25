@@ -1,5 +1,5 @@
 
-class Resolution {
+export class Resolution {
     private resolution:  number | null;
     private name: string;
     constructor(name:string, resolution: number | null) {
@@ -24,6 +24,25 @@ class Resolution {
         }else{
             return "full";
         }
+
+    }
+
+    public static fromInput(resolution: null | string | number | Resolution): Resolution {
+
+        if(resolution instanceof Resolution) {
+            return resolution;
+        }
+
+        if(resolution === null || (typeof resolution === "number" && isNaN(resolution as number))  || (typeof resolution === "string" && isNaN(parseInt(resolution) as number)) ) {
+            return resolutionMax;
+        }
+
+        const resolutionsFound = resolutions.find((r) => r.value() === parseInt(resolution.toString()));
+
+        if (resolutionsFound === undefined)
+            return resolutionMax;
+
+        return resolutionsFound;
 
     }
 }
