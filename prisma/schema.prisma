@@ -34,7 +34,7 @@ model Actualite {
   id                String           @id @default(uuid())
   titre             String
   PictureRelationId String?
-  picture           PictureRelation? @relation(fields: [PictureRelationId], references: [id], onDelete: SetNull)
+  pictureRelation           PictureRelation? @relation(fields: [PictureRelationId], references: [id], onDelete: SetNull)
   redacteur         String
   tempsLecture      String
   descriptionCourte String
@@ -68,6 +68,7 @@ model Picture {
 model PictureRelation {
   id         String   @id @default(uuid())
   createdAt  DateTime @default(now())
+  path       String
   quality    Int
   resolution Int?
   pictureId  String

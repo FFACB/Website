@@ -64,6 +64,7 @@ export async function savePicture(
             data: {
                 quality: absoluteQuality.value(),
                 resolution: absoluteResolution.value(),
+				path:`/${filepath}${filename}`,
                 picture: {
                     connect: {
                         id:  picture.id

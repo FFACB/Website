@@ -22,6 +22,8 @@
 	let { actualite, picture} = data;
 	$: actualite = actualite ?? null;
 	
+	console.log(actualite)
+
 	let writer: SvelteComponent | null = null;
 
 	onMount(() => {

@@ -11,6 +11,13 @@ export const load: PageServerLoad = async (event) => {
 	const actualite: Actualite | null = await prisma.actualite.findUnique({
 		where: {
 			id
+		},
+		include:{
+			picture:{
+				include:{
+					picture:true
+				}
+			}
 		}
 	});
 
