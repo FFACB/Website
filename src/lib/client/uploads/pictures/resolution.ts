@@ -27,13 +27,13 @@ export class Resolution {
 
     }
 
-    public static fromInput(resolution: null | string | number | Resolution): Resolution {
+    public static fromInput(resolution: undefined | null | string | number | Resolution): Resolution {
 
         if(resolution instanceof Resolution) {
             return resolution;
         }
 
-        if(resolution === null || (typeof resolution === "number" && isNaN(resolution as number))  || (typeof resolution === "string" && isNaN(parseInt(resolution) as number)) ) {
+        if(resolution == null || (typeof resolution === "number" && isNaN(resolution as number))  || (typeof resolution === "string" && isNaN(parseInt(resolution) as number)) ) {
             return resolutionMax;
         }
 

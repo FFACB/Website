@@ -35,7 +35,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		tempsLecture,
 		descriptionCourte,
 		contenu,
-		pictureId,
 		pp_id_0,
 		pp_resolution_0,
 		pp_quality_0
@@ -117,7 +116,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				picture: {
+				pictureRelation: {
 					connect: {
 						id: result.relation?.id
 					}
@@ -129,7 +128,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				picture: {
+				pictureRelation: {
 					connect: {
 						id:  result.relation?.id
 					}

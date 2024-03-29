@@ -19,10 +19,8 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
-	let { actualite, picture} = data;
-	$: actualite = actualite ?? null;
-	
-	console.log(actualite)
+	let { actualite} = data;
+	let { pictureRelation } = actualite
 
 	let writer: SvelteComponent | null = null;
 
@@ -192,7 +190,7 @@
 				/>
 			</label>
 
-			<PicturePicker {picture} pictureName="Photo" />
+			<PicturePicker {pictureRelation} pictureName="Photo" />
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>
@@ -240,7 +238,6 @@
 			</label>
 
 			<input type="hidden" name="id" value={actualite?.id ?? null} />
-			<input type="hidden" name="pictureId" value={picture?.id ?? ''} />
 		</form>
 	</div>
 </Content>

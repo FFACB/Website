@@ -106,11 +106,13 @@
 	};
 
 	const submitDelete = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
-
 		showSpinner();
 
 		const { id } = Object.fromEntries(formData);
-		
+		let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
+		if (pictureToDelete.length > 0)
+			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0]);
+
 		return async ({
 			result,
 			update
@@ -125,7 +127,6 @@
 					toastStore.trigger(toast);
 
 					pictures = pictures.filter((picture) => picture.id !== result.data?.data);
-				
 
 					break;
 				case 'failure':
@@ -145,10 +146,6 @@
 					break;
 			}
 			await update();
-			let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
-					if (pictureToDelete.length > 0)
-						triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0]);
-
 
 			hideSpinner();
 		};

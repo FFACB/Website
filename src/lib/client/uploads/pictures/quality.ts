@@ -20,13 +20,13 @@ export class Quality {
     }
 
     
-    public static fromInput(quality: null | string | number | Quality): Quality {
+    public static fromInput(quality: undefined | null | string | number | Quality): Quality {
 
         if(quality instanceof Quality) {
             return quality;
         }
 
-        if(quality === null || (typeof quality === "number" && isNaN(quality as number))  || (typeof quality === "string" && isNaN(parseInt(quality) as number)) ) {
+        if(quality == null || (typeof quality === "number" && isNaN(quality as number))  || (typeof quality === "string" && isNaN(parseInt(quality) as number)) ) {
             return quality100;
         }
 
