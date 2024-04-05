@@ -7,6 +7,7 @@ import { logger } from '$lib/server/logs';
 import { existsSync, mkdirSync , writeFileSync,unlinkSync} from 'fs';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
+import type { PictureRelation } from '@prisma/client';
 
 const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/`;
 
@@ -133,6 +134,9 @@ export const action_delete = async (event: RequestEvent) => {
 	const picture = await prisma.picture.findUnique({
 		where:{
 			id:id as string
+		},
+		include:{
+			pictureRelations:true
 		}
 	});
 
@@ -143,6 +147,15 @@ export const action_delete = async (event: RequestEvent) => {
 		});
 	}
 	
+	for(const pictureRelation of picture.pictureRelations){
+
+		try {
+			unlinkSync(`${pictureRelation.path.slice(1)}`)
+		} catch (err) {
+			logger.error(err, '/admin/pictures?/delete');
+		}
+	
+	}
 
 	try {
 		unlinkSync(`${picture.path.slice(1)}`)

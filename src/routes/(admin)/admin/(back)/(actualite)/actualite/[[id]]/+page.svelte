@@ -10,22 +10,26 @@
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
-
+	import type { Actualite,  PictureRelation } from '@prisma/client';
 	import { onMount, type SvelteComponent } from 'svelte';
 	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
-
+	
 
 	const toastStore = getToastStore();
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
-	let { actualite} = data;
-	let { pictureRelation } = actualite
+	let  actualite : Actualite | null = data.actualite;
+	//@ts-ignore
+	let pictureRelation : PictureRelation | null = actualite?.pictureRelation
 
 	let writer: SvelteComponent | null = null;
 
+	let picture : PicturePicker | null = null;
+
 	onMount(() => {
 		writer?.methods.loadContenu(actualite?.contenu ?? '');
+		picture?.methods.loadPictureRelation(pictureRelation)
 	});
 
 
@@ -83,6 +87,9 @@
 					toastStore.trigger(toast);
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data?.data;
+						//@ts-ignore
+						pictureRelation = actualite?.pictureRelation
+						picture?.methods.loadPictureRelation(pictureRelation)
 						goto(`/admin/actualite/${actualite?.id ?? ''}`, {
 							invalidateAll: true,
 							replaceState: true
@@ -190,7 +197,7 @@
 				/>
 			</label>
 
-			<PicturePicker {pictureRelation} pictureName="Photo" />
+			<PicturePicker bind:this={picture} {pictureRelation} pictureName="Photo" />
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>

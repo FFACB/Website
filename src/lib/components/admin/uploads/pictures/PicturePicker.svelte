@@ -2,6 +2,7 @@
 	import { actions } from '$lib/client/uploads/pictures/actions.js';
 	import qualities, { Quality } from '$lib/client/uploads/pictures/quality';
 	import resolutions, { Resolution } from '$lib/client/uploads/pictures/resolution';
+	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
 	import { onMount, type SvelteComponent } from 'svelte';
 	import {
 		showPictures,
@@ -17,6 +18,23 @@
 
 	let resolution = Resolution.fromInput(pictureRelation?.resolution)
 	let quality = Quality.fromInput(pictureRelation?.quality)
+
+	export const methods = {
+
+		deletePictureRelation:()=>{
+			picture = null
+			pictureRelation = null
+		},
+
+		loadPictureRelation : (_pictureRelation : PictureRelation | null) => {
+
+			if(_pictureRelation != null){
+				methods.deletePictureRelation()
+			}
+
+			pictureRelation = _pictureRelation
+		}
+	}
 
 	subscribePicturesAction((event) => {
 		const { type } = event;
@@ -38,6 +56,7 @@
 				break;
 		}
 	});
+
 </script>
 
 <div class=" mb-4">
@@ -78,7 +97,15 @@
 		</div>
         <div>
 			{#if picture != null || pictureRelation != null}
-				<div class="mt-4">
+				<div class="mt-4 relative">
+					<ButtonDelete
+					class="absolute top-4 right-4"
+					id="btn-relation"
+					click={() => {
+						methods.deletePictureRelation();
+					}}
+					/>
+
 					<img class="card h-80 w-full bg-cover object-cover" alt="actualite" src={picture?.path ?? pictureRelation?.path} />
 				</div>
 			{/if}

@@ -13,7 +13,6 @@ const middlewares = function (app, dirname) {
 			const fullpath = path
 				.join(dirname, req.baseUrl.includes('images') ? 'static' : '', req.baseUrl, req.url)
 				.replace('\\', '');
-			console.log(fullpath);
 			sharpen({
 				fullpath,
 				width,

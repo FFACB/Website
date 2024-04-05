@@ -10,11 +10,15 @@ export async function savePicture(
 	pictureID: string,
 	resolution: Resolution | number |string| null,
 	quality: Quality | number|string,
+	required: boolean,
 	resizeOptions: sharp.ResizeOptions = {
 		fit: 'inside',
 		withoutEnlargement: true
 	}
-): Promise<{ succes: boolean; relation : PictureRelation | null, errorMsg: string }> {
+): Promise<{ succes: boolean; relation : PictureRelation | null, errorMsg: string, errorPass: boolean }> {
+	
+	try{
+		
 	const picture = await prisma.picture.findUnique({
 		where: {
 			id: pictureID
@@ -22,7 +26,7 @@ export async function savePicture(
 	});
 
 	if (picture == null) {
-		return { succes: false, relation : null, errorMsg: "L'image n'existe pas" };
+		return { succes: false, errorPass: !required, relation : null, errorMsg: "L'image n'existe pas" };
 	}
 
 	const absoluteResolution: Resolution = Resolution.fromInput(resolution);
@@ -74,6 +78,10 @@ export async function savePicture(
         });
     }
 
-    return { succes: true, relation : pictureRelation, errorMsg: "" };
+    return { succes: true, errorPass:false, relation : pictureRelation, errorMsg: "" };
 
+	}catch(exeption){
+		return { succes: false, errorPass:!required, relation : null, errorMsg: "" };
+	}
+	
 }

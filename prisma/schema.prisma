@@ -61,7 +61,7 @@ model Picture {
   extension String
   createdAt DateTime @default(now())
   //Relations
-  relations PictureRelation[]
+  pictureRelations PictureRelation[]
 }
 
 //BO (Galerie Relations)

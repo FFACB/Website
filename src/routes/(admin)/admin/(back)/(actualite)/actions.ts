@@ -97,8 +97,8 @@ export const action_upsert = async (event: RequestEvent) => {
 	try {
 		
 
-	    const result = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string)
-		if (!result.succes) {
+	    const result = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string, true)
+		if (!result.succes && !result.errorPass) {
 			logger.warn({}, result.errorMsg, '/admin/actualite');
 
 			return fail(400, {
@@ -107,7 +107,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			});
 		}
 
-		const actualite = await prisma.actualite.upsert({
+		let actualite : Actualite | null = await prisma.actualite.upsert({
 			where: {
 				id
 			},
@@ -116,11 +116,6 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelation: {
-					connect: {
-						id: result.relation?.id
-					}
-				},
 				contenu
 			},
 			update: {
@@ -128,21 +123,39 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelation: {
-					connect: {
-						id:  result.relation?.id
-					}
-				},
 				contenu
 			}
 		});
+
+		if(result.succes){
+			actualite = await prisma.actualite.update({
+				where:{
+					id: actualite.id
+				},
+				data:{
+					pictureRelation: {
+						connect: {
+							id:  result.relation?.id
+						}
+					},
+				}
+			})
+		}
+
+		actualite = await prisma.actualite.findUnique({
+			where: {
+				id: actualite.id
+			},
+			include:{
+				pictureRelation:true
+			}
+		})
 
 		return {
 			data: actualite,
 			errorMsg: undefined
 		};
 	} catch (err) {
-		console.log(err);
 		logger.error(err, '/admin/actualite');
 
 		return fail(400, {
