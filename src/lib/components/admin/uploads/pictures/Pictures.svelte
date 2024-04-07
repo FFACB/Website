@@ -11,18 +11,19 @@
 	import type { ActionResult } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { actions } from '$lib/client/uploads/pictures/actions';
+	import { actions, type PicturePickerAction } from '$lib/client/uploads/pictures/actions';
+	import { ENREGISTREMENT_ERROR, ENREGISTREMENT_FAILED, ENREGISTREMENT_SUCCES, ERROR, FAILED, SUPRESSION_ERROR, SUPRESSION_FAILED, SUPRESSION_SUCCES } from '$lib/client/toasts/toasts';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { timeout: 1000, message: '', background: '' };
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let picturesContainer: HTMLDivElement | null = null;
-
 	let pictures: Picture[] = [];
+	let pickturePickerId = ""
 
-	export function toggle(value: boolean) {
-		if (value) onOpen();
+	export function toggle(value: PicturePickerAction) {
+		pickturePickerId = value.picturePickerId
+		if (value.open) onOpen();
 		else onClose();
 	}
 
@@ -50,15 +51,11 @@
 					}
 					break;
 				case 'failure':
-					toast.message = result.data?.errorMsg;
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(FAILED.addMessage(result.data?.errorMsg).toToast());
 
 					break;
 				case 'error':
-					toast.message = "Erreur serveur lors de l'enregistrement";
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(ERROR.addMessage("Erreur lors de la récuperation des images").toToast());
 
 					break;
 				default:
@@ -75,9 +72,7 @@
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Enregistrement effectué !';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
 
 					if (typeof result.data !== 'undefined') {
 						pictures = [...result.data.data, ...pictures];
@@ -85,16 +80,11 @@
 
 					break;
 				case 'failure':
-					toast.message = result.data?.errorMsg;
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_FAILED.addMessage(result.data?.errorMsg).toToast());
 
 					break;
 				case 'error':
-					toast.message = "Erreur serveur lors de l'enregistrement";
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
-
+					toastStore.trigger(ENREGISTREMENT_ERROR.toToast());
 					break;
 				default:
 					break;
@@ -111,7 +101,7 @@
 		const { id } = Object.fromEntries(formData);
 		let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
 		if (pictureToDelete.length > 0)
-			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0]);
+			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0],  pickturePickerId);
 
 		return async ({
 			result,
@@ -122,24 +112,18 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Image supprimé!';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_SUCCES.toToast());
 
 					pictures = pictures.filter((picture) => picture.id !== result.data?.data);
 
 					break;
 				case 'failure':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_FAILED.addMessage(result.data?.errorMsg).toToast());
 
 					break;
 
 				case 'error':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_ERROR.toToast());
 
 					break;
 				default:
@@ -215,7 +199,7 @@
 
 									<ButtonSelect
 										click={() => {
-											triggerPictureAction(actions.PICKED_PICTURE, picture);
+											triggerPictureAction(actions.PICKED_PICTURE, picture, pickturePickerId);
 											hidePictures();
 										}}
 										class="!hidden group-hover:!flex absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2"

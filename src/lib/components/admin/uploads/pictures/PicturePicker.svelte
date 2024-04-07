@@ -10,52 +10,54 @@
 		subscribePicturesAction
 	} from '$lib/client/uploads/pictures/index.js';
 	import type { PictureRelation } from '@prisma/client';
+	import { v4 as uuid } from 'uuid';
 
-	export let pictureRelation: PictureRelation | null = null;
-	let picture : Picture | null = null;
+	let galeryPicture : Picture | null = null;
+	export let savedPicture: PictureRelation | null = null;
     export let pictureName = 'Photo principale';
-    export let index = 0;
+    export let identifier : string = "0";
 
-	let resolution = Resolution.fromInput(pictureRelation?.resolution)
-	let quality = Quality.fromInput(pictureRelation?.quality)
+	const picturePickerId = uuid()
+	let resolution = Resolution.fromInput(savedPicture?.resolution)
+	let quality = Quality.fromInput(savedPicture?.quality)
 
 	export const methods = {
 
 		deletePictureRelation:()=>{
-			picture = null
-			pictureRelation = null
+			galeryPicture = null
+			savedPicture = null
 		},
 
-		loadPictureRelation : (_pictureRelation : PictureRelation | null) => {
+		loadPictureRelation : (_savedPicture : PictureRelation | null) => {
 
-			if(_pictureRelation != null){
-				methods.deletePictureRelation()
-			}
-
-			pictureRelation = _pictureRelation
+			methods.deletePictureRelation()
+			savedPicture = _savedPicture
 		}
 	}
 
-	subscribePicturesAction((event) => {
-		const { type } = event;
-		
+	subscribePicturesAction(picturePickerId,(event) => {
+		const { type} = event;
+
 		switch (type) {
 			case actions.PICKED_PICTURE:
-				picture = event.picture;
+
+				if(event.picturePickerId == picturePickerId)
+					galeryPicture = event.picture;
 				break;
+
 			case actions.DELETE_PICTURE:
-				
 				if (event.picture) {
-					if(event.picture.id == picture?.id){
-						picture = null
+
+					const id = event.picture.id
+					if(id == galeryPicture?.id || savedPicture?.pictureId){
+						methods.deletePictureRelation()
 					}
-					if(event.picture.id == pictureRelation?.pictureId){
-						pictureRelation = null
-					}
+
 				}
 				break;
 		}
-	});
+	},
+	);
 
 </script>
 
@@ -71,15 +73,15 @@
 					type="button"
 					value={"Choisir une image dans la galerie"}
 					on:click={() => {
-						showPictures();
+						showPictures(picturePickerId);
 					}}
 				/>
 
-				<input type="hidden" name="pp_id_{index}" value="{picture?.id ?? pictureRelation?.pictureId}" >
+				<input type="hidden" name="pp_id_{identifier}" value="{galeryPicture?.id ?? savedPicture?.pictureId}" >
 			</div>
 			<div  class="basis-1/3 pl-4 pr-4 flex flex-col">
                 <span class="ml-3 font-medium">Qulité</span>
-				<select class="input" name="pp_quality_{index}" value="{quality.value()}">
+				<select class="input" name="pp_quality_{identifier}" value="{quality.value()}">
 					{#each qualities as quality }
 						<option value="{quality.value()}">{quality.key()}</option>
 					{/each}
@@ -88,7 +90,7 @@
 			</div>
 			<div  class="basis-1/3 flex flex-col">
                 <span class="ml-3 font-medium">Résolution</span>
-				<select class="input" name="pp_resolution_{index}" value="{resolution.value()}">
+				<select class="input" name="pp_resolution_{identifier}" value="{resolution.value()}">
 					{#each resolutions as resolution }
 					<option value="{resolution.value()}">{resolution.key()}</option>
 				{/each}
@@ -96,7 +98,7 @@
 			</div>
 		</div>
         <div>
-			{#if picture != null || pictureRelation != null}
+			{#if galeryPicture != null || savedPicture != null}
 				<div class="mt-4 relative">
 					<ButtonDelete
 					class="absolute top-4 right-4"
@@ -106,7 +108,7 @@
 					}}
 					/>
 
-					<img class="card h-80 w-full bg-cover object-cover" alt="actualite" src={picture?.path ?? pictureRelation?.path} />
+					<img class="card h-80 w-full bg-cover object-cover" alt="actualite" src={galeryPicture?.path ?? savedPicture?.path} />
 				</div>
 			{/if}
 		</div >

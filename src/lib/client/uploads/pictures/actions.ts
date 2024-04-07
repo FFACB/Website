@@ -6,7 +6,13 @@ const actions = {
 
 export {actions}
 
+export type PicturePickerAction = {
+    open: boolean;
+    picturePickerId : string;
+}
+
 export type PictureAction = {
     type: string;
     picture: Picture | null;
+    picturePickerId : string;
 }

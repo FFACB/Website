@@ -1,28 +1,32 @@
 import { writable, type Subscriber } from 'svelte/store';
-import { actions, type PictureAction } from './actions';
+import { actions, type PictureAction, type PicturePickerAction } from './actions';
 
-const picturesPanel = writable(false);
+const picturesPanel = writable({open:false, picturePickerId:""});
 
 
-export function subscribePicturesPanel(callback: Subscriber<boolean>) {
+export function subscribePicturesPanel(callback: Subscriber<PicturePickerAction>) {
 	return picturesPanel.subscribe(callback);
 }
 
-export function showPictures() {
-	picturesPanel.set(true);
+export function showPictures(_picturePickerId : string) {
+	picturesPanel.set({open:true,picturePickerId:_picturePickerId});
 }
 
-export function hidePictures() {
-	picturesPanel.set(false);
+export function hidePictures(_picturePickerId : string = "") {
+	picturesPanel.set({open:false,picturePickerId:_picturePickerId});
 }
 
 
-const pictureActionStore = writable<PictureAction>({type: actions.DEFAULT, picture: null});
+const pictureActionStore = writable<PictureAction>({type: actions.DEFAULT, picture: null, picturePickerId: ""});
 
-export function subscribePicturesAction(callback: Subscriber<PictureAction>) {
-	return pictureActionStore.subscribe(callback);
+export function subscribePicturesAction(picturePickerId : string , callback: Subscriber<PictureAction>) {
+	
+
+	return pictureActionStore.subscribe((pictureAction => {
+			callback(pictureAction)
+	}));
 }
 
-export function triggerPictureAction(type:string, picture: Picture) {
-	pictureActionStore.set({type, picture});
+export function triggerPictureAction(type:string, picture: Picture, picturePickerId : string) {
+	pictureActionStore.set({type, picture,picturePickerId});
 }

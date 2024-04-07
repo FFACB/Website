@@ -37,7 +37,10 @@ export const action_upsert = async (event: RequestEvent) => {
 		contenu,
 		pp_id_0,
 		pp_resolution_0,
-		pp_quality_0
+		pp_quality_0,
+		pp_id_1,
+		pp_resolution_1,
+		pp_quality_1
 	} = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
@@ -48,7 +51,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			errorMsg: "❌ L'Id doit être null ou une chaine de caractère"
 		});
 	}
-
+	
 	if (IsEmptyString(titre)) {
 		logger.warn({}, 'Le titre ne doit pas être vide', '/admin/actualite');
 
@@ -97,13 +100,23 @@ export const action_upsert = async (event: RequestEvent) => {
 	try {
 		
 
-	    const result = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string, true)
-		if (!result.succes && !result.errorPass) {
-			logger.warn({}, result.errorMsg, '/admin/actualite');
+	    const result1 = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string, false)
+		if (!result1.succes && !result1.errorPass) {
+			logger.warn({}, result1.errorMsg, '/admin/actualite');
 
 			return fail(400, {
 				data: data,
-				errorMsg: result.errorMsg
+				errorMsg: result1.errorMsg
+			});
+		}
+
+		const result2 = await savePicture(pp_id_1 as string,   pp_resolution_1 as string ,pp_quality_1 as string, false)
+		if (!result2.succes && !result2.errorPass) {
+			logger.warn({}, result2.errorMsg, '/admin/actualite');
+
+			return fail(400, {
+				data: data,
+				errorMsg: result2.errorMsg
 			});
 		}
 
@@ -116,6 +129,8 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
+				pictureRelationIdPrincipale: result1.relation?.id ?? "",
+				pictureRelationIdSecondaire: result2.relation?.id ?? "",
 				contenu
 			},
 			update: {
@@ -123,36 +138,16 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
+				pictureRelationIdPrincipale: result1.relation?.id ?? "",
+				pictureRelationIdSecondaire: result2.relation?.id ?? "",
 				contenu
 			}
 		});
 
-		if(result.succes){
-			actualite = await prisma.actualite.update({
-				where:{
-					id: actualite.id
-				},
-				data:{
-					pictureRelation: {
-						connect: {
-							id:  result.relation?.id
-						}
-					},
-				}
-			})
-		}
-
-		actualite = await prisma.actualite.findUnique({
-			where: {
-				id: actualite.id
-			},
-			include:{
-				pictureRelation:true
-			}
-		})
-
 		return {
-			data: actualite,
+			actualite,
+			pictureRelation1:result1.relation,
+			pictureRelation2:result2.relation,
 			errorMsg: undefined
 		};
 	} catch (err) {

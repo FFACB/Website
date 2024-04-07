@@ -19,17 +19,18 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
-	let  actualite : Actualite | null = data.actualite;
-	//@ts-ignore
-	let pictureRelation : PictureRelation | null = actualite?.pictureRelation
+
+	let {actualite , pictureRelation1,pictureRelation2} = data
 
 	let writer: SvelteComponent | null = null;
 
-	let picture : PicturePicker | null = null;
+	let picturePicker1 : PicturePicker | null = null;
+	let picturePicker2 : PicturePicker | null = null;
 
 	onMount(() => {
 		writer?.methods.loadContenu(actualite?.contenu ?? '');
-		picture?.methods.loadPictureRelation(pictureRelation)
+		picturePicker1?.methods.loadPictureRelation(pictureRelation1)
+		picturePicker2?.methods.loadPictureRelation(pictureRelation2)
 	});
 
 
@@ -42,7 +43,7 @@
 	}) => {
 		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
-		
+		console.log(Object.fromEntries(formData))
 		if (IsEmptyString(titre)) {
 			toast.message = '❌ Le titre ne doit pas être vide';
 			toast.background = 'variant-filled-error';
@@ -86,10 +87,11 @@
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
 					if (typeof result.data !== 'undefined') {
-						actualite = result.data?.data;
-						//@ts-ignore
-						pictureRelation = actualite?.pictureRelation
-						picture?.methods.loadPictureRelation(pictureRelation)
+						actualite = result.data?.actualite;
+						pictureRelation1 = result.data?.pictureRelation1
+						pictureRelation2 = result.data?.pictureRelation2
+						picturePicker1?.methods.loadPictureRelation(pictureRelation1)
+						picturePicker2?.methods.loadPictureRelation(pictureRelation2)
 						goto(`/admin/actualite/${actualite?.id ?? ''}`, {
 							invalidateAll: true,
 							replaceState: true
@@ -197,7 +199,10 @@
 				/>
 			</label>
 
-			<PicturePicker bind:this={picture} {pictureRelation} pictureName="Photo" />
+			<PicturePicker bind:this={picturePicker1} identifier=0 bind:savedPicture={pictureRelation1} pictureName="Photo" />
+
+			<PicturePicker bind:this={picturePicker2} identifier=1 bind:savedPicture={pictureRelation2} pictureName="Photo 2" />
+
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>
