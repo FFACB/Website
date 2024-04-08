@@ -49,7 +49,7 @@
 				if (event.picture) {
 
 					const id = event.picture.id
-					if(id == galeryPicture?.id || savedPicture?.pictureId){
+					if(id == galeryPicture?.id || id == savedPicture?.pictureId){
 						methods.deletePictureRelation()
 					}
 
