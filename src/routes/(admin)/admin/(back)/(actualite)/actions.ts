@@ -10,7 +10,7 @@ import { v4 as uuid } from 'uuid';
 import sharp from 'sharp';
 import resolutions, { resolutionMax } from '$lib/client/uploads/pictures/resolution';
 import qualities from '$lib/client/uploads/pictures/quality';
-import { savePicture } from '$lib/server/uploads/picture-upload';
+import { savePictureRelation } from '$lib/server/uploads/picture-upload';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -38,9 +38,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		pp_id_0,
 		pp_resolution_0,
 		pp_quality_0,
-		pp_id_1,
-		pp_resolution_1,
-		pp_quality_1
 	} = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
@@ -100,25 +97,21 @@ export const action_upsert = async (event: RequestEvent) => {
 	try {
 		
 
-	    const result1 = await savePicture(pp_id_0 as string,   pp_resolution_0 as string ,pp_quality_0 as string, false)
-		if (!result1.succes && !result1.errorPass) {
-			logger.warn({}, result1.errorMsg, '/admin/actualite');
+	    const savePhotoPrincipale = await savePictureRelation(pp_id_0,{
+			resolution: pp_resolution_0,
+			quality: pp_quality_0,
+			required: true
+		})
+
+		if (!savePhotoPrincipale.succes && !savePhotoPrincipale.errorPass) {
+			logger.warn({}, savePhotoPrincipale.errorMsg, '/admin/actualite');
 
 			return fail(400, {
 				data: data,
-				errorMsg: result1.errorMsg
+				errorMsg: savePhotoPrincipale.errorMsg
 			});
 		}
 
-		const result2 = await savePicture(pp_id_1 as string,   pp_resolution_1 as string ,pp_quality_1 as string, false)
-		if (!result2.succes && !result2.errorPass) {
-			logger.warn({}, result2.errorMsg, '/admin/actualite');
-
-			return fail(400, {
-				data: data,
-				errorMsg: result2.errorMsg
-			});
-		}
 
 		let actualite : Actualite | null = await prisma.actualite.upsert({
 			where: {
@@ -129,8 +122,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: result1.relation?.id ?? "",
-				pictureRelationIdSecondaire: result2.relation?.id ?? "",
+				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? "",
 				contenu
 			},
 			update: {
@@ -138,16 +130,14 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: result1.relation?.id ?? "",
-				pictureRelationIdSecondaire: result2.relation?.id ?? "",
+				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? "",
 				contenu
 			}
 		});
 
 		return {
 			actualite,
-			pictureRelation1:result1.relation,
-			pictureRelation2:result2.relation,
+			pictureRelation:savePhotoPrincipale.relation,
 			errorMsg: undefined
 		};
 	} catch (err) {

@@ -33,6 +33,7 @@ export class Resolution {
             return resolution;
         }
 
+        
         if(resolution == null || (typeof resolution === "number" && isNaN(resolution as number))  || (typeof resolution === "string" && isNaN(parseInt(resolution) as number)) ) {
             return resolutionMax;
         }

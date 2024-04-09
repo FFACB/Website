@@ -8,6 +8,7 @@ import { existsSync, mkdirSync , writeFileSync,unlinkSync} from 'fs';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 import type { PictureRelation } from '@prisma/client';
+import { savePictureUpload } from '$lib/server/uploads/picture-upload';
 
 const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/`;
 
@@ -29,42 +30,19 @@ export const action_create = async (event: RequestEvent) => {
 	const files = data.getAll('picturesFiles');
 
 	try {
-		if (!existsSync(FULL_UPLOAD_PATH)) {
-			mkdirSync(FULL_UPLOAD_PATH);
-		}
+		
 
 		const pictures = await Promise.all(
-			files.map(async (file, i) => {
-				if (file && file instanceof File) {
-					const arrayBuffer = await file.arrayBuffer();
-					let filename = `${uuid()}`
-					let extension = ""
-					if (IsPhoto(file)) {
+			files.map(async (file) => {
 
-						extension = 'webp';
-						await sharp(arrayBuffer)
-							.resize(null, null, {
-								fit: 'inside', // 'inside' ensures that the image is not upscaled
-								withoutEnlargement: true // Prevent enlargement of smaller images
-							})
-							.toFormat('webp')
-							.toFile(`${FULL_UPLOAD_PATH}${filename}.${extension}`);
-					} else if (IsSvg(file)) {
-
-						extension = 'svg';
-						writeFileSync(`${FULL_UPLOAD_PATH}${filename}${extension}`, Buffer.from(arrayBuffer));
-					}
-
-					const picture = await prisma.picture.create({
-						data: {
-							path: `/${FULL_UPLOAD_PATH}${filename}.${extension}`,
-							extension,
-							filename
-						}
-					});
-
-					return picture;
+			   	const savedPicture = await	savePictureUpload(file)
+				if(!savedPicture.succes){
+					logger.error(savedPicture.errorMsg, '/admin/pictures');
+					return;
 				}
+
+				return savedPicture.picture
+
 			})
 		);
 
@@ -141,11 +119,14 @@ export const action_delete = async (event: RequestEvent) => {
 	});
 
 	if(picture == null){
+		logger.warn(data, "L'image n'existe pas", '/admin/pictures');
+
 		return fail(400, {
 			data: undefined,
 			errorMsg: "❌ L'image n'existe pas"
 		});
 	}
+	
 	
 	for(const pictureRelation of picture.pictureRelations){
 

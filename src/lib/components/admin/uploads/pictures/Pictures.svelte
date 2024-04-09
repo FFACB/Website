@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { enhance, applyAction } from '$app/forms';
+	import { enhance } from '$app/forms';
 	import ButtonQuit from '$lib/components/admin/buttons/quit/ButtonQuit.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonSelect from '$lib/components/admin/buttons/select/ButtonSelect.svelte';
 	import ButtonRefresh from '$lib/components/admin/buttons/refresh/ButtonRefresh.svelte';
-	import { hidePictures, triggerPictureAction } from '$lib/client/uploads/pictures';
+	import { hidePictures, triggerPictureAction } from '$lib/client/uploads/pictures/stores';
 	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { actions, type PicturePickerAction } from '$lib/client/uploads/pictures/actions';
+	import { actions, type PicturePickerAction } from '$lib/client/uploads/pictures/stores-actions';
 	import { ENREGISTREMENT_ERROR, ENREGISTREMENT_FAILED, ENREGISTREMENT_SUCCES, ERROR, FAILED, SUPRESSION_ERROR, SUPRESSION_FAILED, SUPRESSION_SUCCES } from '$lib/client/toasts/toasts';
 
 	const toastStore = getToastStore();
@@ -19,10 +19,10 @@
 	let refreshButton: HTMLButtonElement | null = null;
 	let picturesContainer: HTMLDivElement | null = null;
 	let pictures: Picture[] = [];
-	let pickturePickerId = ""
+	let tempPicturePickerId = ""
 
 	export function toggle(value: PicturePickerAction) {
-		pickturePickerId = value.picturePickerId
+		tempPicturePickerId = value.picturePickerId
 		if (value.open) onOpen();
 		else onClose();
 	}
@@ -43,16 +43,23 @@
 
 	const submitFindall = async () => {
 		showSpinner();
-		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
+		return async ({
+			result,
+			update
+		}: {
+			result: ActionResult;
+			update: (data?: any) => Promise<void>;
+		}) => {
+			
+			hideSpinner();
 			switch (result.type) {
 				case 'success':
-					if (typeof result.data !== 'undefined') {
-						pictures = result.data.data;
-					}
+					
+					pictures = result.data?.data;
+					update(result.data?.data);
 					break;
 				case 'failure':
 					toastStore.trigger(FAILED.addMessage(result.data?.errorMsg).toToast());
-
 					break;
 				case 'error':
 					toastStore.trigger(ERROR.addMessage("Erreur lors de la récuperation des images").toToast());
@@ -61,21 +68,28 @@
 				default:
 					break;
 			}
-
-			await applyAction(result);
-			hideSpinner();
+		
 		};
 	};
 
-	const submitCreate = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
+	const submitCreate = async () => {
 		showSpinner();
-		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
+		return async ({
+			result,
+			update
+		}: {
+			result: ActionResult;
+			update: (data?: any) => Promise<void>;
+		}) => {
+			
+			hideSpinner();
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
 
 					if (typeof result.data !== 'undefined') {
 						pictures = [...result.data.data, ...pictures];
+						await update(pictures);
 					}
 
 					break;
@@ -90,19 +104,22 @@
 					break;
 			}
 
-			await applyAction(result);
-			hideSpinner();
 		};
 	};
 
 	const submitDelete = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
-		showSpinner();
-
+	
 		const { id } = Object.fromEntries(formData);
 		let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
 		if (pictureToDelete.length > 0)
-			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0],  pickturePickerId);
-
+			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0],  tempPicturePickerId);
+		else{
+			toastStore.trigger(SUPRESSION_ERROR.addMessage("La photo sélectionné n'existe pas").toToast());
+			cancel()
+			return;
+		}
+		
+		showSpinner();
 		return async ({
 			result,
 			update
@@ -110,12 +127,14 @@
 			result: ActionResult;
 			update: (data?: any) => Promise<void>;
 		}) => {
+			hideSpinner();
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(SUPRESSION_SUCCES.toToast());
 
 					pictures = pictures.filter((picture) => picture.id !== result.data?.data);
 
+					await update(pictures);
 					break;
 				case 'failure':
 					toastStore.trigger(SUPRESSION_FAILED.addMessage(result.data?.errorMsg).toToast());
@@ -129,9 +148,7 @@
 				default:
 					break;
 			}
-			await update();
 
-			hideSpinner();
 		};
 	};
 </script>
@@ -199,7 +216,7 @@
 
 									<ButtonSelect
 										click={() => {
-											triggerPictureAction(actions.PICKED_PICTURE, picture, pickturePickerId);
+											triggerPictureAction(actions.PICKED_PICTURE, picture, tempPicturePickerId);
 											hidePictures();
 										}}
 										class="!hidden group-hover:!flex absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2"

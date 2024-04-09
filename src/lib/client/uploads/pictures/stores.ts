@@ -1,5 +1,5 @@
 import { writable, type Subscriber } from 'svelte/store';
-import { actions, type PictureAction, type PicturePickerAction } from './actions';
+import { actions, type PictureAction, type PicturePickerAction } from './stores-actions';
 
 const picturesPanel = writable({open:false, picturePickerId:""});
 
@@ -26,7 +26,7 @@ export function subscribePicturesAction(picturePickerId : string , callback: Sub
 			callback(pictureAction)
 	}));
 }
-
+ 
 export function triggerPictureAction(type:string, picture: Picture, picturePickerId : string) {
 	pictureActionStore.set({type, picture,picturePickerId});
 }

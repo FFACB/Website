@@ -14,25 +14,18 @@ export const load: PageServerLoad = async (event) => {
 		},
 	});
 
-	const pictureRelation1 = await prisma.pictureRelation.findUnique({
+	const pictureRelation = await prisma.pictureRelation.findUnique({
 		where:{
 			id: actualite?.pictureRelationIdPrincipale ?? ""
 		}
 	})
 
 	
-	const pictureRelation2 = await prisma.pictureRelation.findUnique({
-		where:{
-			id: actualite?.pictureRelationIdSecondaire ?? ""
-		}
-	})
-
 	return {
 		backlink: '/admin/actualites',
 		active: 'actualites',
 		actualite: actualite as Actualite | null,
-		pictureRelation1 : pictureRelation1 as PictureRelation | null,
-		pictureRelation2 : pictureRelation2 as PictureRelation | null
+		pictureRelation : pictureRelation as PictureRelation | null,
 	};
 };
 

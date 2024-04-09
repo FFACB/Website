@@ -15,4 +15,4 @@ export type PictureAction = {
     type: string;
     picture: Picture | null;
     picturePickerId : string;
-}
+} 

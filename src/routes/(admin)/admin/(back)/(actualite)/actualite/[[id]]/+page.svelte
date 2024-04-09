@@ -20,17 +20,17 @@
 
 	export let data;
 
-	let {actualite , pictureRelation1,pictureRelation2} = data
+	let {actualite , pictureRelation} = data
 
-	let writer: SvelteComponent | null = null;
+	let writer: Writer | null = null;
 
-	let picturePicker1 : PicturePicker | null = null;
-	let picturePicker2 : PicturePicker | null = null;
+	let picturePicker : PicturePicker | null = null;
+	
 
 	onMount(() => {
-		writer?.methods.loadContenu(actualite?.contenu ?? '');
-		picturePicker1?.methods.loadPictureRelation(pictureRelation1)
-		picturePicker2?.methods.loadPictureRelation(pictureRelation2)
+		writer?.loadContenu(actualite?.contenu ?? '');
+		picturePicker?.loadPictureRelation(pictureRelation)
+
 	});
 
 
@@ -43,7 +43,6 @@
 	}) => {
 		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
-		console.log(Object.fromEntries(formData))
 		if (IsEmptyString(titre)) {
 			toast.message = '❌ Le titre ne doit pas être vide';
 			toast.background = 'variant-filled-error';
@@ -76,11 +75,12 @@
 			return;
 		}
 
-		formData.append('contenu', (await writer?.methods.saveContenu()) ?? '');
+		formData.append('contenu', (await writer?.saveContenu()) ?? '');
 
 		showSpinner();
 		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
 		
+			hideSpinner();
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Enregistrement effectué !';
@@ -88,10 +88,8 @@
 					toastStore.trigger(toast);
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data?.actualite;
-						pictureRelation1 = result.data?.pictureRelation1
-						pictureRelation2 = result.data?.pictureRelation2
-						picturePicker1?.methods.loadPictureRelation(pictureRelation1)
-						picturePicker2?.methods.loadPictureRelation(pictureRelation2)
+						pictureRelation = result.data?.pictureRelation
+						picturePicker?.loadPictureRelation(pictureRelation)
 						goto(`/admin/actualite/${actualite?.id ?? ''}`, {
 							invalidateAll: true,
 							replaceState: true
@@ -116,7 +114,6 @@
 			}
 			
 			await applyAction(result);
-			hideSpinner();
 		};
 	};
 
@@ -199,10 +196,7 @@
 				/>
 			</label>
 
-			<PicturePicker bind:this={picturePicker1} identifier=0 bind:savedPicture={pictureRelation1} pictureName="Photo" />
-
-			<PicturePicker bind:this={picturePicker2} identifier=1 bind:savedPicture={pictureRelation2} pictureName="Photo 2" />
-
+			<PicturePicker bind:this={picturePicker} pictureName="Photo Principale" />
 
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>

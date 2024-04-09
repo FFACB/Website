@@ -31,17 +31,14 @@ model Parametre {
 
 //BO (Actualite)
 model Actualite {
-  id                String           @id @default(uuid())
-  titre             String
-  
-  pictureRelationIdPrincipale   String
-  pictureRelationIdSecondaire   String
-
-  redacteur         String
-  tempsLecture      String
-  descriptionCourte String
-  contenu           String
-  createdAt         DateTime         @default(now())
+  id                          String   @id @default(uuid())
+  titre                       String
+  pictureRelationIdPrincipale String
+  redacteur                   String
+  tempsLecture                String
+  descriptionCourte           String
+  contenu                     String
+  createdAt                   DateTime @default(now())
 }
 
 //BO (Formulaires)
@@ -57,11 +54,11 @@ model Contact {
 
 //BO (Galerie)
 model Picture {
-  id        String   @id @default(uuid())
-  path      String
-  filename  String
-  extension String
-  createdAt DateTime @default(now())
+  id               String            @id @default(uuid())
+  path             String
+  filename         String
+  extension        String
+  createdAt        DateTime          @default(now())
   //Relations
   pictureRelations PictureRelation[]
 }
@@ -75,5 +72,4 @@ model PictureRelation {
   resolution Int?
   pictureId  String
   picture    Picture  @relation(fields: [pictureId], references: [id], onDelete: Cascade)
-
 }

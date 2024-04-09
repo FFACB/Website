@@ -60,37 +60,35 @@
 		});
 	}
 
-	export const methods = {
-		loadContenu: (_contenu = null) => {
-			// @ts-ignore
-			if (_contenu == null || _contenu.length == 0 || !IsJsonString(contenu)) return;
+	export function loadContenu(_contenu = null) {
+		// @ts-ignore
+		if (_contenu == null || _contenu.length == 0 || !IsJsonString(contenu)) return;
 
-			contenu = JSON.parse(_contenu);
+		contenu = JSON.parse(_contenu);
 
-			if (_contenu.blocks == null || _contenu.blocks.length == 0) return;
+		if (_contenu.blocks == null || _contenu.blocks.length == 0) return;
 
-			if (editor != null) {
-				editor.isReady.then(() => {
-					// @ts-ignore
-					editor.render(contenu);
-				});
-			}
-		},
-
-		saveContenu: async () => {
-			let contenuSaved = {};
-
-			// @ts-ignore
-			if (editor != null) {
+		if (editor != null) {
+			editor.isReady.then(() => {
 				// @ts-ignore
-				contenuSaved = await editor.save().catch((error) => {
-					console.log('Saving failed: ', error);
-				});
-			}
-
-			return JSON.stringify(contenuSaved);
+				editor.render(contenu);
+			});
 		}
-	};
+	}
+
+	export async function saveContenu() {
+		let contenuSaved = {};
+
+		// @ts-ignore
+		if (editor != null) {
+			// @ts-ignore
+			contenuSaved = await editor.save().catch((error) => {
+				console.log('Saving failed: ', error);
+			});
+		}
+
+		return JSON.stringify(contenuSaved);
+	}
 </script>
 
 <div id="writer" />

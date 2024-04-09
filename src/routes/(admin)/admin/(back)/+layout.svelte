@@ -5,10 +5,10 @@
 	import Spinner from '$lib/components/admin/Spinner.svelte';
 	import Pictures from '$lib/components/admin/uploads/pictures/Pictures.svelte';
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
-	import { subscribePicturesPanel } from '$lib/client/uploads/pictures/index.js';
+	import { subscribePicturesPanel } from '$lib/client/uploads/pictures/stores.js';
 	import type { SvelteComponent } from 'svelte';
 	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
-	import type { PicturePickerAction } from '$lib/client/uploads/pictures/actions.js';
+	import type { PicturePickerAction } from '$lib/client/uploads/pictures/stores-actions.js';
 
 	//Setup theme
 	function setInitialClassState() {

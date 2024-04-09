@@ -25,7 +25,7 @@ CREATE TABLE "Parametre" (
 CREATE TABLE "Actualite" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "titre" TEXT NOT NULL,
-    "photo" TEXT NOT NULL DEFAULT '',
+    "pictureRelationIdPrincipale" TEXT NOT NULL,
     "redacteur" TEXT NOT NULL,
     "tempsLecture" TEXT NOT NULL,
     "descriptionCourte" TEXT NOT NULL,
@@ -45,21 +45,23 @@ CREATE TABLE "Contact" (
 );
 
 -- CreateTable
-CREATE TABLE "Photo" (
+CREATE TABLE "Picture" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "path" TEXT NOT NULL,
+    "filename" TEXT NOT NULL,
+    "extension" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateTable
-CREATE TABLE "Resolution" (
+CREATE TABLE "PictureRelation" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "label" TEXT NOT NULL,
-    "width" TEXT NOT NULL,
-    "height" TEXT NOT NULL,
-    "quality" TEXT NOT NULL,
-    "photoId" TEXT NOT NULL,
-    CONSTRAINT "Resolution_photoId_fkey" FOREIGN KEY ("photoId") REFERENCES "Photo" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "path" TEXT NOT NULL,
+    "quality" INTEGER NOT NULL,
+    "resolution" INTEGER,
+    "pictureId" TEXT NOT NULL,
+    CONSTRAINT "PictureRelation_pictureId_fkey" FOREIGN KEY ("pictureId") REFERENCES "Picture" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
