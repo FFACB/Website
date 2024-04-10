@@ -60,7 +60,7 @@
 		});
 	}
 
-	export function loadContenu(_contenu = null) {
+	export function loadContenu(_contenu = "") {
 		// @ts-ignore
 		if (_contenu == null || _contenu.length == 0 || !IsJsonString(contenu)) return;
 

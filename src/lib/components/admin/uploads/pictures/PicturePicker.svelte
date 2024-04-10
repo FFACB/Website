@@ -3,10 +3,8 @@
 	import qualities, { Quality } from '$lib/client/uploads/pictures/quality';
 	import resolutions, { Resolution } from '$lib/client/uploads/pictures/resolution';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { onMount, type SvelteComponent } from 'svelte';
 	import {
 		showPictures,
-		hidePictures,
 		subscribePicturesAction
 	} from '$lib/client/uploads/pictures/stores.js';
 	import type { PictureRelation } from '@prisma/client';
@@ -30,6 +28,9 @@
 		
 		deletePictureRelation();
 		savedPicture = _savedPicture;
+		resolution = Resolution.fromInput(savedPicture?.resolution);
+		quality = Quality.fromInput(savedPicture?.quality);
+
 	}
 
 	subscribePicturesAction(picturePickerId, (event) => {

@@ -13,6 +13,7 @@
 	import type { Actualite,  PictureRelation } from '@prisma/client';
 	import { onMount, type SvelteComponent } from 'svelte';
 	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
+	import { ENREGISTREMENT_ERROR, ENREGISTREMENT_FAILED, ENREGISTREMENT_SUCCES, ERROR, FAILED, SUPRESSION_ERROR, SUPRESSION_FAILED, SUPRESSION_SUCCES } from '$lib/client/toasts/toasts.js';
 	
 
 	const toastStore = getToastStore();
@@ -44,33 +45,22 @@
 		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
 		if (IsEmptyString(titre)) {
-			toast.message = '❌ Le titre ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
+			toastStore.trigger(FAILED.addMessage("Le titre ne doit pas être vide").toToast());
 			cancel();
-			return;
 		}
 
 		if (IsEmptyString(redacteur)) {
-			toast.message = '❌ Le rédacteur ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
+			toastStore.trigger(FAILED.addMessage("Le rédacteur ne doit pas être vide").toToast());
 			cancel();
-			return;
 		}
 
 		if (IsEmptyString(tempsLecture)) {
-			toast.message = '❌ Le temps de lecture ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
+			toastStore.trigger(FAILED.addMessage("Le temps de lecture ne doit pas être vide").toToast());
 			cancel();
-			return;
 		}
 
 		if (IsEmptyString(descriptionCourte)) {
-			toast.message = '❌ La description courte ne doit pas être vide';
-			toast.background = 'variant-filled-error';
-			toastStore.trigger(toast);
+			toastStore.trigger(FAILED.addMessage("La description ne doit pas être vide").toToast());
 			cancel();
 			return;
 		}
@@ -78,41 +68,31 @@
 		formData.append('contenu', (await writer?.saveContenu()) ?? '');
 
 		showSpinner();
-		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
+		return async ({ result }: { result: ActionResult; update: () => Promise<void> }) => {
 		
 			hideSpinner();
+			
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Enregistrement effectué !';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
 					if (typeof result.data !== 'undefined') {
-						actualite = result.data?.actualite;
-						pictureRelation = result.data?.pictureRelation
+						actualite = result.data.actualite;
+						pictureRelation = result.data.pictureRelation
 						picturePicker?.loadPictureRelation(pictureRelation)
-						goto(`/admin/actualite/${actualite?.id ?? ''}`, {
-							invalidateAll: true,
-							replaceState: true
-						});
+					
 					}
 
 					break;
 				case 'failure':
-					toast.message = result.data?.errorMsg;
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_FAILED.toToast());
 
 					break;
 				case 'error':
-					toast.message = "Erreur serveur lors de l'enregistrement";
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
-
+					toastStore.trigger(ENREGISTREMENT_ERROR.toToast());
 					break;
 				default:
 					break;
 			}
-			
 			await applyAction(result);
 		};
 	};
@@ -127,22 +107,16 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Actualité supprimé!';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_SUCCES.toToast());
 
 					break;
 				case 'failure':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_FAILED.toToast());
 
 					break;
 
 				case 'error':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_ERROR.toToast());
 
 					break;
 				default:

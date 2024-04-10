@@ -13,6 +13,7 @@ class ToastSettingsClient{
         return this;
     }
 
+
     addColor(cssClass:string){
         this.toastSettings.background = cssClass
         return this;
@@ -35,6 +36,7 @@ export const SUPRESSION_ERROR : ToastSettingsClient =  new ToastSettingsClient({
 
 export const FAILED : ToastSettingsClient =  new ToastSettingsClient({ timeout: 2000, message: "Une erreur est survenue", background: 'variant-filled-error' })
 export const ERROR : ToastSettingsClient =  new ToastSettingsClient({ timeout: 2000, message: "Une erreur est survenue", background: 'variant-filled-error' })
+
 
 
 
