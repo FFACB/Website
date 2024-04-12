@@ -1,5 +1,4 @@
 <script>
-	import '../../app.pcss';
 	import './admin.pcss';
 </script>
 

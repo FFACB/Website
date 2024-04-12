@@ -9,14 +9,7 @@ const config = {
 		csrf: {
 			checkOrigin: false
 		},
-		csp: {
-			directives: {
-				'script-src': ['self']
-			},
-			reportOnly: {
-				'script-src': ['self']
-			}
-		},
+		csp: {},
 		adapter: adapterNode({
 			out: 'build-node', //Must be the same name as the one in dockerfile COPY --from=build /app/build-node
 			precompress: false,

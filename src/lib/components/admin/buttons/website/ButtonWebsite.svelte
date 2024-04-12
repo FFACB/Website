@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import './button-website.pcss';
 </script>
 
 <a data-button="website" {...$$restProps} target="_blank" href="/">

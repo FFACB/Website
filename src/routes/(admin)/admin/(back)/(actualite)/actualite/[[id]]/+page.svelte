@@ -83,7 +83,7 @@
 
 					break;
 				case 'failure':
-					toastStore.trigger(ENREGISTREMENT_FAILED.toToast());
+					toastStore.trigger(ENREGISTREMENT_FAILED.addMessage(result.data?.errorMsg).toToast());
 
 					break;
 				case 'error':
@@ -126,17 +126,22 @@
 	<svelte:fragment slot="buttons">
 		<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
 		{#if actualite?.id != null}
-			<ButtonDelete type="submit" value="Update" form="delete" />
+			<ButtonDelete type="submit" value="Update" form="delete-actualite-{actualite?.id}" />
 
 			<div class="hidden">
-				<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteActualite}>
+				<form
+					action="?/delete"
+					method="POST"
+					id="delete-actualite-{actualite?.id}"
+					use:enhance={submitDeleteActualite}
+				>
 					<input type="hidden" name="id" value={actualite.id} />
 				</form>
 			</div>
 		{/if}
 	</svelte:fragment>
 
-	<div class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
+	<div class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
 		<h1 class="h1">
 			{actualite?.id == null ? 'Créer' : 'Modifier'} l'Actualité
 		</h1>

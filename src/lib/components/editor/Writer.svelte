@@ -87,4 +87,4 @@
 	}
 </script>
 
-<div id="writer" />
+<div class="p-4" id="writer" />

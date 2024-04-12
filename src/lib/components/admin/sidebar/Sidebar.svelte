@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import type { LayoutConfig, LayoutSidebarItem } from '$lib/client/utils/ambiant.js';
 	import ButtonDisconnect from '$lib/components/admin/buttons/disconnect/ButtonDisconnect.svelte';
-	import './sidebar.pcss';
 
 	export let config: LayoutConfig;
 

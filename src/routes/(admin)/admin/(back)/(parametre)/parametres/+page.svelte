@@ -2,36 +2,32 @@
 	import { enhance, applyAction } from '$app/forms';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
+	import {
+		ENREGISTREMENT_ERROR,
+		ENREGISTREMENT_FAILED,
+		ENREGISTREMENT_SUCCES
+	} from '$lib/client/toasts/toasts.js';
 
 	const toastStore = getToastStore();
 	export let data;
 	let { parametres } = data;
 
-	const toast: ToastSettings = { message: '', background: '' };
-
 	const UpdateParametre = async () => {
 		return async ({ result }: { result: ActionResult }) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Enregistrement effectué !';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
 
 					break;
 				case 'failure':
-					toast.message = result.data?.errorMsg;
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_FAILED.addMessage(result.data?.errorMsg).toToast());
 
 					break;
 				case 'error':
-					toast.message = "Erreur serveur lors de l'enregistrement";
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(ENREGISTREMENT_ERROR.toToast());
 
 					break;
 				default:
@@ -46,7 +42,7 @@
 	<svelte:fragment slot="buttons"></svelte:fragment>
 
 	<div
-		class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"
+		class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"
 	>
 		<h1 class="h1">Liste des paramètres</h1>
 	</div>

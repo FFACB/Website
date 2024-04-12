@@ -1,5 +1,5 @@
 <script>
-	import '../../app.pcss';
+	import './app.pcss';
 
 	export let data;
 	const { parametres } = data;

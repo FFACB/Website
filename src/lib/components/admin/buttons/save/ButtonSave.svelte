@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import './button-save.pcss';
 	export let titre: string;
 	export let click = () => {};
 </script>

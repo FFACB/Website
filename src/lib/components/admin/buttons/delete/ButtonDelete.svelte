@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import './button-delete.pcss';
 	export let click = () => {};
 </script>
 

@@ -2,8 +2,6 @@
 	import Icon from '@iconify/svelte';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 
-	import './lead.pcss';
-
 	export let backlink: string | null;
 
 	const drawerStore = getDrawerStore();

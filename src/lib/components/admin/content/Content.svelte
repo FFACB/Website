@@ -3,7 +3,6 @@
 
 	import Lead from '$lib/components/admin/appbar/lead/Lead.svelte';
 	import Trail from '$lib/components/admin/appbar/trail/Trail.svelte';
-	import './content.pcss';
 
 	import { page } from '$app/stores';
 	const { backlink } = $page.data;

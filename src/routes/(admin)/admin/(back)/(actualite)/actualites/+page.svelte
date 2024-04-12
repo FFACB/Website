@@ -1,26 +1,26 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonCreate from '$lib/components/admin/buttons/create/ButtonCreate.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
+	import {
+		SUPRESSION_ERROR,
+		SUPRESSION_FAILED,
+		SUPRESSION_SUCCES
+	} from '$lib/client/toasts/toasts.js';
 
 	const toastStore = getToastStore();
 	export let data;
 	let { actualites } = data;
 
-	const toast: ToastSettings = { message: '', background: '' };
-
 	const submitDeleteActualite = () => {
 		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
-					toast.message = 'Actualité supprimé!';
-					toast.background = 'variant-filled-success';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_SUCCES.toToast());
 
 					if (result.data != null && result.data.id != null) {
 						const id: string = result.data.id;
@@ -29,17 +29,13 @@
 					await update();
 					break;
 				case 'failure':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
+					toastStore.trigger(SUPRESSION_FAILED.toToast());
 					await update();
 					break;
 
 				case 'error':
-					toast.message = 'Erreur lors de la suppression';
-					toast.background = 'variant-filled-error';
-					toastStore.trigger(toast);
-					await update(result);
+					toastStore.trigger(SUPRESSION_ERROR.toToast());
+					await update();
 					break;
 				default:
 					break;
@@ -54,14 +50,14 @@
 	</svelte:fragment>
 
 	<div
-		class="head w-full bg-surface-100 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"
+		class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"
 	>
 		<h1 class="h1">Liste des actualites</h1>
 	</div>
 
 	<dl class="list-dl">
-		{#each actualites as actualite}
-			<div class="w-full block p-2 bg-surface-100 dark:bg-surface-800 rounded-container-token">
+		{#each actualites as actualite, index}
+			<div class="w-full block p-2 bg-surface-50 dark:bg-surface-800 rounded-container-token">
 				<div class="h-16 w-full flex justify-between">
 					<div class="h-full">
 						<a
@@ -69,7 +65,7 @@
 							class="group badge variant-outline-secondary hover:variant-outline-primary transition-all ease-out duration-300"
 							><Icon
 								icon="solar:double-alt-arrow-right-bold-duotone"
-								class="text-secondary-500 transition-all ease-out duration-300 group-hover:text-primary-500"
+								class="text-secondary-500 transition-all ease-out duration-300 "
 								width="32"
 								height="32"
 							></Icon></a
@@ -87,9 +83,19 @@
 								class="w-32 h-full object-cover rounded-container-token"
 							/>
 						{/if}
-						<ButtonDelete class="!mr-0" type="submit" value="Update" form="delete" />
+						<ButtonDelete
+							class="!mr-0"
+							type="submit"
+							value="Delete"
+							form="delete-actualites-{index}"
+						/>
 						<div class="!hidden">
-							<form action="?/delete" method="POST" id="delete" use:enhance={submitDeleteActualite}>
+							<form
+								action="?/delete"
+								method="POST"
+								id="delete-actualites-{index}"
+								use:enhance={submitDeleteActualite}
+							>
 								<input type="hidden" name="id" value={actualite.id} />
 							</form>
 						</div>
