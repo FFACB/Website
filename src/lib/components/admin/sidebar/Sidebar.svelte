@@ -18,7 +18,7 @@
 	function initSidebar(sidebarItem: LayoutSidebarItem[]) {
 		let sidebarItems = sidebarItem
 			.map((item) => {
-				let local = `<li class='li'><a class="${active == item.linkactive ? 'active' : ''}" ${
+				let local = `<li class='li'><a class="${active == item.linkactive ? 'active ' : ''}${item.items.length > 0 ? 'pointer-events-none' : ''}" ${
 					item.slug != null ? `href='${admin.slug}${item.slug}'` : ''
 				}>${item.bartitle}</a></li>`;
 
