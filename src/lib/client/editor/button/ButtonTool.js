@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 export default class ButtonTool {
 	static get toolbox() {
@@ -47,7 +48,7 @@ export default class ButtonTool {
 		}
 	}
 
-	save(blockContent) {
+	save() {
 		// Sauvegardez les données actuelles
 		return this.data;
 	}

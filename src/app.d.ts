@@ -10,7 +10,7 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
-	var __prisma: PrismaClient;
+	let __prisma: PrismaClient;
 
 	/// <reference types="lucia-auth" />
 	export type DatabaseUser = {
@@ -23,7 +23,7 @@ declare global {
 		id: string;
 		path: string;
 		createdAt: Date;
-	}
+	};
 }
 
 export {};

@@ -106,7 +106,9 @@ export async function savePictureRelation(
 	}
 }
 
-export async function savePictureUpload(file: File | null | undefined | FormDataEntryValue): Promise<{
+export async function savePictureUpload(
+	file: File | null | undefined | FormDataEntryValue
+): Promise<{
 	succes: boolean;
 	picture: Picture | null;
 	errorMsg: string;
@@ -119,7 +121,7 @@ export async function savePictureUpload(file: File | null | undefined | FormData
 		};
 	}
 
-	if(!(file instanceof File)){
+	if (!(file instanceof File)) {
 		return {
 			succes: false,
 			picture: null,
@@ -135,7 +137,7 @@ export async function savePictureUpload(file: File | null | undefined | FormData
 		}
 
 		const arrayBuffer = await file.arrayBuffer();
-		let filename = `${uuid()}`;
+		const filename = `${uuid()}`;
 		let extension = '';
 
 		if (IsPhoto(file)) {

@@ -14,24 +14,18 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	const Delete = () => {
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Contact supprimé!';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
-					
-					if(result.data != null && result.data.id != null){
-						const id : string = result.data.id;
+
+					if (result.data != null && result.data.id != null) {
+						const id: string = result.data.id;
 						contacts = contacts.filter((contacts) => contacts.id != id);
 					}
-					await update(result);
+					await update();
 					break;
 				case 'failure':
 					toast.message = 'Erreur lors de la suppression';
@@ -41,11 +35,7 @@
 					break;
 				default:
 					break;
-				
 			}
-
-		
-
 		};
 	};
 </script>

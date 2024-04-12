@@ -11,21 +11,20 @@ export const load: PageServerLoad = async (event) => {
 	const actualite: Actualite | null = await prisma.actualite.findUnique({
 		where: {
 			id
-		},
+		}
 	});
 
 	const pictureRelation = await prisma.pictureRelation.findUnique({
-		where:{
-			id: actualite?.pictureRelationIdPrincipale ?? ""
+		where: {
+			id: actualite?.pictureRelationIdPrincipale ?? ''
 		}
-	})
+	});
 
-	
 	return {
 		backlink: '/admin/actualites',
 		active: 'actualites',
 		actualite: actualite as Actualite | null,
-		pictureRelation : pictureRelation as PictureRelation | null,
+		pictureRelation: pictureRelation as PictureRelation | null
 	};
 };
 

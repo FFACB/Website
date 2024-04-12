@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	let spinner: HTMLDivElement | null = null;
 
 	export function toggle(value: boolean) {

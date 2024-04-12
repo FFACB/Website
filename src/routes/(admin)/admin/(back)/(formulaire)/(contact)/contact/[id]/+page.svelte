@@ -14,13 +14,7 @@
 	let { contact } = data;
 
 	const Delete = () => {
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Contact supprimé !';

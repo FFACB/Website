@@ -5,7 +5,13 @@
 	export let click = () => {};
 </script>
 
-<button data-button="save" on:click={()=>{click()}} {...$$restProps}>
+<button
+	data-button="save"
+	on:click={() => {
+		click();
+	}}
+	{...$$restProps}
+>
 	<div>
 		{titre}
 	</div>

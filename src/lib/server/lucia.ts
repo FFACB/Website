@@ -9,7 +9,7 @@ export const lucia = new Lucia(adapter, {
 			secure: true
 		}
 	},
-	// @ts-ignore
+	//@ts-expect-error: send username
 	getUserAttributes: ({ username }) => {
 		return {
 			username

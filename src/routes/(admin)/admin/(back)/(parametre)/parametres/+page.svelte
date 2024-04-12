@@ -13,10 +13,8 @@
 
 	const toast: ToastSettings = { message: '', background: '' };
 
-	const UpdateParametre = async ({ formData }: { formData: FormData }) => {
-		const {} = Object.fromEntries(formData);
-
-		return async ({ result }: { result: ActionResult; update: (data?: any) => Promise<void> }) => {
+	const UpdateParametre = async () => {
+		return async ({ result }: { result: ActionResult }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Enregistrement effectué !';

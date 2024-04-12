@@ -1,4 +1,5 @@
 <script>
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-nocheck
 
 	import { onMount } from 'svelte';
@@ -37,7 +38,6 @@
 				},
 				paragraph: ParagraphTool,
 				button: {
-					// @ts-ignore
 					class: ButtonTool
 				},
 				nestedList: {
@@ -60,8 +60,7 @@
 		});
 	}
 
-	export function loadContenu(_contenu = "") {
-		// @ts-ignore
+	export function loadContenu(_contenu = '') {
 		if (_contenu == null || _contenu.length == 0 || !IsJsonString(contenu)) return;
 
 		contenu = JSON.parse(_contenu);
@@ -70,7 +69,6 @@
 
 		if (editor != null) {
 			editor.isReady.then(() => {
-				// @ts-ignore
 				editor.render(contenu);
 			});
 		}
@@ -79,9 +77,7 @@
 	export async function saveContenu() {
 		let contenuSaved = {};
 
-		// @ts-ignore
 		if (editor != null) {
-			// @ts-ignore
 			contenuSaved = await editor.save().catch((error) => {
 				console.log('Saving failed: ', error);
 			});

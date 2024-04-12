@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (!ParamReCapchaSecret.success) {
 			logger.error({}, 'La clé recapcha est invalide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'La clé recapcha est invalide !' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'La clé recapcha est invalide !' }),
 				{ status: 400 }
 			);
 		}
@@ -23,7 +23,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(token)) {
 			logger.warn({}, 'Le token recapcha ne doit pas être vide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'Le token recapcha ne doit pas être vide' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'Le token recapcha ne doit pas être vide' }),
 				{ status: 400 }
 			);
 		}
@@ -31,7 +31,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(nom)) {
 			logger.warn({}, 'Le nom ne doit pas être vide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'Le nom ne doit pas être vide' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'Le nom ne doit pas être vide' }),
 				{ status: 400 }
 			);
 		}
@@ -39,7 +39,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(prenom)) {
 			logger.warn({}, 'Le prenom ne doit pas être vide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'Le prenom ne doit pas être vide' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'Le prenom ne doit pas être vide' }),
 				{ status: 400 }
 			);
 		}
@@ -47,7 +47,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(email)) {
 			logger.warn({}, "L'email ne doit pas être vide", '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: "L'email ne doit pas être vide" }),
+				JSON.stringify({ type: 'failure', errorMsg: "L'email ne doit pas être vide" }),
 				{ status: 400 }
 			);
 		}
@@ -55,7 +55,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(telephone)) {
 			logger.warn({}, 'Le telephone ne doit pas être vide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'Le telephone ne doit pas être vide' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'Le telephone ne doit pas être vide' }),
 				{ status: 400 }
 			);
 		}
@@ -63,7 +63,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		if (IsEmptyString(message)) {
 			logger.warn({}, 'Le message ne doit pas être vide', '/api/contact');
 			return new Response(
-				JSON.stringify({ type: 'error', errorMsg: 'Le message ne doit pas être vide' }),
+				JSON.stringify({ type: 'failure', errorMsg: 'Le message ne doit pas être vide' }),
 				{ status: 400 }
 			);
 		}
@@ -75,7 +75,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 
 		if (!recacpchaResponse.success) {
 			logger.warn(recacpchaResponse, 'Erreur recapcha', '/api/contact');
-			return new Response(JSON.stringify({ type: 'error', errorMsg: 'Erreur recapcha' }), {
+			return new Response(JSON.stringify({ type: 'failure', errorMsg: 'Erreur recapcha' }), {
 				status: 400
 			});
 		}

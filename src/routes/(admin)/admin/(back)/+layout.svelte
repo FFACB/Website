@@ -7,7 +7,6 @@
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
 	import { subscribePicturesPanel } from '$lib/client/uploads/pictures/stores.js';
 	import type { SvelteComponent } from 'svelte';
-	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
 	import type { PicturePickerAction } from '$lib/client/uploads/pictures/stores-actions.js';
 
 	//Setup theme

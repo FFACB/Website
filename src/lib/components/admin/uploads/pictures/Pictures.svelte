@@ -7,22 +7,30 @@
 	import { hidePictures, triggerPictureAction } from '$lib/client/uploads/pictures/stores';
 	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
-	import { onMount } from 'svelte';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
+	import type { Picture } from '@prisma/client';
 	import { actions, type PicturePickerAction } from '$lib/client/uploads/pictures/stores-actions';
-	import { ENREGISTREMENT_ERROR, ENREGISTREMENT_FAILED, ENREGISTREMENT_SUCCES, ERROR, FAILED, SUPRESSION_ERROR, SUPRESSION_FAILED, SUPRESSION_SUCCES } from '$lib/client/toasts/toasts';
+	import {
+		ENREGISTREMENT_ERROR,
+		ENREGISTREMENT_FAILED,
+		ENREGISTREMENT_SUCCES,
+		ERROR,
+		FAILED,
+		SUPRESSION_ERROR,
+		SUPRESSION_FAILED,
+		SUPRESSION_SUCCES
+	} from '$lib/client/toasts/toasts';
 
 	const toastStore = getToastStore();
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let picturesContainer: HTMLDivElement | null = null;
 	let pictures: Picture[] = [];
-	let tempPicturePickerId = ""
+	let tempPicturePickerId = '';
 
 	export function toggle(value: PicturePickerAction) {
-		tempPicturePickerId = value.picturePickerId
+		tempPicturePickerId = value.picturePickerId;
 		if (value.open) onOpen();
 		else onClose();
 	}
@@ -43,45 +51,31 @@
 
 	const submitFindall = async () => {
 		showSpinner();
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
-			
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			hideSpinner();
 			switch (result.type) {
 				case 'success':
-					
 					pictures = result.data?.data;
-					update(result.data?.data);
+					await update();
 					break;
 				case 'failure':
 					toastStore.trigger(FAILED.addMessage(result.data?.errorMsg).toToast());
 					break;
 				case 'error':
-					toastStore.trigger(ERROR.addMessage("Erreur lors de la récuperation des images").toToast());
+					toastStore.trigger(
+						ERROR.addMessage('Erreur lors de la récuperation des images').toToast()
+					);
 
 					break;
 				default:
 					break;
 			}
-		
 		};
 	};
 
 	const submitCreate = async () => {
 		showSpinner();
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
-			
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			hideSpinner();
 			switch (result.type) {
 				case 'success':
@@ -89,7 +83,7 @@
 
 					if (typeof result.data !== 'undefined') {
 						pictures = [...result.data.data, ...pictures];
-						await update(pictures);
+						await update();
 					}
 
 					break;
@@ -103,30 +97,24 @@
 				default:
 					break;
 			}
-
 		};
 	};
 
 	const submitDelete = async ({ formData, cancel }: { formData: FormData; cancel: () => void }) => {
-	
 		const { id } = Object.fromEntries(formData);
 		let pictureToDelete = pictures.filter((picture) => picture.id === (id as string));
 		if (pictureToDelete.length > 0)
-			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0],  tempPicturePickerId);
-		else{
-			toastStore.trigger(SUPRESSION_ERROR.addMessage("La photo sélectionné n'existe pas").toToast());
-			cancel()
+			triggerPictureAction(actions.DELETE_PICTURE, pictureToDelete[0], tempPicturePickerId);
+		else {
+			toastStore.trigger(
+				SUPRESSION_ERROR.addMessage("La photo sélectionné n'existe pas").toToast()
+			);
+			cancel();
 			return;
 		}
-		
+
 		showSpinner();
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			hideSpinner();
 			switch (result.type) {
 				case 'success':
@@ -134,7 +122,7 @@
 
 					pictures = pictures.filter((picture) => picture.id !== result.data?.data);
 
-					await update(pictures);
+					await update();
 					break;
 				case 'failure':
 					toastStore.trigger(SUPRESSION_FAILED.addMessage(result.data?.errorMsg).toToast());
@@ -148,7 +136,6 @@
 				default:
 					break;
 			}
-
 		};
 	};
 </script>

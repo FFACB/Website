@@ -1,16 +1,9 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
-import { v4 as uuid } from 'uuid';
 import { prisma } from '$lib/server/prisma';
-import { IsEmptyString, IsPhoto, IsSvg } from '$lib/client/utils/type.js';
 import { logger } from '$lib/server/logs';
-import { existsSync, mkdirSync , writeFileSync,unlinkSync} from 'fs';
-import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
-import sharp from 'sharp';
-import type { PictureRelation } from '@prisma/client';
+import { unlinkSync } from 'fs';
 import { savePictureUpload } from '$lib/server/uploads/picture-upload';
-
-const FULL_UPLOAD_PATH = `${PUBLIC_UPLOADS_FOLDER_NAME}/pictures/`;
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -30,19 +23,15 @@ export const action_create = async (event: RequestEvent) => {
 	const files = data.getAll('picturesFiles');
 
 	try {
-		
-
 		const pictures = await Promise.all(
 			files.map(async (file) => {
-
-			   	const savedPicture = await	savePictureUpload(file)
-				if(!savedPicture.succes){
+				const savedPicture = await savePictureUpload(file);
+				if (!savedPicture.succes) {
 					logger.error(savedPicture.errorMsg, '/admin/pictures');
 					return;
 				}
 
-				return savedPicture.picture
-
+				return savedPicture.picture;
 			})
 		);
 
@@ -94,8 +83,6 @@ export const action_findall = async (event: RequestEvent) => {
 	}
 };
 
-
-
 export const action_delete = async (event: RequestEvent) => {
 	if (!(await authAction(event))) {
 		logger.error({}, "Vous n'etes pas connecté", '/admin/pictures');
@@ -104,21 +91,21 @@ export const action_delete = async (event: RequestEvent) => {
 			errorMsg: "Vous n'etes pas connecté"
 		});
 	}
-	
+
 	const { request } = event;
 	const data = await request.formData();
-	const {id} = Object.fromEntries(data);
+	const { id } = Object.fromEntries(data);
 
 	const picture = await prisma.picture.findUnique({
-		where:{
-			id:id as string
+		where: {
+			id: id as string
 		},
-		include:{
-			pictureRelations:true
+		include: {
+			pictureRelations: true
 		}
 	});
 
-	if(picture == null){
+	if (picture == null) {
 		logger.warn(data, "L'image n'existe pas", '/admin/pictures');
 
 		return fail(400, {
@@ -126,30 +113,25 @@ export const action_delete = async (event: RequestEvent) => {
 			errorMsg: "❌ L'image n'existe pas"
 		});
 	}
-	
-	
-	for(const pictureRelation of picture.pictureRelations){
 
+	for (const pictureRelation of picture.pictureRelations) {
 		try {
-			unlinkSync(`${pictureRelation.path.slice(1)}`)
+			unlinkSync(`${pictureRelation.path.slice(1)}`);
 		} catch (err) {
 			logger.error(err, '/admin/pictures?/delete');
 		}
-	
 	}
 
 	try {
-		unlinkSync(`${picture.path.slice(1)}`)
+		unlinkSync(`${picture.path.slice(1)}`);
 	} catch (err) {
 		logger.error(err, '/admin/pictures?/delete');
-
 	}
 
-	
 	try {
 		await prisma.picture.delete({
-			where:{
-				id:id as string
+			where: {
+				id: id as string
 			}
 		});
 	} catch (err) {

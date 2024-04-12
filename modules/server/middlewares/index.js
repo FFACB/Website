@@ -30,7 +30,7 @@ const middlewares = function (app, dirname) {
 		}
 	});
 
-	const errorHandler = (error, request, response, next) => {
+	const errorHandler = (error, request, response) => {
 		if (error instanceof Error) {
 			logger.warn(error.stack, error.message, request.url);
 		}

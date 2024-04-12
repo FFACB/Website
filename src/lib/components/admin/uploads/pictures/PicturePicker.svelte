@@ -3,12 +3,10 @@
 	import qualities, { Quality } from '$lib/client/uploads/pictures/quality';
 	import resolutions, { Resolution } from '$lib/client/uploads/pictures/resolution';
 	import ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import {
-		showPictures,
-		subscribePicturesAction
-	} from '$lib/client/uploads/pictures/stores.js';
+	import { showPictures, subscribePicturesAction } from '$lib/client/uploads/pictures/stores.js';
 	import type { PictureRelation } from '@prisma/client';
 	import { v4 as uuid } from 'uuid';
+	import type { Picture } from '@prisma/client';
 
 	let galeryPicture: Picture | null = null;
 	export let savedPicture: PictureRelation | null = null;
@@ -25,12 +23,10 @@
 	}
 
 	export function loadPictureRelation(_savedPicture: PictureRelation | null) {
-		
 		deletePictureRelation();
 		savedPicture = _savedPicture;
 		resolution = Resolution.fromInput(savedPicture?.resolution);
 		quality = Quality.fromInput(savedPicture?.quality);
-
 	}
 
 	subscribePicturesAction(picturePickerId, (event) => {
@@ -38,7 +34,7 @@
 
 		switch (type) {
 			case actions.PICKED_PICTURE:
-				if (event.picturePickerId == picturePickerId) galeryPicture = event.picture;
+				if (event.picturePickerId == picturePickerId) galeryPicture = event.picture as Picture;
 				break;
 
 			case actions.DELETE_PICTURE:

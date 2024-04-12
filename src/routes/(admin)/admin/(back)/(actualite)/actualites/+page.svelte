@@ -15,24 +15,18 @@
 	const toast: ToastSettings = { message: '', background: '' };
 
 	const submitDeleteActualite = () => {
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toast.message = 'Actualité supprimé!';
 					toast.background = 'variant-filled-success';
 					toastStore.trigger(toast);
 
-					if(result.data != null && result.data.id != null){
-						const id : string = result.data.id;
+					if (result.data != null && result.data.id != null) {
+						const id: string = result.data.id;
 						actualites = actualites.filter((actualite) => actualite.id != id);
 					}
-					await update(result);
+					await update();
 					break;
 				case 'failure':
 					toast.message = 'Erreur lors de la suppression';
@@ -50,7 +44,6 @@
 				default:
 					break;
 			}
-		
 		};
 	};
 </script>

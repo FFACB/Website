@@ -52,9 +52,9 @@ export function initialize() {
  */
 
 export async function create(KEY, LABEL, ORDER, VALUE) {
-	let data = null;
-
 	try {
+		let data = null;
+
 		if (!KEY) {
 			throw new Error('Parametre KEY manquant');
 		}
@@ -75,11 +75,12 @@ export async function create(KEY, LABEL, ORDER, VALUE) {
 				value: VALUE
 			}
 		});
+
+		return data;
 	} catch (error) {
 		if (error instanceof Error) logger.error(`${error.message}`);
 		else logger.error(`${error}`);
-	} finally {
-		return data;
+		return null;
 	}
 }
 
@@ -91,8 +92,8 @@ export async function create(KEY, LABEL, ORDER, VALUE) {
  */
 
 export async function get(KEY) {
-	let data = null;
 	try {
+		let data = null;
 		if (!KEY) {
 			throw new Error('Parametre KEY manquant');
 		}
@@ -102,10 +103,10 @@ export async function get(KEY) {
 				key: KEY
 			}
 		});
+		return data;
 	} catch (error) {
 		if (error instanceof Error) logger.error(`${error.message}`);
 		else logger.error(`${error}`);
-	} finally {
-		return data;
+		return null;
 	}
 }

@@ -4,36 +4,37 @@
 	import Writer from '$lib/components/editor/Writer.svelte';
 	import { goto } from '$app/navigation';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import Content from '$lib/components/admin/content/Content.svelte';
 	import ButtonSave from '$lib/components/admin/buttons/save/ButtonSave.svelte';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
-	import type { Actualite,  PictureRelation } from '@prisma/client';
-	import { onMount, type SvelteComponent } from 'svelte';
+	import { onMount } from 'svelte';
 	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
-	import { ENREGISTREMENT_ERROR, ENREGISTREMENT_FAILED, ENREGISTREMENT_SUCCES, ERROR, FAILED, SUPRESSION_ERROR, SUPRESSION_FAILED, SUPRESSION_SUCCES } from '$lib/client/toasts/toasts.js';
-	
+	import {
+		ENREGISTREMENT_ERROR,
+		ENREGISTREMENT_FAILED,
+		ENREGISTREMENT_SUCCES,
+		FAILED,
+		SUPRESSION_ERROR,
+		SUPRESSION_FAILED,
+		SUPRESSION_SUCCES
+	} from '$lib/client/toasts/toasts.js';
 
 	const toastStore = getToastStore();
-	const toast: ToastSettings = { message: '', background: '' };
 
 	export let data;
 
-	let {actualite , pictureRelation} = data
+	let { actualite, pictureRelation } = data;
 
 	let writer: Writer | null = null;
 
-	let picturePicker : PicturePicker | null = null;
-	
+	let picturePicker: PicturePicker | null = null;
 
 	onMount(() => {
 		writer?.loadContenu(actualite?.contenu ?? '');
-		picturePicker?.loadPictureRelation(pictureRelation)
-
+		picturePicker?.loadPictureRelation(pictureRelation);
 	});
-
 
 	const submitCreateActualite = async ({
 		formData,
@@ -45,22 +46,22 @@
 		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
 
 		if (IsEmptyString(titre)) {
-			toastStore.trigger(FAILED.addMessage("Le titre ne doit pas être vide").toToast());
+			toastStore.trigger(FAILED.addMessage('Le titre ne doit pas être vide').toToast());
 			cancel();
 		}
 
 		if (IsEmptyString(redacteur)) {
-			toastStore.trigger(FAILED.addMessage("Le rédacteur ne doit pas être vide").toToast());
+			toastStore.trigger(FAILED.addMessage('Le rédacteur ne doit pas être vide').toToast());
 			cancel();
 		}
 
 		if (IsEmptyString(tempsLecture)) {
-			toastStore.trigger(FAILED.addMessage("Le temps de lecture ne doit pas être vide").toToast());
+			toastStore.trigger(FAILED.addMessage('Le temps de lecture ne doit pas être vide').toToast());
 			cancel();
 		}
 
 		if (IsEmptyString(descriptionCourte)) {
-			toastStore.trigger(FAILED.addMessage("La description ne doit pas être vide").toToast());
+			toastStore.trigger(FAILED.addMessage('La description ne doit pas être vide').toToast());
 			cancel();
 			return;
 		}
@@ -69,17 +70,15 @@
 
 		showSpinner();
 		return async ({ result }: { result: ActionResult; update: () => Promise<void> }) => {
-		
 			hideSpinner();
-			
+
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data.actualite;
-						pictureRelation = result.data.pictureRelation
-						picturePicker?.loadPictureRelation(pictureRelation)
-					
+						pictureRelation = result.data.pictureRelation;
+						picturePicker?.loadPictureRelation(pictureRelation);
 					}
 
 					break;
@@ -98,13 +97,7 @@
 	};
 
 	const submitDeleteActualite = () => {
-		return async ({
-			result,
-			update
-		}: {
-			result: ActionResult;
-			update: (data?: any) => Promise<void>;
-		}) => {
+		return async ({ result, update }: { result: ActionResult; update: () => Promise<void> }) => {
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(SUPRESSION_SUCCES.toToast());

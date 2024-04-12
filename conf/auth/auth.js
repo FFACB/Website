@@ -24,7 +24,7 @@ export async function initialize(environement, adminEmail, adminPassword) {
 				}
 			},
 
-			// @ts-ignore
+			//@ts-expect-error: send username
 			getUserAttributes: ({ username }) => {
 				return {
 					username

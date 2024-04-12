@@ -1,11 +1,10 @@
 <script lang="ts">
-	//@ts-nocheck
 	import { enhance, applyAction } from '$app/forms';
 	import { IsEmptyString } from '$lib/client/utils/type';
 	import type { ParmetreReponse } from '$lib/client/utils/ambiant';
 
 	export let PUBLIC_RECAPCHA_SITEKEY: ParmetreReponse;
-	let errorMsg = '';
+	let errorMsg: string = '';
 </script>
 
 <svelte:head>
@@ -36,7 +35,7 @@
 
 			await new Promise((resolve) => {
 				window.grecaptcha.ready(async () => {
-					resolve();
+					resolve(true);
 				});
 			});
 
@@ -57,12 +56,19 @@
 		return async ({ result, update }) => {
 			switch (result.type) {
 				case 'success':
-					await update(result.data);
+					await update();
 					await applyAction(result);
-
+					// @ts-expect-error: Should expect message
+					errorMsg = result?.message;
+					break;
+				case 'failure':
+					// @ts-expect-error: Should expect error message
+					if (typeof result.errorMsg === 'string')
+						// @ts-expect-error: Should expect error message
+						errorMsg = result.errorMsg;
 					break;
 				case 'error':
-					errorMsg = result.errorMsg;
+					errorMsg = 'Une erreur serveur est survenue';
 					break;
 				default:
 					break;

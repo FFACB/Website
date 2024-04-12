@@ -16,7 +16,25 @@ export function IsEmptyString(str: string | null | undefined | FormDataEntryValu
 }
 
 export const PhotoExtensions = [
-	'heic', 'heif', 'avif', 'jpeg', 'jpg', 'jpe', 'tile', 'dz', 'png', 'raw', 'tiff', 'tif', 'webp', 'gif', 'jp2', 'jpx', 'j2k', 'j2c', 'jxl'
+	'heic',
+	'heif',
+	'avif',
+	'jpeg',
+	'jpg',
+	'jpe',
+	'tile',
+	'dz',
+	'png',
+	'raw',
+	'tiff',
+	'tif',
+	'webp',
+	'gif',
+	'jp2',
+	'jpx',
+	'j2k',
+	'j2c',
+	'jxl'
 ];
 
 export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): boolean {

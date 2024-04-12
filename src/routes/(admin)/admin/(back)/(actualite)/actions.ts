@@ -1,15 +1,9 @@
 // actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { IsEmptyString, IsPhoto } from '$lib/client/utils/type.js';
-import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
-import type { Actualite, PictureRelation } from '@prisma/client';
-import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
+import { IsEmptyString } from '$lib/client/utils/type.js';
+import type { Actualite } from '@prisma/client';
 import { logger } from '$lib/server/logs';
-import { v4 as uuid } from 'uuid';
-import sharp from 'sharp';
-import resolutions, { resolutionMax } from '$lib/client/uploads/pictures/resolution';
-import qualities from '$lib/client/uploads/pictures/quality';
 import { savePictureRelation } from '$lib/server/uploads/picture-upload';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
@@ -37,7 +31,7 @@ export const action_upsert = async (event: RequestEvent) => {
 		contenu,
 		pp_id_0,
 		pp_resolution_0,
-		pp_quality_0,
+		pp_quality_0
 	} = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
@@ -48,7 +42,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			errorMsg: "❌ L'Id doit être null ou une chaine de caractère"
 		});
 	}
-	
+
 	if (IsEmptyString(titre)) {
 		logger.warn({}, 'Le titre ne doit pas être vide', '/admin/actualite');
 
@@ -95,13 +89,11 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	try {
-		
-
-	    const savePhotoPrincipale = await savePictureRelation(pp_id_0,{
+		const savePhotoPrincipale = await savePictureRelation(pp_id_0, {
 			resolution: pp_resolution_0,
 			quality: pp_quality_0,
 			required: true
-		})
+		});
 
 		if (!savePhotoPrincipale.succes && !savePhotoPrincipale.errorPass) {
 			logger.warn({}, savePhotoPrincipale.errorMsg, '/admin/actualite');
@@ -112,8 +104,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			});
 		}
 
-
-		let actualite : Actualite | null = await prisma.actualite.upsert({
+		const actualite: Actualite | null = await prisma.actualite.upsert({
 			where: {
 				id
 			},
@@ -122,7 +113,7 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? "",
+				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? '',
 				contenu
 			},
 			update: {
@@ -130,14 +121,14 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? "",
+				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? '',
 				contenu
 			}
 		});
 
 		return {
 			actualite,
-			pictureRelation:savePhotoPrincipale.relation,
+			pictureRelation: savePhotoPrincipale.relation,
 			errorMsg: undefined
 		};
 	} catch (err) {
