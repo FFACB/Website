@@ -71,7 +71,7 @@
 				/>
 			</div>
 			<div class="basis-1/3 pl-4 pr-4 flex flex-col">
-				<span class="ml-3 font-medium">Qulité</span>
+				<span class="ml-3 font-medium">Qualité</span>
 				<select class="input" name="pp_quality_{identifier}" value={quality.value()}>
 					{#each qualities as quality}
 						<option value={quality.value()}>{quality.key()}</option>
@@ -87,11 +87,11 @@
 				</select>
 			</div>
 		</div>
-		<div>
+		<div>	
 			{#if galeryPicture != null || savedPicture != null}
-				<div class="mt-4 relative">
+				<div class="group/picture mt-4 relative border-solid border-surface-50 dark:border-surface-900  border rounded-container-token ">
 					<ButtonDelete
-						class="absolute top-4 right-4"
+						class="absolute top-4 right-4 z-10 transition-all group-hover/picture:opacity-100 opacity-0"
 						id="btn-relation"
 						click={() => {
 							deletePictureRelation();
@@ -99,7 +99,7 @@
 					/>
 
 					<img
-						class="card h-80 w-full bg-cover object-cover"
+						class="group-hover/picture:opacity-75 z-0 transition-all card h-80 w-full bg-cover object-cover"
 						alt="actualite"
 						src={galeryPicture?.path ?? savedPicture?.path}
 					/>
