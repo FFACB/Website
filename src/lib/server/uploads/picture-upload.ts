@@ -176,3 +176,70 @@ export async function savePictureUpload(
 		};
 	}
 }
+
+export async function saveIndependantPictureUpload(
+	file: File | null | undefined | FormDataEntryValue,
+	foldername: string,
+	resolution: Resolution,
+	quality: Quality,
+	resizeOptions: sharp.ResizeOptions = {
+		fit: 'inside',
+		withoutEnlargement: true
+	}
+): Promise<{
+	succes: boolean;
+	picturePath: string | null;
+	errorMsg: string;
+}> {
+	if (file == null) {
+		return {
+			succes: false,
+			picturePath: null,
+			errorMsg: "L'image n'existe pas"
+		};
+	}
+
+	if (!(file instanceof File)) {
+		return {
+			succes: false,
+			picturePath: null,
+			errorMsg: "L'image n'est pas valide"
+		};
+	}
+
+	try {
+		const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/${foldername}/`;
+
+		if (!existsSync(filepath)) {
+			mkdirSync(filepath);
+		}
+
+		const arrayBuffer = await file.arrayBuffer();
+		const filename = `${uuid()}`;
+		let extension = '';
+
+		if (IsPhoto(file)) {
+			extension = 'webp';
+
+			await sharp(arrayBuffer)
+				.resize(resolution.value(), resolution.value(), resizeOptions)
+				.webp({ quality: quality.value() })
+				.toFile(`${filepath}${filename}.${extension}`);
+		} else if (IsSvg(file)) {
+			extension = 'svg';
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		}
+
+		return {
+			succes: true,
+			picturePath: `/${filepath}${filename}.${extension}`,
+			errorMsg: ''
+		};
+	} catch (exeption) {
+		return {
+			succes: false,
+			picturePath: null,
+			errorMsg: ''
+		};
+	}
+}

@@ -25,6 +25,7 @@
 		ImageTool = (await import('@editorjs/image')).default;
 
 		editor = new EditorJS({
+			
 			holder: 'writer',
 			tools: {
 				header: {
@@ -51,7 +52,8 @@
 						endpoints: {
 							byFile: '/api/editorjs',
 							byUrl: '/api/editorjs'
-						}
+						},
+					
 					}
 				}
 			},

@@ -87,9 +87,11 @@
 				</select>
 			</div>
 		</div>
-		<div>	
+		<div>
 			{#if galeryPicture != null || savedPicture != null}
-				<div class="group/picture mt-4 relative border-solid border-surface-50 dark:border-surface-900  border rounded-container-token ">
+				<div
+					class="group/picture mt-4 relative border-solid border-surface-50 dark:border-surface-900 border rounded-container-token"
+				>
 					<ButtonDelete
 						class="absolute top-4 right-4 z-10 transition-all group-hover/picture:opacity-100 opacity-0"
 						id="btn-relation"
