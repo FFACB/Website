@@ -12,8 +12,8 @@
 	import {
 		AssetsActions,
 		AssetsCategories,
-		type AssetPickerAction
-	} from '$lib/client/assets/stores-actions';
+	} from '$lib/client/assets/enums';
+
 	import {
 		ENREGISTREMENT_ERROR,
 		ENREGISTREMENT_FAILED,
@@ -26,14 +26,14 @@
 	} from '$lib/client/toasts/toasts';
 	import Icon from '@iconify/svelte';
 	import { IsCompressedExtension } from '$lib/client/utils/type';
-	import type { CategoryAssetType } from '$lib/client/assets/ambiant';
+	import type { AssetPickerAction, AssetCategory } from '$lib/client/assets/ambiant';
 
 	const toastStore = getToastStore();
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let assetsContainer: HTMLDivElement | null = null;
 	let assetImportInput: HTMLInputElement | null = null;
-	let assets: CategoryAssetType[] = [];
+	let assets: AssetCategory[] = [];
 	let tempAssetPickerId = '';
 	let assetsLibraryCurrentType = AssetsCategories.FILE;
 	let assetsLibraryCategoryName = '';

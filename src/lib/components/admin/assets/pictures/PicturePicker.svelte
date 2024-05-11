@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AssetsActions, AssetsCategories } from '$lib/client/assets/stores-actions';
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/enums'
 	import qualities, { Quality } from '$lib/client/assets/pictures/quality';
 	import resolutions, { Resolution } from '$lib/client/assets/pictures/resolution';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';

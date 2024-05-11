@@ -6,12 +6,12 @@ import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 import { v4 as uuid } from 'uuid';
 import { GetExtension, IsPhoto, IsSvg, IsVideo } from '$lib/client/utils/type.js';
-import { AssetsCategories } from '$lib/client/assets/stores-actions';
-import type { CategoryAssetType } from '$lib/client/assets/ambiant';
+import { AssetsCategories } from '$lib/client/assets/enums';
+import type { AssetCategory } from '$lib/client/assets/ambiant';
 
 export async function saveAssetUpload(file: File | null | undefined | FormDataEntryValue): Promise<{
 	succes: boolean;
-	asset: CategoryAssetType | null;
+	asset: AssetCategory | null;
 	errorMsg: string;
 }> {
 	if (file == null) {
@@ -96,7 +96,7 @@ export async function saveAssetUpload(file: File | null | undefined | FormDataEn
 
 		return {
 			succes: true,
-			asset: asset as CategoryAssetType,
+			asset: asset as AssetCategory,
 			errorMsg: ''
 		};
 	} catch (exeption) {

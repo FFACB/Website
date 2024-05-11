@@ -4,7 +4,7 @@ import { prisma } from '$lib/server/prisma';
 import { logger } from '$lib/server/logs';
 import { unlinkSync } from 'fs';
 import { saveAssetUpload } from '$lib/server/assets/asset-upload';
-import { AssetsCategories } from '$lib/client/assets/stores-actions';
+import { AssetsCategories } from '$lib/client/assets/enums';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;

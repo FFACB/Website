@@ -2,10 +2,8 @@ import { writable, type Subscriber } from 'svelte/store';
 import {
 	AssetsActions,
 	AssetsCategories,
-	type AssetAction,
-	type AssetPickerAction
-} from './stores-actions';
-import type { CategoryAssetType } from './ambiant';
+} from './enums';
+import type { AssetAction, AssetPickerAction, AssetCategory } from './ambiant';
 
 const assetsPanel = writable({ open: false, assetPickerId: '', assetType: '' });
 
@@ -37,7 +35,7 @@ export function subscribeAssetsAction(assetPickerId: string, callback: Subscribe
 export function triggerAssetAction(
 	assetType: string,
 	actionName: string,
-	asset: CategoryAssetType,
+	asset: AssetCategory,
 	assetPickerId: string
 ) {
 	assetActionStore.set({ assetType, actionName, asset, assetPickerId });

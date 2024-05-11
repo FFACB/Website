@@ -7,7 +7,7 @@
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
 	import { subscribeAssetsPanel } from '$lib/client/assets/stores';
 	import type { SvelteComponent } from 'svelte';
-	import type { AssetPickerAction } from '$lib/client/assets/stores-actions';
+	import type { AssetPickerAction } from '$lib/client/assets/ambiant.js';
 
 	function setInitialClassState() {
 		const elemHtmlClasses = document.documentElement.classList;
