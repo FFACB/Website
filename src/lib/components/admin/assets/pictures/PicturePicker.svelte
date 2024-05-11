@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { actions, assetsType } from '$lib/client/assets/stores-actions'
-	import qualities ,{ Quality } from '$lib/client/assets/pictures/quality'
-	import resolutions,{ Resolution } from '$lib/client/assets/pictures/resolution' 
-	import  ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores'
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/stores-actions';
+	import qualities, { Quality } from '$lib/client/assets/pictures/quality';
+	import resolutions, { Resolution } from '$lib/client/assets/pictures/resolution';
+	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
+	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores';
 	import type { PictureAsset } from '@prisma/client';
 	import { v4 as uuid } from 'uuid';
 	import type { Asset } from '@prisma/client';
@@ -30,15 +30,15 @@
 	}
 
 	subscribeAssetsAction(assetPickerId, (event) => {
-		const { assetType, actionName } = event;
-		if(assetType != assetsType.PICTURE) return;
+		const { actionName } = event;
 
 		switch (actionName) {
-			case actions.PICKED:
-				if (event.assetPickerId == assetPickerId && event.asset != null) galeryAsset = event.asset as Asset;
+			case AssetsActions.PICKED:
+				if (event.assetPickerId == assetPickerId && event.asset != null)
+					galeryAsset = event.asset as Asset;
 				break;
 
-			case actions.DELETE:
+			case AssetsActions.DELETE:
 				if (event.asset) {
 					const id = event.asset.id;
 					if (id == galeryAsset?.id || id == savedAsset?.assetId) {
@@ -61,7 +61,7 @@
 					type="button"
 					value={'Choisir une image dans la galerie'}
 					on:click={() => {
-						showAssets(assetsType.PICTURE, assetPickerId);
+						showAssets(AssetsCategories.PICTURE, assetPickerId);
 					}}
 				/>
 
@@ -104,7 +104,7 @@
 					<img
 						class="group-hover/asset:opacity-75 z-0 transition-all card h-80 w-full bg-cover object-cover"
 						src={galeryAsset?.path ?? savedAsset?.path}
-						alt="{assetName}"
+						alt={assetName}
 					/>
 				</div>
 			{/if}

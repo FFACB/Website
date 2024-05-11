@@ -27,7 +27,7 @@
 
 	export let data;
 
-	let { actualite, pictureAsset,fileAsset,videoAsset } = data;
+	let { actualite, pictureAsset, fileAsset, videoAsset } = data;
 
 	let writer: Writer | null = null;
 
@@ -80,7 +80,7 @@
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
-					
+
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data.actualite;
 						pictureAsset = result.data.pictureAsset;

@@ -1,4 +1,3 @@
-// actions.ts
 import { fail, type RequestEvent } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { IsEmptyString } from '$lib/client/utils/type.js';
@@ -97,8 +96,6 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	try {
-
-
 		const savePhotoPrincipale = await savePictureAsset(pp_id_0, {
 			resolution: pp_resolution_0,
 			quality: pp_quality_0,
@@ -115,7 +112,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			autoplay: vp_autoplay_0,
 			loop: vp_loop_0,
 			required: false
-		})
+		});
 
 		if (!savePhotoPrincipale.succes && !savePhotoPrincipale.errorPass) {
 			logger.warn({}, savePhotoPrincipale.errorMsg, '/admin/actualite');

@@ -26,7 +26,7 @@ export const PhotoExtensions = [
 	'png',
 	'tiff',
 	'tif',
-	'webp',
+	'webp'
 ];
 
 export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): boolean {
@@ -40,16 +40,7 @@ export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): bool
 	}
 }
 
-
-const VideoExtensions = [
-	'webm',
-	'mp4',
-	'ogg',
-	'ogv',
-	'avi',
-	'wmv',
-	'mov',
-];
+const VideoExtensions = ['webm', 'mp4', 'ogg', 'ogv', 'avi', 'wmv', 'mov'];
 
 export function IsVideo(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
@@ -62,21 +53,10 @@ export function IsVideo(obj: File | null | undefined | FormDataEntryValue): bool
 	}
 }
 
-
-const CompressedExtensions = [
-	'zip',
-	'rar',
-	'7z',
-	'gz',
-	'bz2',
-	'tar',
-	'xz',
-	'zst'
-];
+const CompressedExtensions = ['zip', 'rar', '7z', 'gz', 'bz2', 'tar', 'xz', 'zst'];
 
 export function IsCompressedExtension(obj: string): boolean {
 	try {
-		
 		if (obj == null || typeof obj !== 'string') return false;
 
 		const fileExtension = GetExtension(obj);
@@ -85,8 +65,6 @@ export function IsCompressedExtension(obj: string): boolean {
 		return false;
 	}
 }
-
-
 
 export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
@@ -98,8 +76,6 @@ export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolea
 		return false;
 	}
 }
-
-
 
 export function GetExtension(fname: string) {
 	const pos = fname.lastIndexOf('.');

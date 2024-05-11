@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { actions, assetsType } from '$lib/client/assets/stores-actions'
-	import  ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores'
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/stores-actions';
+	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
+	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores';
 	import type { FileAsset } from '@prisma/client';
 	import { v4 as uuid } from 'uuid';
 	import type { Asset } from '@prisma/client';
@@ -24,18 +24,19 @@
 	export function loadAssetRelation(_savedAsset: FileAsset | null) {
 		deleteAssetRelation();
 		savedAsset = _savedAsset;
-		name = savedAsset?.name ?? ''
+		name = savedAsset?.name ?? '';
 	}
 
 	subscribeAssetsAction(assetPickerId, (event) => {
-		const {  actionName } = event;
-	
+		const { actionName } = event;
+
 		switch (actionName) {
-			case actions.PICKED:
-				if (event.assetPickerId == assetPickerId && event.asset != null) galeryAsset = event.asset as Asset;
+			case AssetsActions.PICKED:
+				if (event.assetPickerId == assetPickerId && event.asset != null)
+					galeryAsset = event.asset as Asset;
 				break;
 
-			case actions.DELETE:
+			case AssetsActions.DELETE:
 				if (event.asset) {
 					const id = event.asset.id;
 					if (id == galeryAsset?.id || id == savedAsset?.assetId) {
@@ -48,17 +49,16 @@
 </script>
 
 <div class=" mb-4">
-	<!-- <span class="ml-3 font-semibold">Galerie</span> -->
 	<div class="rounded-container-token">
 		<div class="flex">
-			<div class="basis-1/2 flex flex-col">
+			<div class="basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">{assetName}</span>
 				<input
 					class="input h-full"
 					type="button"
 					value={'Choisir un fichier dans la galerie'}
 					on:click={() => {
-						showAssets(assetsType.FILE, assetPickerId);
+						showAssets(AssetsCategories.FILE, assetPickerId);
 					}}
 				/>
 
@@ -68,9 +68,9 @@
 					value={galeryAsset?.id ?? savedAsset?.assetId}
 				/>
 			</div>
-			<div class="basis-1/2 pl-4 flex flex-col">
+			<div class="basis-2/3 pl-4 flex flex-col">
 				<span class="ml-3 font-medium">Nom</span>
-				<input type="text" class="input h-full" bind:value={name} name="fp_name_{identifier}" >
+				<input type="text" class="input h-full" bind:value={name} name="fp_name_{identifier}" />
 			</div>
 		</div>
 		<div>
@@ -86,14 +86,18 @@
 						}}
 					/>
 
-					<a class="h-full block" target="_blank" href="{galeryAsset?.path ?? savedAsset?.path}">
-					
+					<a class="h-full block" target="_blank" href={galeryAsset?.path ?? savedAsset?.path}>
 						<div class="h-full z-10 flex flex-col justify-center items-center">
-							<Icon icon="{IsCompressedExtension(galeryAsset?.originalFilename ?? savedAsset?.name ?? '') ?"solar:zip-file-bold" :"solar:file-bold" }" width="32" height="32" />
+							<Icon
+								icon={IsCompressedExtension(galeryAsset?.originalFilename ?? savedAsset?.name ?? '')
+									? 'solar:zip-file-bold'
+									: 'solar:file-bold'}
+								width="32"
+								height="32"
+							/>
 							<span class="font-semibold">{galeryAsset?.originalFilename ?? savedAsset?.name}</span>
 						</div>
 					</a>
-				
 				</div>
 			{/if}
 		</div>

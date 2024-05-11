@@ -8,9 +8,12 @@
 	import { showSpinner, hideSpinner } from '$lib/client/spinner';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
-	import ButtonDelete from '../buttons/delete/ButtonDelete.svelte';
-	import type { Asset } from '@prisma/client';
-	import { actions, assetsType, type AssetPickerAction } from '$lib/client/assets/stores-actions';
+	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
+	import {
+		AssetsActions,
+		AssetsCategories,
+		type AssetPickerAction
+	} from '$lib/client/assets/stores-actions';
 	import {
 		ENREGISTREMENT_ERROR,
 		ENREGISTREMENT_FAILED,
@@ -22,17 +25,17 @@
 		SUPRESSION_SUCCES
 	} from '$lib/client/toasts/toasts';
 	import Icon from '@iconify/svelte';
-	import type { CategoryAsset } from '$lib/client/assets/ambiant';
-	import {  IsCompressedExtension } from '$lib/client/utils/type';
+	import { IsCompressedExtension } from '$lib/client/utils/type';
+	import type { CategoryAssetType } from '$lib/client/assets/ambiant';
 
 	const toastStore = getToastStore();
 
 	let refreshButton: HTMLButtonElement | null = null;
 	let assetsContainer: HTMLDivElement | null = null;
 	let assetImportInput: HTMLInputElement | null = null;
-	let assets: CategoryAsset[] = [];
+	let assets: CategoryAssetType[] = [];
 	let tempAssetPickerId = '';
-	let assetsLibraryCurrentType = assetsType.FILE;
+	let assetsLibraryCurrentType = AssetsCategories.FILE;
 	let assetsLibraryCategoryName = '';
 
 	export function toggle(value: AssetPickerAction) {
@@ -47,11 +50,11 @@
 		assetsContainer.style.display = 'flex';
 
 		switch (assetsLibraryCurrentType) {
-			case assetsType.VIDEO:
+			case AssetsCategories.VIDEO:
 				assetsLibraryCategoryName = 'video';
 				assetImportInput?.setAttribute('accept', 'video/*');
 				break;
-			case assetsType.PICTURE:
+			case AssetsCategories.PICTURE:
 				assetsLibraryCategoryName = 'image';
 				assetImportInput?.setAttribute('accept', 'image/*');
 				break;
@@ -130,7 +133,7 @@
 		if (assetToDelete.length > 0)
 			triggerAssetAction(
 				assetsLibraryCurrentType,
-				actions.DELETE,
+				AssetsActions.DELETE,
 				assetToDelete[0],
 				tempAssetPickerId
 			);
@@ -212,14 +215,14 @@
 								<div
 									class="group rounded-lg lg:basis-1/4 md:basis-1/3 sm:basis-1/2 basis-full h-96 pr-4 pb-4 relative"
 								>
-									{#if asset.assetCategory.name == assetsType.PICTURE}
+									{#if asset.assetCategory.name == AssetsCategories.PICTURE}
 										<img
 											class="rounded-lg w-full h-full object-cover"
 											loading="lazy"
 											src="{asset.path}?width=300&height=300"
-											alt="{asset.originalFilename}"
+											alt={asset.originalFilename}
 										/>
-									{:else if asset.assetCategory.name == assetsType.VIDEO}
+									{:else if asset.assetCategory.name == AssetsCategories.VIDEO}
 										<video class="rounded-lg w-full h-full object-cover" controls src={asset.path}>
 											<track kind="captions" /></video
 										>
@@ -231,7 +234,13 @@
 												class="z-0 bg-surface-50 dark:bg-surface-800 absolute left-0 top-0 w-full h-full opacity-50"
 											></span>
 											<div class="z-10 flex flex-col justify-center items-center">
-												<Icon icon="{IsCompressedExtension(asset.originalFilename) ?"solar:zip-file-bold" :"solar:file-bold" }" width="32" height="32" />
+												<Icon
+													icon={IsCompressedExtension(asset.originalFilename)
+														? 'solar:zip-file-bold'
+														: 'solar:file-bold'}
+													width="32"
+													height="32"
+												/>
 												<span class="font-semibold">{asset.originalFilename}</span>
 											</div>
 										</div>
@@ -258,7 +267,7 @@
 										click={() => {
 											triggerAssetAction(
 												assetsLibraryCurrentType,
-												actions.PICKED,
+												AssetsActions.PICKED,
 												asset,
 												tempAssetPickerId
 											);

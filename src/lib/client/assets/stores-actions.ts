@@ -1,22 +1,19 @@
-import type { Asset } from "@prisma/client";
+import type { Asset } from '@prisma/client';
 
-
-const assetsType = {
+const AssetsCategories = {
 	DEFAULT: 'DEFAULT',
 	PICTURE: 'PICTURE',
 	VIDEO: 'VIDEO',
 	FILE: 'FILE'
-
-}
-
-const actions = {
-	DEFAULT: 'DEFAULT',
-	PICKED: 'PICKED',
-	DELETE: 'DELETE',
-	
 };
 
-export { actions, assetsType };
+const AssetsActions = {
+	DEFAULT: 'DEFAULT',
+	PICKED: 'PICKED',
+	DELETE: 'DELETE'
+};
+
+export { AssetsActions, AssetsCategories };
 
 export type AssetPickerAction = {
 	open: boolean;
@@ -30,3 +27,5 @@ export type AssetAction = {
 	asset: Asset | null;
 	assetPickerId: string;
 };
+
+

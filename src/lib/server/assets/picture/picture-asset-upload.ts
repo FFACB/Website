@@ -1,14 +1,10 @@
-
 import { prisma } from '$lib/server/prisma';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
 import { Resolution, resolutionMax } from '$lib/client/assets/pictures/resolution';
 import { Quality, quality100 } from '$lib/client/assets/pictures/quality';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
-import { v4 as uuid } from 'uuid';
-import { IsPhoto, IsSvg } from '$lib/client/utils/type.js';
-import type { Asset, PictureAsset } from '@prisma/client';
-
+import type { PictureAsset } from '@prisma/client';
 
 export async function savePictureAsset(
 	assetID: string | FormDataEntryValue,

@@ -1,4 +1,3 @@
-
 import { initialize } from './asset.js';
 
 export default () => {

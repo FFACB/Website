@@ -15,12 +15,7 @@ export const POST: RequestHandler = async ({ request, locals }): Promise<Respons
 	const data = Object.fromEntries(await request.formData());
 	const { image } = data;
 
-	const asset = await saveIndependantAssetUpload(
-		image,
-		'editorjs',
-		resolutionFullHd,
-		quality80
-	);
+	const asset = await saveIndependantAssetUpload(image, 'editorjs', resolutionFullHd, quality80);
 	if (asset.succes) {
 		return new Response(
 			JSON.stringify({

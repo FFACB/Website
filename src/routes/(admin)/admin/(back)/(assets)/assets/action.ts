@@ -4,8 +4,7 @@ import { prisma } from '$lib/server/prisma';
 import { logger } from '$lib/server/logs';
 import { unlinkSync } from 'fs';
 import { saveAssetUpload } from '$lib/server/assets/asset-upload';
-import { assetsType } from '$lib/client/assets/stores-actions';
-import type { CategoryAsset } from '$lib/client/assets/ambiant';
+import { AssetsCategories } from '$lib/client/assets/stores-actions';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -61,18 +60,21 @@ export const action_findall = async (event: RequestEvent) => {
 	}
 
 	try {
-
 		const { request } = event;
 		const data = await request.formData();
 		const { category } = Object.fromEntries(data);
 
 		let assets;
-		if (category == assetsType.FILE)
+		if (category == AssetsCategories.FILE)
 			assets = await prisma.asset.findMany({
 				select: {
 					id: true,
 					path: true,
 					originalFilename: true,
+					filename: true,
+					extension: true,
+					createdAt: true,
+					assetCategoryId: true,
 					assetCategory: {
 						select: {
 							name: true
@@ -89,6 +91,11 @@ export const action_findall = async (event: RequestEvent) => {
 					id: true,
 					path: true,
 					originalFilename: true,
+					filename: true,
+					extension: true,
+					createdAt: true,
+					assetCategoryId: true,
+
 					assetCategory: {
 						select: {
 							name: true
@@ -106,11 +113,10 @@ export const action_findall = async (event: RequestEvent) => {
 			});
 
 		return {
-			data: assets as CategoryAsset[],
+			data: assets,
 			errorMsg: undefined
 		};
 	} catch (err) {
-
 		logger.error(err, '/admin/assets');
 
 		return fail(400, {

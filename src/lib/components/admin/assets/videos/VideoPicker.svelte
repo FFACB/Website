@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { actions, assetsType } from '$lib/client/assets/stores-actions'
-	import  ButtonDelete from '../../buttons/delete/ButtonDelete.svelte';
-	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores'
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/stores-actions';
+	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
+	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores';
 	import type { VideoAsset } from '@prisma/client';
 	import { v4 as uuid } from 'uuid';
 	import type { Asset } from '@prisma/client';
@@ -13,9 +13,9 @@
 
 	const assetPickerId = uuid();
 
-	let controls : boolean = false;
-	let loop : boolean = false;
-	let autoplay : boolean = false;
+	let controls: boolean = false;
+	let loop: boolean = false;
+	let autoplay: boolean = false;
 
 	export function deleteAssetRelation() {
 		galeryAsset = null;
@@ -31,15 +31,15 @@
 	}
 
 	subscribeAssetsAction(assetPickerId, (event) => {
-		const { assetType, actionName } = event;
-		if(assetType != assetsType.VIDEO) return;
+		const { actionName } = event;
 
 		switch (actionName) {
-			case actions.PICKED:
-				if (event.assetPickerId == assetPickerId && event.asset != null) galeryAsset = event.asset as Asset;
+			case AssetsActions.PICKED:
+				if (event.assetPickerId == assetPickerId && event.asset != null)
+					galeryAsset = event.asset as Asset;
 				break;
 
-			case actions.DELETE:
+			case AssetsActions.DELETE:
 				if (event.asset) {
 					const id = event.asset.id;
 					if (id == galeryAsset?.id || id == savedAsset?.assetId) {
@@ -52,17 +52,16 @@
 </script>
 
 <div class=" mb-4">
-	<!-- <span class="ml-3 font-semibold">Galerie</span> -->
 	<div class="rounded-container-token">
 		<div class="flex">
-			<div class="basis-1/2 flex flex-col">
+			<div class="basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">{assetName}</span>
 				<input
 					class="input h-full"
 					type="button"
 					value={'Choisir une video dans la galerie'}
 					on:click={() => {
-						showAssets(assetsType.VIDEO, assetPickerId);
+						showAssets(AssetsCategories.VIDEO, assetPickerId);
 					}}
 				/>
 
@@ -72,24 +71,37 @@
 					value={galeryAsset?.id ?? savedAsset?.assetId}
 				/>
 			</div>
-			<div class="basis-1/6 pl-4  flex flex-col">
+			<div class="basis-[22.2%] pl-4 flex flex-col">
 				<span class="ml-3 font-medium">Controls</span>
 				<div class="h-full">
-					<input type="checkbox" class="input h-full" bind:checked={controls} name="vp_controls_{identifier}" >
-				
+					<input
+						type="checkbox"
+						class="input h-full"
+						bind:checked={controls}
+						name="vp_controls_{identifier}"
+					/>
 				</div>
-				
 			</div>
-			<div class="basis-1/6 pl-4  flex flex-col">
+			<div class="basis-[22.2%] pl-4 flex flex-col">
 				<span class="ml-3 font-medium">Loop</span>
 				<div class="h-full">
-				<input type="checkbox" class="input h-full" bind:checked={loop} name="vp_loop_{identifier}" >
+					<input
+						type="checkbox"
+						class="input h-full"
+						bind:checked={loop}
+						name="vp_loop_{identifier}"
+					/>
 				</div>
-			</div>	
-			<div class="basis-1/6 pl-4 flex flex-col">
+			</div>
+			<div class="basis-[22.2%] pl-4 flex flex-col">
 				<span class="ml-3 font-medium">Autoplay</span>
 				<div class="h-full">
-				<input type="checkbox" class="input h-full" bind:checked={autoplay} name="vp_autoplay_{identifier}" >
+					<input
+						type="checkbox"
+						class="input h-full"
+						bind:checked={autoplay}
+						name="vp_autoplay_{identifier}"
+					/>
 				</div>
 			</div>
 		</div>
@@ -106,12 +118,17 @@
 						}}
 					/>
 
-					<video class="h-full w-full" muted loop={savedAsset?.loop ?? false} autoplay={savedAsset?.autoplay ?? false} controls>
-						<source  src={galeryAsset?.path ?? savedAsset?.path} type="video/mp4" />
+					<video
+						class="h-full w-full"
+						muted
+						loop={savedAsset?.loop ?? false}
+						autoplay={savedAsset?.autoplay ?? false}
+						controls
+					>
+						<source src={galeryAsset?.path ?? savedAsset?.path} type="video/mp4" />
 						Your browser does not support the video tag.
-						<track kind="{assetName}">
+						<track kind={assetName} />
 					</video>
-				
 				</div>
 			{/if}
 		</div>
