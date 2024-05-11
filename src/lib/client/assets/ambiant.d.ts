@@ -11,7 +11,6 @@ export type AssetCategory = {
 	};
 };
 
-
 export type AssetPickerAction = {
 	open: boolean;
 	assetType: string;
@@ -24,4 +23,3 @@ export type AssetAction = {
 	asset: Asset | null;
 	assetPickerId: string;
 };
-

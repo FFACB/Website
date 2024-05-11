@@ -1,8 +1,5 @@
 import { writable, type Subscriber } from 'svelte/store';
-import {
-	AssetsActions,
-	AssetsCategories,
-} from './enums';
+import { AssetsActions, AssetsCategories } from './enums';
 import type { AssetAction, AssetPickerAction, AssetCategory } from './ambiant';
 
 const assetsPanel = writable({ open: false, assetPickerId: '', assetType: '' });

@@ -1,4 +1,3 @@
-
 const AssetsCategories = {
 	DEFAULT: 'DEFAULT',
 	PICTURE: 'PICTURE',
@@ -13,4 +12,3 @@ const AssetsActions = {
 };
 
 export { AssetsActions, AssetsCategories };
-

@@ -9,10 +9,7 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import type { ActionResult } from '@sveltejs/kit';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
-	import {
-		AssetsActions,
-		AssetsCategories,
-	} from '$lib/client/assets/enums';
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/enums';
 
 	import {
 		ENREGISTREMENT_ERROR,

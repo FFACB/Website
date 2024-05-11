@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AssetsActions, AssetsCategories } from '$lib/client/assets/enums'
+	import { AssetsActions, AssetsCategories } from '$lib/client/assets/enums';
 	import ButtonDelete from '$lib/components/admin/buttons/delete/ButtonDelete.svelte';
 	import { showAssets, subscribeAssetsAction } from '$lib/client/assets/stores';
 	import type { VideoAsset } from '@prisma/client';
