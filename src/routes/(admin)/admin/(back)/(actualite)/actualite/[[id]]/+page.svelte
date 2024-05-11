@@ -10,7 +10,7 @@
 	import type { ActionResult } from '@sveltejs/kit';
 	import { hideSpinner, showSpinner } from '$lib/client/spinner/index.js';
 	import { onMount } from 'svelte';
-	import PicturePicker from '$lib/components/admin/uploads/pictures/PicturePicker.svelte';
+	import PicturePicker from '$lib/components/admin/assets/pictures/PicturePicker.svelte';
 	import {
 		ENREGISTREMENT_ERROR,
 		ENREGISTREMENT_FAILED,
@@ -20,20 +20,25 @@
 		SUPRESSION_FAILED,
 		SUPRESSION_SUCCES
 	} from '$lib/client/toasts/toasts.js';
+	import FilePicker from '$lib/components/admin/assets/files/FilePicker.svelte';
+	import VideoPicker from '$lib/components/admin/assets/videos/VideoPicker.svelte';
 
 	const toastStore = getToastStore();
 
 	export let data;
 
-	let { actualite, pictureRelation } = data;
+	let { actualite, pictureAsset,fileAsset,videoAsset } = data;
 
 	let writer: Writer | null = null;
 
 	let picturePicker: PicturePicker | null = null;
-
+	let filePicker: FilePicker | null = null;
+	let videoPicker: VideoPicker | null = null;
 	onMount(() => {
 		writer?.loadContenu(actualite?.contenu ?? '');
-		picturePicker?.loadPictureRelation(pictureRelation);
+		filePicker?.loadAssetRelation(fileAsset);
+		videoPicker?.loadAssetRelation(videoAsset);
+		picturePicker?.loadAssetRelation(pictureAsset);
 	});
 
 	const submitCreateActualite = async ({
@@ -75,10 +80,15 @@
 			switch (result.type) {
 				case 'success':
 					toastStore.trigger(ENREGISTREMENT_SUCCES.toToast());
+					
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data.actualite;
-						pictureRelation = result.data.pictureRelation;
-						picturePicker?.loadPictureRelation(pictureRelation);
+						pictureAsset = result.data.pictureAsset;
+						fileAsset = result.data.fileAsset;
+						videoAsset = result.data.videoAsset;
+						videoPicker?.loadAssetRelation(videoAsset);
+						filePicker?.loadAssetRelation(fileAsset);
+						picturePicker?.loadAssetRelation(pictureAsset);
 					}
 
 					break;
@@ -168,8 +178,9 @@
 				/>
 			</label>
 
-			<PicturePicker bind:this={picturePicker} pictureName="Photo Principale" />
-
+			<PicturePicker bind:this={picturePicker} assetName="Photo Principale" />
+			<FilePicker bind:this={filePicker} assetName="Fichier externe" />
+			<VideoPicker bind:this={videoPicker} assetName="Video Slider" />
 			<label class="label mb-4" for="redacteur">
 				<span class="ml-3 font-semibold">Rédacteur</span>
 				<input

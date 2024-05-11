@@ -25,7 +25,9 @@ CREATE TABLE "Parametre" (
 CREATE TABLE "Actualite" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "titre" TEXT NOT NULL,
-    "pictureRelationIdPrincipale" TEXT NOT NULL,
+    "pictureAssetId_Principale" TEXT NOT NULL,
+    "fileAssetId_Externe" TEXT NOT NULL,
+    "videoAssetId_Slide" TEXT NOT NULL,
     "redacteur" TEXT NOT NULL,
     "tempsLecture" TEXT NOT NULL,
     "descriptionCourte" TEXT NOT NULL,
@@ -45,23 +47,54 @@ CREATE TABLE "Contact" (
 );
 
 -- CreateTable
-CREATE TABLE "Picture" (
+CREATE TABLE "Asset" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "path" TEXT NOT NULL,
     "filename" TEXT NOT NULL,
     "extension" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "originalFilename" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "assetCategoryId" TEXT NOT NULL,
+    CONSTRAINT "Asset_assetCategoryId_fkey" FOREIGN KEY ("assetCategoryId") REFERENCES "AssetCategory" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
-CREATE TABLE "PictureRelation" (
+CREATE TABLE "AssetCategory" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "PictureAsset" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "path" TEXT NOT NULL,
     "quality" INTEGER NOT NULL,
     "resolution" INTEGER,
-    "pictureId" TEXT NOT NULL,
-    CONSTRAINT "PictureRelation_pictureId_fkey" FOREIGN KEY ("pictureId") REFERENCES "Picture" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "assetId" TEXT NOT NULL,
+    CONSTRAINT "PictureAsset_assetId_fkey" FOREIGN KEY ("assetId") REFERENCES "Asset" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "VideoAsset" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "path" TEXT NOT NULL,
+    "assetId" TEXT NOT NULL,
+    "controls" BOOLEAN NOT NULL,
+    "loop" BOOLEAN NOT NULL,
+    "autoplay" BOOLEAN NOT NULL,
+    CONSTRAINT "VideoAsset_assetId_fkey" FOREIGN KEY ("assetId") REFERENCES "Asset" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "FileAsset" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "path" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "assetId" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    CONSTRAINT "FileAsset_assetId_fkey" FOREIGN KEY ("assetId") REFERENCES "Asset" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
@@ -69,3 +102,6 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Parametre_key_key" ON "Parametre"("key");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "AssetCategory_name_key" ON "AssetCategory"("name");

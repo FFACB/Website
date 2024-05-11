@@ -1,8 +1,8 @@
 import type { RequestHandler } from './$types';
 import { logger } from '$lib/server/logs';
-import { saveIndependantPictureUpload } from '$lib/server/uploads/picture-upload';
-import { resolutionFullHd } from '$lib/client/uploads/pictures/resolution';
-import { quality80 } from '$lib/client/uploads/pictures/quality';
+import { saveIndependantAssetUpload } from '$lib/server/assets/asset-upload';
+import { resolutionFullHd } from '$lib/client/assets/pictures/resolution';
+import { quality80 } from '$lib/client/assets/pictures/quality';
 
 export const POST: RequestHandler = async ({ request, locals }): Promise<Response> => {
 	if (!locals.user) {
@@ -15,23 +15,23 @@ export const POST: RequestHandler = async ({ request, locals }): Promise<Respons
 	const data = Object.fromEntries(await request.formData());
 	const { image } = data;
 
-	const picture = await saveIndependantPictureUpload(
+	const asset = await saveIndependantAssetUpload(
 		image,
 		'editorjs',
 		resolutionFullHd,
 		quality80
 	);
-	if (picture.succes) {
+	if (asset.succes) {
 		return new Response(
 			JSON.stringify({
 				success: 1,
 				file: {
-					url: picture.picturePath
+					url: asset.assetPath
 				}
 			})
 		);
 	}
-	logger.error(picture.errorMsg, '/api/editorjs');
+	logger.error(asset.errorMsg, '/api/editorjs');
 	return new Response(
 		JSON.stringify({
 			success: 0,

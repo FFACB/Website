@@ -5,7 +5,7 @@ import type { Actions, PageServerLoad } from './$types';
 export type ActualiteListing = {
 	id: string;
 	titre: string;
-	pictureRelationIdPrincipale: string;
+	pictureAssetId_Principale: string;
 	redacteur: string;
 	tempsLecture: string;
 	descriptionCourte: string;
@@ -17,13 +17,13 @@ export type ActualiteListing = {
 export const load: PageServerLoad = async () => {
 	const actualites: ActualiteListing[] = await Promise.all(
 		(await prisma.actualite.findMany()).map(async (actualite) => {
-			const pictureRelation = await prisma.pictureRelation.findUnique({
+			const pictureAsset = await prisma.pictureAsset.findUnique({
 				where: {
-					id: actualite.pictureRelationIdPrincipale
+					id: actualite.pictureAssetId_Principale
 				}
 			});
 
-			return { ...actualite, photo: pictureRelation?.path } as ActualiteListing;
+			return { ...actualite, photo: pictureAsset?.path } as ActualiteListing;
 		})
 	);
 

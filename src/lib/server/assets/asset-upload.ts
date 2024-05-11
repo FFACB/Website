@@ -1,0 +1,189 @@
+import { prisma } from '$lib/server/prisma';
+import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
+import { Resolution, resolutionMax } from '$lib/client/assets/pictures/resolution';
+import { Quality, quality100 } from '$lib/client/assets/pictures/quality';
+import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
+import sharp from 'sharp';
+import { v4 as uuid } from 'uuid';
+import { GetExtension, IsPhoto, IsSvg, IsVideo } from '$lib/client/utils/type.js';
+import type { Asset, PictureAsset } from '@prisma/client';
+import { assetsType } from '$lib/client/assets/stores-actions';
+import type { CategoryAsset } from '$lib/client/assets/ambiant';
+
+export async function saveAssetUpload(
+	file: File | null | undefined | FormDataEntryValue
+): Promise<{
+	succes: boolean;
+	asset: CategoryAsset | null;
+	errorMsg: string;
+}> {
+	if (file == null) {
+		return {
+			succes: false,
+			asset: null,
+			errorMsg: "L'image n'existe pas"
+		};
+	}
+
+	if (!(file instanceof File)) {
+		return {
+			succes: false,
+			asset: null,
+			errorMsg: "L'image n'est pas valide"
+		};
+	}
+
+	try {
+		const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/assets/`;
+
+		if (!existsSync(filepath)) {
+			mkdirSync(filepath);
+		}
+
+		const arrayBuffer = await file.arrayBuffer();
+		const filename = `${uuid()}`;
+		const originalFilename = file.name;
+		let extension = '';
+		let category = assetsType.FILE;
+
+		if (IsPhoto(file)) {
+			extension = 'webp';
+			category = assetsType.PICTURE;
+			await sharp(arrayBuffer)
+				.resize(null, null, {
+					fit: 'inside', // 'inside' ensures that the image is not upscaled
+					withoutEnlargement: true // Prevent enlargement of smaller images
+				})
+				.toFormat('webp')
+				.toFile(`${filepath}${filename}.${extension}`);
+		} else if (IsSvg(file)) {
+			extension = 'svg';
+			category = assetsType.PICTURE;
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		} else if (IsVideo(file)) {
+			category = assetsType.VIDEO;
+			extension = GetExtension(file.name);
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		} else {
+			extension = GetExtension(file.name);
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		}
+
+
+		const asset = await prisma.asset.create({
+			data: {
+				path: `/${filepath}${filename}.${extension}`,
+				extension,
+				filename,
+				originalFilename,
+				assetCategory:{
+					connect:{
+						name: category
+					}
+				}
+			},
+			select: {
+				id: true,
+				path: true,
+				extension: true,
+				filename: true,
+				originalFilename: true,
+				assetCategory:{
+					select:{
+						name: true
+					}
+				}
+			}
+		});
+
+		return {
+			succes: true,
+			asset: asset as CategoryAsset,
+			errorMsg: ''
+		};
+	} catch (exeption) {
+		return {
+			succes: false,
+			asset: null,
+			errorMsg: ''
+		};
+	}
+}
+
+export async function saveIndependantAssetUpload(
+	file: File | null | undefined | FormDataEntryValue,
+	foldername: string,
+	resolution: Resolution,
+	quality: Quality,
+	resizeOptions: sharp.ResizeOptions = {
+		fit: 'inside',
+		withoutEnlargement: true
+	}
+): Promise<{
+	succes: boolean;
+	assetPath: string | null;
+	errorMsg: string;
+}> {
+	if (file == null) {
+		return {
+			succes: false,
+			assetPath: null,
+			errorMsg: "L'image n'existe pas"
+		};
+	}
+
+	if (!(file instanceof File)) {
+		return {
+			succes: false,
+			assetPath: null,
+			errorMsg: "L'image n'est pas valide"
+		};
+	}
+
+	try {
+		const filepath = `${PUBLIC_UPLOADS_FOLDER_NAME}/${foldername}/`;
+
+		if (!existsSync(filepath)) {
+			mkdirSync(filepath);
+		}
+
+		const arrayBuffer = await file.arrayBuffer();
+		const filename = `${uuid()}`;
+		let extension = '';
+		let category = assetsType.FILE;
+
+
+		if (IsPhoto(file)) {
+			extension = 'webp';
+			category = assetsType.PICTURE;
+			await sharp(arrayBuffer)
+				.resize(resolution.value(), resolution.value(), resizeOptions)
+				.webp({ quality: quality.value() })
+				.toFile(`${filepath}${filename}.${extension}`);
+
+		} else if (IsSvg(file)) {
+			extension = 'svg';
+			category = assetsType.PICTURE;
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		} else if (IsVideo(file)) {
+			category = assetsType.VIDEO;
+			extension = GetExtension(file.name);
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		} else {
+			extension = GetExtension(file.name);
+			writeFileSync(`${filepath}${filename}.${extension}`, Buffer.from(arrayBuffer));
+		}
+
+		return {
+			succes: true,
+			assetPath: `/${filepath}${filename}.${extension}`,
+			errorMsg: ''
+		};
+	} catch (exeption) {
+		return {
+			succes: false,
+			assetPath: null,
+			errorMsg: ''
+		};
+	}
+}

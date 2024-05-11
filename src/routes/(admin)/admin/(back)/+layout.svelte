@@ -3,13 +3,12 @@
 	import { initializeStores, Toast, Drawer } from '@skeletonlabs/skeleton';
 	import Sidebar from '$lib/components/admin/sidebar/Sidebar.svelte';
 	import Spinner from '$lib/components/admin/Spinner.svelte';
-	import Pictures from '$lib/components/admin/uploads/pictures/Pictures.svelte';
+	import Assets from '$lib/components/admin/assets/AssetsLibrary.svelte';
 	import { subscribeSpinner } from '$lib/client/spinner/index.js';
-	import { subscribePicturesPanel } from '$lib/client/uploads/pictures/stores.js';
+	import { subscribeAssetsPanel } from '$lib/client/assets/stores'
 	import type { SvelteComponent } from 'svelte';
-	import type { PicturePickerAction } from '$lib/client/uploads/pictures/stores-actions.js';
-
-	//Setup theme
+	import type { AssetPickerAction } from '$lib/client/assets/stores-actions'
+	
 	function setInitialClassState() {
 		const elemHtmlClasses = document.documentElement.classList;
 		// Conditions
@@ -37,11 +36,11 @@
 		}
 	});
 
-	//Pictures
-	let pictures: SvelteComponent | null = null;
-	subscribePicturesPanel((value: PicturePickerAction) => {
-		if (pictures) {
-			pictures.toggle(value);
+	//Assets
+	let assets: SvelteComponent | null = null;
+	subscribeAssetsPanel((value: AssetPickerAction) => {
+		if (assets) {
+			assets.toggle(value);
 		}
 	});
 </script>
@@ -52,7 +51,7 @@
 
 <Toast position="t" padding="p-4" />
 <Spinner id="main-spinner" bind:this={spinner}></Spinner>
-<Pictures id="main-spinner" bind:this={pictures}></Pictures>
+<Assets id="main-spinner" bind:this={assets}></Assets>
 <AppShell
 	regionPage="relative"
 	slotPageHeader=" sticky top-0 z-10"

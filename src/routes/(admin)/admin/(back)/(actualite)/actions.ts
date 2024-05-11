@@ -4,7 +4,9 @@ import { prisma } from '$lib/server/prisma';
 import { IsEmptyString } from '$lib/client/utils/type.js';
 import type { Actualite } from '@prisma/client';
 import { logger } from '$lib/server/logs';
-import { savePictureRelation } from '$lib/server/uploads/picture-upload';
+import { savePictureAsset } from '$lib/server/assets/picture/picture-asset-upload';
+import { saveFileAsset } from '$lib/server/assets/file/file-asset-upload';
+import { saveVideoAsset } from '$lib/server/assets/video/video-asset-upload';
 
 const authAction = async (event: RequestEvent): Promise<boolean> => {
 	return event.locals.user != null;
@@ -31,7 +33,13 @@ export const action_upsert = async (event: RequestEvent) => {
 		contenu,
 		pp_id_0,
 		pp_resolution_0,
-		pp_quality_0
+		pp_quality_0,
+		fp_id_0,
+		fp_name_0,
+		vp_id_0,
+		vp_controls_0,
+		vp_autoplay_0,
+		vp_loop_0
 	} = data;
 
 	if (id != null && id != undefined && typeof id !== 'string') {
@@ -89,11 +97,25 @@ export const action_upsert = async (event: RequestEvent) => {
 	}
 
 	try {
-		const savePhotoPrincipale = await savePictureRelation(pp_id_0, {
+
+
+		const savePhotoPrincipale = await savePictureAsset(pp_id_0, {
 			resolution: pp_resolution_0,
 			quality: pp_quality_0,
 			required: true
 		});
+
+		const saveFichierExterne = await saveFileAsset(fp_id_0, {
+			name: fp_name_0,
+			required: true
+		});
+
+		const saveVideoSlide = await saveVideoAsset(vp_id_0, {
+			controls: vp_controls_0,
+			autoplay: vp_autoplay_0,
+			loop: vp_loop_0,
+			required: false
+		})
 
 		if (!savePhotoPrincipale.succes && !savePhotoPrincipale.errorPass) {
 			logger.warn({}, savePhotoPrincipale.errorMsg, '/admin/actualite');
@@ -101,6 +123,24 @@ export const action_upsert = async (event: RequestEvent) => {
 			return fail(400, {
 				data: data,
 				errorMsg: savePhotoPrincipale.errorMsg
+			});
+		}
+
+		if (!saveFichierExterne.succes && !saveFichierExterne.errorPass) {
+			logger.warn({}, saveFichierExterne.errorMsg, '/admin/actualite');
+
+			return fail(400, {
+				data: data,
+				errorMsg: saveFichierExterne.errorMsg
+			});
+		}
+
+		if (!saveVideoSlide.succes && !saveVideoSlide.errorPass) {
+			logger.warn({}, saveVideoSlide.errorMsg, '/admin/actualite');
+
+			return fail(400, {
+				data: data,
+				errorMsg: saveVideoSlide.errorMsg
 			});
 		}
 
@@ -113,7 +153,9 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? '',
+				pictureAssetId_Principale: savePhotoPrincipale.relation?.id ?? '',
+				fileAssetId_Externe: saveFichierExterne.relation?.id ?? '',
+				videoAssetId_Slide: saveVideoSlide.relation?.id ?? '',
 				contenu
 			},
 			update: {
@@ -121,14 +163,18 @@ export const action_upsert = async (event: RequestEvent) => {
 				redacteur: redacteur as string,
 				tempsLecture: tempsLecture as string,
 				descriptionCourte: descriptionCourte as string,
-				pictureRelationIdPrincipale: savePhotoPrincipale.relation?.id ?? '',
+				pictureAssetId_Principale: savePhotoPrincipale.relation?.id ?? '',
+				fileAssetId_Externe: saveFichierExterne.relation?.id ?? '',
+				videoAssetId_Slide: saveVideoSlide.relation?.id ?? '',
 				contenu
 			}
 		});
 
 		return {
 			actualite,
-			pictureRelation: savePhotoPrincipale.relation,
+			pictureAsset: savePhotoPrincipale.relation,
+			fileAsset: saveFichierExterne.relation,
+			videoAsset: saveVideoSlide.relation,
 			errorMsg: undefined
 		};
 	} catch (err) {
