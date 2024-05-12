@@ -287,7 +287,7 @@
 								method="POST"
 								action="/admin/assets?/create"
 								id="create"
-								class="actualite-form w-full"
+								class=" w-full"
 								enctype="multipart/form-data"
 								use:enhance={submitCreate}
 							>

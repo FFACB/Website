@@ -162,7 +162,7 @@
 			method="POST"
 			action="?/upsert"
 			id="upsert"
-			class="actualite-form"
+			class=""
 			enctype="multipart/form-data"
 			use:enhance={submitCreateActualite}
 		>

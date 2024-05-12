@@ -4,6 +4,13 @@ import sharpen from '../sharp/index.js';
 import { logger } from '../logs/index.js';
 dotenv.config();
 
+/**
+ * @description Middlewares pour la gestion des images, fichiers et erreurs
+ * 
+ * @param {Express} app 
+ * @param {string} dirname 
+ */
+
 const middlewares = function (app, dirname) {
 	app.use(['/uploads', '/images'], (req, res, next) => {
 		const imageRegex = /\.(jpg|jpeg|png|bmp|webp|avif|svg)$/i;

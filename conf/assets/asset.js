@@ -2,6 +2,13 @@ import { logger } from '../../modules/server/logs';
 import { prisma } from '../../modules/server/database';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
+/**
+ * Initialisation des catégories d'assets
+ * @example initialize()
+ * 
+ * @returns {Promise<void>}
+ */
+
 export async function initialize() {
 	console.log('Initialisation des assets');
 	logger.debug('Initialisation des assets');

@@ -6,6 +6,7 @@ import { prisma } from '../../modules/server/database';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 /**
+ * @description Initialisation de l'authentification administrateur
  * @param {string} environement
  * @param {string} adminEmail
  * @param {string} adminPassword

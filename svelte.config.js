@@ -13,8 +13,9 @@ const config = {
 		adapter: adapterNode({
 			out: 'build-node', //Must be the same name as the one in dockerfile COPY --from=build /app/build-node
 			precompress: false,
+			polyfill: true,
 			envPrefix: '',
-			polyfill: true
+			
 		}),
 		prerender: {
 			crawl: true

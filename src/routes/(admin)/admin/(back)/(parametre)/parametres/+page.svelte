@@ -54,7 +54,7 @@
 					method="POST"
 					action="?/update"
 					id="update-{index}"
-					class="actualite-form"
+					class=""
 					use:enhance={UpdateParametre}
 				>
 					<label class="label mb-4" for="value-{index}">
