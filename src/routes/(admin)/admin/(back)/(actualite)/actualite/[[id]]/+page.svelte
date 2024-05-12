@@ -22,6 +22,9 @@
 	} from '$lib/client/toasts/toasts.js';
 	import FilePicker from '$lib/components/admin/assets/files/FilePicker.svelte';
 	import VideoPicker from '$lib/components/admin/assets/videos/VideoPicker.svelte';
+	import Text from '$lib/components/admin/modules/detail/Text.svelte';
+	import Number from '$lib/components/admin/modules/detail/Number.svelte';
+	import Textarea from '$lib/components/admin/modules/detail/Textarea.svelte';
 
 	const toastStore = getToastStore();
 
@@ -53,16 +56,19 @@
 		if (IsEmptyString(titre)) {
 			toastStore.trigger(FAILED.addMessage('Le titre ne doit pas être vide').toToast());
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(redacteur)) {
 			toastStore.trigger(FAILED.addMessage('Le rédacteur ne doit pas être vide').toToast());
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(tempsLecture)) {
 			toastStore.trigger(FAILED.addMessage('Le temps de lecture ne doit pas être vide').toToast());
 			cancel();
+			return;
 		}
 
 		if (IsEmptyString(descriptionCourte)) {
@@ -166,58 +172,22 @@
 			enctype="multipart/form-data"
 			use:enhance={submitCreateActualite}
 		>
-			<label class="label mb-4" for="titre">
-				<span class="ml-3 font-semibold">Titre</span>
-				<input
-					class="input"
-					id="titre"
-					name="titre"
-					value={actualite?.titre ?? ''}
-					contenteditable="true"
-					type="text"
-				/>
-			</label>
-
+			<Text name="Titre" identifier="titre" value={actualite?.titre} />
 			<PicturePicker bind:this={picturePicker} assetName="Photo Principale" />
 			<FilePicker bind:this={filePicker} assetName="Fichier externe" />
 			<VideoPicker bind:this={videoPicker} assetName="Video Slider" />
-			<label class="label mb-4" for="redacteur">
-				<span class="ml-3 font-semibold">Rédacteur</span>
-				<input
-					class="input"
-					id="redacteur"
-					name="redacteur"
-					value={actualite?.redacteur ?? ''}
-					contenteditable="true"
-					type="text"
-				/>
-			</label>
-
-			<label class="label mb-4" for="tempsLecture">
-				<span class="ml-3 font-semibold">Temps de Lecture (en minutes)</span>
-				<input
-					class="input"
-					id="tempsLecture"
-					name="tempsLecture"
-					value={actualite?.tempsLecture ?? ''}
-					contenteditable="true"
-					type="number"
-				/>
-			</label>
-
-			<label class="label mb-4" for="descriptionCourte">
-				<span class="ml-3 font-semibold">Description courte (200 caracteres max)</span>
-				<textarea
-					class="textarea"
-					id="descriptionCourte"
-					rows="3"
-					cols="45"
-					maxlength="200"
-					name="descriptionCourte"
-					value={actualite?.descriptionCourte ?? ''}
-					contenteditable="true"
-				/>
-			</label>
+			<Text name="Rédacteur" identifier="redacteur" value={actualite?.redacteur} />
+			<Number
+				name="Temps de Lecture (en minutes)"
+				identifier="tempsLecture"
+				value={actualite?.tempsLecture}
+			/>
+			<Textarea
+				name="Description courte"
+				identifier="descriptionCourte"
+				value={actualite?.descriptionCourte}
+				maxlength={200}
+			/>
 
 			<label class="label" for="contenu">
 				<span class="ml-3 font-semibold">Contenu</span>

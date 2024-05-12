@@ -6,7 +6,7 @@ dotenv.config();
 
 /**
  *
- * 
+ *
  * @description Initialisation des parametres
  * @example initialize()
  * @returns {void}

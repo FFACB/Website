@@ -5,7 +5,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 /**
  * Initialisation des catégories d'assets
  * @example initialize()
- * 
+ *
  * @returns {Promise<void>}
  */
 

@@ -6,9 +6,9 @@ dotenv.config();
 
 /**
  * @description Middlewares pour la gestion des images, fichiers et erreurs
- * 
- * @param {Express} app 
- * @param {string} dirname 
+ *
+ * @param {Express} app
+ * @param {string} dirname
  */
 
 const middlewares = function (app, dirname) {

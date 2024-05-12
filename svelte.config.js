@@ -14,8 +14,7 @@ const config = {
 			out: 'build-node', //Must be the same name as the one in dockerfile COPY --from=build /app/build-node
 			precompress: false,
 			polyfill: true,
-			envPrefix: '',
-			
+			envPrefix: ''
 		}),
 		prerender: {
 			crawl: true

@@ -40,7 +40,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		vp_autoplay_0,
 		vp_loop_0
 	} = data;
-
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
 
