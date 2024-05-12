@@ -15,11 +15,11 @@ export async function initialize() {
 				}
 			});
 
-			if (category) logger.debug(`Asset category : ${categoryName} cree avec succes`);
-			else logger.error(`Asset category : ${categoryName} non cree`);
+			if (category) logger.debug(`Asset category ${categoryName} cree avec succes`);
+			else logger.error(`Asset category ${categoryName} non cree`);
 		} catch (err) {
 			if (err instanceof PrismaClientKnownRequestError && err.code == 'P2002')
-				logger.debug(`Asset category : ${categoryName} existant, skipped`);
+				logger.debug(`Asset category ${categoryName} existant, skipped`);
 			else logger.error(err);
 		}
 	});

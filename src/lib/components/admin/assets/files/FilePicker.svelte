@@ -86,7 +86,7 @@
 						}}
 					/>
 
-					<a class="h-full block" target="_blank" href={galeryAsset?.path ?? savedAsset?.path}>
+					<a class="h-full block group-hover/asset:opacity-75" target="_blank" href={galeryAsset?.path ?? savedAsset?.path}>
 						<div class="h-full z-10 flex flex-col justify-center items-center">
 							<Icon
 								icon={IsCompressedExtension(galeryAsset?.originalFilename ?? savedAsset?.name ?? '')

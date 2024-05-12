@@ -119,7 +119,7 @@
 					/>
 
 					<video
-						class="h-full w-full"
+						class="h-full w-full group-hover/asset:opacity-75"
 						muted
 						loop={savedAsset?.loop ?? false}
 						autoplay={savedAsset?.autoplay ?? false}
