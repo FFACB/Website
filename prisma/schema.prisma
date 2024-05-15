@@ -62,15 +62,15 @@ model Asset {
   extension        String
   originalFilename String
   createdAt        DateTime       @default(now())
-  AssetsCategoriesId  String
-  AssetsCategories    AssetsCategories  @relation(fields: [AssetsCategoriesId], references: [id], onDelete: Cascade)
+  assetCategoryId  String
+  assetCategory    AssetCategory  @relation(fields: [assetCategoryId], references: [id], onDelete: Cascade)
   //Relations
   pictureAssets    PictureAsset[]
   videoAssets      VideoAsset[]
   fileAssets       FileAsset[]
 }
 
-model AssetsCategories {
+model AssetCategory {
   id     String  @id @default(uuid())
   name   String  @unique
   assets Asset[]
