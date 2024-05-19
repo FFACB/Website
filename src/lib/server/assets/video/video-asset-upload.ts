@@ -1,6 +1,15 @@
 import { prisma } from '$lib/server/prisma';
 import type { VideoAsset } from '@prisma/client';
 
+/**
+ * @description Save a VideoAsset from an Asset
+ *
+ * @example saveVideoAsset('4e5508fd-979d-47ad-a56b-e9a604d02f1f', {controls: 'on', autoplay: 'on', loop: 'on'})
+ *
+ * @param assetID {string | FormDataEntryValue}
+ * @param assetRelationOptions {{controls?: boolean | FormDataEntryValue | null; autoplay?: boolean | FormDataEntryValue | null; loop?: boolean | FormDataEntryValue | null; name?: string | FormDataEntryValue | null; required?: boolean;}}
+ * @returns {Promise<{succes: boolean; relation: VideoAsset | null; errorMsg: string; errorPass: boolean;}>}
+ */
 export async function saveVideoAsset(
 	assetID: string | FormDataEntryValue,
 	assetRelationOptions: {

@@ -7,16 +7,37 @@ class ToastSettingsClient {
 		this.toastSettings = _toastSettings;
 	}
 
+	/**
+	 * @description Set the message of the toast
+	 *
+	 * @example ENREGISTREMENT_SUCCES.addMessage('Enregistrement effecté !')
+	 *
+	 * @param message {string | null}
+	 * @returns ToastSettingsClient
+	 */
 	addMessage(message: string | null) {
 		this.toastSettings.message = message ?? '';
 		return this;
 	}
 
+	/**
+	 * @description Set the timeout of the toast
+	 *
+	 * @example ENREGISTREMENT_SUCCES.addColor('variant-filled-error')
+	 *
+	 * @param cssClass {string}
+	 * @returns ToastSettingsClient
+	 */
 	addColor(cssClass: string) {
 		this.toastSettings.background = cssClass;
 		return this;
 	}
 
+	/**
+	 * @example ENREGISTREMENT_SUCCES.toToast()
+	 *
+	 * @returns {ToastSettings} The toast settings
+	 */
 	toToast() {
 		return this.toastSettings;
 	}

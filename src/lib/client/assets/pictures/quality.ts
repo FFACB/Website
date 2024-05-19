@@ -6,17 +6,39 @@ export class Quality {
 		this.quality = quality;
 	}
 
+	/**
+	 *
+	 * @returns {string} The name of the quality
+	 */
+
 	public key(): string {
 		return this.name;
 	}
 
+	/**
+	 *
+	 * @returns {number} The value of the quality in number
+	 */
 	public value(): number {
 		return this.quality;
 	}
 
+	/**
+	 *
+	 * @returns {string} The value of the quality in string
+	 */
 	public toString(): string {
 		return this.quality.toString();
 	}
+
+	/**
+	 * @description Returns the quality object from the input
+	 *
+	 * @param quality {undefined | null | string | number | Quality}
+	 * @returns Quality
+	 *
+	 * @example fromInput('100') // quality100
+	 */
 
 	public static fromInput(quality: undefined | null | string | number | Quality): Quality {
 		if (quality instanceof Quality) {

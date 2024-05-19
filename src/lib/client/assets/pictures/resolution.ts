@@ -6,10 +6,18 @@ export class Resolution {
 		this.resolution = resolution;
 	}
 
+	/**
+	 *
+	 * @returns {string} The name of the resolution
+	 */
 	public key(): string {
 		return this.name;
 	}
 
+	/**
+	 *
+	 * @returns {number} The value of the resolution in number
+	 */
 	public value(): number | null {
 		if (this.resolution) {
 			return this.resolution;
@@ -17,6 +25,10 @@ export class Resolution {
 		return null;
 	}
 
+	/**
+	 *
+	 * @returns {string} The value of the resolution in string
+	 */
 	public toString(): string {
 		if (this.resolution) {
 			return this.resolution.toString();
@@ -25,6 +37,14 @@ export class Resolution {
 		}
 	}
 
+	/**
+	 * @description Returns the resolution object from the input
+	 *
+	 * @param resolution {undefined | null | string | number | Resolution}
+	 * @returns Resolution
+	 *
+	 * @example fromInput('1920') // resolutionFullHd
+	 */
 	public static fromInput(resolution: undefined | null | string | number | Resolution): Resolution {
 		if (resolution instanceof Resolution) {
 			return resolution;

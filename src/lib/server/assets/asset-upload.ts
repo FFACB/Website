@@ -9,6 +9,14 @@ import { GetExtension, IsPhoto, IsSvg, IsVideo } from '$lib/client/utils/type.js
 import { AssetsCategories } from '$lib/client/assets/enums';
 import type { AssetCategory } from '$lib/client/assets/ambiant';
 
+/**
+ * @description Save a file to an Asset
+ *
+ * @example saveAssetUpload(file)
+ *
+ * @param file {File | null | undefined | FormDataEntryValue}
+ * @returns {Promise<{succes: boolean; asset: AssetCategory | null; errorMsg: string;}>}
+ */
 export async function saveAssetUpload(file: File | null | undefined | FormDataEntryValue): Promise<{
 	succes: boolean;
 	asset: AssetCategory | null;
@@ -108,6 +116,18 @@ export async function saveAssetUpload(file: File | null | undefined | FormDataEn
 	}
 }
 
+/**
+ * @description Save a file to an Asset
+ *
+ * @example saveIndependantAssetUpload(file, foldername, resolution, quality)
+ *
+ * @param file {File | null | undefined | FormDataEntryValue}
+ * @param foldername {string}
+ * @param resolution {Resolution}
+ * @param quality {Quality}
+ * @param resizeOptions {sharp.ResizeOptions}
+ * @returns {Promise<{succes: boolean; assetPath: string | null; errorMsg: string;}>}
+ */
 export async function saveIndependantAssetUpload(
 	file: File | null | undefined | FormDataEntryValue,
 	foldername: string,

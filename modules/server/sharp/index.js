@@ -17,6 +17,24 @@ const sharpenConfig = {
 	height: SHARP_DEFAULT_HEIGHT
 };
 
+/**
+ *
+ * @description Redimensionne une image
+ *
+ * @example sharpen({
+ * fullpath: 'path/to/image.jpg',
+ * width: 800,
+ * height: 600,
+ * callback: (err, data, info, format) => {}})
+ *
+ * @param {string} fullpath
+ * @param {number} width
+ * @param {number} height
+ * @param {Function} callback
+ *
+ * @returns {void}
+ */
+
 const sharpen = function ({
 	fullpath = null,
 	width = SHARP_DEFAULT_WIDTH,

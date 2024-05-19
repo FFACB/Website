@@ -15,6 +15,11 @@ class Mailer {
 		this.senderName = '';
 	}
 
+	/**
+	 * @description Initialize the SMTP connection
+	 * @returns {Promise<void>}
+	 * @example await mailer.init()
+	 */
 	async init() {
 		try {
 			const PUBLIC_SMTP_HOST = await getParametre('PUBLIC_SMTP_HOST');
@@ -71,6 +76,15 @@ class Mailer {
 		}
 	}
 
+	/**
+	 * @description Send an email
+	 * @param to {string}
+	 * @param subject {string}
+	 * @param text {string}
+	 * @param html {string}
+	 * @returns {Promise<boolean>}
+	 * @example await mailer.sendMail('to@todo.com', 'Subject', 'Text', '<h1>HTML</h1>')
+	 **/
 	async sendMail(to: string, subject: string, text: string, html: string): Promise<boolean> {
 		if (!this.isInit) {
 			console.error('Please initialize SMTP connection');

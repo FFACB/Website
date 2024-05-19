@@ -6,6 +6,16 @@ import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 import type { PictureAsset } from '@prisma/client';
 
+/**
+ * @description Save a PictureAsset from an Asset
+ *
+ * @example savePictureAsset('4e5508fd-979d-47ad-a56b-e9a604d02f1f', {resolution: 'max', quality: '100'})
+ *
+ * @param assetID {string | FormDataEntryValue}
+ * @param assetRelationOptions {{resolution?: Resolution | number | string | FormDataEntryValue | null; quality?: Quality | number | FormDataEntryValue | string; required?: boolean;}}
+ * @param resizeOptions {sharp.ResizeOptions}
+ * @returns {Promise<{succes: boolean; relation: PictureAsset | null; errorMsg: string; errorPass: boolean;}>}
+ */
 export async function savePictureAsset(
 	assetID: string | FormDataEntryValue,
 	assetRelationOptions: {

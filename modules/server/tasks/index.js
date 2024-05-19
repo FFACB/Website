@@ -2,6 +2,15 @@ import { scheduleJob } from 'node-schedule';
 import { copyFileSync, truncateSync } from 'fs';
 import { logger } from '../logs/index.js';
 
+/**
+ * @description Sauvegarde des logs à la fin de la journée
+ * @param {string} rule
+ *
+ * @returns {void}
+ *
+ * @example saveLogs('30 0 30 * * *')
+ */
+
 export const saveLogs = (rule = '30 0 30 * * *') => {
 	scheduleJob(rule, function () {
 		try {

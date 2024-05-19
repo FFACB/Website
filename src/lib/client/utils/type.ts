@@ -1,3 +1,11 @@
+/**
+ * @example IsJsonString('{"key": "value"}') // true
+ *
+ * @description Check if a string is a valid JSON
+ *
+ * @param str {string}
+ * @returns {boolean}
+ */
 export function IsJsonString(str: string) {
 	try {
 		JSON.parse(str);
@@ -7,6 +15,14 @@ export function IsJsonString(str: string) {
 	return true;
 }
 
+/**
+ * @example IsEmptyString('') // true
+ *
+ * @description Check if a string is empty
+ *
+ * @param str {string | null | undefined | FormDataEntryValue}
+ * @returns {boolean}
+ */
 export function IsEmptyString(str: string | null | undefined | FormDataEntryValue) {
 	try {
 		return str == null || typeof str !== 'string' || str.length <= 0;
@@ -29,6 +45,14 @@ export const PhotoExtensions = [
 	'webp'
 ];
 
+/**
+ *
+ * @description Check if a file is a photo
+ * @example IsPhoto(file)
+ *
+ * @param obj {File | null | undefined | FormDataEntryValue}
+ * @returns {boolean}
+ */
 export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
 		if (obj == null || typeof obj !== 'object' || !(obj instanceof File)) return false;
@@ -42,6 +66,14 @@ export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): bool
 
 const VideoExtensions = ['webm', 'mp4', 'ogg', 'ogv', 'avi', 'wmv', 'mov'];
 
+/**
+ *
+ * @description Check if a file is a video
+ * @example IsVideo(file)
+ *
+ * @param obj {File | null | undefined | FormDataEntryValue}
+ * @returns {boolean}
+ */
 export function IsVideo(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
 		if (obj == null || typeof obj !== 'object' || !(obj instanceof File)) return false;
@@ -55,6 +87,14 @@ export function IsVideo(obj: File | null | undefined | FormDataEntryValue): bool
 
 const CompressedExtensions = ['zip', 'rar', '7z', 'gz', 'bz2', 'tar', 'xz', 'zst'];
 
+/**
+ *
+ * @description Check if a filename is a compressed file
+ * @example IsCompressedExtension(filename)
+ *
+ * @param obj {string}
+ * @returns {boolean}
+ */
 export function IsCompressedExtension(obj: string): boolean {
 	try {
 		if (obj == null || typeof obj !== 'string') return false;
@@ -66,6 +106,14 @@ export function IsCompressedExtension(obj: string): boolean {
 	}
 }
 
+/**
+ *
+ * @description Check if a file is a svg
+ * @example IsSvg(file)
+ *
+ * @param obj {File | null | undefined | FormDataEntryValue}
+ * @returns {boolean}
+ */
 export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolean {
 	try {
 		if (obj == null || typeof obj !== 'object' || !(obj instanceof File)) return false;
@@ -77,6 +125,13 @@ export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolea
 	}
 }
 
+/**
+ * @description Get the extension of a file
+ *
+ * @example GetExtension('file.jpg') // jpg
+ * @param fname {string}
+ * @returns {string}
+ */
 export function GetExtension(fname: string) {
 	const pos = fname.lastIndexOf('.');
 	const strlen = fname.length;

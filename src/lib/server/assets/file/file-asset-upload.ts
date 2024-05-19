@@ -2,6 +2,15 @@ import { prisma } from '$lib/server/prisma';
 import { IsEmptyString } from '$lib/client/utils/type.js';
 import type { FileAsset } from '@prisma/client';
 
+/**
+ * @description Save a FileAsset from an Asset
+ *
+ * @example saveFileAsset('4e5508fd-979d-47ad-a56b-e9a604d02f1f', {name: 'file.pdf'})
+ *
+ * @param assetID {string | FormDataEntryValue}
+ * @param assetRelationOptions {{name?: string | FormDataEntryValue | null; required?: boolean;}}
+ * @returns {Promise<{succes: boolean; relation: FileAsset | null; errorMsg: string; errorPass: boolean;}>}
+ */
 export async function saveFileAsset(
 	assetID: string | FormDataEntryValue,
 	assetRelationOptions: {
