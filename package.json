@@ -55,6 +55,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@google-analytics/data": "^4.7.0",
 		"@lucia-auth/adapter-prisma": "^4.0.0",
 		"@prisma/client": "^5.12.1",
 		"@sveltejs/adapter-node": "^4.0.1",

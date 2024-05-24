@@ -16,5 +16,7 @@ logs/old/*
 !logs/.gitkeep 
 !logs/old/.gitkeep
 !logs/old
+!conf/googleapis/keys/.gitkeep 
+conf/googleapis/keys/*
 
 build-node
