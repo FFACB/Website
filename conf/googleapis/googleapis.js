@@ -15,8 +15,8 @@ export async function initialize() {
 	console.log('Initialisation googleapis');
 	logger.debug('Initialisation googleapis');
 
-	const { GOOGLE_APPLICATION_CREDENTIALS, GOOGLE_APPLICATION_CREDENTIALS_ENABLED } = process.env;
-	if(GOOGLE_APPLICATION_CREDENTIALS == null || GOOGLE_APPLICATION_CREDENTIALS_ENABLED == null){
+	const { GOOGLE_APPLICATION_CREDENTIALS } = process.env;
+	if(GOOGLE_APPLICATION_CREDENTIALS == null){
 		logger.error('Fichier env manquant pour les googleapis');
 		process.exit(1);
 	
@@ -25,6 +25,8 @@ export async function initialize() {
 	console.log(GOOGLE_APPLICATION_CREDENTIALS)
 	const isGoogleApis = existsSync(GOOGLE_APPLICATION_CREDENTIALS)
 	logger.debug(`Fichier de configuration des googleapis ${isGoogleApis ? 'trouvé' : 'introuvable'}`);
-	process.env.GOOGLE_APPLICATION_CREDENTIALS_ENABLED = isGoogleApis.toString();
+
+	process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED = isGoogleApis.toString();
+	console.log(process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED)
 
 }

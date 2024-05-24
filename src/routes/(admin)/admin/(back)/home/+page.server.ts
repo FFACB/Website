@@ -5,11 +5,12 @@ export const load: PageServerLoad = async () => {
 
 
 
-	await AnalyticsRunReport();
-
+	const res = await AnalyticsRunReport();
+	console.log(res);
 	return {
 		backlink: null,
-		active: 'home'
+		active: 'home',
+		res
 	};
 };
 
