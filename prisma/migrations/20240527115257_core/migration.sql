@@ -54,12 +54,12 @@ CREATE TABLE "Asset" (
     "extension" TEXT NOT NULL,
     "originalFilename" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "AssetsCategoriesId" TEXT NOT NULL,
-    CONSTRAINT "Asset_AssetsCategoriesId_fkey" FOREIGN KEY ("AssetsCategoriesId") REFERENCES "AssetsCategories" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "assetCategoryId" TEXT NOT NULL,
+    CONSTRAINT "Asset_assetCategoryId_fkey" FOREIGN KEY ("assetCategoryId") REFERENCES "AssetCategory" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
-CREATE TABLE "AssetsCategories" (
+CREATE TABLE "AssetCategory" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL
 );
@@ -104,4 +104,4 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 CREATE UNIQUE INDEX "Parametre_key_key" ON "Parametre"("key");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "AssetsCategories_name_key" ON "AssetsCategories"("name");
+CREATE UNIQUE INDEX "AssetCategory_name_key" ON "AssetCategory"("name");
