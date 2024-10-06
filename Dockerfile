@@ -1,7 +1,14 @@
 FROM node:20-alpine AS builder
 
 WORKDIR /app
+
+RUN mkdir -p uploads
+RUN mkdir -p logs
+RUN mkdir -p prisma/db
+
 COPY conf ./conf
+COPY logs ./logs
+COPY uploads ./uploads
 COPY modules ./modules
 COPY prisma ./prisma
 COPY src ./src
@@ -29,20 +36,29 @@ RUN pnpm install
 RUN npx prisma migrate deploy
 RUN npx prisma generate
 RUN pnpm run build
-#ENTRYPOINT tail -f /dev/null 
-#If debug
-# docker exec -it CMS sh #If debug
-# RUN pnpm run build
 
+FROM node:20-alpine AS deployer
 
-FROM builder AS deployer
+WORKDIR /app
+
+COPY --from=builder /app/conf ./conf
+COPY --from=builder /app/modules ./modules
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/build-node ./build-node
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/uploads ./uploads
+COPY --from=builder /app/logs ./logs
+COPY --from=builder /app/.env ./.env
+COPY --from=builder /app/server.js .
+COPY --from=builder /app/database.sh .
 
 ENV BODY_SIZE_LIMIT=Infinity
-# RUN chmod -R 777 ./database.sh
-# RUN ./database.sh
-CMD [ "node", "server.js" ]
+RUN chmod -R 777 ./database.sh
+RUN ./database.sh
 
-ENTRYPOINT chmod -R 777 ./database.sh && ./database.sh
+ENTRYPOINT chmod -R 777 ./database.sh && ./database.sh && node server.js
+#chmod -R 777 ./database.sh && ./database.sh
 #CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it CMS sh #If debug
