@@ -8,10 +8,10 @@ import { logger } from '../logs/index.js';
  *
  * @returns {void}
  *
- * @example saveLogs('30 0 30 * * *')
+ * @example saveLogs('30 0 0 * * *')
  */
 
-export const saveLogs = (rule = '30 0 30 * * *') => {
+export const saveLogs = (rule = '30 0 0 * * *') => {
 	scheduleJob(rule, function () {
 		try {
 			const today = new Date();
