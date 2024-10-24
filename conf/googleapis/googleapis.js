@@ -16,17 +16,17 @@ export async function initialize() {
 	logger.debug('Initialisation googleapis');
 
 	const { GOOGLE_APPLICATION_CREDENTIALS } = process.env;
-	if(GOOGLE_APPLICATION_CREDENTIALS == null){
+	if (GOOGLE_APPLICATION_CREDENTIALS == null) {
 		logger.error('Fichier env manquant pour les googleapis');
 		process.exit(1);
-	
 	}
 
-	console.log(GOOGLE_APPLICATION_CREDENTIALS)
-	const isGoogleApis = existsSync(GOOGLE_APPLICATION_CREDENTIALS)
-	logger.debug(`Fichier de configuration des googleapis ${isGoogleApis ? 'trouvé' : 'introuvable'}`);
+	console.log(GOOGLE_APPLICATION_CREDENTIALS);
+	const isGoogleApis = existsSync(GOOGLE_APPLICATION_CREDENTIALS);
+	logger.debug(
+		`Fichier de configuration des googleapis ${isGoogleApis ? 'trouvé' : 'introuvable'}`
+	);
 
 	process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED = isGoogleApis.toString();
-	console.log(process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED)
-
+	console.log(process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED);
 }

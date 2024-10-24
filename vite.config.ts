@@ -6,7 +6,7 @@ import parametresKit from './conf/parametres/parametres.config';
 import assetsKit from './conf/assets/asset.config';
 import googleapisKit from './conf/googleapis/googleapis.config';
 export default defineConfig({
-	plugins: [sveltekit(), authKit(), parametresKit(), assetsKit(),googleapisKit()],
+	plugins: [sveltekit(), authKit(), parametresKit(), assetsKit(), googleapisKit()],
 
 	server: {
 		hmr: false,

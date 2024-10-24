@@ -9,7 +9,6 @@
 	let error: boolean = false;
 
 	onMount(async () => {
-		
 		fetch('/api/googleapis/analytics/report')
 			.then(async (result) => {
 				if (result.status !== 200) {
@@ -25,7 +24,7 @@
 				analytics_report = json_data.data as google.analytics.data.v1beta.IRunReportResponse;
 				doReportChart();
 			})
-			.catch((error) => {
+			.catch(() => {
 				error = true;
 			});
 	});
