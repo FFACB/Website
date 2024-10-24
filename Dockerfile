@@ -23,7 +23,7 @@ COPY svelte.config.js .
 COPY tailwind.config.cjs .
 COPY tsconfig.json .
 COPY vite.config.ts .
-COPY database.sh .
+COPY entrypoint.sh .
 
 RUN npm install -g pnpm
 RUN apk add --no-cache libc6-compat
@@ -51,14 +51,14 @@ COPY --from=builder /app/uploads ./uploads
 COPY --from=builder /app/logs ./logs
 COPY --from=builder /app/.env ./.env
 COPY --from=builder /app/server.js .
-COPY --from=builder /app/database.sh .
+COPY --from=builder /app/entrypoint.sh .
 
 ENV BODY_SIZE_LIMIT=Infinity
-RUN chmod -R 777 ./database.sh
-RUN ./database.sh
+RUN chmod -R 777 ./entrypoint.sh
+RUN ./entrypoint.sh
 
-ENTRYPOINT chmod -R 777 ./database.sh && ./database.sh && node server.js
-#chmod -R 777 ./database.sh && ./database.sh
+ENTRYPOINT chmod -R 777 ./entrypoint.sh && ./entrypoint.sh && node server.js
+#chmod -R 777 ./entrypoint.sh && ./entrypoint.sh
 #CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it CMS sh #If debug
