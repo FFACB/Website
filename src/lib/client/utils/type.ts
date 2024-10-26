@@ -1,5 +1,3 @@
-import { logger } from '$lib/server/logs';
-
 /**
  * @example IsJsonString('{"key": "value"}') // true
  *
@@ -12,7 +10,7 @@ export function IsJsonString(str: string) {
 	try {
 		JSON.parse(str);
 	} catch (e) {
-		logger.warn(e, 'Erreur lors de la vérification du JSON');
+		console.warn(e, 'Erreur lors de la vérification du JSON');
 		return false;
 	}
 	return true;
@@ -30,7 +28,7 @@ export function IsEmptyString(str: string | null | undefined | FormDataEntryValu
 	try {
 		return str == null || typeof str !== 'string' || str.length <= 0;
 	} catch (e) {
-		logger.warn(e, 'Erreur lors de la vérification de la chaine');
+		console.warn(e, 'Erreur lors de la vérification de la chaine');
 		return false;
 	}
 }
@@ -64,7 +62,7 @@ export function IsPhoto(obj: File | null | undefined | FormDataEntryValue): bool
 		const fileExtension = GetExtension(obj.name);
 		return PhotoExtensions.includes(fileExtension);
 	} catch (e) {
-		logger.warn(e, "Erreur lors de la vérification de l'image");
+		console.warn(e, "Erreur lors de la vérification de l'image");
 		return false;
 	}
 }
@@ -86,7 +84,7 @@ export function IsVideo(obj: File | null | undefined | FormDataEntryValue): bool
 		const fileExtension = GetExtension(obj.name);
 		return VideoExtensions.includes(fileExtension);
 	} catch (e) {
-		logger.warn(e, 'Erreur lors de la vérification de la vidéo');
+		console.warn(e, 'Erreur lors de la vérification de la vidéo');
 		return false;
 	}
 }
@@ -108,7 +106,7 @@ export function IsCompressedExtension(obj: string): boolean {
 		const fileExtension = GetExtension(obj);
 		return CompressedExtensions.includes(fileExtension);
 	} catch (e) {
-		logger.warn(e, 'Erreur lors de la vérification du format compressé');
+		console.warn(e, 'Erreur lors de la vérification du format compressé');
 		return false;
 	}
 }
@@ -128,7 +126,7 @@ export function IsSvg(obj: File | null | undefined | FormDataEntryValue): boolea
 		const fileExtension = GetExtension(obj.name);
 		return fileExtension.includes('svg');
 	} catch (e) {
-		logger.warn(e, 'Erreur lors de la vérification du SVG');
+		console.warn(e, 'Erreur lors de la vérification du SVG');
 		return false;
 	}
 }
