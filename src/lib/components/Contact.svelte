@@ -49,6 +49,8 @@
 
 			formData.append('token', token);
 		} catch (error) {
+			console.error(error);
+			errorMsg = "Une erreur est survenue lors de l'envoi du formulaire";
 			cancel();
 			return;
 		}

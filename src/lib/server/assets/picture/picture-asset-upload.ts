@@ -5,6 +5,7 @@ import { Quality, quality100 } from '$lib/client/assets/pictures/quality';
 import { PUBLIC_UPLOADS_FOLDER_NAME } from '$env/static/public';
 import sharp from 'sharp';
 import type { PictureAsset } from '@prisma/client';
+import { logger } from '$lib/server/logs';
 
 /**
  * @description Save a PictureAsset from an Asset
@@ -110,6 +111,7 @@ export async function savePictureAsset(
 
 		return { succes: true, errorPass: false, relation: pictureAsset, errorMsg: '' };
 	} catch (exeption) {
+		logger.warn(exeption, "Erreur lors de la création de l'asset picture");
 		return { succes: false, errorPass: !required, relation: null, errorMsg: '' };
 	}
 }

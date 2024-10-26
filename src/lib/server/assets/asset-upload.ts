@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 import { GetExtension, IsPhoto, IsSvg, IsVideo } from '$lib/client/utils/type.js';
 import { AssetsCategories } from '$lib/client/assets/enums';
 import type { AssetCategory } from '$lib/client/assets/ambiant';
+import { logger } from '../logs';
 
 /**
  * @description Save a file to an Asset
@@ -108,6 +109,7 @@ export async function saveAssetUpload(file: File | null | undefined | FormDataEn
 			errorMsg: ''
 		};
 	} catch (exeption) {
+		logger.warn(exeption, "Erreur lors de la création de l'asset upload");
 		return {
 			succes: false,
 			asset: null,
@@ -192,6 +194,7 @@ export async function saveIndependantAssetUpload(
 			errorMsg: ''
 		};
 	} catch (exeption) {
+		logger.warn(exeption, "Erreur lors de la création de l'asset upload indépendant");
 		return {
 			succes: false,
 			assetPath: null,

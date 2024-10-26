@@ -1,3 +1,4 @@
+import { logger } from '$lib/server/logs';
 import { prisma } from '$lib/server/prisma';
 import type { VideoAsset } from '@prisma/client';
 
@@ -101,6 +102,7 @@ export async function saveVideoAsset(
 
 		return { succes: true, errorPass: false, relation: videoAsset, errorMsg: '' };
 	} catch (exeption) {
+		logger.warn(exeption, "Erreur lors de la création de l'asset video");
 		return { succes: false, errorPass: !required, relation: null, errorMsg: '' };
 	}
 }

@@ -10,6 +10,8 @@
  * @example dateFrom_yyyyMMdd('20210101')
  */
 
+import { logger } from '$lib/server/logs';
+
 export function dateFrom_yyyyMMdd(rawDate: string | number): Date | null {
 	try {
 		if (typeof rawDate === 'number') rawDate = rawDate.toString();
@@ -23,6 +25,7 @@ export function dateFrom_yyyyMMdd(rawDate: string | number): Date | null {
 		date = new Date(date.getTime() - offset * 60 * 1000);
 		return date;
 	} catch (error) {
+		logger.warn(error, 'Erreur lors de la conversion de la date');
 		return null;
 	}
 }

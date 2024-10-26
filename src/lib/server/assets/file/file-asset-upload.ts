@@ -1,6 +1,7 @@
 import { prisma } from '$lib/server/prisma';
 import { IsEmptyString } from '$lib/client/utils/type.js';
 import type { FileAsset } from '@prisma/client';
+import { logger } from '$lib/server/logs';
 
 /**
  * @description Save a FileAsset from an Asset
@@ -73,6 +74,7 @@ export async function saveFileAsset(
 
 		return { succes: true, errorPass: false, relation: fileAsset, errorMsg: '' };
 	} catch (exeption) {
+		logger.warn(exeption, "Erreur lors de la création de l'asset upload");
 		return { succes: false, errorPass: !required, relation: null, errorMsg: '' };
 	}
 }
