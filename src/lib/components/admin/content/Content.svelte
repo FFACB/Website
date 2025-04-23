@@ -4,20 +4,30 @@
 	import Lead from '$lib/components/admin/appbar/lead/Lead.svelte';
 	import Trail from '$lib/components/admin/appbar/trail/Trail.svelte';
 
-	import { page } from '$app/stores';
-	const { backlink } = $page.data;
+	import { page } from '$app/state';
+	interface Props {
+		buttons?: import('svelte').Snippet;
+		children?: import('svelte').Snippet;
+	}
+
+	let { buttons, children }: Props = $props();
+	const { backlink } = page.data;
 </script>
 
 <AppBar gap="gap-0" class="appbar">
-	<svelte:fragment slot="lead">
-		<Lead {backlink} />
-	</svelte:fragment>
-	<slot name="buttons" />
-	<svelte:fragment slot="trail">
-		<Trail />
-	</svelte:fragment>
+	{#snippet lead()}
+	
+			<Lead {backlink} />
+		
+	{/snippet}
+	{@render buttons?.()}
+	{#snippet trail()}
+	
+			<Trail />
+		
+	{/snippet}
 </AppBar>
 
 <div class="appcontent">
-	<slot />
+	{@render children?.()}
 </div>

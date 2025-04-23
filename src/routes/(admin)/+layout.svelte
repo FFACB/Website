@@ -1,11 +1,9 @@
-<script>
+<script lang="ts">
 	import './admin.pcss';
-</script>
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-<body
-	class="bg-surface-500 dark:bg-surface-900"
-	data-theme="lime"
-	data-sveltekit-preload-data="hover"
->
-	<slot />
-</body>
+	let { children }: Props = $props();
+</script>
+{@render children?.()}

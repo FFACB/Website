@@ -6,8 +6,8 @@
 	import Spinner from '$lib/components/admin/Spinner.svelte';
 	import type { SvelteComponent } from 'svelte';
 
-	let errorMsg: string | null = null;
-	let spinner: SvelteComponent | null = null;
+	let errorMsg: string | null = $state(null);
+	let spinner: SvelteComponent | null = $state(null);
 </script>
 
 <div class="flex items-center justify-center h-full w-full">

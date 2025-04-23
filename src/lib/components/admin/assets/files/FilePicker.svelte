@@ -8,13 +8,17 @@
 	import Icon from '@iconify/svelte';
 	import { IsCompressedExtension } from '$lib/client/utils/type';
 
-	let galeryAsset: Asset | null = null;
-	export let savedAsset: FileAsset | null = null;
-	export let assetName = 'File';
-	export let identifier: string = '0';
+	let galeryAsset: Asset | null = $state(null);
+	interface Props {
+		savedAsset?: FileAsset | null;
+		assetName?: string;
+		identifier?: string;
+	}
+
+	let { savedAsset = $bindable(null), assetName = 'File', identifier = '0' }: Props = $props();
 
 	const assetPickerId = uuid();
-	let name = '';
+	let name = $state('');
 
 	export function deleteAssetRelation() {
 		galeryAsset = null;
@@ -57,7 +61,7 @@
 					class="input h-full"
 					type="button"
 					value={'Choisir un fichier dans la galerie'}
-					on:click={() => {
+					onclick={() => {
 						showAssets(AssetsCategories.FILE, assetPickerId);
 					}}
 				/>

@@ -2,7 +2,11 @@
 	import Icon from '@iconify/svelte';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 
-	export let backlink: string | null;
+	interface Props {
+		backlink: string | null;
+	}
+
+	let { backlink }: Props = $props();
 
 	const drawerStore = getDrawerStore();
 
@@ -11,7 +15,7 @@
 	}
 </script>
 
-<button class="btn-menu" on:click={drawerOpen}>
+<button class="btn-menu" onclick={drawerOpen}>
 	<Icon
 		class="text-tertiary-500 dark:text-surface-100 "
 		icon="solar:hamburger-menu-broken"

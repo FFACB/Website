@@ -5,8 +5,8 @@
 	import { dateFrom_yyyyMMdd } from '$lib/client/utils/convert';
 
 	let analytics_report: google.analytics.data.v1beta.IRunReportResponse;
-	let reportElement: HTMLCanvasElement;
-	let error: boolean = false;
+	let reportElement: HTMLCanvasElement | undefined = $state();
+	let error: boolean = $state(false);
 
 	onMount(async () => {
 		fetch('/api/googleapis/analytics/report')
@@ -34,11 +34,7 @@
 			const dark = document.documentElement.className == 'dark';
 			Chart.defaults.color = dark ? '#fff' : '#000';
 
-			if (
-				analytics_report == null ||
-				analytics_report.rows == null ||
-				analytics_report.rowCount == 0
-			) {
+			if (analytics_report == null || analytics_report.rows == null || reportElement == null) {
 				error = true;
 				return;
 			}

@@ -1,13 +1,13 @@
-<script>
-	export let contenu;
-	const { blocks = [] } = contenu;
+<script lang="ts">
+	let { contenu } = $props();
+	const { blocks = [] } = $state(contenu);
 </script>
 
 <div id="contenu">
 	{#each blocks as block}
 		<div class="block mb-4 block-{block.type}">
 			{#if block.type == 'paragraph'}
-				<p bind:innerHTML={block.data.text} contenteditable="false" />
+				<p bind:innerHTML={block.data.text} contenteditable="false"></p>
 			{/if}
 			{#if block.type == 'header' && block.data.level == 2}
 				<h2>{block.data.text}</h2>

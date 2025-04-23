@@ -25,11 +25,11 @@
 
 	initializeStores();
 
-	export let data;
+	let { data, children } = $props();
 	const { config } = data;
 
 	//Main Spinner
-	let spinner: SvelteComponent | null = null;
+	let spinner: SvelteComponent | null = $state(null);
 	subscribeSpinner((value: boolean) => {
 		if (spinner) {
 			spinner.toggle(value);
@@ -37,7 +37,7 @@
 	});
 
 	//Assets
-	let assets: SvelteComponent | null = null;
+	let assets: SvelteComponent | null = $state(null);
 	subscribeAssetsPanel((value: AssetPickerAction) => {
 		if (assets) {
 			assets.toggle(value);
@@ -57,12 +57,14 @@
 	slotPageHeader=" sticky top-0 z-10"
 	slotSidebarLeft="lg:block hidden dark:bg-surface-800 bg-surface-50 w-56 p-4 m-4 rounded-container-token"
 >
-	<svelte:fragment slot="sidebarLeft">
-		<!-- Insert the list: -->
-		<Sidebar {config} />
+	{#snippet sidebarLeft()}
+	
+			<!-- Insert the list: -->
+			<Sidebar {config} />
 
-		<!-- --- -->
-	</svelte:fragment>
+			<!-- --- -->
+		
+	{/snippet}
 
 	<Drawer width="w-56">
 		<div class="dark:bg-surface-800 bg-surface-50 w-full p-4 h-full rounded-container-token">
@@ -71,6 +73,6 @@
 	</Drawer>
 
 	<div class="h-full w-full flex flex-col p-4 lg:pl-0">
-		<slot />
+		{@render children?.()}
 	</div>
 </AppShell>

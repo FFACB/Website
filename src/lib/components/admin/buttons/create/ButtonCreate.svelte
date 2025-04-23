@@ -1,10 +1,15 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let titre: string;
-	export let link: string;
+	interface Props {
+		titre: string;
+		link: string;
+		[key: string]: any
+	}
+
+	let { titre, link, ...rest }: Props = $props();
 </script>
 
-<a data-button="create" {...$$restProps} href={link}>
+<a data-button="create" {...rest} href={link}>
 	<div class="hidden sm:block">
 		{titre}
 	</div>

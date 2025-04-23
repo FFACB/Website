@@ -6,16 +6,20 @@
 	import { v4 as uuid } from 'uuid';
 	import type { Asset } from '@prisma/client';
 
-	let galeryAsset: Asset | null = null;
-	export let savedAsset: VideoAsset | null = null;
-	export let assetName = 'Video';
-	export let identifier: string = '0';
+	let galeryAsset: Asset | null = $state(null);
+	interface Props {
+		savedAsset?: VideoAsset | null;
+		assetName?: string;
+		identifier?: string;
+	}
+
+	let { savedAsset = $bindable(null), assetName = 'Video', identifier = '0' }: Props = $props();
 
 	const assetPickerId = uuid();
 
-	let controls: boolean = false;
-	let loop: boolean = false;
-	let autoplay: boolean = false;
+	let controls: boolean = $state(false);
+	let loop: boolean = $state(false);
+	let autoplay: boolean = $state(false);
 
 	export function deleteAssetRelation() {
 		galeryAsset = null;
@@ -60,7 +64,7 @@
 					class="input h-full"
 					type="button"
 					value={'Choisir une video dans la galerie'}
-					on:click={() => {
+					onclick={() => {
 						showAssets(AssetsCategories.VIDEO, assetPickerId);
 					}}
 				/>

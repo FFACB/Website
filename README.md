@@ -143,3 +143,20 @@ cms/<br>
 ├ tailwind.config.cjs<br>
 ├ tsconfig.json<br>
 └ vite.config.js<br>
+
+## Installation
+
+### Analytics Report
+
+Pour utiliser l'API Google Analytics Report, vous devez vous connecter à votre compte [Google Cloud Console](https://console.cloud.google.com)
+
+1. Sélectionner un projet existant ou créer un nouveau projet
+2. Activer l'api [Google Analytics](https://console.cloud.google.com/apis/library/analyticsadmin.googleapis.com)
+3. Aller dans API & Services > Identifiants > Clés API
+4. Créer un nouveau compte de service role Propiétaire
+5. Créer une clé dans le compte de service format JSON
+6. enregistrer la clé dans le fichier conf/googleapis/keys/credentials.json
+7. Aller sur la propriété de l'API Analytics
+8. Gestion d'acces au compte et ajouter l'email du compte de service role Administrateur
+9. Aller dans détails de la propriété et copier l'Id de la propriété (ex: 428920187) dans le fichier .env
+10. Tester le dashboard de /admin/home

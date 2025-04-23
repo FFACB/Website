@@ -28,15 +28,15 @@
 
 	const toastStore = getToastStore();
 
-	export let data;
+	let { data } = $props();
 
-	let { actualite, pictureAsset, fileAsset, videoAsset } = data;
+	let { actualite, pictureAsset, fileAsset, videoAsset } = $state(data);
 
-	let writer: Writer | null = null;
+	let writer: Writer | null = $state(null);
 
-	let picturePicker: PicturePicker | null = null;
-	let filePicker: FilePicker | null = null;
-	let videoPicker: VideoPicker | null = null;
+	let picturePicker: PicturePicker | null = $state(null);
+	let filePicker: FilePicker | null = $state(null);
+	let videoPicker: VideoPicker | null = $state(null);
 	onMount(() => {
 		writer?.loadContenu(actualite?.contenu ?? '');
 		filePicker?.loadAssetRelation(fileAsset);
@@ -139,23 +139,25 @@
 </script>
 
 <Content>
-	<svelte:fragment slot="buttons">
-		<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
-		{#if actualite?.id != null}
-			<ButtonDelete type="submit" value="Update" form="delete-actualite-{actualite?.id}" />
+	{#snippet buttons()}
+	
+			<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
+			{#if actualite?.id != null}
+				<ButtonDelete type="submit" value="Update" form="delete-actualite-{actualite?.id}" />
 
-			<div class="hidden">
-				<form
-					action="?/delete"
-					method="POST"
-					id="delete-actualite-{actualite?.id}"
-					use:enhance={submitDeleteActualite}
-				>
-					<input type="hidden" name="id" value={actualite.id} />
-				</form>
-			</div>
-		{/if}
-	</svelte:fragment>
+				<div class="hidden">
+					<form
+						action="?/delete"
+						method="POST"
+						id="delete-actualite-{actualite?.id}"
+						use:enhance={submitDeleteActualite}
+					>
+						<input type="hidden" name="id" value={actualite.id} />
+					</form>
+				</div>
+			{/if}
+		
+	{/snippet}
 
 	<div class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">
 		<h1 class="h1">

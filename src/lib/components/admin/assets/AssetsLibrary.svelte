@@ -24,16 +24,21 @@
 	import Icon from '@iconify/svelte';
 	import { IsCompressedExtension } from '$lib/client/utils/type';
 	import type { AssetPickerAction, AssetCategory } from '$lib/client/assets/ambiant';
+	interface Props {
+		[key: string]: any
+	}
+
+	let { ...rest }: Props = $props();
 
 	const toastStore = getToastStore();
 
-	let refreshButton: HTMLButtonElement | null = null;
-	let assetsContainer: HTMLDivElement | null = null;
-	let assetImportInput: HTMLInputElement | null = null;
-	let assets: AssetCategory[] = [];
-	let tempAssetPickerId = '';
-	let assetsLibraryCurrentType = AssetsCategories.FILE;
-	let assetsLibraryCategoryName = '';
+	let refreshButton: HTMLButtonElement | null = $state(null);
+	let assetsContainer: HTMLDivElement | null = $state(null);
+	let assetImportInput: HTMLInputElement | null = $state(null);
+	let assets: AssetCategory[] = $state([]);
+	let tempAssetPickerId = $state('');
+	let assetsLibraryCurrentType = $state(AssetsCategories.FILE);
+	let assetsLibraryCategoryName = $state('');
 
 	export function toggle(value: AssetPickerAction) {
 		tempAssetPickerId = value.assetPickerId;
@@ -172,7 +177,7 @@
 <div
 	bind:this={assetsContainer}
 	class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-40 p-4 backdrop-blur-lg backdrop-brightness-75"
-	{...$$restProps}
+	{...rest}
 >
 	<form
 		method="POST"

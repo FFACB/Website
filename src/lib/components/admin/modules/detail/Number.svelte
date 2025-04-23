@@ -1,11 +1,22 @@
 <script lang="ts">
-	export let name: string;
-	export let identifier: string;
-	export let value: string = '';
 
-	export let min: string | undefined = undefined;
-	export let max: string | undefined = undefined;
-	export let step: string | undefined = undefined;
+	interface Props {
+		name: string;
+		identifier: string;
+		value?: string;
+		min?: string | undefined;
+		max?: string | undefined;
+		step?: string | undefined;
+	}
+
+	let {
+		name,
+		identifier,
+		value = '',
+		min = undefined,
+		max = undefined,
+		step = undefined
+	}: Props = $props();
 </script>
 
 <label class="label mb-4" for={identifier}>

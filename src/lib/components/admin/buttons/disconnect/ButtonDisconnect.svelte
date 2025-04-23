@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Icon from '@iconify/svelte';
+	interface Props {
+		[key: string]: any
+	}
+
+	let { ...rest }: Props = $props();
 </script>
 
 <form
@@ -12,7 +17,7 @@
 		};
 	}}
 >
-	<button data-button="disconect" {...$$restProps} type="submit" value="logout" title="Deconnexion">
+	<button data-button="disconect" {...rest} type="submit" value="logout" title="Deconnexion">
 		<div>Déconnexion</div>
 
 		<Icon data-button-icon="disconect" icon="solar:user-cross-linear" width="32" height="32" />

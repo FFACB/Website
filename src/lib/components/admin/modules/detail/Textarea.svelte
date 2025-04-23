@@ -1,11 +1,22 @@
 <script lang="ts">
-	export let name: string;
-	export let identifier: string;
-	export let value: string = '';
 
-	export let rows: number = 3;
-	export let cols: number = 45;
-	export let maxlength: number | undefined = undefined;
+	interface Props {
+		name: string;
+		identifier: string;
+		value?: string;
+		rows?: number;
+		cols?: number;
+		maxlength?: number | undefined;
+	}
+
+	let {
+		name,
+		identifier,
+		value = '',
+		rows = 3,
+		cols = 45,
+		maxlength = undefined
+	}: Props = $props();
 </script>
 
 <label class="label mb-4" for={identifier}>
@@ -21,5 +32,5 @@
 		name={identifier}
 		{value}
 		contenteditable="true"
-	/>
+	></textarea>
 </label>

@@ -3,8 +3,12 @@
 	import { IsEmptyString } from '$lib/client/utils/type';
 	import type { ParmetreReponse } from '$lib/client/utils/ambiant';
 
-	export let PUBLIC_RECAPCHA_SITEKEY: ParmetreReponse;
-	let errorMsg: string = '';
+	interface Props {
+		PUBLIC_RECAPCHA_SITEKEY: ParmetreReponse;
+	}
+
+	let { PUBLIC_RECAPCHA_SITEKEY }: Props = $props();
+	let errorMsg: string = $state('');
 </script>
 
 <svelte:head>

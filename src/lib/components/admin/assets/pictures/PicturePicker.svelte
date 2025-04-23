@@ -8,14 +8,18 @@
 	import { v4 as uuid } from 'uuid';
 	import type { Asset } from '@prisma/client';
 
-	let galeryAsset: Asset | null = null;
-	export let savedAsset: PictureAsset | null = null;
-	export let assetName = 'Photo';
-	export let identifier: string = '0';
+	let galeryAsset: Asset | null = $state(null);
+	interface Props {
+		savedAsset?: PictureAsset | null;
+		assetName?: string;
+		identifier?: string;
+	}
+
+	let { savedAsset = $bindable(null), assetName = 'Photo', identifier = '0' }: Props = $props();
 
 	const assetPickerId = uuid();
-	let resolution = Resolution.fromInput(savedAsset?.resolution);
-	let quality = Quality.fromInput(savedAsset?.quality);
+	let resolution = $state(Resolution.fromInput(savedAsset?.resolution));
+	let quality = $state(Quality.fromInput(savedAsset?.quality));
 
 	export function deleteAssetRelation() {
 		galeryAsset = null;
@@ -60,7 +64,7 @@
 					class="input h-full"
 					type="button"
 					value={'Choisir une image dans la galerie'}
-					on:click={() => {
+					onclick={() => {
 						showAssets(AssetsCategories.PICTURE, assetPickerId);
 					}}
 				/>

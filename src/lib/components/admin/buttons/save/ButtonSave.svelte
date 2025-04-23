@@ -1,15 +1,20 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let titre: string;
-	export let click = () => {};
+	interface Props {
+		titre: string;
+		click?: any;
+		[key: string]: any
+	}
+
+	let { titre, click = () => {}, ...rest }: Props = $props();
 </script>
 
 <button
 	data-button="save"
-	on:click={() => {
+	onclick={() => {
 		click();
 	}}
-	{...$$restProps}
+	{...rest}
 >
 	<div>
 		{titre}

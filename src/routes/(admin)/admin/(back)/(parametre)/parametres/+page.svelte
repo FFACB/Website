@@ -12,7 +12,7 @@
 	} from '$lib/client/toasts/toasts.js';
 
 	const toastStore = getToastStore();
-	export let data;
+	let { data } = $props();
 	let { parametres } = data;
 
 	const UpdateParametre = async () => {
@@ -39,7 +39,9 @@
 </script>
 
 <Content>
-	<svelte:fragment slot="buttons"></svelte:fragment>
+	{#snippet buttons()}
+		
+	{/snippet}
 
 	<div
 		class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token mb-4 pl-8 pr-8 p-4"

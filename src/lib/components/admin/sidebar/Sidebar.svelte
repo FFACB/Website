@@ -4,11 +4,15 @@
 	import type { LayoutConfig, LayoutSidebarItem } from '$lib/client/utils/ambiant.js';
 	import ButtonDisconnect from '$lib/components/admin/buttons/disconnect/ButtonDisconnect.svelte';
 
-	export let config: LayoutConfig;
+	interface Props {
+		config: LayoutConfig;
+	}
+
+	let { config }: Props = $props();
 
 	const { admin, sidebar } = config;
 	let { active = '' } = $page.data;
-	let sidebarHtml = initSidebar(sidebar);
+	let sidebarHtml = $state(initSidebar(sidebar));
 
 	afterNavigate(() => {
 		active = $page.data.active;

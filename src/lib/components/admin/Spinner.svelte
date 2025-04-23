@@ -1,5 +1,10 @@
 <script lang="ts">
-	let spinner: HTMLDivElement | null = null;
+	interface Props {
+		[key: string]: any
+	}
+
+	let { ...rest }: Props = $props();
+	let spinner: HTMLDivElement | null = $state(null);
 
 	export function toggle(value: boolean) {
 		if (!spinner) return;
@@ -12,7 +17,7 @@
 <div
 	bind:this={spinner}
 	class="hidden justify-center items-center absolute left-0 top-0 w-full h-full z-50"
-	{...$$restProps}
+	{...rest}
 >
 	<div class="absolute left-0 top-0 w-full h-full z-10 bg-black opacity-20"></div>
 

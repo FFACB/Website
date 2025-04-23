@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let click = () => {};
+	let { click = () => {}, ...rest } = $props();
 </script>
 
 <button
-	on:click={() => {
+	onclick={() => {
 		click();
 	}}
 	data-button="delete"
-	{...$$restProps}
+	{...rest}
 >
 	<div>Supprimer</div>
 
