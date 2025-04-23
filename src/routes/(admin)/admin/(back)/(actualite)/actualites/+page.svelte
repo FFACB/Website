@@ -46,9 +46,7 @@
 
 <Content>
 	{#snippet buttons()}
-	
-			<ButtonCreate titre="Créer" link="/admin/actualite" />
-		
+		<ButtonCreate titre="Créer" link="/admin/actualite" />
 	{/snippet}
 
 	<div

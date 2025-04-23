@@ -25,7 +25,7 @@
 	import { IsCompressedExtension } from '$lib/client/utils/type';
 	import type { AssetPickerAction, AssetCategory } from '$lib/client/assets/ambiant';
 	interface Props {
-		[key: string]: any
+		[key: string]: any;
 	}
 
 	let { ...rest }: Props = $props();

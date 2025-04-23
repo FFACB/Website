@@ -16,15 +16,11 @@
 
 <AppBar gap="gap-0" class="appbar">
 	{#snippet lead()}
-	
-			<Lead {backlink} />
-		
+		<Lead {backlink} />
 	{/snippet}
 	{@render buttons?.()}
 	{#snippet trail()}
-	
-			<Trail />
-		
+		<Trail />
 	{/snippet}
 </AppBar>
 

@@ -63,7 +63,7 @@
 				<input
 					class="input h-full"
 					type="button"
-					value={'Choisir une video dans la galerie'}
+					value="Choisir une video dans la galerie"
 					onclick={() => {
 						showAssets(AssetsCategories.VIDEO, assetPickerId);
 					}}

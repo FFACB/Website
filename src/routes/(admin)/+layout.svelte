@@ -6,4 +6,5 @@
 
 	let { children }: Props = $props();
 </script>
+
 {@render children?.()}

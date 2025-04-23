@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './app.pcss';
 
-	let { data , children} = $props();
+	let { data, children } = $props();
 	const { parametres } = data;
 	const { PUBLIC_HEAD_TAG_MANAGER, PUBLIC_BODY_TAG_MANAGER } = parametres;
 </script>

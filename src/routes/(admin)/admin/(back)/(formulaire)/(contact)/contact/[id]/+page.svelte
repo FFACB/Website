@@ -43,22 +43,20 @@
 
 <Content>
 	{#snippet buttons()}
-	
-			{#if contact?.id != null}
-				<ButtonDelete type="submit" value="Update" form="delete-contact-{contact?.id}" />
+		{#if contact?.id != null}
+			<ButtonDelete type="submit" value="Update" form="delete-contact-{contact?.id}" />
 
-				<div class="hidden">
-					<form
-						action="?/delete"
-						method="POST"
-						id="delete-contact-{contact?.id}"
-						use:enhance={Delete}
-					>
-						<input type="hidden" name="id" value={contact.id} />
-					</form>
-				</div>
-			{/if}
-		
+			<div class="hidden">
+				<form
+					action="?/delete"
+					method="POST"
+					id="delete-contact-{contact?.id}"
+					use:enhance={Delete}
+				>
+					<input type="hidden" name="id" value={contact.id} />
+				</form>
+			</div>
+		{/if}
 	{/snippet}
 
 	<div class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">

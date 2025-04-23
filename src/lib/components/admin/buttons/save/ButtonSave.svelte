@@ -3,7 +3,7 @@
 	interface Props {
 		titre: string;
 		click?: any;
-		[key: string]: any
+		[key: string]: any;
 	}
 
 	let { titre, click = () => {}, ...rest }: Props = $props();

@@ -33,7 +33,7 @@ export async function AnalyticsRunReport(
 
 	try {
 		const analyticsDataClient = new BetaAnalyticsDataClient();
-	
+
 		const [response] = await analyticsDataClient.runReport({
 			property: `properties/${PRIVATE_ANALYTICS_GA4_PROPERTY_ID}`,
 			dimensions: [
@@ -53,7 +53,7 @@ export async function AnalyticsRunReport(
 				}
 			]
 		});
-	
+
 		return response;
 	} catch (e) {
 		logger.error({}, 'Error running Google Analytics report', e);

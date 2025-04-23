@@ -60,7 +60,7 @@
 				<input
 					class="input h-full"
 					type="button"
-					value={'Choisir un fichier dans la galerie'}
+					value="Choisir un fichier dans la galerie"
 					onclick={() => {
 						showAssets(AssetsCategories.FILE, assetPickerId);
 					}}

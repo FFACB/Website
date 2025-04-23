@@ -58,12 +58,10 @@
 	slotSidebarLeft="lg:block hidden dark:bg-surface-800 bg-surface-50 w-56 p-4 m-4 rounded-container-token"
 >
 	{#snippet sidebarLeft()}
-	
-			<!-- Insert the list: -->
-			<Sidebar {config} />
+		<!-- Insert the list: -->
+		<Sidebar {config} />
 
-			<!-- --- -->
-		
+		<!-- --- -->
 	{/snippet}
 
 	<Drawer width="w-56">

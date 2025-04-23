@@ -140,23 +140,21 @@
 
 <Content>
 	{#snippet buttons()}
-	
-			<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
-			{#if actualite?.id != null}
-				<ButtonDelete type="submit" value="Update" form="delete-actualite-{actualite?.id}" />
+		<ButtonSave titre="Enregistrer" type="submit" value="Update" form="upsert" />
+		{#if actualite?.id != null}
+			<ButtonDelete type="submit" value="Update" form="delete-actualite-{actualite?.id}" />
 
-				<div class="hidden">
-					<form
-						action="?/delete"
-						method="POST"
-						id="delete-actualite-{actualite?.id}"
-						use:enhance={submitDeleteActualite}
-					>
-						<input type="hidden" name="id" value={actualite.id} />
-					</form>
-				</div>
-			{/if}
-		
+			<div class="hidden">
+				<form
+					action="?/delete"
+					method="POST"
+					id="delete-actualite-{actualite?.id}"
+					use:enhance={submitDeleteActualite}
+				>
+					<input type="hidden" name="id" value={actualite.id} />
+				</form>
+			</div>
+		{/if}
 	{/snippet}
 
 	<div class="head w-full bg-surface-50 dark:bg-surface-800 rounded-container-token pl-8 pr-8 p-4">

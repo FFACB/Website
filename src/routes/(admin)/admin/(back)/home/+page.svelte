@@ -4,11 +4,7 @@
 </script>
 
 <Content>
-
-	{#snippet buttons()}
-	
-		
-	{/snippet}
+	{#snippet buttons()}{/snippet}
 
 	<div
 		class="dark:bg-surface-800 bg-surface-50 p-4 rounded-container-token w-full h-full slot-container"
