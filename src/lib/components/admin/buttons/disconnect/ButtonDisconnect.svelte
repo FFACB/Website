@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Icon from '@iconify/svelte';
-	interface Props {
-		[key: string]: any;
-	}
 
-	let { ...rest }: Props = $props();
+	let { ...rest } = $props();
 </script>
 
 <form

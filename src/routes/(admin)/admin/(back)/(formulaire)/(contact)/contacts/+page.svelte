@@ -51,7 +51,7 @@
 	</div>
 
 	<dl class="list-dl">
-		{#each contacts as contact, index}
+		{#each contacts as contact, index (index)}
 			<div class="w-full block p-2 bg-surface-50 dark:bg-surface-800 rounded-container-token">
 				<div class="h-16 w-full !justify-between">
 					<a class="flex flex-row" href="/admin/contact/{contact.id}">

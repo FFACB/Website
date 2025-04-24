@@ -1,10 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	interface Props {
-		[key: string]: any;
-	}
 
-	let { ...rest }: Props = $props();
+	let { ...rest } = $props();
 </script>
 
 <a data-button="website" {...rest} target="_blank" href="/">

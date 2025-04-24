@@ -24,11 +24,8 @@
 	import Icon from '@iconify/svelte';
 	import { IsCompressedExtension } from '$lib/client/utils/type';
 	import type { AssetPickerAction, AssetCategory } from '$lib/client/assets/ambiant';
-	interface Props {
-		[key: string]: any;
-	}
 
-	let { ...rest }: Props = $props();
+	let { ...rest } = $props();
 
 	const toastStore = getToastStore();
 
@@ -219,7 +216,7 @@
 				>
 					<div class="flex flex-wrap justify-center">
 						{#if assets != null && assets.length > 0}
-							{#each assets as asset, index}
+							{#each assets as asset, index (index)}
 								<div
 									class="group rounded-lg lg:basis-1/4 md:basis-1/3 sm:basis-1/2 basis-full h-96 pr-4 pb-4 relative"
 								>

@@ -56,7 +56,7 @@
 	</div>
 
 	<dl class="list-dl">
-		{#each actualites as actualite, index}
+		{#each actualites as actualite, index (index)}
 			<div class="w-full block p-2 bg-surface-50 dark:bg-surface-800 rounded-container-token">
 				<div class="h-16 w-full flex justify-between">
 					<div class="h-full">

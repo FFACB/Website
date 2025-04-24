@@ -1,12 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	interface Props {
-		titre: string;
-		click?: any;
-		[key: string]: any;
-	}
 
-	let { titre, click = () => {}, ...rest }: Props = $props();
+	let { titre, click = () => {}, ...rest } = $props();
 </script>
 
 <button

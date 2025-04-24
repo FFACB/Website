@@ -1,8 +1,13 @@
 import forms from '@tailwindcss/forms';
 import { skeleton } from '@skeletonlabs/tw-plugin';
 import scrollbar from 'tailwind-scrollbar';
-import { backoffice } from './themes/back/custom';
 import { limeTheme } from './themes/back/lime';
+import path from 'path';
+
+let skeletonPath = path.join(
+	path.dirname(require.resolve('@skeletonlabs/skeleton')),
+	'../**/*.{html,js,svelte,ts}'
+);
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,7 +16,7 @@ export default {
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
 		// 3. Append the path to the Skeleton package
-		require('path').join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}')
+		skeletonPath
 	],
 
 	theme: {

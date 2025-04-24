@@ -1,7 +1,4 @@
-
 import { initialize } from './auth.js';
-
-
 
 export default () => {
 	return {

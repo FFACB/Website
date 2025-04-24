@@ -49,7 +49,7 @@
 
 	<div class="mt-4 w-full bg-surface-300 dark:bg-surface-800 rounded-container-token p-8">
 		<div>
-			{#each parametres as parametre, index}
+			{#each parametres as parametre, index (index)}
 				<form
 					method="POST"
 					action="?/update"

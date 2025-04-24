@@ -1,9 +1,5 @@
 <script lang="ts">
-	interface Props {
-		[key: string]: any;
-	}
-
-	let { ...rest }: Props = $props();
+	let { ...rest } = $props();
 	let spinner: HTMLDivElement | null = $state(null);
 
 	export function toggle(value: boolean) {

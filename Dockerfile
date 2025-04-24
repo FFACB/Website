@@ -56,7 +56,5 @@ RUN chmod -R 777 ./entrypoint.sh
 RUN ./entrypoint.sh
 
 ENTRYPOINT chmod -R 777 ./entrypoint.sh && ./entrypoint.sh && node server.js
-#chmod -R 777 ./entrypoint.sh && ./entrypoint.sh
-#CMD ["node", "server.js"]
 #ENTRYPOINT tail -f /dev/null #If debug
 #docker exec -it CMS sh #If debug

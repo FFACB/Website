@@ -78,7 +78,7 @@
 			<div class="basis-1/3 pl-4 pr-4 flex flex-col">
 				<span class="ml-3 font-medium">Qualité</span>
 				<select class="input" name="pp_quality_{identifier}" value={quality.value()}>
-					{#each qualities as quality}
+					{#each qualities as quality, index (index)}
 						<option value={quality.value()}>{quality.key()}</option>
 					{/each}
 				</select>
@@ -86,7 +86,7 @@
 			<div class="basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">Résolution</span>
 				<select class="input" name="pp_resolution_{identifier}" value={resolution.value()}>
-					{#each resolutions as resolution}
+					{#each resolutions as resolution, index (index)}
 						<option value={resolution.value()}>{resolution.key()}</option>
 					{/each}
 				</select>

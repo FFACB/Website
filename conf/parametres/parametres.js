@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import ParametresJson from './parametres.config.json' with { type: "json" };
+import ParametresJson from './parametres.config.json' with { type: 'json' };
 import { logger } from '../../modules/server/logs/index.js';
 import { prisma } from '../../modules/server/database/index.js';
 dotenv.config();

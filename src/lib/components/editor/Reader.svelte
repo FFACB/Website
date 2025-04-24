@@ -4,7 +4,7 @@
 </script>
 
 <div id="contenu">
-	{#each blocks as block}
+	{#each blocks as block, index (index)}
 		<div class="block mb-4 block-{block.type}">
 			{#if block.type == 'paragraph'}
 				<p bind:innerHTML={block.data.text} contenteditable="false"></p>
@@ -21,7 +21,7 @@
 
 			{#if block.type == 'list'}
 				<ul>
-					{#each block.data.items as item}
+					{#each block.data.items as item, index (index)}
 						<li>{item}</li>
 					{/each}
 				</ul>
