@@ -9,20 +9,6 @@
 	import type { SvelteComponent } from 'svelte';
 	import type { AssetPickerAction } from '$lib/client/assets/ambiant.js';
 
-	function setInitialClassState() {
-		const elemHtmlClasses = document.documentElement.classList;
-		// Conditions
-		const condLocalStorageUserPrefs = localStorage.getItem('modeUserPrefers') === 'false';
-		const condLocalStorageUserPrefsExists = !('modeUserPrefers' in localStorage);
-		const condMatchMedia = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		// Add/remove `.dark` class to HTML element
-		if (condLocalStorageUserPrefs || (condLocalStorageUserPrefsExists && condMatchMedia)) {
-			elemHtmlClasses.add('dark');
-		} else {
-			elemHtmlClasses.remove('dark');
-		}
-	}
-
 	initializeStores();
 
 	let { data, children } = $props();
@@ -44,10 +30,6 @@
 		}
 	});
 </script>
-
-<svelte:head>
-	{@html `<\u{73}cript nonce="%sveltekit.nonce%">(${setInitialClassState.toString()})();</script>`}
-</svelte:head>
 
 <Toast position="t" padding="p-4" />
 <Spinner id="main-spinner" bind:this={spinner}></Spinner>

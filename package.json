@@ -6,7 +6,7 @@
 		"initialize": "node initialize.js",
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite build && node server.js",
+		"preview": "pnpm run initialize && vite build && node server.js",
 		"startup": "pnpm i && pnpm add prisma --save-dev && npx prisma generate && npx prisma migrate deploy && pnpm run initialize && pnpm run build && node server.js",
 		"prettify": "npx prettier --write .",
 		"test": "npm run test:integration && npm run test:unit",
