@@ -20,7 +20,7 @@ COPY package.json .
 COPY postcss.config.cjs .
 COPY server.js .
 COPY svelte.config.js .
-COPY tailwind.config.cjs .
+COPY tailwind.config.mjs .
 COPY tsconfig.json .
 COPY vite.config.ts .
 COPY entrypoint.sh .
