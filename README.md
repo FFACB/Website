@@ -38,6 +38,13 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 `1. $ pnpm run build`<br>
 `2. $ node server.js`
 
+### VPS 1er installation
+
+`1. Cloner le projet sur le VPS, git clone https://github.com/guillian/CMS.git`<br>
+`2. Aller dans le dossier du projet`<br>
+`3. Copier le .env.exemple en .env et changer les valeurs`<br>
+`4. docker compose up --force-recreate --build -d --remove-orphans`<br>
+
 ## Utilisation
 
 ### Back-office
