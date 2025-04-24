@@ -4,6 +4,8 @@ import { initialize } from './parametres.js';
 export default () => {
 	return {
 		name: 'parametres-init-script',
-		config : initialize()
+		async buildStart() {
+			await initialize();
+		}
 	};
 };

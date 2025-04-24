@@ -2,7 +2,7 @@ import { initialize } from './asset.js';
 
 export default () => {
 	return {
-		name: 'run-init-script',
+		name: 'assets-init-script',
 		async buildStart() {
 			await initialize();
 		}
