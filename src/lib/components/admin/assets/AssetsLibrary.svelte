@@ -187,7 +187,7 @@
 		enctype="multipart/form-data"
 		use:enhance={submitFindall}
 	>
-		<button bind:this={refreshButton} class="hidden" type="submit" form="findall" value="Refresh"
+		<button bind:this={refreshButton} aria-label="Rafraichir" class="hidden" type="submit" form="findall" value="Refresh"
 		></button>
 	</form>
 
