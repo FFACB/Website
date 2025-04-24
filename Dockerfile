@@ -24,6 +24,7 @@ COPY tailwind.config.mjs .
 COPY tsconfig.json .
 COPY vite.config.ts .
 COPY entrypoint.sh .
+COPY initialize.js .
 
 RUN apk add --no-cache libc6-compat
 RUN apk update
@@ -48,6 +49,7 @@ COPY --from=builder /app/logs ./logs
 COPY --from=builder /app/.env ./.env
 COPY --from=builder /app/server.js .
 COPY --from=builder /app/entrypoint.sh .
+COPY --from=builder /app/initialize.js .
 
 ENV BODY_SIZE_LIMIT=Infinity
 RUN chmod -R 777 ./entrypoint.sh
