@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:23.11-alpine3.20 AS builder
 
 WORKDIR /app
 
@@ -25,19 +25,15 @@ COPY tsconfig.json .
 COPY vite.config.ts .
 COPY entrypoint.sh .
 
-RUN npm install -g pnpm
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-ENV PNPM_HOME=/app/.pnpm
-ENV PATH=$PNPM_HOME:$PATH
-
-RUN pnpm install
+RUN npm install
 RUN npx prisma migrate deploy
 RUN npx prisma generate
-RUN pnpm run build
+RUN npm run build
 
-FROM node:20-alpine AS deployer
+FROM node:23.11-alpine3.20 AS deployer
 
 WORKDIR /app
 

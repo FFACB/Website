@@ -5,7 +5,7 @@ import { backoffice } from './themes/back/custom';
 import { limeTheme } from './themes/back/lime';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	// 2. Opt for dark mode to be handled via the class method
 	darkMode: 'class',
 	content: [

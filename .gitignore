@@ -18,5 +18,5 @@ logs/old/*
 !logs/old
 conf/googleapis/keys/*
 !conf/googleapis/keys/.gitkeep 
-
+test-results
 build-node

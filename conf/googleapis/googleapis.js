@@ -21,12 +21,10 @@ export async function initialize() {
 		process.exit(1);
 	}
 
-	console.log(GOOGLE_APPLICATION_CREDENTIALS);
 	const isGoogleApis = existsSync(GOOGLE_APPLICATION_CREDENTIALS);
 	logger.debug(
 		`Fichier de configuration des googleapis ${isGoogleApis ? 'trouvé' : 'introuvable'}`
 	);
 
 	process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED = isGoogleApis.toString();
-	console.log(process.env.PRIVATE_GOOGLE_APPLICATION_CREDENTIALS_ENABLED);
 }
