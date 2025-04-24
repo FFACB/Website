@@ -14,8 +14,6 @@ if (SECRET_ADMIN_EMAIL == null || SECRET_ADMIN_PASSWORD == null || NODE_ENV == n
 export default () => {
 	return {
 		name: 'auth-init-script',
-		async buildStart() {
-			await initialize(NODE_ENV, SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD);
-		}
+		config :initialize(NODE_ENV, SECRET_ADMIN_EMAIL, SECRET_ADMIN_PASSWORD)
 	};
 };
