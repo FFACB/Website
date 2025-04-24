@@ -1,5 +1,5 @@
-import { logger } from '../../modules/server/logs';
-import { prisma } from '../../modules/server/database';
+import { logger } from '../../modules/server/logs/index.js';
+import { prisma } from '../../modules/server/database/index.js';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 /**

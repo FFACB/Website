@@ -1,4 +1,4 @@
-import { logger } from '../../modules/server/logs';
+import { logger } from '../../modules/server/logs/index.js';
 import { existsSync } from 'fs';
 import dotenv from 'dotenv';
 dotenv.config();
