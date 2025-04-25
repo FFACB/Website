@@ -29,7 +29,6 @@ Svelte-kit CMS est un projet basé sur le full stack framework sveltekit.
 `6. $ npx prisma migrate deploy`<br>
 `7. $ npx prisma generate`<br>
 
-
 #### Analytics Report
 
 Pour utiliser l'API Google Analytics Report, vous devez vous connecter à votre compte [Google Cloud Console](https://console.cloud.google.com)
@@ -51,8 +50,7 @@ Pour utiliser l'API Google Analytics Report, vous devez vous connecter à votre 
 
 #### Google Tag Manager
 
-1. Créer un compte (Google Tag Manager)[https://tagmanager.google.com/] 
-
+1. Créer un compte (Google Tag Manager)[https://tagmanager.google.com/]
 
 ### Developpement
 
