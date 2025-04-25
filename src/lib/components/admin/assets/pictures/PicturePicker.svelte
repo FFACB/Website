@@ -54,11 +54,11 @@
 	});
 </script>
 
-<div class=" mb-4">
+<div class=" border-solid border-tertiary-100 rounded-3xl mb-4 border sm:border-none">
 	<!-- <span class="ml-3 font-semibold">Galerie</span> -->
 	<div class="rounded-container-token">
-		<div class="flex">
-			<div class="basis-1/3 flex flex-col">
+		<div class="flex flex-wrap">
+			<div class="basis-full sm:basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">{assetName}</span>
 				<input
 					class="input h-full"
@@ -75,7 +75,7 @@
 					value={galeryAsset?.id ?? savedAsset?.assetId}
 				/>
 			</div>
-			<div class="basis-1/3 pl-4 pr-4 flex flex-col">
+			<div class="basis-full sm:basis-1/3 sm:pl-4 sm:pr-4 p-0 flex flex-col">
 				<span class="ml-3 font-medium">Qualité</span>
 				<select class="input" name="pp_quality_{identifier}" value={quality.value()}>
 					{#each qualities as quality, index (index)}
@@ -83,7 +83,7 @@
 					{/each}
 				</select>
 			</div>
-			<div class="basis-1/3 flex flex-col">
+			<div class="basis-full sm:basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">Résolution</span>
 				<select class="input" name="pp_resolution_{identifier}" value={resolution.value()}>
 					{#each resolutions as resolution, index (index)}

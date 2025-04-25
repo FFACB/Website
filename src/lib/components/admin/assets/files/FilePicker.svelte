@@ -52,10 +52,10 @@
 	});
 </script>
 
-<div class=" mb-4">
+<div class=" border-solid border-tertiary-100 rounded-3xl mb-4 border sm:border-none">
 	<div class="rounded-container-token">
-		<div class="flex">
-			<div class="basis-1/3 flex flex-col">
+		<div class="flex flex-wrap">
+			<div class="basis-full sm:basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">{assetName}</span>
 				<input
 					class="input h-full"
@@ -72,7 +72,7 @@
 					value={galeryAsset?.id ?? savedAsset?.assetId}
 				/>
 			</div>
-			<div class="basis-2/3 pl-4 flex flex-col">
+			<div class="basis-full sm:basis-2/3 sm:pl-4 p-0 flex flex-col">
 				<span class="ml-3 font-medium">Nom</span>
 				<input type="text" class="input h-full" bind:value={name} name="fp_name_{identifier}" />
 			</div>

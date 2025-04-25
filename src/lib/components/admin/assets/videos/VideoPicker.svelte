@@ -55,10 +55,10 @@
 	});
 </script>
 
-<div class=" mb-4">
+<div class=" border-solid  border-tertiary-100 rounded-xl mb-4 border sm:border-none">
 	<div class="rounded-container-token">
-		<div class="flex">
-			<div class="basis-1/3 flex flex-col">
+		<div class="flex flex-wrap">
+			<div class="basis-full sm:basis-1/3 flex flex-col">
 				<span class="ml-3 font-medium">{assetName}</span>
 				<input
 					class="input h-full"
@@ -75,7 +75,7 @@
 					value={galeryAsset?.id ?? savedAsset?.assetId}
 				/>
 			</div>
-			<div class="basis-[22.2%] pl-4 flex flex-col">
+			<div class="basis-full sm:basis-[22.2%] sm:pl-4 p-0 flex flex-col">
 				<span class="ml-3 font-medium">Controls</span>
 				<div class="h-full">
 					<input
@@ -86,7 +86,7 @@
 					/>
 				</div>
 			</div>
-			<div class="basis-[22.2%] pl-4 flex flex-col">
+			<div class="basis-full sm:basis-[22.2%] sm:pl-4 p-0 flex flex-col">
 				<span class="ml-3 font-medium">Loop</span>
 				<div class="h-full">
 					<input
@@ -97,7 +97,7 @@
 					/>
 				</div>
 			</div>
-			<div class="basis-[22.2%] pl-4 flex flex-col">
+			<div class="basis-full sm:basis-[22.2%] sm:pl-4 p-0 flex flex-col">
 				<span class="ml-3 font-medium">Autoplay</span>
 				<div class="h-full">
 					<input
@@ -131,7 +131,7 @@
 					>
 						<source src={galeryAsset?.path ?? savedAsset?.path} type="video/mp4" />
 						Your browser does not support the video tag.
-						<track kind={assetName} />
+						<track />
 					</video>
 				</div>
 			{/if}
