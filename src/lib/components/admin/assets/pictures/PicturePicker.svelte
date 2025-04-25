@@ -55,7 +55,6 @@
 </script>
 
 <div class=" border-solid border-tertiary-100 rounded-3xl mb-4 border sm:border-none">
-	<!-- <span class="ml-3 font-semibold">Galerie</span> -->
 	<div class="rounded-container-token">
 		<div class="flex flex-wrap">
 			<div class="basis-full sm:basis-1/3 flex flex-col">

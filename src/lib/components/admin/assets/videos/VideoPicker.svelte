@@ -55,7 +55,7 @@
 	});
 </script>
 
-<div class=" border-solid  border-tertiary-100 rounded-xl mb-4 border sm:border-none">
+<div class=" border-solid border-tertiary-100 rounded-xl mb-4 border sm:border-none">
 	<div class="rounded-container-token">
 		<div class="flex flex-wrap">
 			<div class="basis-full sm:basis-1/3 flex flex-col">
