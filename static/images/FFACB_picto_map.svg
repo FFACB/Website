@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
+  <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #16253f;
+      }
+
+      .st1 {
+        fill: #ed6a5b;
+      }
+
+      .st2 {
+        fill: #0a8ccd;
+      }
+
+      .st3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <circle class="st0" cx="249.83" cy="249.74" r="249.74"/>
+  <g>
+    <polygon class="st3" points="400.3 272.04 338.89 307.48 338.89 176.18 400.3 211.66 400.3 272.04"/>
+    <polygon class="st2" points="320.45 165.56 320.45 318.14 259.05 353.58 259.05 130.08 320.45 165.56"/>
+    <polygon class="st3" points="160.76 396.01 99.36 360.57 99.36 211.66 160.76 176.18 160.76 396.01"/>
+    <polygon class="st3" points="179.2 165.56 240.61 130.08 240.61 442.11 179.2 406.67 179.2 165.56"/>
+    <polygon class="st1" points="259.05 442.11 259.05 374.9 400.3 293.35 400.3 360.57 259.05 442.11"/>
+    <polygon class="st2" points="400.3 144.25 400.3 190.35 259.05 108.77 249.83 103.46 240.61 108.77 99.36 190.35 99.36 144.25 240.61 62.67 249.83 57.36 259.05 62.67 400.3 144.25"/>
+  </g>
+</svg>

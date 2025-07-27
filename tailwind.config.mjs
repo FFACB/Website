@@ -20,7 +20,35 @@ export default {
 	],
 
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				white: '#ffffff',
+				dark: '#0d1c30',
+				blue: '#007bc3',
+				lightgrey: '#dceffc',
+				grey: '#4d5f7b',
+				red: '#e65247'
+			},
+			fontFamily: {
+				'Funnel Sans': ['Funnel Sans', 'Funnel Sans Italic']
+			},
+			fontSize: {
+				15: '15px',
+				18: '18px',
+				35: '35px',
+				45: '45px'
+			},
+			lineHeight: {
+				18: '18px',
+				19: '19px',
+				23: '23px',
+				40: '40px',
+				44: '44px'
+			},
+			letterSpacing: {
+				0: '0px'
+			}
+		}
 	},
 
 	plugins: [
