@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - preprod
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HOST: ${{ secrets.PREPROD_HOST }}
+      USERNAME: ${{ secrets.PREPROD_USERNAME }}
+      PASSWORD: ${{ secrets.PREPROD_PASSWORD }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: SSH and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ secrets.PREPROD_USERNAME }}
+          host: ${{ secrets.PREPROD_HOST }}
+          password: ${{ secrets.PREPROD_PASSWORD }}
+          script: cd /home/guillianv/dev/gvvinfo/ffacb/Website && git pull && docker compose up -d --force-recreate --build --no-deps
