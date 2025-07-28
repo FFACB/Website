@@ -30,7 +30,9 @@ export default {
 				red: '#e65247'
 			},
 			fontFamily: {
-				'Funnel Sans': ['Funnel Sans', 'Funnel Sans Italic']
+				'Funnel-Sans':'Funnel Sans',
+				'Funnel-Sans-Italic':'Funnel Sans Italic'
+
 			},
 			fontSize: {
 				15: '15px',

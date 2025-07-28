@@ -1,10 +1,12 @@
 <header class="flex bg-white flex-row justify-between h-28 pl-16 pr-16 pt-4 pb-4 shadow-lg">
 	<div class="">
-		<img
-			class="w-full h-full object-contain bg-contain"
-			src="/images/FFACB_logo_horizontal_couleur.svg"
-			alt="FFACB logo"
-		/>
+		<a href="/">
+			<img
+				class="w-full h-full object-contain bg-contain"
+				src="/images/FFACB_logo_horizontal_couleur.svg"
+				alt="FFACB logo"
+			/></a
+		>
 	</div>
 	<div class="flex flex-row justify-between items-center">
 		<div class="intro-darkblue m-2">

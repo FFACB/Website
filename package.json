@@ -23,6 +23,8 @@
 		"@editorjs/nested-list": "^1.4.3",
 		"@iconify/svelte": "^4.2.0",
 		"@playwright/test": "^1.52.0",
+		"@skeletonlabs/skeleton": "^2.11.0",
+		"@skeletonlabs/tw-plugin": "^0.2.4",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.20.7",
 		"@tailwindcss/forms": "^0.5.10",
@@ -38,27 +40,26 @@
 		"globals": "^16.0.0",
 		"pino-pretty": "^10.3.1",
 		"postcss": "^8.5.3",
+		"postcss-load-config": "^4.0.2",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
-		"prisma": "^5.22.0",
+		"prettier-plugin-tailwindcss": "^0.4.1",
+		"prisma": "^6.12.0",
 		"sass": "^1.87.0",
 		"svelte": "^5.28.2",
 		"svelte-check": "^4.1.6",
+		"tailwind-scrollbar": "^3.1.0",
+		"tailwindcss": "^3.4.17",
 		"tslib": "^2.8.1",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.3",
-		"vitest": "^3.1.2",
-		"@skeletonlabs/skeleton": "^2.11.0",
-		"@skeletonlabs/tw-plugin": "^0.2.4",
-		"postcss-load-config": "^4.0.2",
-		"prettier-plugin-tailwindcss": "^0.4.1",
-		"tailwind-scrollbar": "^3.1.0",
-		"tailwindcss": "^3.4.17"
+		"vitest": "^3.1.2"
 	},
 	"type": "module",
 	"dependencies": {
 		"@google-analytics/data": "^5.1.0",
 		"@lucia-auth/adapter-prisma": "^4.0.1",
+		"@prisma/client": "^6.12.0",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@types/grecaptcha": "^3.0.9",
@@ -71,8 +72,7 @@
 		"sharp": "^0.34.0",
 		"svelte-preprocess": "^6.0.3",
 		"typescript-eslint": "^8.31.0",
-		"uuid": "^11.1.0",
-		"@prisma/client": "^5.22.0"
+		"uuid": "^11.1.0"
 	},
 	"engines": {
 		"node": ">=23.11.0"
