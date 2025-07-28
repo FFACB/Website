@@ -41,6 +41,7 @@ WORKDIR /app
 COPY --from=builder /app/conf ./conf
 COPY --from=builder /app/modules ./modules
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/static ./static
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/build-node ./build-node
 COPY --from=builder /app/package.json ./package.json
