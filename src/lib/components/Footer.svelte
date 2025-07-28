@@ -31,10 +31,10 @@
 				<a class="uppercase font-bold" href="/actualites">Derniers articles</a>
 			</div>
 			<div class=" m-2">
-				<a class="uppercase" href="/actualites/1">article 1</a>
+				<a class="uppercase" href="/actualites">article 1</a>
 			</div>
 			<div class=" m-2">
-				<a class="uppercase" href="/actualites/2">article 1</a>
+				<a class="uppercase" href="/actualites">article 1</a>
 			</div>
 		</div>
 		<div class="w-1/5 text-white text-left">
