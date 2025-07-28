@@ -12,7 +12,7 @@ const config = {
 		csp: {},
 		adapter: adapterNode({
 			out: 'build-node', //Must be the same name as the one in dockerfile COPY --from=build /app/build-node
-			precompress: true,
+			precompress: false,
 			polyfill: true,
 			envPrefix: ''
 		}),
