@@ -7,4 +7,16 @@
 @tailwind utilities;
 
 @layer components {
+	.cooperatives-container {
+		.cooperative-item {
+			@apply mb-2 mt-2 flex w-full flex-row justify-between rounded-full p-4 pb-2 pt-2  font-bold cursor-pointer;
+		}
+
+		.cooperative-active {
+			@apply bg-red text-white;
+		}
+		.cooperative-inactive {
+			@apply bg-[#DCEFFC] text-blue;
+		}
+	}
 }

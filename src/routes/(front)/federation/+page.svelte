@@ -1,4 +1,4 @@
-<div class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative">
+<div class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner">
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
 		src="/images/placeholder.webp"
