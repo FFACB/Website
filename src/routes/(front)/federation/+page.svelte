@@ -39,7 +39,7 @@
 		artisanale structurée tout en gardant leur indépendance. Au sein de la coopérative, chaque entreprise
 		conserve son autonomie et ses spécificités même si elle accepte un pouvoir central de coordination.<br
 		/><br />
-		La coopérative se présente comme un véritable<strong>
+		La coopérative se présente comme un véritable <strong>
 			outil de développement et d'ouverture à de nouveaux marchés</strong
 		> et permet de développer la force d'intervention grâce à l'organisation en équipe.
 	</div>
@@ -134,7 +134,7 @@
 			Elles peuvent également répondre à des marchés publics et travailler en collaboration avec des
 			promoteurs immobiliers dans le cadre de projets en VEFA. En ce qui concerne la rénovation, les
 			coopératives peuvent intervenir dans le cadre de la rénovation énergétique dans la mesure où
-			elles sont éligibles à la qualification RGE 8632 « rénovation offre globale ».
+			elles sont éligibles à la qualification RGE 8632 <span class="inline-block">« rénovation offre globale ».</span>
 		</p>
 	</div>
 	<div class="flex flex-col w-1/2 pl-8">
@@ -173,29 +173,29 @@
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
 			<ul class="font-light">
-				<li>L'adhésion volontaire.</li>
-				<li>Le pouvoir démocratique exercé par les coopérateurs.</li>
-				<li>La participation économique des coopérateurs.</li>
-				<li>L'autonomie et l'indépendance.</li>
-				<li>L'éducation, la formation et l'information.</li>
-				<li>L'engagement volontaire envers la communauté.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'adhésion volontaire.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Le pouvoir démocratique exercé par les coopérateurs.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>La participation économique des coopérateurs.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'autonomie et l'indépendance.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'éducation, la formation et l'information.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'engagement volontaire envers la communauté.</li>
 			</ul>
 		</div>
 		<div class="flex flex-col m-2 p-8 text-white bg-red rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des valeurs clés</h3>
 			<ul class="font-light">
-				<li>Savoir-faire artisanal.</li>
-				<li>Ancrage territorial.</li>
-				<li>Renommée locale.</li>
-				<li>Qualité reconnue.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Savoir-faire artisanal.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Ancrage territorial.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Renommée locale.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Qualité reconnue.</li>
 			</ul>
 		</div>
 		<div class="flex flex-col m-2 p-8 text-white bg-blue rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des atouts majeurs</h3>
 			<ul class="font-light">
-				<li>Une sinistralité basse et autogérée.</li>
-				<li>Un interlocuteur unique.</li>
-				<li>Un encadrement fédéral.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Une sinistralité basse et autogérée.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Un interlocuteur unique.</li>
+				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Un encadrement fédéral.</li>
 			</ul>
 		</div>
 	</div>
@@ -231,14 +231,12 @@
 	<p class="font-semibold text-lg mt-6 mb-6">
 		Outre son rôle de trait d'union et d'information auprès des coopératives et des partenaires du
 		secteur y compris sur le plan technique et l'application des nouvelles réglementations, la FFACB
-		assure <strong>conseil et appui juridique.</strong>
-	</p>
-	<br />
-	<p class="font-semibold text-lg mt-6 mb-6">
-		La fédération permet aux coopératives d'accéder à des produits d'assurances de la construction
+		assure <strong>conseil et appui juridique.</strong><br>
+			La fédération permet aux coopératives d'accéder à des produits d'assurances de la construction
 		et met son personnel à disposition de l'ARCAB pour réaliser les travaux de révision quinquennale
 		et de l'AFCAB pour dispenser des formations à ses membres.
 	</p>
+
 	<div class="flex flex-row h-96">
 		<div class="p-2 basis-1/3 h-full">
 			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
