@@ -4,7 +4,7 @@
 		src="/images/placeholder.webp"
 		alt="federation"
 	/>
-	<div class="relative ml-16 flex h-[90%] w-2/5 flex-col justify-end items-center">
+	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
 		<img
 			class="absolute w-full bottom-0 h-full"
 			alt="background"
@@ -31,7 +31,7 @@
 	</div>
 </div>
 <div class="font-Funnel Sans w-full flex flex-row">
-	<div class="bg-white w-1/2 p-16">
+	<div class="bg-white w-1/2 p-16 pl-48 ">
 		Le contexte est posé. Dans ce cadre, la <strong>
 			Fédération Française des Artisans Coopérateurs du Bâtiment</strong
 		>
@@ -43,10 +43,10 @@
 			outil de développement et d'ouverture à de nouveaux marchés</strong
 		> et permet de développer la force d'intervention grâce à l'organisation en équipe.
 	</div>
-	<div class="bg-[#DCEFFC] w-1/2 p-16">
+	<div class="bg-[#DCEFFC] w-1/2 p-16 pr-48">
 		Le modèle coopératif est adapté à tous les projets, toutes les activités et toutes les tailles
 		d'entreprise et doit être fondé sur un <strong>principe d'égalité des droits</strong> qui
-		s'exprime par la formule « <strong> associé = une voix</strong> ».
+		s'exprime par la formule<br> « <strong> associé = une voix</strong> ».
 		<br /><br />
 		Sous l'égide des coopératives et groupements, les artisans se structurent et :<br /><br />
 		<ul class="ml-16">
@@ -118,7 +118,7 @@
 	</div>
 </div>
 <div class="flex bg-white p-16">
-	<div class="flex flex-col w-1/2 pr-8">
+	<div class="flex flex-col w-1/2 pl-32 pr-8">
 		<h2 class="h2-blue font-bold">La FFACB, c'est qui ?</h2>
 		<br />
 		<p class="font-semibold text-lg">
@@ -137,7 +137,7 @@
 			elles sont éligibles à la qualification RGE 8632 <span class="inline-block">« rénovation offre globale ».</span>
 		</p>
 	</div>
-	<div class="flex flex-col w-1/2 pl-8">
+	<div class="flex flex-col w-1/2 pr-32 pl-8">
 		<p class="p-8">
 			Fédération d'avenir, la FFACB a développé son savoir-faire et rassemble ses adhérents à
 			travers des valeurs communes, une charte d'engagement, des services et un accompagnement
@@ -162,7 +162,7 @@
 </div>
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les atouts de la FFACB ?</h2>
-	<p class="font-semibold text-lg mt-6 mb-6">
+	<p class="font-semibold text-lg mt-6 mb-6 pr-48 pl-48">
 		La FFACB accompagne les coopératives artisanales, dès leur création, dans leur gestion et leur
 		développement, dans le respect de la législation, des statuts et du règlement intérieur de la
 		FFACB. Elle assure en outre leur suivi et les conseille tout au long de leur existence, en cas
@@ -199,7 +199,7 @@
 			</ul>
 		</div>
 	</div>
-	<p class="mt-6 mb-6">
+	<p class="mt-6 mb-6  pr-48 pl-48">
 		La FFACB accompagne ses coopératives tout au long de l'année, en leur proposant des réunions
 		d'informations, des newsletters, des formations complémentaires ainsi qu'un service juridique
 		leur permettant <strong
@@ -226,9 +226,9 @@
 	</div>
 </div>
 
-<div class="bg-white text-center pl-16 pr-16 pt-8 pb-8 flex flex-col justify-center items-center">
+<div class="bg-white text-center  pr-48 pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Les services de la FFACB</h2>
-	<p class="font-semibold text-lg mt-6 mb-6">
+	<p class="font-semibold text-lg mt-6 mb-6 ">
 		Outre son rôle de trait d'union et d'information auprès des coopératives et des partenaires du
 		secteur y compris sur le plan technique et l'application des nouvelles réglementations, la FFACB
 		assure <strong>conseil et appui juridique.</strong><br>
@@ -384,7 +384,7 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1988</h3>
 				<p>
-					création de l’Union Nationale des Artisans Coopérateurs de la Construction (UNACC) par
+					création de l'Union Nationale des Artisans Coopérateurs de la Construction (UNACC) par
 					Michel Dreano.
 				</p>
 			</div>
@@ -393,7 +393,7 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1990</h3>
 				<p>
-					l’UNACC devient la Fédération Nationale des Artisans Coopérateurs du Bâtiment (FNACB).
+					l'UNACC devient la Fédération Nationale des Artisans Coopérateurs du Bâtiment (FNACB).
 				</p>
 			</div>
 		</div>
@@ -401,7 +401,7 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1997</h3>
 				<p>
-					création de l’ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment.
+					création de l'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment.
 				</p>
 			</div>
 		</div>
@@ -418,14 +418,14 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2003</h3>
 				<p>
-					création de l’AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment.
+					création de l'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment.
 				</p>
 			</div>
 		</div>
 		<div class="p-2 basis-1/3 h-full">
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2005</h3>
-				<p>mise en place de l’assurance sous-traitance pour les adhérents de la FFACB.</p>
+				<p>mise en place de l'assurance sous-traitance pour les adhérents de la FFACB.</p>
 			</div>
 		</div>
 	</div>
@@ -435,7 +435,7 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2009</h3>
 				<p>
-					Inscription de la FFACB à l’Orias (Registre Unique des Intermédiaires en assurances,
+					Inscription de la FFACB à l'Orias (Registre Unique des Intermédiaires en assurances,
 					banques et finances).
 				</p>
 			</div>
@@ -462,7 +462,7 @@
 			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2016</h3>
 				<p>
-					l’organisme de formation émanant de la FFACB, l’AFCAB, obtient la certification qualité,
+					l'organisme de formation émanant de la FFACB, l'AFCAB, obtient la certification qualité,
 					CERTIBAT Formation Professionnelle (N° du certificat FP1611).
 				</p>
 			</div>
@@ -472,7 +472,7 @@
 				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2020</h3>
 				<p>
 					signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de
-					garanties auprès de ses adhérents. Obtention par l’AFCAB de la certification Qualiopi pour
+					garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour
 					la formation professionnelle.
 				</p>
 			</div>

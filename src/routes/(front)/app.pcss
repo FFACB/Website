@@ -9,14 +9,26 @@
 @layer components {
 	.cooperatives-container {
 		.cooperative-item {
-			@apply mb-2 mt-2 flex w-full flex-row justify-between rounded-full p-4 pb-2 pt-2  font-bold cursor-pointer;
+			@apply mb-2 mt-2 flex w-full cursor-pointer flex-row justify-between rounded-full p-4 pb-2  pt-2 font-bold;
 		}
 
 		.cooperative-active {
 			@apply bg-red text-white;
 		}
 		.cooperative-inactive {
-			@apply bg-[#DCEFFC] text-blue;
+			@apply bg-lightgrey text-blue;
 		}
+	}
+
+	.intro-darkblue {
+		@apply font-Funnel-Sans text-lg font-semibold not-italic leading-6 tracking-normal text-dark;
+	}
+
+	.h2-blue {
+		@apply font-Funnel-Sans text-4xl font-bold not-italic leading-44 tracking-normal text-blue;
+	}
+
+	.h1-white {
+		@apply font-Funnel-Sans text-5xl font-bold not-italic leading-40 tracking-normal text-white;
 	}
 }
