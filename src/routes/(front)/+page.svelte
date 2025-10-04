@@ -121,7 +121,7 @@
 				</p>
 				<div class="w-full flex items-end justify-end">
 					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/articles">Lire plus</a>
+						<a class="uppercase" href="/actualites">Lire plus</a>
 					</div>
 				</div>
 			</div>
@@ -146,7 +146,7 @@
 				</p>
 				<div class="w-full flex items-end justify-end">
 					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/articles">Lire plus</a>
+						<a class="uppercase" href="/actualites">Lire plus</a>
 					</div>
 				</div>
 			</div>
@@ -171,7 +171,7 @@
 				</p>
 				<div class="w-full flex items-end justify-end">
 					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/articles">Lire plus</a>
+						<a class="uppercase" href="/actualites">Lire plus</a>
 					</div>
 				</div>
 			</div>
