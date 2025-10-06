@@ -6,7 +6,7 @@
 		src="/images/placeholder.webp"
 		alt="federation"
 	/>
-	<div class="relative ml-16 flex h-[90%] w-2/5 flex-col justify-end items-center">
+	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
 		<img
 			class="absolute w-full bottom-0 h-full"
 			alt="background"
@@ -21,7 +21,7 @@
 </div>
 
 <div class="font-Funnel Sans w-full flex flex-row">
-	<div class="bg-white w-1/2 p-16 pl-32 pr-32">
+	<div class="bg-white w-1/2 p-16 pl-48 pr-16">
 		L'article 1 er de la loi n° 83-657 du 20 juillet 1983 stipule que « les Sociétés Coopératives
 		Artisanales ont pour objet la réalisation de toutes opérations et la prestation de tous services
 		susceptibles de contribuer, directement ou indirectement, au développement des activités
@@ -31,7 +31,7 @@
 		(SA). La coopérative doit être fondée sur un principe d'égalité des droits qui s'exprime sous la
 		formule <strong class="inline-block">« un associé = une voix »</strong>.
 	</div>
-	<div class="bg-white w-1/2 p-16">
+	<div class="bg-white w-1/2 p-16 pr-48">
 		Le plus souvent les coopératives et groupements d'artisans sont composés d'une équipe
 		opérationnelle réunissant les différents corps d'état, en moyenne une dizaine d'entreprises, qui
 		traitent dix à trente chantiers par an, voire plus selon le volume d'activité. Par ailleurs, ces
@@ -44,7 +44,7 @@
 </div>
 
 <div class="flex bg-white">
-	<div class="flex flex-col w-1/2 pr-8 p-16">
+	<div class="flex flex-col w-1/2 pr-8 p-16 pl-48">
 		<h2 class="h2-blue font-bold">Pourquoi se constituer en coopérative avec la FFACB ?</h2>
 		<br />
 		<p class="">
@@ -118,7 +118,7 @@
 					/>
 				</div>
 			</div>
-			<div class="flex flex-col w-full h-1/2 relative pl-16 pr-16">
+			<div class="flex flex-col w-full h-1/2 relative pl-16 pr-48">
 				<p class="text-white text-lg font-Funnel-Sans-Italic">
 					« En travaillant en coopérative, nous avons l'immense avantage de connaitre parfaitement
 					notre réseau d'artisans et de maîtriser notre sujet de A à Z. Nous ne sommes pas juste des
@@ -139,7 +139,7 @@
 	</div>
 </div>
 
-<div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
+<div class="bg-[#DCEFFC] text-center p-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">
 		Quels sont les avantages à se constituer en coopérative et à adhérer à la fédération ?
 	</h2>
@@ -251,7 +251,7 @@
 	</div>
 </div>
 
-<div class="bg-white text-center p-16 flex flex-col justify-center items-center">
+<div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les services proposés par la FFACB ?</h2>
 	<br /><br />
 	<div class="flex flex-row flex-wrap justify-center items-center">
@@ -326,7 +326,7 @@
 </div>
 <!-- TODO -->
 
-<div class="bg-red text-center p-16 flex flex-col justify-center items-center">
+<div class="bg-red text-center p-16 pr-48 pl-48 flex flex-col justify-center items-center">
 	<h3 class="h2-blue text-white font-bold">Comment créer une coopérative avec la FFACB ?</h3>
 
 	<p class="font-semibold text-lg text-white mt-4 mb-6">
@@ -350,7 +350,7 @@
 	</div>
 </div>
 
-<div class="bg-white text-center p-16 flex flex-col justify-center items-center">
+<div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Principes fondateurs de la FFACB</h2>
 	<br /><br />
 	<div class="flex flex-row flex-wrap justify-center items-center w-full">
@@ -437,7 +437,7 @@
 			<li>*** (sauf pour la 3 ème catégorie et les Tiers Non Associés).</li>
 		</ul>
 	</div>
-	<div>
+	<div class="pl-16 pr-16">
 		À travers ses principes fondateurs, la FFACB assure une meilleure défense des intérêts des
 		coopératives artisanales, notamment vis-à-vis des pouvoirs publics et au regard des projets de
 		lois qui peuvent impacter la vie des artisans. En assurant un accompagnement régulier et une
@@ -446,7 +446,7 @@
 	</div>
 	<br />
 
-	<div>
+	<div class="pl-16 pr-16">
 		Les valeurs de la coopérative artisanale, fondées sur des principes d'économie sociale et
 		solidaire, permettent aux artisans d'unir leurs forces et de continuer à exister dans un marché
 		très concurrentiel.

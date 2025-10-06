@@ -93,6 +93,27 @@
 		</div>
 
 		<div class="mb-4 flex flex-col">
+			<span class="ml-3 font-semibold">Rue</span>
+			<span class="bg-surface-50 dark:bg-surface-700 p-2 pl-3 pr-3 rounded-container-token"
+				>{contact.rue}</span
+			>
+		</div>
+
+		<div class="mb-4 flex flex-col">
+			<span class="ml-3 font-semibold">Code Postal</span>
+			<span class="bg-surface-50 dark:bg-surface-700 p-2 pl-3 pr-3 rounded-container-token"
+				>{contact.cp}</span
+			>
+		</div>
+
+		<div class="mb-4 flex flex-col">
+			<span class="ml-3 font-semibold">Ville</span>
+			<span class="bg-surface-50 dark:bg-surface-700 p-2 pl-3 pr-3 rounded-container-token"
+				>{contact.ville}</span
+			>
+		</div>
+
+		<div class="mb-4 flex flex-col">
 			<span class="ml-3 font-semibold">Message</span>
 			<span
 				class="bg-surface-50 h-24 dark:bg-surface-700 p-2 pl-3 pr-3 rounded-container-token overflow-y-auto"

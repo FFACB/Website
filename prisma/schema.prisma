@@ -50,6 +50,9 @@ model Contact {
   nom       String
   prenom    String
   telephone String
+  rue       String
+  cp        String
+  ville     String
   message   String
   createdAt DateTime @default(now())
 }

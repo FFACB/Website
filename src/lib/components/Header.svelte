@@ -1,4 +1,4 @@
-<header class="flex bg-white flex-row justify-between h-28 pl-16 pr-16 lg:pl-32 lg:pr-32 pt-4 pb-4 shadow-lg">
+<header class="flex bg-white flex-row justify-between relative z-20 h-28 pl-16 pr-16 lg:pl-32 lg:pr-32 pt-4 pb-4 shadow-lg">
 	<div class="">
 		<a href="/">
 			<img
