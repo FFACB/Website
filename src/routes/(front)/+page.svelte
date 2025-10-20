@@ -80,35 +80,35 @@
 			<div class="swiper-slide">
 				<img
 					class="w-full h-full object-cover bg-cover"
-					src="/images/aa13a171-ec01-489e-bd5d-36032fb5352b.jpg"
+					src="/images/aa13a171-ec01-489e-bd5d-36032fb5352b.jpg?width=1920&height=1080"
 					alt="federation"
 				/>
 			</div>
 			<div class="swiper-slide">
 				<img
 					class="w-full h-full object-cover bg-cover"
-					src="/images/a43316f9-262f-4e9a-a04b-05f565335047.jpg"
+					src="/images/a43316f9-262f-4e9a-a04b-05f565335047.jpg?width=1920&height=1080"
 					alt="federation"
 				/>
 			</div>
 			<div class="swiper-slide">
 				<img
 					class="w-full h-full object-cover bg-cover"
-					src="/images/ext2OK.jpg"
+					src="/images/ext2OK.jpg?width=1920&height=1080"
 					alt="federation"
 				/>
 			</div>
 			<div class="swiper-slide">
 				<img
 					class="w-full h-full object-cover bg-cover"
-					src="/images/DSC03-6-scaled.jpg"
+					src="/images/DSC03-6-scaled.jpg?width=1920&height=1080"
 					alt="federation"
 				/>
 			</div>
 			<div class="swiper-slide">
 				<img
 					class="w-full h-full object-cover bg-cover"
-					src="/images/-18564146_IMG_20230406_150627_6647277_resized.jpg"
+					src="/images/-18564146_IMG_20230406_150627_6647277_resized.jpg?width=1920&height=1080"
 					alt="federation"
 				/>
 			</div>
