@@ -6,6 +6,7 @@
 	import swiper from 'swiper';
 	import gsap from 'gsap';
 	import { SplitText } from 'gsap/all';
+	import { ScrollTrigger } from 'gsap/all';
 	import 'swiper/css';
 	import 'swiper/css/pagination';
 
@@ -14,8 +15,11 @@
 
 	onMount(() => {
 		loadSwiper();
+		animateText();
+	});
 
-		gsap.registerPlugin(SplitText);
+	function animateText() {
+		gsap.registerPlugin(SplitText, ScrollTrigger);
 		const splitText = new SplitText(document.querySelector('h1'));
 
 		gsap.from(splitText.chars, {
@@ -24,7 +28,23 @@
 			stagger: 0.02,
 			y: 10
 		});
-	});
+
+		document.querySelectorAll('h2,h3').forEach((element) => {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: element,
+					start: 'top 80%',
+					end: 'bottom 80%',
+					markers: true
+				}
+			});
+			tl.from(element, {
+				autoAlpha: 0,
+				duration: 0.4,
+				y: 10
+			});
+		});
+	}
 
 	function loadSwiper() {
 		if (browser) {
@@ -103,7 +123,7 @@
 			src="/images/FFACB_forme_entete_page_blue.png"
 		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
-			<h1 class="w-full h1-white font-extrabold mb-8" >
+			<h1 class="w-full h1-white font-extrabold mb-8">
 				La Féderation française des artisans coopérateurs du bâtiment
 			</h1>
 		</div>
