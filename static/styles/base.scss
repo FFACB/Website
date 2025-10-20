@@ -1,13 +1,13 @@
 //SCSS GLOBAL SI BESOIN
 
 @font-face {
-  font-family: Funnel Sans;
-  src: url("/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf") ;
+	font-family: Funnel Sans;
+	src: url('/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf');
 }
 
 @font-face {
-  font-family: Funnel Sans Italic;
-  src: url("/fonts/Funnel_Sans/FunnelSans-Italic-VariableFont_wght.ttf") ;
+	font-family: Funnel Sans Italic;
+	src: url('/fonts/Funnel_Sans/FunnelSans-Italic-VariableFont_wght.ttf');
 }
 
 :root {
@@ -41,7 +41,18 @@
 	font-family: var(--funnel-sans-font-family);
 	font-size: 16px;
 
-	@media (max-width: 96rem ) {
+	@media (min-width: 144rem) {
+		font-size: 1vw;
+	}
+	@media (max-width: 144rem) {
+		font-size: 1vw;
+	}
+
+	@media (max-width: 124rem) {
+		font-size: 18px;
+	}
+
+	@media (max-width: 96rem) {
 		font-size: 16px;
 	}
 
@@ -53,15 +64,15 @@
 		font-size: 13px;
 	}
 
-	@media (max-width: 64rem ) {
+	@media (max-width: 64rem) {
 		font-size: 12px;
 	}
 
-	@media (max-width: 56rem ) {
+	@media (max-width: 56rem) {
 		font-size: 11px;
 	}
 
-	@media (max-width: 48rem  ) {
+	@media (max-width: 48rem) {
 		font-size: 10px;
 	}
 
@@ -72,7 +83,15 @@
 	@media (max-width: 40rem) {
 		font-size: 8px;
 	}
+}
 
+.swiper-pagination-home {
+	padding-left: 48px;
+}
+.swiper-pagination-bullet {
+	border: 2px solid #fff;
+	width: 16px !important;
+	height: 16px !important;
 }
 
 /* Character Styles */

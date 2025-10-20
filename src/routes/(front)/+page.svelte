@@ -1,22 +1,109 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+	import SimpleButton from '$lib/components/SimpleButton.svelte';
+	import { onMount } from 'svelte';
+	import swiper from 'swiper';
+	import gsap from 'gsap';
+	import { SplitText } from 'gsap/all';
+	import 'swiper/css';
+	import 'swiper/css/pagination';
+
+	export let data;
+	const { actualites } = data;
+
+	onMount(() => {
+		loadSwiper();
+
+		gsap.registerPlugin(SplitText);
+		const splitText = new SplitText(document.querySelector('h1'));
+
+		gsap.from(splitText.chars, {
+			autoAlpha: 0,
+			duration: 0.4,
+			stagger: 0.02,
+			y: 10
+		});
+	});
+
+	function loadSwiper() {
+		if (browser) {
+			swiper.use([Autoplay, EffectFade, Pagination]);
+			let swiperRef = new swiper('.swiper', {
+				slidesPerView: 1,
+				spaceBetween: 0,
+				loop: true,
+				speed: 600,
+				autoplay: {
+					delay: 3000,
+					disableOnInteraction: false,
+					pauseOnMouseEnter: false,
+					stopOnLastSlide: false,
+					waitForTransition: true
+				},
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true
+				}
+			});
+
+			swiperRef.init();
+		}
+	}
 </script>
 
 <div
 	class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner"
 >
-	<img
-		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/placeholder.webp"
-		alt="federation"
-	/>
-	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
+	<div class="swiper w-full h-full !absolute">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img
+					class="w-full h-full object-cover bg-cover"
+					src="/images/aa13a171-ec01-489e-bd5d-36032fb5352b.jpg"
+					alt="federation"
+				/>
+			</div>
+			<div class="swiper-slide">
+				<img
+					class="w-full h-full object-cover bg-cover"
+					src="/images/a43316f9-262f-4e9a-a04b-05f565335047.jpg"
+					alt="federation"
+				/>
+			</div>
+			<div class="swiper-slide">
+				<img
+					class="w-full h-full object-cover bg-cover"
+					src="/images/ext2OK.jpg"
+					alt="federation"
+				/>
+			</div>
+			<div class="swiper-slide">
+				<img
+					class="w-full h-full object-cover bg-cover"
+					src="/images/DSC03-6-scaled.jpg"
+					alt="federation"
+				/>
+			</div>
+			<div class="swiper-slide">
+				<img
+					class="w-full h-full object-cover bg-cover"
+					src="/images/-18564146_IMG_20230406_150627_6647277_resized.jpg"
+					alt="federation"
+				/>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-pagination-home swiper-pagination"></div>
+
+	<div class="relative ml-32 flex h-[70%] z-10 w-2/5 flex-col justify-end items-center">
 		<img
 			class="absolute w-full bottom-0 h-full"
 			alt="background"
 			src="/images/FFACB_forme_entete_page_blue.png"
 		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
-			<h1 class="w-full h1-white font-extrabold mb-8">
+			<h1 class="w-full h1-white font-extrabold mb-8" >
 				La Féderation française des artisans coopérateurs du bâtiment
 			</h1>
 		</div>
@@ -32,32 +119,32 @@
 		tous types de maisons ou de bâtiments.
 	</p>
 </div>
-<div class="flex h-1/5">
+<div class="flex h-1/4">
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/real-1.jpg"
+			src="/images/AGC/Image2.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/real-2.jpg"
+			src="/images/AGC/Image3.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/real-3.jpg"
+			src="/images/AGC/Image4.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/real-4.jpg"
+			src="/images/AGC/Image5.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
@@ -89,92 +176,55 @@
 	</div>
 	<div class="w-3/5 ml-7">
 		<h3 class="h2-blue text-white font-bold">Trouver votre coopérative ?</h3>
-		<div class="text-white text-lg mt-4 mb-8">
+		<div class="text-white text-lg mt-4 mb-4">
 			Grâce à notre réseau de partenaires répartis sur tout le territoire français, trouvez les
-			artisans coopérateurs les plus NOUS CONTACTER
+			artisans coopérateurs les plus proches de chez vous.
 		</div>
-		<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-			<a class="uppercase" href="/contact">Nous contacter</a>
+		<div class="flex -ml-2">
+			<SimpleButton
+				title="Ma coopérative"
+				link="/cooperatives"
+				backgroundColor="bg-dark"
+				borderColor="border-dark"
+			></SimpleButton>
 		</div>
 	</div>
 </div>
 <div class="bg-lightgrey pb-4">
 	<h3 class="h2-blue font-bold text-center p-4">Nos dernières actualités</h3>
 	<div class="flex flex-row flex-wrap justify-center items-center w-full pr-32 pl-32">
-		<div class="basis-1/3 p-2">
-			<div class="bg-white rounded-3xl flex flex-col justify-center items-start p-4 h-full">
-				<div class="w-full overflow-hidden mb-4">
-					<img
-						src="/images/IMG_7772.JPG"
-						alt="article"
-						class="w-full h-full object-cover bg-cover rounded-3xl"
-					/>
-				</div>
+		{#each actualites as actualite}
+			<div class="basis-1/3 p-2">
+				<div class="bg-white rounded-3xl flex flex-col justify-center items-start p-4 h-full">
+					<div class="w-full overflow-hidden mb-4">
+						<img
+							src={actualite.image}
+							alt="article"
+							class="w-full h-full object-cover bg-cover rounded-3xl"
+						/>
+					</div>
 
-				<h4 class="h2-blue text-sm font-bold">
-					Quelles sont les étapes pour faire construire sa maison individuelle ?
-				</h4>
-				<p class="text-dark text-sm mb-8">
-					Avoir pour objectif de faire construire sa maison individuelle est un vrai projet de vie
-					qui enclenche mille questions. Pour éviter les manquements et déconvenues, voici quelques
-					points incontournables pour garantir l'aboutissement de son projet en toute sérénité.
-				</p>
-				<div class="w-full flex items-end justify-end">
-					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/actualites">Lire plus</a>
+					<h4 class="h2-blue text-sm font-bold">
+						{actualite.title}
+					</h4>
+					<p class="text-dark text-sm mb-8">
+						{actualite.description}
+					</p>
+					<div class="w-full flex items-end justify-end">
+						<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
+							<a class="uppercase" href="/actualites/{actualite.id}">Lire plus</a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="basis-1/3 p-2">
-			<div class="bg-white rounded-3xl flex flex-col justify-center items-start p-4 h-full">
-				<div class="w-full overflow-hidden mb-4">
-					<img
-						src="/images/IMG_7772.JPG"
-						alt="article"
-						class="w-full h-full object-cover bg-cover rounded-3xl"
-					/>
-				</div>
-
-				<h4 class="h2-blue text-sm font-bold">
-					Quelles sont les étapes pour faire construire sa maison individuelle ?
-				</h4>
-				<p class="text-dark text-sm mb-8">
-					Avoir pour objectif de faire construire sa maison individuelle est un vrai projet de vie
-					qui enclenche mille questions. Pour éviter les manquements et déconvenues, voici quelques
-					points incontournables pour garantir l'aboutissement de son projet en toute sérénité.
-				</p>
-				<div class="w-full flex items-end justify-end">
-					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/actualites">Lire plus</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="basis-1/3 p-2">
-			<div class="bg-white rounded-3xl flex flex-col justify-center items-start p-4 h-full">
-				<div class="w-full overflow-hidden mb-4">
-					<img
-						src="/images/IMG_7772.JPG"
-						alt="article"
-						class="w-full h-full object-cover bg-cover rounded-3xl"
-					/>
-				</div>
-
-				<h4 class="h2-blue text-sm font-bold">
-					Quelles sont les étapes pour faire construire sa maison individuelle ?
-				</h4>
-				<p class="text-dark text-sm mb-8">
-					Avoir pour objectif de faire construire sa maison individuelle est un vrai projet de vie
-					qui enclenche mille questions. Pour éviter les manquements et déconvenues, voici quelques
-					points incontournables pour garantir l'aboutissement de son projet en toute sérénité.
-				</p>
-				<div class="w-full flex items-end justify-end">
-					<div class="w-max p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-						<a class="uppercase" href="/actualites">Lire plus</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		{/each}
+	</div>
+	<div class="w-full flex justify-center items-center mt-4 mb-2">
+		<SimpleButton
+			title="Toutes les actualités"
+			link="/actualites"
+			backgroundColor="bg-blue"
+			borderColor="border-blue"
+		></SimpleButton>
 	</div>
 </div>

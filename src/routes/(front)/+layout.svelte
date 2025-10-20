@@ -4,7 +4,7 @@
 	import './app.pcss';
 
 	let { data, children } = $props();
-	const { parametres } = data;
+	const { parametres , actualites } = data;
 	const { PUBLIC_HEAD_TAG_MANAGER, PUBLIC_BODY_TAG_MANAGER } = parametres;
 </script>
 
@@ -22,4 +22,4 @@
 
 {@render children?.()}
 
-<Footer/>
+<Footer actu1link={actualites[0].id.toString()} actu2link={actualites[1].id.toString()} actu3link={actualites[2].id.toString()} />

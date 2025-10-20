@@ -4,7 +4,7 @@
 		src="/images/placeholder.webp"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
+	<div class="relative ml-32 flex h-[80%] w-2/5 flex-col justify-end items-center">
 		<img
 			class="absolute w-full bottom-0 h-full"
 			alt="background"

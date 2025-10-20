@@ -1,3 +1,8 @@
+<script lang="ts">
+	import SimpleButton from "$lib/components/SimpleButton.svelte";
+
+</script>
+
 <div
 	class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner"
 >
@@ -377,22 +382,21 @@
 
 <div class="bg-red text-center p-16 flex flex-col justify-center items-center">
 	<div class="pr-48 pl-48 flex flex-col justify-center items-center">
-		<h3 class="h2-blue text-white font-bold">Comment trouver une coopérative avec la FFACB ?</h3>
+		<h3 class="h2-blue text-white font-bold">Comment trouver une coopérative avec la FFACB ?</h3>
 
 		<p class="font-semibold text-lg text-white mt-4 mb-6">
-			La FFACB dispose d’un réseau national de coopératives réparties sur tout le territoire. Pour
+			La FFACB dispose d'un réseau national de coopératives réparties sur tout le territoire. Pour
 			trouver les coopératives proches de chez vous, il suffit de consulter la carte ci-dessous ou
 			de contacter directement la Fédération.
 		</p>
-		<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-			<a class="uppercase" href="/contact">Nous contacter</a>
-		</div>
+		<SimpleButton backgroundColor="bg-dark" title="Nous contacter" link="/contact" borderColor="border-dark"></SimpleButton>
+
 		<p class="font-light text-lg text-white mt-4 mb-6">
 			Vous pourrez ainsi obtenir une mise en relation avec des professionnels qualifiés et reconnus.
 		</p>
 		<p class="font-light text-lg text-white mt-4 mb-6">
 			Quel que soit votre projet, les coopératives membres de la FFACB ont la capacité de tout
-			mettre en œuvre pour s’adapter à vos demandes particulières.
+			mettre en œuvre pour s'adapter à vos demandes particulières.
 		</p>
 	</div>
 </div>
@@ -403,13 +407,13 @@
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="font-Funnel-Sans-Italic  text-lg text-dark">
-			« J’ai réalisé mon 2d projet de construction de maison avec l’entreprise Myotte-Duquet dont la
+			« J'ai réalisé mon 2d projet de construction de maison avec l'entreprise Myotte-Duquet dont la
 			coopérative est affiliée à la FFACB. Ayant moi-même une appétence pour le secteur de la
-			construction dans lequel je travaille à présent, j’ai souhaité gérer certains lots et faire
+			construction dans lequel je travaille à présent, j'ai souhaité gérer certains lots et faire
 			appel à des artisans que je connaissais sur mon secteur. Grâce au système de la coopérative,
-			j’ai pu avoir accès à un fonctionnement à tiroirs. Pouvoir s’adapter à différents besoins et
+			j'ai pu avoir accès à un fonctionnement à tiroirs. Pouvoir s'adapter à différents besoins et
 			clients est une force. La souplesse de cette mise en œuvre a vraiment été une plus-value pour
-			moi qui souhaitait garder la main sur certaines choses  »
+			moi qui souhaitait garder la main sur certaines choses  »
 		</div>
 		<br>
 		<div class="text-blue text-sm">explique Sylvain Martin, propriétaire dans le Pays de Gex.</div>

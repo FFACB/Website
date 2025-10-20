@@ -6,6 +6,19 @@ export const load: LayoutServerLoad = async () => {
 		parametres: {
 			PUBLIC_HEAD_TAG_MANAGER: await getParametre('PUBLIC_HEAD_TAG_MANAGER'),
 			PUBLIC_BODY_TAG_MANAGER: await getParametre('PUBLIC_BODY_TAG_MANAGER')
-		}
+		},
+		actualites
 	};
 };
+
+const actualites = [
+	{
+		id: 1
+	},
+	{
+		id: 2
+	},
+	{
+		id: 3
+	}
+];

@@ -1,3 +1,7 @@
+<script lang="ts">
+	import SimpleButton from "$lib/components/SimpleButton.svelte";
+</script>
+
 <div
 	class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner"
 >
@@ -345,9 +349,7 @@
 		les dossiers aux partenaires.
 	</p>
 
-	<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-dark rounded-full">
-		<a class="uppercase" href="/contact">Nous contacter</a>
-	</div>
+	<SimpleButton backgroundColor="bg-dark" title="Nous contacter" link="/contact" borderColor="border-dark"></SimpleButton>
 </div>
 
 <div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">

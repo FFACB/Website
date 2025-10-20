@@ -1,4 +1,14 @@
-<footer class="flex flex-col h-56 pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
+<script lang="ts">
+	interface Props {
+		actu1link: string | undefined;
+		actu2link: string | undefined;
+		actu3link: string | undefined;
+	}
+
+	let { actu1link, actu2link, actu3link }: Props = $props();
+</script>
+
+<footer class="flex flex-col  pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
 	<div class="flex w-full h-full flex-row justify-between items-start">
 		<div class="w-1/5 h-full p-8">
 			<a href="/">
@@ -19,6 +29,12 @@
 			<div class=" m-2">
 				<a class="uppercase" href="/professionnels">professionnels</a>
 			</div>
+			<div class=" m-2">
+				<a class="uppercase" href="/actualites">Actualités</a>
+			</div>
+			<div class=" m-2">
+				<a class="uppercase" href="/contact">contact</a>
+			</div>
 			<div class=" m-2 text-red">
 				<a class="uppercase" href="/federation">ma cooperative</a>
 			</div>
@@ -28,25 +44,35 @@
 		</div>
 		<div class="w-1/5 text-white">
 			<div class=" m-2">
-				<a class="uppercase font-bold" href="/actualites">Derniers articles</a>
+				<a class="uppercase font-bold" href="/actualites">Dernieres actualites</a>
 			</div>
-			<div class=" m-2">
-				<a class="uppercase" href="/actualites">article 1</a>
-			</div>
-			<div class=" m-2">
-				<a class="uppercase" href="/actualites">article 1</a>
-			</div>
+			{#if actu1link}
+				<div class=" m-2">
+					<a class="uppercase" href="/actualites/{actu1link}">Actualité {actu1link}</a>
+				</div>
+			{/if}
+
+			{#if actu2link}
+				<div class=" m-2">
+					<a class="uppercase" href="/actualites/{actu2link}">Actualité {actu2link}</a>
+				</div>
+			{/if}
+			{#if actu3link}
+				<div class=" m-2">
+					<a class="uppercase" href="/actualites/{actu3link}">Actualité {actu3link}</a>
+				</div>
+			{/if}
 		</div>
 		<div class="w-1/5 text-white text-left">
 			<div class="m-2">
 				<a class="uppercase font-bold" href="/contact">Nous contacter</a>
 			</div>
-			<div class="m-2 flex">
+			<div class="m-2 flex mb-4">
 				<img src="/images/FFACB_picto_phone.svg" class="w-6 h-6 rounded-full" alt="Tel" />
 				<a class="uppercase ml-4" href="tel:+33553235570">+33(0)5 53 23 55 70</a>
 			</div>
 			<div class="m-2 flex">
-				<img src="/images/FFACB_picto_phone.svg" class="w-6 h-6 rounded-full" alt="Map" />
+				<img src="/images/FFACB_picto_localisation.svg" class="w-6 h-6 rounded-full" alt="Map" />
 				<a
 					class="uppercase ml-4"
 					href="https://www.google.com/maps/@45.9234846,6.0915712,15z?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"
@@ -55,5 +81,11 @@
 			</div>
 		</div>
 	</div>
-	<div></div>
+	<div class="flex justify-center items-center text-white font-light text-sm">
+		<a href="/donnees-personelles">Données personnelles</a>
+		|
+		<a href="/mentions">Mentions légales</a>
+		|
+		<a target="_blank" href="https://www.sogocom.fr">Réalisation : Sogo'com.fr</a>
+	</div>
 </footer>
