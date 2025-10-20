@@ -35,7 +35,7 @@
 					trigger: element,
 					start: 'top 80%',
 					end: 'bottom 80%',
-					markers: true
+					markers: false
 				}
 			});
 			tl.from(element, {
