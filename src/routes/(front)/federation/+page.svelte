@@ -1,4 +1,79 @@
-<div class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner">
+<script lang="ts">
+	let activeIndex = 0;
+	let activeHover = 0;
+	const dates = [
+		{
+			date: '1988',
+			description:
+				"Création de l'Union Nationale des Artisans Coopérateurs de la Construction (UNACC) par Michel Dreano."
+		},
+		{
+			date: '1990',
+			description:
+				"L'UNACC devient la Fédération Nationale des Artisans Coopérateurs du Bâtiment (FNACB)."
+		},
+		{
+			date: '1997',
+			description:
+				"Création de l'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment."
+		},
+		{
+			date: '1998',
+			description:
+				'Lancement de la Démarche Qualité dans les Sociétés Coopératives Artisanales (SCA).'
+		},
+		{
+			date: '2003',
+			description:
+				"Création de l'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment."
+		},
+		{
+			date: '2005',
+			description: "Mise en place de l'assurance sous-traitance pour les adhérents de la FFACB."
+		},
+		{
+			date: '2009',
+			description:
+				"Inscription de la FFACB à l'Orias (Registre Unique des Intermédiaires en assurances, banques et finances)."
+		},
+		{
+			date: '2013',
+			description:
+				'Mise en place du RGE pour les coopératives artisanales du bâtiment en partenariat avec le Ministère du Développement Durable et Qualibat. Création de la marque FFACB.'
+		},
+		{
+			date: '2015',
+			description: 'Création du Club des Partenaires et la FFACB devient adhérente de Qualibat.'
+		},
+		{
+			date: '2016',
+			description:
+				"L'organisme de formation émanant de la FFACB, l'AFCAB, obtient la certification qualité, CERTIBAT Formation Professionnelle (N° du certificat FP1611)."
+		},
+		{
+			date: '2020',
+			description:
+				"Signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour la formation professionnelle."
+		},
+		{
+			date: '2021',
+			description:
+				'Signature de la convention entre S2C et la FFACB pour la délivrance des garanties de remboursement, de livraison à prix et délais convenus et de paiement des sous-traitants auprès de ses adhérents.'
+		},
+		{
+			date: '2023',
+			description: 'Didier Fabignon est élu président de la FFACB.'
+		},
+		{
+			date: '2024-2025',
+			description: 'Restructuration interne et refonte des outils de communication.'
+		}
+	];
+</script>
+
+<div
+	class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner"
+>
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
 		src="/images/AGC/Image10.jpg"
@@ -31,7 +106,7 @@
 	</div>
 </div>
 <div class="font-Funnel Sans w-full flex flex-row">
-	<div class="bg-white w-1/2 p-16 pl-48 ">
+	<div class="bg-white w-1/2 p-16 pl-48">
 		Le contexte est posé. Dans ce cadre, la <strong>
 			Fédération Française des Artisans Coopérateurs du Bâtiment</strong
 		>
@@ -39,14 +114,14 @@
 		artisanale structurée tout en gardant leur indépendance. Au sein de la coopérative, chaque entreprise
 		conserve son autonomie et ses spécificités même si elle accepte un pouvoir central de coordination.<br
 		/><br />
-		La coopérative se présente comme un véritable <strong>
-			outil de développement et d'ouverture à de nouveaux marchés</strong
-		> et permet de développer la force d'intervention grâce à l'organisation en équipe.
+		La coopérative se présente comme un véritable
+		<strong> outil de développement et d'ouverture à de nouveaux marchés</strong> et permet de développer
+		la force d'intervention grâce à l'organisation en équipe.
 	</div>
 	<div class="bg-[#DCEFFC] w-1/2 p-16 pr-48">
 		Le modèle coopératif est adapté à tous les projets, toutes les activités et toutes les tailles
 		d'entreprise et doit être fondé sur un <strong>principe d'égalité des droits</strong> qui
-		s'exprime par la formule<br> « <strong> associé = une voix</strong> ».
+		s'exprime par la formule<br /> « <strong> associé = une voix</strong> ».
 		<br /><br />
 		Sous l'égide des coopératives et groupements, les artisans se structurent et :<br /><br />
 		<ul class="ml-16">
@@ -72,7 +147,9 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<img class="h-36" src="/images/personnage_temoignage_attentephoto.svg" alt="persona" />
+		<div class=" border bg-white border-black rounded-full p-8 w-52">
+			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		</div>
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
@@ -134,7 +211,9 @@
 			Elles peuvent également répondre à des marchés publics et travailler en collaboration avec des
 			promoteurs immobiliers dans le cadre de projets en VEFA. En ce qui concerne la rénovation, les
 			coopératives peuvent intervenir dans le cadre de la rénovation énergétique dans la mesure où
-			elles sont éligibles à la qualification RGE 8632 <span class="inline-block">« rénovation offre globale ».</span>
+			elles sont éligibles à la qualification RGE 8632 <span class="inline-block"
+				>« rénovation offre globale ».</span
+			>
 		</p>
 	</div>
 	<div class="flex flex-col w-1/2 pr-32 pl-8">
@@ -199,7 +278,7 @@
 			</ul>
 		</div>
 	</div>
-	<p class="mt-6 mb-6  pr-48 pl-48">
+	<p class="mt-6 mb-6 pr-48 pl-48">
 		La FFACB accompagne ses coopératives tout au long de l'année, en leur proposant des réunions
 		d'informations, des newsletters, des formations complémentaires ainsi qu'un service juridique
 		leur permettant <strong
@@ -209,7 +288,9 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<img class="h-36" src="/images/personnage_temoignage_attentephoto.svg" alt="persona" />
+		<div class=" border bg-white border-black rounded-full p-8 w-52">
+			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		</div>
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
@@ -226,15 +307,15 @@
 	</div>
 </div>
 
-<div class="bg-white text-center  pr-48 pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
+<div class="bg-white text-center pr-48 pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Les services de la FFACB</h2>
-	<p class="font-semibold text-lg mt-6 mb-6 ">
+	<p class="font-semibold text-lg mt-6 mb-6">
 		Outre son rôle de trait d'union et d'information auprès des coopératives et des partenaires du
 		secteur y compris sur le plan technique et l'application des nouvelles réglementations, la FFACB
-		assure <strong>conseil et appui juridique.</strong><br>
-			La fédération permet aux coopératives d'accéder à des produits d'assurances de la construction
-		et met son personnel à disposition de l'ARCAB pour réaliser les travaux de révision quinquennale
-		et de l'AFCAB pour dispenser des formations à ses membres.
+		assure <strong>conseil et appui juridique.</strong><br />
+		La fédération permet aux coopératives d'accéder à des produits d'assurances de la construction et
+		met son personnel à disposition de l'ARCAB pour réaliser les travaux de révision quinquennale et
+		de l'AFCAB pour dispenser des formations à ses membres.
 	</p>
 
 	<div class="flex flex-row h-96">
@@ -379,129 +460,66 @@
 >
 	<h2 class="h2-blue font-bold mb-4">Pour la petite histoire</h2>
 
-	<div class="flex flex-row h-40">
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1988</h3>
-				<p>
-					création de l'Union Nationale des Artisans Coopérateurs de la Construction (UNACC) par
-					Michel Dreano.
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1990</h3>
-				<p>
-					l'UNACC devient la Fédération Nationale des Artisans Coopérateurs du Bâtiment (FNACB).
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1997</h3>
-				<p>
-					création de l'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="flex flex-row h-40">
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1998</h3>
-				<p>lancement de la Démarche Qualité dans les Sociétés Coopératives Artisanales (SCA).</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2003</h3>
-				<p>
-					création de l'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment.
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2005</h3>
-				<p>mise en place de l'assurance sous-traitance pour les adhérents de la FFACB.</p>
-			</div>
+	<div class="relative w-full">
+		<div class="flex justify-center items-center relative h-80 w-full">
+			{#each dates as date, index}
+				<div
+					style="left: {(index / (dates.length - 1)) * 90 + 5}%;"
+					class="flex flex-col justify-center items-start bg-white max-w-64 rounded-3xl p-4 absolute -translate-x-1/2 top-[60%] -translate-y-full {activeIndex ===
+						index || activeHover === index
+						? 'z-10'
+						: 'hidden'} {activeHover === index ? 'z-20' : ''}"
+				>
+					<h3 class="h2-blue text-xl font-bold">{date.date}</h3>
+					<p class=" text-start {activeIndex === index ? '' : 'hidden'}">
+						{date.description}
+					</p>
+				</div>
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<div
+					style="left: {(index / (dates.length - 1)) * 90 + 5}%;"
+					class="h-5 w-5 rounded-3xl bg-blue absolute top-3/4 -translate-y-1/2 -translate-x-1/2 cursor-pointer z-10"
+					on:mouseenter={() => {
+						activeHover = index;
+					}}
+					on:click={() => {
+						activeIndex = index;
+					}}
+				></div>
+			{/each}
+			<div class="h-[2px] w-[90%] bg-blue top-3/4 -translate-y-1/2 absolute"></div>
 		</div>
 	</div>
+</div>
 
-	<div class="flex flex-row h-40">
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2009</h3>
-				<p>
-					Inscription de la FFACB à l'Orias (Registre Unique des Intermédiaires en assurances,
-					banques et finances).
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2013</h3>
-				<p>
-					Mise en place du RGE pour les coopératives artisanales du bâtiment en partenariat avec le
-					Ministère du Développement Durable et Qualibat. Création de la marque FFACB.
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2015</h3>
-				<p>création du Club des Partenaires et la FFACB devient adhérente de Qualibat.</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="flex flex-row h-40">
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2016</h3>
-				<p>
-					l'organisme de formation émanant de la FFACB, l'AFCAB, obtient la certification qualité,
-					CERTIBAT Formation Professionnelle (N° du certificat FP1611).
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2020</h3>
-				<p>
-					signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de
-					garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour
-					la formation professionnelle.
-				</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2021</h3>
-				<p>
-					signature de la convention entre S2C et la FFACB pour la délivrance des garanties de
-					remboursement, de livraison à prix et délais convenus et de paiement des sous-traitants
-					auprès de ses adhérents.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="flex flex-row w-full h-40">
-		<div class="p-2 basis-1/3 w-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2023</h3>
-				<p>Didier Fabignon est élu président de la FFACB.</p>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 w-1/3 h-full">
-			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2024-2025</h3>
-				<p>restructuration interne et refonte des outils de communication.</p>
+<div class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center pl-32 pr-32">
+	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
+	<p class="text-white">
+		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
+		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
+		toutes une part importante de la construction de maisons individuelle en France.
+	</p>
+	<div class="flex w-full">
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
+				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
 			</div>
 		</div>
 
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">713</h3>
+				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
+			</div>
+		</div>
+
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">90</h3>
+				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
+			</div>
+		</div>
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import SimpleButton from "$lib/components/SimpleButton.svelte";
+	import SimpleButton from '$lib/components/SimpleButton.svelte';
 
+	let isAssurancesEnabled = true;
 </script>
 
 <div
@@ -8,7 +9,7 @@
 >
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/placeholder.webp"
+		src="/images/DSC03-6-scaled.jpg"
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
@@ -55,9 +56,13 @@
 			La FFACB agit comme un réseau fédérateur, apportant soutien, formation et accompagnement aux coopératives
 			adhérentes.
 		</p>
-
-		<div class="w-max mt-8 p-4 pt-2 pb-2 font-bold text-white bg-blue rounded-full">
-			<a class="uppercase" href="/">Decouvrir la FFACB</a>
+		<div class="mt-4 flex">
+			<SimpleButton
+				backgroundColor="bg-blue"
+				borderColor="border-blue"
+				title="Decouvrir la FFACB"
+				link="/federation"
+			></SimpleButton>
 		</div>
 	</div>
 	<div class="basis-1/2 flex flex-col">
@@ -75,7 +80,7 @@
 	<div class="basis-1/2 flex flex-col">
 		<div class="h-full w-full relative">
 			<img
-				class="absolute -scale-x-150 top-1/2 -translate-y-1/2 left-0 scale-150"
+				class="absolute -scale-x-150 top-1/2 -translate-y-1/2 left- scale-150"
 				src="/images/profesionnel-droit.png"
 				alt="travaux"
 			/>
@@ -85,7 +90,7 @@
 	<div class="basis-1/2 p-16 pr-48">
 		<h2 class="h2-blue font-bold">Pourquoi faire appel à une coopérative membre de la FFACB ?</h2>
 		<br />
-		<img src="/images/picto-certif.png" class="w-20" alt="picto certif" />
+		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN GAGE DE QUALITÉ ET DE SAVOIR-FAIRE</h3>
 		<p class="text-white">
@@ -94,7 +99,7 @@
 			compétences avérées et s'adaptent aux exigences spécifiques de chaque projet
 		</p>
 		<br />
-		<img src="/images/picto-certif.png" class="w-20" alt="picto certif" />
+		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">
 			UNE COORDINATION FACILITÉE ET DES INTERMÉDIAIRES LIMITÉS
@@ -122,7 +127,7 @@
 
 <div class="flex w-full flex-row">
 	<div class="text-white w-1/2 p-16 pl-48 bg-lightgrey flex flex-col">
-		<img src="/images/picto-justice.png" class="w-20" alt="picto justice" />
+		<img src="/images/pictos/picto-interlocuteur.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN INTERLOCUTEUR UNIQUE</h3>
 		<p class="text-dark">
@@ -139,7 +144,7 @@
 	</div>
 
 	<div class="text-white w-1/2 p-16 pr-48 bg-white flex flex-col">
-		<img src="/images/picto-justice.png" class="w-20" alt="picto justice" />
+		<img src="/images/pictos/picto-justice.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE CONFORMITÉ À LA RÈGLEMENTATION</h3>
 		<p class="text-dark">
@@ -174,7 +179,7 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="text-white w-1/2 p-16 pl-48 flex flex-col">
-		<img src="/images/picto-assur.png" class="w-20" alt="picto assur" />
+		<img src="/images/pictos/picto-assur.svg" class="w-20" alt="picto assur" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN GAGE DE QUALITÉ ET DE SAVOIR-FAIRE</h3>
 		<p class="text-white">
@@ -185,48 +190,90 @@
 	</div>
 
 	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
-		<div class="flex flex-col rounded-3xl p-8 bg-white relative">
-			<div class="absolute bottom-full w-4/5 flex">
-				<div
-					class="uppercase absolute bottom-0 left-0 w-2/3 z-10 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl"
-				>
-					Assurances obligatoires
-				</div>
-				<div
-					class="uppercase absolute bottom-0 left-1/3 w-2/3 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl"
-				>
-					Gartanties
+		<div class="relative">
+			<div class="absolute bottom-full w-4/5 flex left-12">
+				<input
+					type="button"
+					on:click={() => (isAssurancesEnabled = true)}
+					class="uppercase absolute bottom-0 left-0 w-2/3 z-10 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer"
+					value="Assurances obligatoires"
+				/>
+
+				<input
+					type="button"
+					on:click={() => (isAssurancesEnabled = false)}
+					class="uppercase absolute bottom-0 left-1/3 w-2/3 bg-lightgrey {isAssurancesEnabled
+						? ''
+						: 'z-20'} text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer"
+					value="Gartanties"
+				/>
+			</div>
+
+			<div class="flex flex-col rounded-3xl p-8 bg-white relative">
+				<div>
+					<p class="text-dark pl-4 text-lg font-bold">De la coopérative :</p>
+					<ul class="">
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Responsabilité
+							Civile Professionnelle.
+						</li>
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
+							décennale.
+						</li>
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>TRC, Tous Risques
+							Chantier.
+						</li>
+					</ul>
+
+					<p class="text-dark pl-4 text-lg mt-2 font-bold">Du Maître de l'Ouvrage :</p>
+					<ul class="">
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
+							Dommages-Ouvrage.
+						</li>
+					</ul>
 				</div>
 			</div>
 
-			<p class="text-dark pl-4 text-lg font-bold">De la coopérative :</p>
-			<ul class="">
-				<li class="text-dark mb-2">
-					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Responsabilité Civile
-					Professionnelle.
-				</li>
-				<li class="text-dark mb-2">
-					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance décennale.
-				</li>
-				<li class="text-dark mb-2">
-					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>TRC, Tous Risques
-					Chantier.
-				</li>
-			</ul>
+			<div
+				class="flex flex-col rounded-3xl p-8 bg-lightgrey top-0 w-full absolute {isAssurancesEnabled
+					? 'hidden'
+					: ''}"
+			>
+				<div>
+					<p class="text-dark pl-4 text-lg font-bold">De l'assurance :</p>
+					<ul class="">
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Responsabilité
+							Civile Professionnelle.
+						</li>
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
+							décennale.
+						</li>
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>TRC, Tous Risques
+							Chantier.
+						</li>
+					</ul>
 
-			<p class="text-dark pl-4 text-lg mt-2 font-bold">Du Maître de l'Ouvrage :</p>
-			<ul class="">
-				<li class="text-dark mb-2">
-					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
-					Dommages-Ouvrage.
-				</li>
-			</ul>
+					<p class="text-dark pl-4 text-lg mt-2 font-bold">Du Maître de l'Ouvrage :</p>
+					<ul class="">
+						<li class="text-dark mb-2">
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
+							Dommages-Ouvrage.
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 <div class="bg-white pb-4">
 	<div class="flex flex-col justify-center items-center p-16 pr-48 pl-48">
-		<img src="/images/picto-home.png" class="w-20" alt="picto justice" />
+		<img src="/images/pictos/picto-conformite.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE GARANTIE DE CONFORMITÉ DES TRAVAUX RÉALISÉS :</h3>
 		<p class="text-dark">
@@ -279,7 +326,7 @@
 
 <div class="bg-dark flex justify-center items-start pt-9 pb-9">
 	<div class="text-white w-1/2 p-16 pl-48 flex flex-col">
-		<img src="/images/picto-shake.png" class="w-20" alt="picto shake" />
+		<img src="/images/pictos/picto-shake.svg" class="w-20" alt="picto shake" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN SUIVI ET UN ACCOMPAGNEMENT PERSONNALISÉS</h3>
 		<p class="text-white">
@@ -297,7 +344,7 @@
 	</div>
 
 	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
-		<img src="/images/picto-quali.png" class="w-20" alt="picto quali" />
+		<img src="/images/pictos/picto-quali.svg" class="w-20" alt="picto quali" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE DÉMARCHE QUALITÉ</h3>
 		<p class="text-white">
@@ -311,7 +358,7 @@
 
 <div class="bg-white pb-4">
 	<div class="flex flex-col justify-center items-center p-16 pr-48 pl-48 pb-48">
-		<img src="/images/picto-home.png" class="w-20" alt="picto justice" />
+		<img src="/images/pictos/picto-conformite.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">
 			UN IMPACT LOCAL ET UN SOUTIEN À L'ÉCONOMIE SOLIDAIRE :
@@ -327,11 +374,12 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<img
-					src="/images/personnage_temoignage_attentephoto_rogned.png"
-					class="w-60 absolute top-0 -translate-y-1/2 border border-black rounded-full"
-					alt="picto quali"
-				/>
+				<div
+					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full p-8 w-60"
+				>
+					<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+				</div>
+
 				<div class="text-center mt-32">
 					<p class="font-Funnel-Sans-Italic">
 						« Nous avons avant toute chose adhéré aux principes du travail artisanal et aux valeurs
@@ -354,11 +402,11 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<img
-					src="/images/personnage_temoignage_attentephoto_rogned.png"
-					class="w-60 absolute top-0 -translate-y-1/2 border border-black rounded-full"
-					alt="picto quali"
-				/>
+				<div
+					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full p-8 w-60"
+				>
+					<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+				</div>
 				<div class="text-center mt-32">
 					<p class="font-Funnel-Sans-Italic">
 						« À travers notre modèle d'économie sociale et solidaire, nous incitons les clients à
@@ -389,7 +437,12 @@
 			trouver les coopératives proches de chez vous, il suffit de consulter la carte ci-dessous ou
 			de contacter directement la Fédération.
 		</p>
-		<SimpleButton backgroundColor="bg-dark" title="Nous contacter" link="/contact" borderColor="border-dark"></SimpleButton>
+		<SimpleButton
+			backgroundColor="bg-dark"
+			title="Nous contacter"
+			link="/contact"
+			borderColor="border-dark"
+		></SimpleButton>
 
 		<p class="font-light text-lg text-white mt-4 mb-6">
 			Vous pourrez ainsi obtenir une mise en relation avec des professionnels qualifiés et reconnus.
@@ -401,21 +454,24 @@
 	</div>
 </div>
 
-<div class="bg-white flex justify-center items-center pt-9 pb-9">
+<div class="bg-white flex justify-center items-center pt-12 pb-12">
 	<div class="h-auto">
-		<img class="h-40 border border-black rounded-full " src="/images/personnage_temoignage_attentephoto_rogned.png" alt="persona" />
+		<div class=" border bg-dark border-black rounded-full p-8 w-52">
+			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		</div>
+	
 	</div>
 	<div class="w-3/5 ml-7">
-		<div class="font-Funnel-Sans-Italic  text-lg text-dark">
+		<div class="font-Funnel-Sans-Italic text-lg text-dark">
 			« J'ai réalisé mon 2d projet de construction de maison avec l'entreprise Myotte-Duquet dont la
 			coopérative est affiliée à la FFACB. Ayant moi-même une appétence pour le secteur de la
 			construction dans lequel je travaille à présent, j'ai souhaité gérer certains lots et faire
 			appel à des artisans que je connaissais sur mon secteur. Grâce au système de la coopérative,
 			j'ai pu avoir accès à un fonctionnement à tiroirs. Pouvoir s'adapter à différents besoins et
 			clients est une force. La souplesse de cette mise en œuvre a vraiment été une plus-value pour
-			moi qui souhaitait garder la main sur certaines choses  »
+			moi qui souhaitait garder la main sur certaines choses »
 		</div>
-		<br>
+		<br />
 		<div class="text-blue text-sm">explique Sylvain Martin, propriétaire dans le Pays de Gex.</div>
 	</div>
 </div>

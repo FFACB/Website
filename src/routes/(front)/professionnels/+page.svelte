@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SimpleButton from "$lib/components/SimpleButton.svelte";
+	import SimpleButton from '$lib/components/SimpleButton.svelte';
 </script>
 
 <div
@@ -7,7 +7,7 @@
 >
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/placeholder.webp"
+		src="/images/GRANDVOINET.CHAPELLE.DES.BUIS.jpg"
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
@@ -115,11 +115,11 @@
 
 			<div class="flex flex-col w-full h-1/2 relative p-16">
 				<div class="relative h-full">
-					<img
-						src="/images/personnage_temoignage_attentephoto.png"
-						alt="FFACB_forme_entete_page_blue.png"
-						class="w-1/4 h-1-4 object-cover bg-cover absolute bottom-0 left-0"
-					/>
+					<div
+						class=" border bg-white border-black rounded-full p-8 w-1/4 h-1-4 object-cover bg-cover absolute bottom-0 left-0"
+					>
+						<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+					</div>
 				</div>
 			</div>
 			<div class="flex flex-col w-full h-1/2 relative pl-16 pr-48">
@@ -154,19 +154,19 @@
 			<br />
 			<ul class="font-light">
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Exonération de
+					Exonération de
 					l'impôt sur les sociétés (IS) *
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Exonération de
+					Exonération de
 					Contribution Économique Territoriale (CFE et CVAE), ancienne Taxe Professionnelle *
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Exonération de la
+					Exonération de la
 					Taxe d'Apprentissage *
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Exonération de la
+					Exonération de la
 					Contribution Sociale de Solidarité des Sociétés (C3S) * = sauf pour la quote-part de
 					résultat issue de l'activité réalisée avec les sous-traitants.
 				</li>
@@ -177,15 +177,15 @@
 			<br />
 			<ul class="font-light">
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Aide à la rédaction
+					Aide à la rédaction
 					et contrôle du Contrat de Construction de Maison Individuelle (CCMI).
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Accompagnement
+					Accompagnement
 					juridique, fiscal et comptable.
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Défense des intérêts
+					Défense des intérêts
 					des artisans coopérateurs.
 				</li>
 			</ul>
@@ -195,39 +195,39 @@
 			<br />
 			<ul class="font-light">
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Établissement des
+					Établissement des
 					statuts et du règlement intérieur.
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Étude du budget
+					Étude du budget
 					prévisionnel.
 				</li>
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Tenue des assemblées
+					Tenue des assemblées
 					générales.
 				</li>
 
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Indépendance
+					Indépendance
 					vis-à-vis de la sous-traitance.
 				</li>
 
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Mise en place de
+					Mise en place de
 					nombreux outils de travail efficaces.
 				</li>
 
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Maintien et contrôle
+					Maintien et contrôle
 					des marges.
 				</li>
 
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Formations adaptées.
+					Formations adaptées.
 				</li>
 
 				<li>
-					<span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Rencontres et
+					Rencontres et
 					partages d'expérience.
 				</li>
 			</ul>
@@ -237,7 +237,9 @@
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<img class="h-36" src="/images/personnage_temoignage_attentephoto.svg" alt="persona" />
+		<div class=" border bg-white border-black rounded-full p-8 w-52">
+			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		</div>
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
@@ -247,7 +249,7 @@
 			au courant des dernières réglementations et d'avoir toujours un interlocuteur pour répondre
 			rapidement aux problématiques du quotidien »,
 		</div>
-		<br>
+		<br />
 		<div class="text-blue text-sm">
 			Benjamin Houseaux, Vision Bois, constructeur de maisons en ossature bois basé à Chambéry (73)
 			et membre de la coopérative Tout Habitat.
@@ -349,15 +351,20 @@
 		les dossiers aux partenaires.
 	</p>
 
-	<SimpleButton backgroundColor="bg-dark" title="Nous contacter" link="/contact" borderColor="border-dark"></SimpleButton>
+	<SimpleButton
+		backgroundColor="bg-dark"
+		title="Nous contacter"
+		link="/contact"
+		borderColor="border-dark"
+	></SimpleButton>
 </div>
 
 <div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Principes fondateurs de la FFACB</h2>
 	<br /><br />
-	<div class="flex flex-row flex-wrap justify-center items-center w-full">
-		<div class="p-4 basis-1/2">
-			<div class="flex flex-col justify-center items-start m-2 p-8 bg-[#DCEFFC] rounded-3xl w-full">
+	<div class="flex flex-col flex-wrap justify-center items-center w-full bg-[#DCEFFC] rounded-3xl mb-8">
+		<div class=" flex-row justify-center items-start m-2 p-8 w-full flex">
+			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Liberté</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -371,10 +378,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="p-4 basis-1/2">
-			<div class="flex flex-col justify-center items-start m-2 p-8 bg-[#DCEFFC] rounded-3xl w-full">
+			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Droits</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -385,10 +390,8 @@
 					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="p-4 basis-1/2">
-			<div class="flex flex-col justify-center items-start m-2 p-8 bg-[#DCEFFC] rounded-3xl w-full">
+			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Services</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -398,10 +401,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-
-		<div class="p-4 basis-1/2">
-			<div class="flex flex-col justify-center items-start m-2 p-8 bg-[#DCEFFC] rounded-3xl w-full">
+			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Obligations</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -415,10 +415,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-
-		<div class="p-4 basis-1/2">
-			<div class="flex flex-col justify-center items-start m-2 p-8 bg-[#DCEFFC] rounded-3xl w-full">
+			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Equité</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -430,15 +427,16 @@
 				</ul>
 			</div>
 		</div>
+
+		<div>
+			<ul class="font-light text-xs mt-4 mb-6">
+				<li>* sauf pour la 3 ème catégorie.</li>
+				<li>** exclusivisme sauf dérogation pour les Tiers Non Associés.</li>
+				<li>*** (sauf pour la 3 ème catégorie et les Tiers Non Associés).</li>
+			</ul>
+		</div>
 	</div>
 
-	<div>
-		<ul class="font-light text-xs mt-4 mb-6">
-			<li>* sauf pour la 3 ème catégorie.</li>
-			<li>** exclusivisme sauf dérogation pour les Tiers Non Associés.</li>
-			<li>*** (sauf pour la 3 ème catégorie et les Tiers Non Associés).</li>
-		</ul>
-	</div>
 	<div class="pl-16 pr-16">
 		À travers ses principes fondateurs, la FFACB assure une meilleure défense des intérêts des
 		coopératives artisanales, notamment vis-à-vis des pouvoirs publics et au regard des projets de
@@ -457,7 +455,9 @@
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<img class="h-36" src="/images/personnage_temoignage_attentephoto.svg" alt="persona" />
+		<div class=" border bg-white border-black rounded-full p-8 w-52">
+			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		</div>
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="text-white">

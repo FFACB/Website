@@ -20,3 +20,4 @@ conf/googleapis/keys/*
 !conf/googleapis/keys/.gitkeep 
 test-results
 build-node
+exclude.txt

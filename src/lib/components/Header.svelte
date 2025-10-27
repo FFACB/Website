@@ -9,7 +9,7 @@
 		<a href="/">
 			<img
 				class="w-full h-full object-contain bg-contain"
-				src="/images/FFACB_logo_horizontal_couleur.svg"
+				src="/images/pictos/FFACB_logo_horizontal_couleur.svg"
 				alt="FFACB logo"
 			/></a
 		>
