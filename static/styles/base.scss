@@ -54,6 +54,10 @@
 
 	@media (max-width: 96rem) {
 		font-size: 16px;
+
+		@media (min-aspect-ratio: 16/10) {
+			font-size: 14px;
+		}
 	}
 
 	@media (max-width: 80rem) {
@@ -83,6 +87,8 @@
 	@media (max-width: 40rem) {
 		font-size: 8px;
 	}
+
+
 }
 
 .swiper-pagination-home {

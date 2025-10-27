@@ -1,7 +1,7 @@
 <div class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner">
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/placeholder.webp"
+		src="/images/AGC/Image10.jpg"
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[80%] w-2/5 flex-col justify-end items-center">
@@ -173,29 +173,29 @@
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
 			<ul class="font-light">
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'adhésion volontaire.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Le pouvoir démocratique exercé par les coopérateurs.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>La participation économique des coopérateurs.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'autonomie et l'indépendance.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'éducation, la formation et l'information.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>L'engagement volontaire envers la communauté.</li>
+				<li>L'adhésion volontaire.</li>
+				<li>Le pouvoir démocratique exercé par les coopérateurs.</li>
+				<li>La participation économique des coopérateurs.</li>
+				<li>L'autonomie et l'indépendance.</li>
+				<li>L'éducation, la formation et l'information.</li>
+				<li>L'engagement volontaire envers la communauté.</li>
 			</ul>
 		</div>
 		<div class="flex flex-col m-2 p-8 text-white bg-red rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des valeurs clés</h3>
 			<ul class="font-light">
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Savoir-faire artisanal.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Ancrage territorial.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Renommée locale.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Qualité reconnue.</li>
+				<li>Savoir-faire artisanal.</li>
+				<li>Ancrage territorial.</li>
+				<li>Renommée locale.</li>
+				<li>Qualité reconnue.</li>
 			</ul>
 		</div>
 		<div class="flex flex-col m-2 p-8 text-white bg-blue rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des atouts majeurs</h3>
 			<ul class="font-light">
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Une sinistralité basse et autogérée.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Un interlocuteur unique.</li>
-				<li><span class="w-2 h-2 inline-block bg-white rounded-full mr-2"></span>Un encadrement fédéral.</li>
+				<li>Une sinistralité basse et autogérée.</li>
+				<li>Un interlocuteur unique.</li>
+				<li>Un encadrement fédéral.</li>
 			</ul>
 		</div>
 	</div>
@@ -239,7 +239,7 @@
 
 	<div class="flex flex-row h-96">
 		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
+			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue overflow-auto">
 				<h3 class="uppercase font-bold text-xl h2-blue mb-4">Le service juridique et fiscal</h3>
 				<ul class="font-light text-left">
 					<li>
