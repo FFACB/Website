@@ -69,6 +69,8 @@
 			description: 'Restructuration interne et refonte des outils de communication.'
 		}
 	];
+
+	let activeServices = false;
 </script>
 
 <div
@@ -318,140 +320,159 @@
 		de l'AFCAB pour dispenser des formations à ses membres.
 	</p>
 
-	<div class="flex flex-row h-96">
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue overflow-auto">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-4">Le service juridique et fiscal</h3>
-				<ul class="font-light text-left">
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Établissement des
-						statuts et du règlement intérieur.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Étude du budget
-						prévisionnel.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Tenue des assemblées
-						générales.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-						juridique, fiscal et comptable.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						Mise à disposition du Contrat de Construction de Maison Individuelle (CCMI), régulièrement
-						mis à jour en fonction des dernières évolutions législatives.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						Mise à disposition de différents modèles de contrats types (hors CCMI), d'avenants et autres
-						outils destinés à faciliter leur gestion quotidienne.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Réalisation d'une
-						veille juridique.
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
-				<h3 class="uppercase font-bold text-xl h2-blue mb-4">
-					Le service en charge des assurances
-				</h3>
-				<ul class="font-light text-left">
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						Établissement des dossiers d'assurances en partenariat avec les garants et l'assureur construction
-						: garantie de remboursement et de livraison à prix et délais convenus, garantie décennale,
-						responsabilité civile, assurance dommages-ouvrage...
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						Accompagnement des coopératives dans la gestion des dossiers d'assurance en cas de litige.
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="p-2 basis-1/3 h-full">
-			<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
-				<h3 class="uppercase font-bold text-xl h2-blue">
-					Le service réviseurs en lien avec l'ARCAB
-				</h3>
-				<ul class="font-light text-left">
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						La procédure de révision coopérative a pour objet l'examen critique et analytique de la situation
-						et du fonctionnement de celle-ci en tenant compte des caractéristiques propres des coopératives.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-						L'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment, partenaire de
-						la FFACB, est habilitée à réaliser la révision quinquennale des coopératives. À la FFACB,
-						trois personnes sont agréées et mises à disposition de l'ARCAB pour tenir les révisions.
-					</li>
-				</ul>
-			</div>
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div class="uppercase overflow-ellipsis overflow-hidden whitespace-nowrap cursor-pointer">
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<div
+			on:click={() => {
+				activeServices = true;
+			}}
+			class="m-2 p-4 pt-2 pb-2 font-bold text-white border-2 bg-dark border-dark rounded-full hover:bg-white hover:text-black transition-all duration-300"
+		>
+			Découvrir
 		</div>
 	</div>
-	<div class="flex flex-col m-2 p-8 rounded-3xl border border-blue">
-		<h3 class="uppercase font-bold text-xl h2-blue mb-4">
-			Le service formation en relation avec l'AFCAB
-		</h3>
-		<ul class="font-light text-left">
-			<li>
-				L'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment, a été créée en
-				2003 à la demande du Fonds de Formation conformément à la loi GIRAUD de 2004. Le rôle de
-				l'AFCAB est de répondre à toutes demandes de formations pour les stages techniques,
-				professionnels et transversaux des coopératives et futures coopératives membres de la FFACB.
-			</li>
-			<li>
-				<br />
-				Partenaire de cet organisme, la FFACB met à disposition son personnel qualifié et soutient la
-				gestion des groupements et coopératives par des formations adaptées :
-				<br /><br />
-				<ul class="ml-16">
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Formation préalable
-						à la création de la coopérative.
-					</li>
 
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sensibilisation à la
-						Démarche Qualité.
-					</li>
+	<div class="overflow-hidden {activeServices ? 'h-auto' : 'h-0'}">
+		<div class="flex flex-row h-auto">
+			<div class="p-2 basis-1/3 h-auto">
+				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
+					<h3 class="uppercase font-bold text-xl h2-blue mb-4">Le service juridique et fiscal</h3>
+					<ul class="font-light text-left">
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Établissement des
+							statuts et du règlement intérieur.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Étude du budget
+							prévisionnel.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Tenue des
+							assemblées générales.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
+							juridique, fiscal et comptable.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							Mise à disposition du Contrat de Construction de Maison Individuelle (CCMI), régulièrement
+							mis à jour en fonction des dernières évolutions législatives.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							Mise à disposition de différents modèles de contrats types (hors CCMI), d'avenants et autres
+							outils destinés à faciliter leur gestion quotidienne.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Réalisation d'une
+							veille juridique.
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="p-2 basis-1/3 h-auto">
+				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
+					<h3 class="uppercase font-bold text-xl h2-blue mb-4">
+						Le service en charge des assurances
+					</h3>
+					<ul class="font-light text-left">
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							Établissement des dossiers d'assurances en partenariat avec les garants et l'assureur construction
+							: garantie de remboursement et de livraison à prix et délais convenus, garantie décennale,
+							responsabilité civile, assurance dommages-ouvrage...
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							Accompagnement des coopératives dans la gestion des dossiers d'assurance en cas de litige.
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="p-2 basis-1/3 h-auto">
+				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
+					<h3 class="uppercase font-bold text-xl h2-blue">
+						Le service réviseurs en lien avec l'ARCAB
+					</h3>
+					<ul class="font-light text-left">
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							La procédure de révision coopérative a pour objet l'examen critique et analytique de la
+							situation et du fonctionnement de celle-ci en tenant compte des caractéristiques propres
+							des coopératives.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+							L'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment, partenaire de
+							la FFACB, est habilitée à réaliser la révision quinquennale des coopératives. À la FFACB,
+							trois personnes sont agréées et mises à disposition de l'ARCAB pour tenir les révisions.
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="flex flex-col m-2 p-8 rounded-3xl border border-blue">
+			<h3 class="uppercase font-bold text-xl h2-blue mb-4">
+				Le service formation en relation avec l'AFCAB
+			</h3>
+			<ul class="font-light text-left">
+				<li>
+					L'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment, a été créée en
+					2003 à la demande du Fonds de Formation conformément à la loi GIRAUD de 2004. Le rôle de
+					l'AFCAB est de répondre à toutes demandes de formations pour les stages techniques,
+					professionnels et transversaux des coopératives et futures coopératives membres de la
+					FFACB.
+				</li>
+				<li>
+					<br />
+					Partenaire de cet organisme, la FFACB met à disposition son personnel qualifié et soutient
+					la gestion des groupements et coopératives par des formations adaptées :
+					<br /><br />
+					<ul class="ml-16">
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Formation
+							préalable à la création de la coopérative.
+						</li>
 
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Maîtrise du Contrat
-						de Construction de Maison Individuelle.
-					</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sensibilisation à
+							la Démarche Qualité.
+						</li>
 
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-						juridique.
-					</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Maîtrise du
+							Contrat de Construction de Maison Individuelle.
+						</li>
 
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-						juridique, comptable et fiscal.
-					</li>
-					<li>
-						<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-						administratif et comptable…
-					</li>
-				</ul>
-			</li>
-			<li>
-				<br />
-				Certifiée QUALIOPI, l'AFCAB remplit les 6 critères qualité exigés par le Décret n°2015-790 du
-				30 juin 2015 relatif à la qualité des actions de formation professionnelle continue.<br />
-				L'AFCAB est certifiée selon le Référentiel National sur la Qualité des actions concourants au
-				développement des compétences mentionné à l'article L.6316-3 du code du travail et le PS-FOR-PRO-001
-				- Programme de certification des prestataires concourant au développement des compétences applicable.
-			</li>
-		</ul>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
+							juridique.
+						</li>
+
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
+							juridique, comptable et fiscal.
+						</li>
+						<li>
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
+							administratif et comptable…
+						</li>
+					</ul>
+				</li>
+				<li>
+					<br />
+					Certifiée QUALIOPI, l'AFCAB remplit les 6 critères qualité exigés par le Décret n°2015-790
+					du 30 juin 2015 relatif à la qualité des actions de formation professionnelle continue.<br
+					/>
+					L'AFCAB est certifiée selon le Référentiel National sur la Qualité des actions concourants
+					au développement des compétences mentionné à l'article L.6316-3 du code du travail et le PS-FOR-PRO-001
+					- Programme de certification des prestataires concourant au développement des compétences applicable.
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
 
