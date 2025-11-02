@@ -81,11 +81,11 @@
 		src="/images/AGC/Image10.jpg"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[80%] w-2/5 flex-col justify-end items-center">
+	<div class="relative ml-32 flex h-[100%] w-2/5 flex-col justify-end items-center overflow-hidden">
 		<img
-			class="absolute w-full bottom-0 h-full"
+			class="absolute w-full top-0"
 			alt="background"
-			src="/images/FFACB_forme_entete_page_blue.png"
+			src="/images/pictos/FFACB_formebleu.svg"
 		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">Une coopérative artisanale, c'est quoi ?</h1>

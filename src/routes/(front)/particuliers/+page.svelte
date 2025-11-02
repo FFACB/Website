@@ -12,11 +12,11 @@
 		src="/images/DSC03-6-scaled.jpg"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[70%] w-2/5 flex-col justify-end items-center">
+	<div class="relative ml-32 flex h-[95%] w-2/5 flex-col justify-end items-center overflow-hidden">
 		<img
-			class="absolute w-full bottom-0 h-full"
+			class="absolute w-full top-0 "
 			alt="background"
-			src="/images/FFACB_forme_entete_page_blue.png"
+			src="/images/pictos/FFACB_formebleu.svg"
 		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">
@@ -375,9 +375,9 @@
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
 				<div
-					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full p-8 w-60"
+					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full  w-60"
 				>
-					<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+					<img src="/images/pictos/FFACB_bonhomme.svg" class="w-full h-full" alt="picto quali" />
 				</div>
 
 				<div class="text-center mt-32">
@@ -403,9 +403,9 @@
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
 				<div
-					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full p-8 w-60"
+					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full  w-60"
 				>
-					<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
 				<div class="text-center mt-32">
 					<p class="font-Funnel-Sans-Italic">
