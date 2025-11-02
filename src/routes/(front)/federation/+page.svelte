@@ -78,7 +78,7 @@
 >
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/AGC/Image10.jpg"
+		src="/images/AGC/Image10.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[100%] w-2/5 flex-col justify-end items-center overflow-hidden">

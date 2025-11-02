@@ -12,7 +12,7 @@
 >
 	<img
 		class="w-full h-full object-cover bg-cover absolute"
-		src="/images/JMV8.jpg"
+		src="/images/JMV8.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-full w-2/5 flex-col justify-center items-center">
