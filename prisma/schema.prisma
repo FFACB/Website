@@ -122,6 +122,7 @@ model Cooperative {
   createdAt DateTime @default(now())
   cooperativeRegionId  String
   cooperativeRegion    CooperativeRegion @relation(fields: [cooperativeRegionId], references: [id], onDelete: Cascade)
+  siren String  @default("")
   adresse String  @default("")
   infoComplementaire String  @default("")
   cp Int  @default(0)

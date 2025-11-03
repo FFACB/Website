@@ -17,18 +17,18 @@ export function initialize() {
 		console.log('Initialisation des cooperatives');
 		logger.debug('Initialisation des cooperatives');
 
-		Object.keys(RegionsJson).forEach(async (_region) => {
-			const cooperativeFound = await get(_region);
+		RegionsJson.regions.forEach(async (_region) => {
+			const cooperativeFound = await get(_region.nom);
 
 			if (cooperativeFound != null) {
 				logger.debug(`Cooperative ${cooperativeFound.name.trim()} deja existant, skipped`);
 				return;
 			}
 
-			const cooperativeCree = await create(_region);
+			const cooperativeCree = await create(_region.nom);
 
 			if (cooperativeCree == null) {
-				throw new Error(`Erreur lors de la création du cooperative ${_region}`);
+				throw new Error(`Erreur lors de la création du cooperative ${_region.nom}`);
 			}
 
 			logger.debug(`Parametre ${cooperativeCree.name.trim()} cree avec succes`);
