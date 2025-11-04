@@ -1,6 +1,7 @@
 <script lang="ts">
-	// @ts-nocheck
+	//@ts-nocheck
 	import { browser } from '$app/environment';
+	import { isNumber } from 'chart.js/helpers';
 
 	export let data;
 	const { parametres } = data;
@@ -55,9 +56,9 @@
 		});
 	}
 
-	async function initMap(cooperatives: any) {
+	async function initMap(cooperatives: CooperativeFull[]) {
 		const position = { lat: 46.416132, lng: 2.527045 };
-		//@ts-ignore
+
 		const { Map } = await google.maps.importLibrary('maps');
 
 		const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
@@ -70,9 +71,8 @@
 		});
 
 		cooperatives.forEach((coop) => {
-			//@ts-ignore
-
-			const trimedRegion = coop.region
+			
+			const trimedRegion = coop.cooperativeRegion.name
 				.replace(/[^a-zA-Z ]/g, '')
 				.replace(/ /g, '')
 				.toLowerCase();
@@ -82,9 +82,9 @@
                 <div class="flex flex-col">
                         <div class="w-full text-left">
                             <h2 class="h2-blue font-bold text-sm">${coop.name}</h2>
-                            <p class="font-light">${coop.address}</p>
+                            <p class="font-light">${coop.adresse}</p>
                              <p class="font-light">${coop.cp} ${coop.ville}</p>
-                             <a class="h2-blue font-bold text-sm" href="mailto:${coop.email}">${coop.email}</a>
+                             <a class="h2-blue font-bold text-sm" href="mailto:${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}">${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}</a>
                         </div>
                 </div>
 
@@ -98,9 +98,22 @@
 			coop_img.style.transform = 'translateY(17px)';
 			coop_img.src = new URL('/images/FFACB_picto_map.png', import.meta.url).href;
 
+			const latlng = {
+				lat : 0,
+				lng : 0
+			}
+
+			if (!isNaN(coop.latitude) && isNumber(coop.latitude)) {
+				latlng.lat = parseFloat(coop.latitude);
+			}
+
+			if (!isNaN(coop.longitude) && isNumber(coop.longitude)) {
+				latlng.lng = parseFloat(coop.longitude);
+			}
+
 			const marker = new AdvancedMarkerElement({
 				map: null,
-				position: { lat: coop.lat, lng: coop.lng },
+				position: { lat: latlng.lat, lng: latlng.lng },
 				title: coop.name,
 				content: coop_img,
 				gmpClickable: true
@@ -128,19 +141,18 @@
 		const coop_list = document.getElementById('cooperatives-list');
 
 		let stringbuilder = ``;
-
+		
 		for (const region of Object.keys(markers)) {
 			stringbuilder += `
             
             <div class="cooperative-item region-${region} cooperative-inactive" onclick="toggleListItem('${region}')">
-				<span class="uppercase">${markers[region][0].data.region}</span>
+				<span class="uppercase">${markers[region][0].data.cooperativeRegion.name}</span>
 				<span>+</span>
 			</div>
 
             `;
 		}
-
-		coop_list.innerHTML = stringbuilder;
+		if (coop_list != null) coop_list.innerHTML = stringbuilder;
 	}
 
 	if (browser) {
@@ -150,7 +162,7 @@
 		window.toggleListItem = function (region: string) {
 			const coop_list = document.getElementById('cooperatives-list');
 
-			coop_list.querySelectorAll('.cooperative-active').forEach((item) => {
+			coop_list?.querySelectorAll('.cooperative-active').forEach((item) => {
 				item.classList.remove('cooperative-active');
 				item.classList.add('cooperative-inactive');
 
@@ -170,7 +182,7 @@
 			});
 
 			const coop_title = document.getElementById('cooperative-title');
-			coop_title.innerHTML = markers[region][0].data.region;
+			coop_title.innerHTML = markers[region][0].data.cooperativeRegion.name;
 			const cooperatives_display = document.getElementById('cooperatives-display');
 			let stringbuilder = ``;
 
@@ -181,15 +193,15 @@
                     <div class="flex flex-col">
                         <div class="w-full text-left">
                             <h2 class="h2-blue font-bold text-sm">${coop.data.name}</h2>
-                            <p class="font-light">${coop.data.address}</p>
+                            <p class="font-light">${coop.data.adresse}</p>
                              <p class="font-light">${coop.data.cp} ${coop.data.ville}</p>
-                             <a class="h2-blue font-bold text-sm" href="mailto:${coop.data.email}">${coop.data.email}</a>
+                             <a class="h2-blue font-bold text-sm" href="mailto:${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}">${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}</a>
                         </div> </div>
                 </div>
                 `;
 			}
 
-			cooperatives_display.innerHTML = stringbuilder;
+			if (cooperatives_display != null) cooperatives_display.innerHTML = stringbuilder;
 		};
 	}
 </script>

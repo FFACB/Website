@@ -23,6 +23,7 @@ export const action_upsert = async (event: RequestEvent) => {
 	const {
 		id,
 		name,
+		siren,
 		cooperativeRegionId,
 		adresse,
 		infoComplementaire,
@@ -66,6 +67,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			create: {
 				name: name as string,
 				cooperativeRegionId: cooperativeRegionId as string,
+				siren: siren as string,
 				adresse: adresse as string,
 				infoComplementaire: infoComplementaire as string,
 				cp: parseInt((cp as string) ?? '0'),
@@ -85,6 +87,7 @@ export const action_upsert = async (event: RequestEvent) => {
 			update: {
 				name: name as string,
 				cooperativeRegionId: cooperativeRegionId as string,
+				siren: siren as string,
 				adresse: adresse as string,
 				infoComplementaire: infoComplementaire as string,
 				cp: parseInt((cp as string) ?? '0'),

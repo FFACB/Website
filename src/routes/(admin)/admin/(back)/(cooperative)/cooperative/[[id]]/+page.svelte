@@ -136,13 +136,18 @@
 
 			<label class="label mb-4" for="cooperativeRegionId">
 				<span class="ml-3 font-semibold">Régions</span><br />
-				<select id="cooperativeRegionId" class="input" name="cooperativeRegionId" value={cooperative?.cooperativeRegionId}>
+				<select
+					id="cooperativeRegionId"
+					class="input"
+					name="cooperativeRegionId"
+					value={cooperative?.cooperativeRegionId}
+				>
 					{#each cooperativeRegions as cooperativeRegion}
 						<option value={cooperativeRegion.id}>{cooperativeRegion.name}</option>
 					{/each}
 				</select>
 			</label>
-
+			<Text name="Siren" identifier="siren" value={cooperative?.siren} />
 			<Text name="Adresse" identifier="adresse" value={cooperative?.adresse} />
 			<Text
 				name="informations complementaires"

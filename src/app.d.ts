@@ -24,6 +24,35 @@ declare global {
 		path: string;
 		createdAt: Date;
 	};
+
+	export type CooperativeFull = {
+		cooperativeRegion: {
+			id: string;
+			name: string;
+			createdAt: Date;
+		};
+	} & {
+		id: string;
+		name: string;
+		createdAt: Date;
+		cooperativeRegionId: string;
+		siren: string;
+		adresse: string;
+		infoComplementaire: string;
+		cp: number;
+		ville: string;
+		siteInternet: string;
+		adresseMail: string;
+		telephone: string;
+		contact1Nom: string;
+		contact1telephone: string;
+		contact1Email: string;
+		contact2Nom: string;
+		contact2telephone: string;
+		contact2Email: string;
+		latitude: string;
+		longitude: string;
+	};
 }
 
 export {};

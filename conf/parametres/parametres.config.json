@@ -68,5 +68,12 @@
 		"default_value": "",
 		"env_key": "PUBLIC_SMTP_SENDER_NAME",
 		"order": 10
+	},
+	{
+		"key": "PUBLIC_GOOGLE_API_KEY",
+		"label": "Clé Google Maps",
+		"default_value": "",
+		"env_key": "PUBLIC_GOOGLE_API_KEY",
+		"order": 11
 	}
 ]

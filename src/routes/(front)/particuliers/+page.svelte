@@ -13,11 +13,7 @@
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[95%] w-2/5 flex-col justify-end items-center overflow-hidden">
-		<img
-			class="absolute w-full top-0 "
-			alt="background"
-			src="/images/pictos/FFACB_formebleu.svg"
-		/>
+		<img class="absolute w-full top-0" alt="background" src="/images/pictos/FFACB_formebleu.svg" />
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">
 				La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB)
@@ -66,7 +62,7 @@
 		</div>
 	</div>
 	<div class="basis-1/2 flex flex-col">
-		<div class="h-full w-full relative">
+		<div class="h-full w-full relative overflow-hidden">
 			<img
 				class="absolute top-1/2 -translate-y-1/2 right-0 scale-150"
 				src="/images/profesionnel-droit.png"
@@ -243,27 +239,25 @@
 					: ''}"
 			>
 				<div>
-					<p class="text-dark pl-4 text-lg font-bold">De l'assurance :</p>
 					<ul class="">
 						<li class="text-dark mb-2">
-							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Responsabilité
-							Civile Professionnelle.
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>La Garantie de
+							Remboursement des Acomptes (garantie facultative dans le cadre du Contrat de
+							Construction de Maison Individuelle - CCMI).
 						</li>
 						<li class="text-dark mb-2">
-							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
-							décennale.
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>La Garantie de
+							Livraison à prix et délai convenus (garantie obligatoire dans le cadre du Contrat de
+							Construction de Maison Individuelle - CCMI).
 						</li>
 						<li class="text-dark mb-2">
-							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>TRC, Tous Risques
-							Chantier.
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>La Garantie de
+							Paiement des sous-traitants.
 						</li>
-					</ul>
-
-					<p class="text-dark pl-4 text-lg mt-2 font-bold">Du Maître de l'Ouvrage :</p>
-					<ul class="">
 						<li class="text-dark mb-2">
-							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Assurance
-							Dommages-Ouvrage.
+							<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>La Garantie
+							Financière d’Achèvement (garantie obligatoire dans le cadre d’une Vente en l’État de
+							Futur Achèvement - VEFA).
 						</li>
 					</ul>
 				</div>
@@ -374,9 +368,7 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<div
-					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full  w-60"
-				>
+				<div class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full w-60">
 					<img src="/images/pictos/FFACB_bonhomme.svg" class="w-full h-full" alt="picto quali" />
 				</div>
 
@@ -402,9 +394,7 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<div
-					class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full  w-60"
-				>
+				<div class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full w-60">
 					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
 				<div class="text-center mt-32">
@@ -459,7 +449,6 @@
 		<div class=" border bg-dark border-black rounded-full p-8 w-52">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
-	
 	</div>
 	<div class="w-3/5 ml-7">
 		<div class="font-Funnel-Sans-Italic text-lg text-dark">
