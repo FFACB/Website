@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types';
 import { getParametre } from '$lib/server/parametres/parametres';
 import { prisma } from '$lib/server/prisma';
 
-export const prerender = 'auto';
+export const prerender = false
 
 export const load: PageServerLoad = async () => {
 	const PUBLIC_GOOGLE_API_KEY = await getParametre('PUBLIC_GOOGLE_API_KEY');
@@ -20,3 +20,5 @@ export const load: PageServerLoad = async () => {
 		cooperatives: cooperatives as CooperativeFull[]
 	};
 };
+
+
