@@ -27,7 +27,7 @@ export const action_upsert = async (event: RequestEvent) => {
 		cooperativeRegionId,
 		adresse,
 		infoComplementaire,
-		cp,
+
 		ville,
 		siteInternet,
 		adresseMail,
@@ -41,6 +41,7 @@ export const action_upsert = async (event: RequestEvent) => {
 		latitude,
 		longitude
 	} = data;
+	let { cp } = data;
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/cooperative');
 
@@ -57,6 +58,10 @@ export const action_upsert = async (event: RequestEvent) => {
 			data: data,
 			errorMsg: '❌ Le nom ne doit pas être vide'
 		});
+	}
+
+	if (IsEmptyString(cp)) {
+		cp = '0';
 	}
 
 	try {

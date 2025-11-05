@@ -22,7 +22,7 @@
 	</div>
 </div>
 <div class="flex flex-row bg-white">
-	<div class="basis-1/2 p-16 pl-48">
+	<div class="basis-full md:basis-1/2 p-16 pl-48">
 		<h2 class="h2-blue font-bold">
 			Des travaux de qualité, responsables et de proximité avec nos coopératives membres !
 		</h2>
@@ -61,7 +61,7 @@
 			></SimpleButton>
 		</div>
 	</div>
-	<div class="basis-1/2 flex flex-col">
+	<div class="basis-1/2  flex-col  hidden md:flex">
 		<div class="h-full w-full relative overflow-hidden">
 			<img
 				class="absolute top-1/2 -translate-y-1/2 right-0 scale-150"
@@ -73,7 +73,7 @@
 </div>
 
 <div class="flex flex-row bg-dark overflow-hidden">
-	<div class="basis-1/2 flex flex-col">
+	<div class="basis-1/2  flex-col hidden md:flex ">
 		<div class="h-full w-full relative">
 			<img
 				class="absolute -scale-x-150 top-1/2 -translate-y-1/2 left- scale-150"
@@ -83,7 +83,7 @@
 		</div>
 	</div>
 
-	<div class="basis-1/2 p-16 pr-48">
+	<div class="basis-full md:basis-1/2 p-16 pr-48 md:pl-0 pl-48">
 		<h2 class="h2-blue font-bold">Pourquoi faire appel à une coopérative membre de la FFACB ?</h2>
 		<br />
 		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
@@ -187,21 +187,21 @@
 
 	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
 		<div class="relative">
-			<div class="absolute bottom-full w-4/5 flex left-12">
+			<div class="absolute bottom-full w-full flex ">
 				<input
 					type="button"
 					on:click={() => (isAssurancesEnabled = true)}
-					class="uppercase absolute bottom-0 left-0 w-2/3 z-10 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer"
+					class="uppercase absolute bottom-0 left-6 w-1/2 z-10 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer"
 					value="Assurances obligatoires"
 				/>
 
 				<input
 					type="button"
 					on:click={() => (isAssurancesEnabled = false)}
-					class="uppercase absolute bottom-0 left-1/3 w-2/3 bg-lightgrey {isAssurancesEnabled
+					class="uppercase absolute bottom-0 right-6 w-1/2 bg-lightgrey {isAssurancesEnabled
 						? ''
 						: 'z-20'} text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer"
-					value="Gartanties"
+					value="Garanties"
 				/>
 			</div>
 
@@ -368,11 +368,11 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<div class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full w-60">
-					<img src="/images/pictos/FFACB_bonhomme.svg" class="w-full h-full" alt="picto quali" />
+					<div class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4">
+					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
 
-				<div class="text-center mt-32">
+				<div class="text-center mt-16">
 					<p class="font-Funnel-Sans-Italic">
 						« Nous avons avant toute chose adhéré aux principes du travail artisanal et aux valeurs
 						d'entreprises locales qui transmettent leur savoir-faire. Au-delà de ça, nous avons
@@ -394,10 +394,10 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<div class="absolute top-0 -translate-y-1/2 border bg-dark border-black rounded-full w-60">
+				<div class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4">
 					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
-				<div class="text-center mt-32">
+				<div class="text-center mt-16">
 					<p class="font-Funnel-Sans-Italic">
 						« À travers notre modèle d'économie sociale et solidaire, nous incitons les clients à
 						être consomm'acteurs. De notre côté, en adhérant à la FFACB, nous leur offrons un cadre
@@ -429,8 +429,8 @@
 		</p>
 		<SimpleButton
 			backgroundColor="bg-dark"
-			title="Nous contacter"
-			link="/contact"
+			title="Nos coopératives"
+			link="/cooperatives"
 			borderColor="border-dark"
 		></SimpleButton>
 
@@ -446,7 +446,7 @@
 
 <div class="bg-white flex justify-center items-center pt-12 pb-12">
 	<div class="h-auto">
-		<div class=" border bg-dark border-black rounded-full p-8 w-52">
+		<div class=" border bg-dark border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>

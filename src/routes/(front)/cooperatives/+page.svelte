@@ -2,6 +2,7 @@
 	//@ts-nocheck
 	import { browser } from '$app/environment';
 	import { isNumber } from 'chart.js/helpers';
+	import { onMount } from 'svelte';
 
 	export let data;
 	const { parametres } = data;
@@ -10,6 +11,8 @@
 
 	let map: any;
 	let markers = {};
+
+
 
 	async function importMap(apiKey: string) {
 		((g) => {
@@ -71,7 +74,6 @@
 		});
 
 		cooperatives.forEach((coop) => {
-			
 			const trimedRegion = coop.cooperativeRegion.name
 				.replace(/[^a-zA-Z ]/g, '')
 				.replace(/ /g, '')
@@ -81,11 +83,54 @@
 				content: `
                 <div class="flex flex-col">
                         <div class="w-full text-left">
-                            <h2 class="h2-blue font-bold text-sm">${coop.name}</h2>
-                            <p class="font-light">${coop.adresse}</p>
-                             <p class="font-light">${coop.cp} ${coop.ville}</p>
-                             <a class="h2-blue font-bold text-sm" href="mailto:${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}">${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}</a>
-                        </div>
+                            <h2 class="h2-blue font-bold ">${coop.name}</h2><br>
+
+							${coop.adresse != "" || coop.cp != "0" || coop.ville != "" ?`
+							  <div>
+							 	<h3 class="h2-blue font-bold text-sm">Localité :</h3>
+								<p class="font-light ml-4">${coop.adresse}</p>
+								<p class="font-light ml-4">${coop.cp} ${coop.ville}</p>
+							 </div>
+
+                         		<br>
+								`: ""}
+							${coop.siteInternet != "" ? 
+							`
+								<div>
+							 		<h3 class="h2-blue font-bold text-sm">Website :</h3>
+									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet}">${coop.siteInternet}</a>
+								</div>
+							 	<br>
+								`: ""}
+							${coop.adresseMail != "" || coop.contact1Email != "" ?
+							`
+							   <div>
+							 		<h3 class="h2-blue font-bold text-sm">Email principal :</h3>
+                             		<a class="text-dark underline font-bold text-xs ml-4" href="mailto:${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}">${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}</a><br>
+							 	</div>
+							 	<br>
+								`: ""}
+						 	${coop.contact1Nom != "" && coop.contact2Nom != "" ?
+								`
+							 	<h3 class="h2-blue font-bold text-sm">Contact :</h3>
+										`: ""}
+									 	${coop.contact1Nom != "" ? 
+								`
+							 	<div>
+									<div class="ml-4 font-light">${coop.contact1Nom} 
+										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="tel:${coop.contact1telephone}">${coop.contact1telephone}</a>
+										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="mailto:${coop.contact1Email}">${coop.contact1Email}</a>
+									</div>
+								`: ""}
+								 	${coop.contact2Nom != "" ? 
+								`
+									<div class="ml-4 font-light">${coop.contact2Nom} 
+										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="tel:${coop.contact2telephone}">${coop.contact2telephone}</a>
+										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="mailto:${coop.contact2Email}">${coop.contact2Email}</a>
+								</div>
+								`: ""}
+								 </div>
+							 </div>
                 </div>
 
                 `,
@@ -99,9 +144,9 @@
 			coop_img.src = new URL('/images/FFACB_picto_map.png', import.meta.url).href;
 
 			const latlng = {
-				lat : 0,
-				lng : 0
-			}
+				lat: 0,
+				lng: 0
+			};
 
 			if (!isNaN(coop.latitude) && isNumber(coop.latitude)) {
 				latlng.lat = parseFloat(coop.latitude);
@@ -141,7 +186,7 @@
 		const coop_list = document.getElementById('cooperatives-list');
 
 		let stringbuilder = ``;
-		
+
 		for (const region of Object.keys(markers)) {
 			stringbuilder += `
             
@@ -200,32 +245,25 @@
                 </div>
                 `;
 			}
-
+			
 			if (cooperatives_display != null) cooperatives_display.innerHTML = stringbuilder;
 		};
+		
 	}
+
+
 </script>
 
 <div class="cooperatives-container flex bg-white shadow-inner">
-	<div class="p-16">
+	<div class="p-16 min-w-[25%]">
 		<h1 class="h2-blue font-bold mb-8">Trouver votre coopérative</h1>
 		<div id="cooperatives-list" class="flex flex-col"></div>
 	</div>
 	<div id="map" class="map-container h-[calc(100vh-112px)] w-full"></div>
 </div>
 <div class="bg-white p-16">
-	<h2 id="cooperative-title" class="h2-blue font-bold mb-8">Auvergne-Rhône-Alpes</h2>
+	<div id="cooperative-title" class="h2-blue font-bold mb-8"></div>
 	<div id="cooperatives-display" class="flex flex-row flex-wrap justify-start">
-		<div class="flex basis-1/3 justify-center mb-8">
-			<span class="w-2 h-2 inline-block mt-2 bg-blue rounded-full mr-2"></span>
-			<div class="flex flex-col">
-				<div class="w-full text-left">
-					<h2 class="h2-blue font-bold text-sm">3B COOP (26)</h2>
-					<p class="font-light">3B COOP (26) 545 route de la correspondance</p>
-					<p class="font-light">26300 Bourg-de-Péage</p>
-					<a class="h2-blue font-bold text-sm" href="mailto:brice@3b-coop.fr">brice@3b-coop.fr</a>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 </div>

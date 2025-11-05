@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
+	import { onMount } from 'svelte';
 
 	let servicesActiveIndex = 0;
 	let servicesZIndex = 60;
@@ -17,17 +18,23 @@
 
 		htmlAccompagnement.style.backgroundColor = '#DCEFFC';
 		htmlAccompagnement.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlAccompagnement.style.fontWeight = 'normal';
 		htmlAssurances.style.backgroundColor = '#DCEFFC';
 		htmlAssurances.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlAssurances.style.fontWeight = 'normal';
 		htmlArcab.style.backgroundColor = '#DCEFFC';
 		htmlArcab.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlArcab.style.fontWeight = 'normal';
 		htmlFormations.style.backgroundColor = '#DCEFFC';
 		htmlFormations.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlFormations.style.fontWeight = 'normal';
 		htmlPartage.style.backgroundColor = '#DCEFFC';
 		htmlPartage.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlPartage.style.fontWeight = 'normal';
 
 		element.style.backgroundColor = '#ffffff'; //"#DCEFFC";
 		element.style.borderBottomColor = '#ffffff';
+		element.style.fontWeight = 'bold';
 
 		document.querySelectorAll('.blocks').forEach((element) => {
 			if (element instanceof HTMLElement) {
@@ -39,6 +46,12 @@
 			}
 		});
 	}
+
+	onMount(() => {
+
+		clickService(htmlAccompagnement, 0);
+
+	})
 </script>
 
 <div
@@ -149,13 +162,13 @@
 			<img
 				src="/images/profesionnel-droit.png"
 				alt="professionnel"
-				class="w-auto h-full object-contain bg-contain absolute -translate-y-1/3 right-0 top-0"
+				class="w-auto h-full object-contain bg-contain absolute -translate-y-1/3 right-0 top-0 hidden md:block"
 			/>
 
 			<div class="flex flex-col w-full h-1/2 relative p-16">
 				<div class="relative h-full">
 					<div
-						class=" border bg-white border-black rounded-full p-8 w-1/4 h-1-4 object-cover bg-cover absolute bottom-0 left-0"
+						class=" border bg-white border-black rounded-full p-8 w-1/5  object-cover bg-cover absolute bottom-0 left-0"
 					>
 						<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 					</div>
@@ -239,7 +252,7 @@
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<div class=" border bg-white border-black rounded-full p-8 w-52">
+		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
@@ -264,14 +277,14 @@
 	<br /><br />
 
 	<div class="relative mt-16">
-		<div class="absolute bottom-full translate-y-[1px] w-full flex left-12">
+		<div class="absolute bottom-full translate-y-[1px] w-[95%] flex left-1/2 -translate-x-1/2 ">
 			<input
 				type="button"
 				on:click={() => {
 					clickService(htmlAccompagnement, 0);
 				}}
 				bind:this={htmlAccompagnement}
-				class="uppercase absolute bottom-0 left-0 w-1/4 z-50 p-4 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase absolute bottom-0 left-0 w-1/5 z-50 p-4 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
 				value="ACCOMPAGNEMENT"
 			/>
 
@@ -281,7 +294,7 @@
 					clickService(htmlAssurances, 1);
 				}}
 				bind:this={htmlAssurances}
-				class="uppercase absolute bottom-0 left-[15%] w-1/4 z-40 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase absolute bottom-0 left-[20%] w-1/5 z-40 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
 				value="ASSURANCES"
 			/>
 
@@ -291,7 +304,7 @@
 					clickService(htmlArcab, 2);
 				}}
 				bind:this={htmlArcab}
-				class="uppercase absolute bottom-0 left-[30%] w-1/4 z-30 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase absolute bottom-0 left-[40%] w-1/5 z-30 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
 				value="ARCAB"
 			/>
 
@@ -301,7 +314,7 @@
 					clickService(htmlFormations, 3);
 				}}
 				bind:this={htmlFormations}
-				class="uppercase absolute bottom-0 left-[45%] w-1/4 z-20 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase absolute bottom-0 left-[60%] w-1/5 z-20 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
 				value="FORMATIONS"
 			/>
 
@@ -311,7 +324,7 @@
 					clickService(htmlPartage, 4);
 				}}
 				bind:this={htmlPartage}
-				class="uppercase absolute bottom-0 left-[60%] w-1/4 z-10 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase absolute bottom-0 left-[80%] w-1/5 z-10 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
 				value="PARTAGE"
 			/>
 		</div>
@@ -644,17 +657,17 @@
 						<ul>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong> L'Assemblée Générale </strong>de la FFACB rassemble les adhérents
+								></span><strong> L'Assemblée Générale </strong> de la FFACB rassemble les adhérents
 								une fois par an, sauf exception liée au contexte économique ou sociétal.
 							</li>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong>Des réunions régionales </strong>sont proposées de manière
+								></span><strong>Des réunions régionales </strong> sont proposées de manière
 								ponctuelle avec les partenaires pour renforcer les échanges.
 							</li>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong>Des webinaires </strong>liés à des sujets d'actualité ou des
+								></span><strong>Des webinaires </strong> liés à des sujets d'actualité ou des
 								problématiques majeures pour les adhérents sont régulièrement suggérés autour de
 								thèmes tels que le carnet d'information du logement ou encore les différents types
 								de marchés auxquels peuvent répondre les coopératives.
@@ -793,7 +806,7 @@
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<div class=" border bg-white border-black rounded-full p-8 w-52">
+		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>

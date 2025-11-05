@@ -86,6 +86,6 @@
 		|
 		<a href="/mentions">Mentions légales</a>
 		|
-		<a target="_blank" href="https://www.sogocom.fr">Réalisation : Sogo'com.fr</a>
+		<a target="_blank" href="https://www.sogocom.fr">Réalisation : Sogo Com</a>
 	</div>
 </footer>

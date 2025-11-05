@@ -123,8 +123,7 @@
 		padding: 150px 8rem;
 
 		h1,
-		h2,
-		h3 {
+		h2 {
 			color: var(--dark-color-0d1c30);
 
 			margin: 4rem;

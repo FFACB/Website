@@ -82,11 +82,7 @@
 		alt="federation"
 	/>
 	<div class="relative ml-32 flex h-[100%] w-2/5 flex-col justify-end items-center overflow-hidden">
-		<img
-			class="absolute w-full top-0"
-			alt="background"
-			src="/images/pictos/FFACB_formebleu.svg"
-		/>
+		<img class="absolute w-full top-0" alt="background" src="/images/pictos/FFACB_formebleu.svg" />
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">Une coopérative artisanale, c'est quoi ?</h1>
 			<div class="text-white">
@@ -149,7 +145,7 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<div class=" border bg-white border-black rounded-full p-8 w-52">
+		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
@@ -290,7 +286,7 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto">
-		<div class=" border bg-white border-black rounded-full p-8 w-52">
+		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
@@ -486,21 +482,28 @@
 			{#each dates as date, index}
 				<div
 					style="left: {(index / (dates.length - 1)) * 90 + 5}%;"
-					class="flex flex-col justify-center items-start bg-white max-w-64 rounded-3xl p-4 absolute -translate-x-1/2 top-[60%] -translate-y-full {activeIndex ===
-						index || activeHover === index
+					class="flex flex-col justify-center items-start bg-white max-w-64 rounded-3xl p-4 absolute -translate-x-1/2 top-[55%] -translate-y-full {activeIndex ===
+					index
 						? 'z-10'
-						: 'hidden'} {activeHover === index ? 'z-20' : ''}"
+						: 'hidden'}"
 				>
-					<h3 class="h2-blue text-xl font-bold">{date.date}</h3>
 					<p class=" text-start {activeIndex === index ? '' : 'hidden'}">
 						{date.description}
 					</p>
 				</div>
+
+				<div
+					style="left: {(index / (dates.length - 1)) * 90 + 5}%;"
+					class="flex flex-col justify-center items-start bg-white max-w-64 rounded-3xl p-4 absolute -translate-x-1/2 top-full -translate-y-full z-10"
+				>
+					<h3 class="h2-blue text-xl font-bold">{date.date}</h3>
+				</div>
+
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<div
 					style="left: {(index / (dates.length - 1)) * 90 + 5}%;"
-					class="h-5 w-5 rounded-3xl bg-blue absolute top-3/4 -translate-y-1/2 -translate-x-1/2 cursor-pointer z-10"
+					class="h-5 w-5 rounded-3xl bg-blue absolute top-[65%] -translate-y-1/2 -translate-x-1/2 cursor-pointer z-10"
 					on:mouseenter={() => {
 						activeHover = index;
 					}}
@@ -509,7 +512,7 @@
 					}}
 				></div>
 			{/each}
-			<div class="h-[2px] w-[90%] bg-blue top-3/4 -translate-y-1/2 absolute"></div>
+			<div class="h-[2px] w-[90%] bg-blue top-[65%] -translate-y-1/2 absolute"></div>
 		</div>
 	</div>
 </div>
@@ -525,21 +528,26 @@
 		<div class="basis-1/3 p-4">
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
-				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
+				<p class="">Coopératives ou groupements adhérents actifs au 31/12/2024</p>
 			</div>
 		</div>
 
 		<div class="basis-1/3 p-4">
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">713</h3>
-				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
+				<p class="">
+					Entreprises artisanales (hors Tiers Non Associés) qui emploient 3 500 salariés.
+				</p>
 			</div>
 		</div>
 
 		<div class="basis-1/3 p-4">
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">90</h3>
-				<p class="">coopératives ou groupements adhérents actifs au 31/12/2024</p>
+				<p class="">
+					Millions de chiffre d'affaires réalisés par les coopératives et groupements membres de la
+					fédération.
+				</p>
 			</div>
 		</div>
 	</div>
