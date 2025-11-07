@@ -12,8 +12,6 @@
 	let map: any;
 	let markers = {};
 
-
-
 	async function importMap(apiKey: string) {
 		((g) => {
 			var h,
@@ -85,7 +83,9 @@
                         <div class="w-full text-left">
                             <h2 class="h2-blue font-bold ">${coop.name}</h2><br>
 
-							${coop.adresse != "" || coop.cp != "0" || coop.ville != "" ?`
+							${
+								coop.adresse != '' || coop.cp != '0' || coop.ville != ''
+									? `
 							  <div>
 							 	<h3 class="h2-blue font-bold text-sm">Localité :</h3>
 								<p class="font-light ml-4">${coop.adresse}</p>
@@ -93,42 +93,59 @@
 							 </div>
 
                          		<br>
-								`: ""}
-							${coop.siteInternet != "" ? 
-							`
+								`
+									: ''
+							}
+							${
+								coop.siteInternet != ''
+									? `
 								<div>
 							 		<h3 class="h2-blue font-bold text-sm">Website :</h3>
 									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet}">${coop.siteInternet}</a>
 								</div>
 							 	<br>
-								`: ""}
-							${coop.adresseMail != "" || coop.contact1Email != "" ?
-							`
+								`
+									: ''
+							}
+							${
+								coop.adresseMail != '' || coop.contact1Email != ''
+									? `
 							   <div>
 							 		<h3 class="h2-blue font-bold text-sm">Email principal :</h3>
                              		<a class="text-dark underline font-bold text-xs ml-4" href="mailto:${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}">${coop.adresseMail == '' ? coop.contact1Email : coop.adresseMail}</a><br>
 							 	</div>
 							 	<br>
-								`: ""}
-						 	${coop.contact1Nom != "" && coop.contact2Nom != "" ?
 								`
+									: ''
+							}
+						 	${
+								coop.contact1Nom != '' && coop.contact2Nom != ''
+									? `
 							 	<h3 class="h2-blue font-bold text-sm">Contact :</h3>
-										`: ""}
-									 	${coop.contact1Nom != "" ? 
-								`
+										`
+									: ''
+							}
+									 	${
+											coop.contact1Nom != ''
+												? `
 							 	<div>
 									<div class="ml-4 font-light">${coop.contact1Nom} 
 										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="tel:${coop.contact1telephone}">${coop.contact1telephone}</a>
 										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="mailto:${coop.contact1Email}">${coop.contact1Email}</a>
 									</div>
-								`: ""}
-								 	${coop.contact2Nom != "" ? 
 								`
+												: ''
+										}
+								 	${
+										coop.contact2Nom != ''
+											? `
 									<div class="ml-4 font-light">${coop.contact2Nom} 
 										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="tel:${coop.contact2telephone}">${coop.contact2telephone}</a>
 										<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="mailto:${coop.contact2Email}">${coop.contact2Email}</a>
 								</div>
-								`: ""}
+								`
+											: ''
+									}
 								 </div>
 							 </div>
                 </div>
@@ -166,6 +183,13 @@
 
 			marker.addListener('click', ({ domEvent, latLng }) => {
 				const { target } = domEvent;
+
+				Object.values(markers).forEach((markerRegions) => {
+					markerRegions.forEach((marker) => {
+						marker.infowindow.close();
+					});
+				});
+
 				infowindow.open(marker.map, marker);
 			});
 
@@ -245,13 +269,10 @@
                 </div>
                 `;
 			}
-			
+
 			if (cooperatives_display != null) cooperatives_display.innerHTML = stringbuilder;
 		};
-		
 	}
-
-
 </script>
 
 <div class="cooperatives-container flex bg-white shadow-inner">
@@ -263,7 +284,5 @@
 </div>
 <div class="bg-white p-32">
 	<div id="cooperative-title" class="h2-blue font-bold mb-8"></div>
-	<div id="cooperatives-display" class="flex flex-row flex-wrap justify-start">
-		
-	</div>
+	<div id="cooperatives-display" class="flex flex-row flex-wrap justify-start"></div>
 </div>
