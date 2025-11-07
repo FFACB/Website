@@ -233,7 +233,7 @@
 
 			for (const coop of markers[region]) {
 				stringbuilder += `
-                <div class="flex basis-1/3 justify-center mb-8">
+                <div class="flex basis-1/3 justify-left mb-8">
                     <span class="w-2 h-2 inline-block mt-2 bg-blue rounded-full mr-2"></span>
                     <div class="flex flex-col">
                         <div class="w-full text-left">
@@ -261,7 +261,7 @@
 	</div>
 	<div id="map" class="map-container h-[calc(100vh-112px)] w-full"></div>
 </div>
-<div class="bg-white p-16">
+<div class="bg-white p-32">
 	<div id="cooperative-title" class="h2-blue font-bold mb-8"></div>
 	<div id="cooperatives-display" class="flex flex-row flex-wrap justify-start">
 		
