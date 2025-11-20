@@ -20,12 +20,31 @@
 	} from '$lib/client/toasts/toasts.js';
 	import Text from '$lib/components/admin/modules/detail/Text.svelte';
 	import Number from '$lib/components/admin/modules/detail/Number.svelte';
+	import PicturePicker from '$lib/components/admin/assets/pictures/PicturePicker.svelte';
+	import { onMount } from 'svelte';
 
 	const toastStore = getToastStore();
 
 	let { data } = $props();
 
-	let { cooperative, cooperativeRegion, cooperativeRegions } = $state(data);
+	let {
+		cooperative,
+		cooperativeRegion,
+		cooperativeRegions,
+		pictureAsset1,
+		pictureAsset2,
+		pictureAsset3
+	} = $state(data);
+
+	let picturePicker1: PicturePicker | null = $state(null);
+	let picturePicker2: PicturePicker | null = $state(null);
+	let picturePicker3: PicturePicker | null = $state(null);
+
+	onMount(() => {
+		picturePicker1?.loadAssetRelation(pictureAsset1);
+		picturePicker2?.loadAssetRelation(pictureAsset2);
+		picturePicker3?.loadAssetRelation(pictureAsset3);
+	});
 
 	const submitCreateCooperative = async ({
 		formData,
@@ -55,6 +74,12 @@
 					if (typeof result.data !== 'undefined') {
 						cooperative = result.data.cooperative;
 						cooperativeRegion = result.data.cooperativeRegion;
+						pictureAsset1 = result.data.pictureAsset1;
+						pictureAsset2 = result.data.pictureAsset2;
+						pictureAsset3 = result.data.pictureAsset3;
+						picturePicker1?.loadAssetRelation(pictureAsset1);
+						picturePicker2?.loadAssetRelation(pictureAsset2);
+						picturePicker3?.loadAssetRelation(pictureAsset3);
 					}
 
 					break;
@@ -176,6 +201,12 @@
 			<Text name="Contact 2 Email" identifier="contact2Email" value={cooperative?.contact2Email} />
 			<Text name="Latitude" identifier="latitude" value={cooperative?.latitude} />
 			<Text name="Longitude" identifier="longitude" value={cooperative?.longitude} />
+
+			<PicturePicker bind:this={picturePicker1} assetName="Photo 1" />
+			<PicturePicker bind:this={picturePicker2} identifier="1" assetName="Photo 2" />
+			<PicturePicker bind:this={picturePicker3} identifier="2" assetName="Photo 3" />
+
+			<Text name="Lien video" identifier="lienVideo" value={cooperative?.lienVideo} />
 
 			<input type="hidden" name="id" value={cooperative?.id ?? null} />
 		</form>

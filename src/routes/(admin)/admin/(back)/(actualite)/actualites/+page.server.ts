@@ -6,9 +6,7 @@ export type ActualiteListing = {
 	id: string;
 	titre: string;
 	pictureAssetId_Principale: string;
-	redacteur: string;
-	tempsLecture: string;
-	descriptionCourte: string;
+	description: string;
 	contenu: string;
 	createdAt: Date;
 	photo: string | null;

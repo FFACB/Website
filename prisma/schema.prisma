@@ -34,11 +34,7 @@ model Actualite {
   id                        String   @id @default(uuid())
   titre                     String
   pictureAssetId_Principale String
-  fileAssetId_Externe       String
-  videoAssetId_Slide        String
-  redacteur                 String
-  tempsLecture              String
-  descriptionCourte         String
+  description               String
   contenu                   String
   createdAt                 DateTime @default(now())
 }
@@ -111,7 +107,7 @@ model FileAsset {
 
 model CooperativeRegion {
   id        String   @id @default(uuid())
-  name      String
+  name      String  @unique
   createdAt DateTime @default(now())
   cooperatives  Cooperative[]
 }
@@ -138,4 +134,8 @@ model Cooperative {
   contact2Email String @default("")
   latitude String @default("0")
   longitude String @default("0")
+  pictureAsset1Id_Principale String @default("")
+  pictureAsset2Id_Principale String @default("")
+  pictureAsset3Id_Principale String @default("")
+  lienVideo String  @default("")
 }

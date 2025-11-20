@@ -26,19 +26,11 @@ export const action_upsert = async (event: RequestEvent) => {
 	const {
 		id,
 		titre,
-		redacteur,
-		tempsLecture,
-		descriptionCourte,
+		description,
 		contenu,
 		pp_id_0,
 		pp_resolution_0,
-		pp_quality_0,
-		fp_id_0,
-		fp_name_0,
-		vp_id_0,
-		vp_controls_0,
-		vp_autoplay_0,
-		vp_loop_0
+		pp_quality_0
 	} = data;
 	if (id != null && id != undefined && typeof id !== 'string') {
 		logger.warn({}, "L'Id doit être null ou une chaine de caractère", '/admin/actualite');
@@ -58,25 +50,9 @@ export const action_upsert = async (event: RequestEvent) => {
 		});
 	}
 
-	if (IsEmptyString(redacteur)) {
-		logger.warn({}, 'Le redacteur ne doit pas être vide', '/admin/actualite');
 
-		return fail(400, {
-			data: data,
-			errorMsg: '❌ Le redacteur ne doit pas être vide'
-		});
-	}
 
-	if (IsEmptyString(tempsLecture)) {
-		logger.warn({}, 'Le temps de lecture ne doit pas être vide', '/admin/actualite');
-
-		return fail(400, {
-			data: data,
-			errorMsg: '❌ Le temps de lecture ne doit pas être vide'
-		});
-	}
-
-	if (IsEmptyString(descriptionCourte)) {
+	if (IsEmptyString(description)) {
 		logger.warn({}, 'La description courte ne doit pas être vide', '/admin/actualite');
 
 		return fail(400, {
@@ -101,18 +77,6 @@ export const action_upsert = async (event: RequestEvent) => {
 			required: true
 		});
 
-		const saveFichierExterne = await saveFileAsset(fp_id_0, {
-			name: fp_name_0,
-			required: true
-		});
-
-		const saveVideoSlide = await saveVideoAsset(vp_id_0, {
-			controls: vp_controls_0,
-			autoplay: vp_autoplay_0,
-			loop: vp_loop_0,
-			required: false
-		});
-
 		if (!savePhotoPrincipale.succes && !savePhotoPrincipale.errorPass) {
 			logger.warn({}, savePhotoPrincipale.errorMsg, '/admin/actualite');
 
@@ -122,46 +86,20 @@ export const action_upsert = async (event: RequestEvent) => {
 			});
 		}
 
-		if (!saveFichierExterne.succes && !saveFichierExterne.errorPass) {
-			logger.warn({}, saveFichierExterne.errorMsg, '/admin/actualite');
-
-			return fail(400, {
-				data: data,
-				errorMsg: saveFichierExterne.errorMsg
-			});
-		}
-
-		if (!saveVideoSlide.succes && !saveVideoSlide.errorPass) {
-			logger.warn({}, saveVideoSlide.errorMsg, '/admin/actualite');
-
-			return fail(400, {
-				data: data,
-				errorMsg: saveVideoSlide.errorMsg
-			});
-		}
-
 		const actualite: Actualite | null = await prisma.actualite.upsert({
 			where: {
 				id
 			},
 			create: {
 				titre: titre as string,
-				redacteur: redacteur as string,
-				tempsLecture: tempsLecture as string,
-				descriptionCourte: descriptionCourte as string,
+				description: description as string,
 				pictureAssetId_Principale: savePhotoPrincipale.relation?.id ?? '',
-				fileAssetId_Externe: saveFichierExterne.relation?.id ?? '',
-				videoAssetId_Slide: saveVideoSlide.relation?.id ?? '',
 				contenu
 			},
 			update: {
 				titre: titre as string,
-				redacteur: redacteur as string,
-				tempsLecture: tempsLecture as string,
-				descriptionCourte: descriptionCourte as string,
+				description: description as string,
 				pictureAssetId_Principale: savePhotoPrincipale.relation?.id ?? '',
-				fileAssetId_Externe: saveFichierExterne.relation?.id ?? '',
-				videoAssetId_Slide: saveVideoSlide.relation?.id ?? '',
 				contenu
 			}
 		});
@@ -169,8 +107,6 @@ export const action_upsert = async (event: RequestEvent) => {
 		return {
 			actualite,
 			pictureAsset: savePhotoPrincipale.relation,
-			fileAsset: saveFichierExterne.relation,
-			videoAsset: saveVideoSlide.relation,
 			errorMsg: undefined
 		};
 	} catch (err) {

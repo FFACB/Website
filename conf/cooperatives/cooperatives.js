@@ -13,28 +13,48 @@ dotenv.config();
  * @returns {void}
  */
 
-export function initialize() {
+export async function initialize() {
 	try {
 		console.log('Initialisation des cooperatives');
 		logger.debug('Initialisation des cooperatives');
 
+		const regions = [];
 		RegionsJson.regions.forEach(async (_region) => {
-			const cooperativeFound = await cooperativeRegionGet(_region.nom);
+			regions.push(
+				new Promise(async (res, rej) => {
+					const cooperativeFound = await cooperativeRegionGet(_region.nom);
 
-			if (cooperativeFound != null) {
-				logger.debug(`Cooperative ${cooperativeFound.name.trim()} deja existant, skipped`);
-				return;
-			}
+					if (cooperativeFound != null) {
+						res({
+							nom: cooperativeFound.name.trim(),
+							created: false,
+							succes: true
+						});
+						return;
+					}
 
-			const cooperativeCree = await cooperativeRegionCreate(_region.nom);
+					const cooperativeCree = await cooperativeRegionCreate(_region.nom);
 
-			if (cooperativeCree == null) {
-				throw new Error(`Erreur lors de la création du cooperative ${_region.nom}`);
-			}
+					if (cooperativeCree == null) {
+						res({
+							nom: _region.nom,
+							created: false,
+							succes: false
+						});
+						return;
+					}
 
-			logger.debug(`Parametre ${cooperativeCree.name.trim()} cree avec succes`);
+					res({
+						nom: cooperativeCree.name.trim(),
+						created: true,
+						succes: true
+					});
+				})
+			);
 		});
 
+		const regionsGenerated = await Promise.all(regions);
+	
 		CooperativesJson.forEach(async (_cooperative) => {
 			const cooperativeFound = await cooperativeGet(_cooperative.name);
 
