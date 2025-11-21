@@ -25,7 +25,7 @@
 <div class="bg-white p-32 pt-16 pb-16 flex flex-col justify-center items-center">
 	<div class="flex flex-row flex-wrap justify-center items-center w-full ">
 		{#each actualites as actualite}
-			<div class="basis-1/3 p-2 h-full flex-1" style="height: -webkit-fill-available;">
+			<div class="basis-1/3 p-2 h-full flex-1 max-h-[34rem]" style="height: -webkit-fill-available;">
 				<div
 					class="bg-white rounded-3xl flex flex-col justify-between items-start p-4 h-full  border border-dark"
 				>

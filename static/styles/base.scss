@@ -232,7 +232,7 @@
 			padding-left: calc(var(--index) * 16px);
 			li {
 				margin-bottom: 8px;
-				display: flex;
+				display: block;
 				&:before {
 					content: var(--index);
 					margin-right: 8px;
