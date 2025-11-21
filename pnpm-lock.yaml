@@ -32,6 +32,12 @@ importers:
       dotenv:
         specifier: ^16.6.1
         version: 16.6.1
+      editorjs-color-picker:
+        specifier: ^1.0.8
+        version: 1.0.8
+      editorjs-inline-tool:
+        specifier: ^0.4.0
+        version: 0.4.0(@editorjs/editorjs@2.31.0)
       gsap:
         specifier: file:gsap-bonus.tgz
         version: file:gsap-bonus.tgz
@@ -300,6 +306,9 @@ packages:
   '@codexteam/icons@0.0.5':
     resolution: {integrity: sha512-s6H2KXhLz2rgbMZSkRm8dsMJvyUNZsEjxobBEg9ztdrb1B2H3pEzY6iTwI4XUPJWJ3c3qRKwV4TrO3J5jUdoQA==}
 
+  '@codexteam/icons@0.3.2':
+    resolution: {integrity: sha512-P1ep2fHoy0tv4wx85eic+uee5plDnZQ1Qa6gDfv7eHPkCXorMtVqJhzMb75o1izogh6G7380PqmFDXV3bW3Pig==}
+
   '@codexteam/icons@0.3.3':
     resolution: {integrity: sha512-cp7mkZPgmBuSxigTm3Vb+DtVHYeX7qXfQd7o05vcLD8Ag5WvRlol2QSn5P10k0CDAJwmkH9nQGQLBycErS9lsQ==}
 
@@ -308,6 +317,9 @@ packages:
 
   '@editorjs/dom@1.0.1':
     resolution: {integrity: sha512-yLO+86MYOIUr1Jl7SQw23SYT84ggv6aJW0EIRsI3NTHYgnQzmK7Bt2n5ZFupQlB0GJqmKqA5tCue3NKQb+o7Pw==}
+
+  '@editorjs/editorjs@2.30.6':
+    resolution: {integrity: sha512-6eQMc4Di3Hz9p4o+NGRgKaCeAF7eAk106m+bsDLc4eo94VGYO1M163OiGFdmanE+w503qTmXOzycWff5blEOAQ==}
 
   '@editorjs/editorjs@2.31.0':
     resolution: {integrity: sha512-CBcIZXtPlg0dSlC5clO9OfTCmcxelj723jd4d67teFlaFJobjjxU1PmMxFJdhaRep5+nqdD0jr+fdJBqEDqt1g==}
@@ -1706,6 +1718,14 @@ packages:
 
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
+
+  editorjs-color-picker@1.0.8:
+    resolution: {integrity: sha512-7i2frBJI2laleaWGWS1kkyqnhzDFN1T7sh/PF0LlvBQ7zkgQRiElJBz179nGtRSyQVbX+phwgEH7PjgbtW6UTw==}
+
+  editorjs-inline-tool@0.4.0:
+    resolution: {integrity: sha512-Ppb4e8IFPjWuNcoNM4tg9bDSo7FgMYAlqP4UhuV5W2JoJBubV5pUcpLrFrSyGTt1HJVEpbrib134zf4wxO+7VA==}
+    peerDependencies:
+      '@editorjs/editorjs': ^2.16.0
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -3524,6 +3544,8 @@ snapshots:
 
   '@codexteam/icons@0.0.5': {}
 
+  '@codexteam/icons@0.3.2': {}
+
   '@codexteam/icons@0.3.3': {}
 
   '@editorjs/caret@1.0.3':
@@ -3533,6 +3555,8 @@ snapshots:
   '@editorjs/dom@1.0.1':
     dependencies:
       '@editorjs/helpers': 1.0.1
+
+  '@editorjs/editorjs@2.30.6': {}
 
   '@editorjs/editorjs@2.31.0':
     dependencies:
@@ -4887,6 +4911,15 @@ snapshots:
   ecdsa-sig-formatter@1.0.11:
     dependencies:
       safe-buffer: 5.2.1
+
+  editorjs-color-picker@1.0.8:
+    dependencies:
+      '@codexteam/icons': 0.3.2
+      '@editorjs/editorjs': 2.30.6
+
+  editorjs-inline-tool@0.4.0(@editorjs/editorjs@2.31.0):
+    dependencies:
+      '@editorjs/editorjs': 2.31.0
 
   ee-first@1.1.1: {}
 

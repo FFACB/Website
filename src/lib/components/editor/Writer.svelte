@@ -5,10 +5,12 @@
 	import { IsJsonString } from '$lib/client/utils/type';
 	import ButtonTool from '$lib/client/editor/button/ButtonTool.js';
 	import ParagraphTool from '$lib/client/editor/paragraph/ParagraphTool.js';
+	import ColorPicker from 'editorjs-color-picker';
 
 	let EditorJS = null,
 		Header,
 		NestedList,
+		EditorjsInlineTool,
 		ImageTool;
 
 	let contenu = null;
@@ -22,6 +24,9 @@
 		Header = (await import('@editorjs/header')).default;
 		NestedList = (await import('@editorjs/nested-list')).default;
 		ImageTool = (await import('@editorjs/image')).default;
+		EditorjsInlineTool = await import('editorjs-inline-tool');
+
+		const { ItalicInlineTool, UnderlineInlineTool, StrongInlineTool } = EditorjsInlineTool;
 
 		editor = new EditorJS({
 			holder: 'writer',
@@ -35,7 +40,18 @@
 					},
 					shortcut: 'CMD+SHIFT+H'
 				},
-				paragraph: ParagraphTool,
+				ColorPicker: {
+					class: ColorPicker,
+					config: {
+						colors: ['#ffffff', '#000000', '#0d1c30', '#007bc3', '#dceffc', '#4d5f7b', '#e65247']
+					}
+				},
+
+				paragraph: {
+					class: ParagraphTool
+				},
+				italic: ItalicInlineTool,
+				underline: UnderlineInlineTool,
 				button: {
 					class: ButtonTool
 				},
