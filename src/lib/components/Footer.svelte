@@ -1,14 +1,12 @@
 <script lang="ts">
 	interface Props {
-		actu1link: string | undefined;
-		actu2link: string | undefined;
-		actu3link: string | undefined;
+		actualites: ActualiteListing[];
 	}
 
-	let { actu1link, actu2link, actu3link }: Props = $props();
+	let { actualites }: Props = $props();
 </script>
 
-<footer class="flex flex-col  pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
+<footer class="flex flex-col pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
 	<div class="flex w-full h-full flex-row justify-between items-start">
 		<div class="w-1/5 h-full p-8">
 			<a href="/">
@@ -46,22 +44,11 @@
 			<div class=" m-2">
 				<a class="uppercase font-bold" href="/actualites">Dernieres actualites</a>
 			</div>
-			{#if actu1link}
+			{#each actualites as actualite}
 				<div class=" m-2">
-					<a class="uppercase" href="/actualites/{actu1link}">Actualité {actu1link}</a>
+					<a class="uppercase" href="/actualites/{actualite.id}">{actualite.titre}</a>
 				</div>
-			{/if}
-
-			{#if actu2link}
-				<div class=" m-2">
-					<a class="uppercase" href="/actualites/{actu2link}">Actualité {actu2link}</a>
-				</div>
-			{/if}
-			{#if actu3link}
-				<div class=" m-2">
-					<a class="uppercase" href="/actualites/{actu3link}">Actualité {actu3link}</a>
-				</div>
-			{/if}
+			{/each}
 		</div>
 		<div class="w-1/5 text-white text-left">
 			<div class="m-2">
@@ -72,7 +59,11 @@
 				<a class="uppercase ml-4" href="tel:+33553235570">+33(0)5 53 23 55 70</a>
 			</div>
 			<div class="m-2 flex">
-				<img src="/images/pictos/FFACB_picto_localisation.svg" class="w-6 h-6 rounded-full" alt="Map" />
+				<img
+					src="/images/pictos/FFACB_picto_localisation.svg"
+					class="w-6 h-6 rounded-full"
+					alt="Map"
+				/>
 				<a
 					class="uppercase ml-4"
 					href="https://www.google.com/maps/@45.9234846,6.0915712,15z?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"

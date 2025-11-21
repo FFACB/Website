@@ -76,7 +76,5 @@
 {@render children?.()}
 
 <Footer
-	actu1link={actualites[0].id.toString()}
-	actu2link={actualites[1].id.toString()}
-	actu3link={actualites[2].id.toString()}
+	actualites={actualites}
 />

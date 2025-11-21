@@ -87,8 +87,6 @@
 	@media (max-width: 40rem) {
 		font-size: 8px;
 	}
-
-
 }
 
 .swiper-pagination-home {
@@ -193,3 +191,53 @@
 // 	letter-spacing: var(--character-spacing-0);
 // 	color: var(--white-color-ffffff);
 // }
+
+#contenu {
+	.block-header {
+		color: var(--dark-color-0d1c30);
+	}
+
+
+	.block-button {
+		margin-bottom: 64px;
+	}
+
+	h2 {
+		padding: 2rem;
+		font-size: 2rem;
+		line-height: 2rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	h3 {
+		padding: 1rem;
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	h4 {
+		padding: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.25rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	.block-nestedList {
+		ul {
+			list-style: none;
+			padding-left: calc(var(--index) * 16px);
+			li {
+				margin-bottom: 8px;
+				display: flex;
+				&:before {
+					content: var(--index);
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+}

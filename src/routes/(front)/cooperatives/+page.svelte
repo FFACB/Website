@@ -146,6 +146,36 @@
 								`
 											: ''
 									}
+
+										${
+											coop.lienVideo != ''
+												? `
+								<div>
+							 		<h3 class="h2-blue font-bold text-sm">Lien video :</h3>
+									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.lienVideo}">${coop.lienVideo}</a>
+								</div>
+							 	<br>
+								`
+												: ''
+										}
+
+		${
+			coop.photo1 != ''
+				? `
+								<div>
+							 		<h3 class="h2-blue font-bold text-sm">Images :</h3>
+									<div class="flex flex-row flex-wrap justify-center items-center">
+										<img src="${coop.photo1}" class="w-full h-full object-cover bg-cover rounded-3xl" alt="photo1" />
+										${coop.photo2 != '' ? `<img src="${coop.photo2}" class="w-full h-full object-cover bg-cover rounded-3xl" alt="photo2" />` : ''}
+										${coop.photo3 != '' ? `<img src="${coop.photo3}" class="w-full h-full object-cover bg-cover rounded-3xl" alt="photo2" />` : ''}
+										
+									</div>
+								</div>
+							 	<br>
+								`
+				: ''
+		}
+
 								 </div>
 							 </div>
                 </div>

@@ -52,6 +52,20 @@ declare global {
 		contact2Email: string;
 		latitude: string;
 		longitude: string;
+		lienVideo: string;
+		photo1: string;
+		photo2: string;
+		photo3: string;
+	};
+
+	export type ActualiteListing = {
+		id: string;
+		titre: string;
+		pictureAssetId_Principale: string;
+		description: string;
+		contenu: string;
+		createdAt: Date;
+		photo: string | null;
 	};
 }
 
