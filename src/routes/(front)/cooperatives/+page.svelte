@@ -81,15 +81,15 @@
 				content: `
                 <div class="flex flex-col">
                         <div class="w-full text-left">
-                            <h2 class="h2-blue font-bold ">${coop.name}</h2><br>
+                            <h2 class="h2-blue font-bold text-2xl">${coop.name}</h2><br>
 
 							${
 								coop.adresse != '' || coop.cp != '0' || coop.ville != ''
 									? `
 							  <div>
 							 	<h3 class="h2-blue font-bold text-sm">Localité :</h3>
-								<p class="font-light ml-4">${coop.adresse}</p>
-								<p class="font-light ml-4">${coop.cp} ${coop.ville}</p>
+								<p class="font-light ml-4 text-lg">${coop.adresse}</p>
+								<p class="font-light ml-4 text-lg">${coop.cp} ${coop.ville}</p>
 							 </div>
 
                          		<br>
