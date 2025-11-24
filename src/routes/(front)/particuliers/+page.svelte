@@ -12,8 +12,14 @@
 		src="/images/DSC03-6-scaled.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[95%] w-2/5 flex-col justify-end items-center overflow-hidden">
-		<img class="absolute w-full top-0" alt="background" src="/images/pictos/FFACB_formebleu.svg" />
+	<div
+		class="relative sm:ml-32 ml-0 flex h-[95%] sm:w-2/5 w-full flex-col justify-end items-center overflow-hidden"
+	>
+		<img
+			class="absolute w-full top-0 sm:block hidden"
+			alt="background"
+			src="/images/pictos/FFACB_formebleu.svg"
+		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">
 				La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB)
@@ -61,7 +67,7 @@
 			></SimpleButton>
 		</div>
 	</div>
-	<div class="basis-1/2  flex-col  hidden md:flex">
+	<div class="basis-1/2 flex-col hidden md:flex">
 		<div class="h-full w-full relative overflow-hidden">
 			<img
 				class="absolute top-1/2 -translate-y-1/2 right-0 scale-150"
@@ -73,7 +79,7 @@
 </div>
 
 <div class="flex flex-row bg-dark overflow-hidden">
-	<div class="basis-1/2  flex-col hidden md:flex ">
+	<div class="basis-1/2 flex-col hidden md:flex">
 		<div class="h-full w-full relative">
 			<img
 				class="absolute -scale-x-150 top-1/2 -translate-y-1/2 left- scale-150"
@@ -187,7 +193,7 @@
 
 	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
 		<div class="relative">
-			<div class="absolute bottom-full w-full flex ">
+			<div class="absolute bottom-full w-full flex">
 				<input
 					type="button"
 					on:click={() => (isAssurancesEnabled = true)}
@@ -368,7 +374,9 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-					<div class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4">
+				<div
+					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
+				>
 					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
 
@@ -394,7 +402,9 @@
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
-				<div class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4">
+				<div
+					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
+				>
 					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
 				</div>
 				<div class="text-center mt-16">

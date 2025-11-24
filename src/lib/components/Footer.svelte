@@ -7,8 +7,8 @@
 </script>
 
 <footer class="flex flex-col pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
-	<div class="flex w-full h-full flex-row justify-between items-start">
-		<div class="w-1/5 h-full p-8">
+	<div class="flex w-full h-full sm:flex-row flex-col justify-between items-start sm:text-start text-center">
+		<div class="sm:w-1/5 w-full sm:h-full h-56 p-8 ">
 			<a href="/">
 				<img
 					class="w-full h-full bg-contain object-contain"
@@ -17,7 +17,7 @@
 				/></a
 			>
 		</div>
-		<div class="w-1/5 text-white">
+		<div class="sm:w-1/5 w-full sm:mt-0 mt-16 text-white">
 			<div class=" m-2">
 				<a class="uppercase" href="/federation">la fédération</a>
 			</div>
@@ -40,7 +40,7 @@
 				<a class="uppercase" href="/professionnels">votre espace</a>
 			</div>
 		</div>
-		<div class="w-1/5 text-white">
+		<div class="sm:w-1/5 w-full sm:mt-0 mt-16 text-white">
 			<div class=" m-2">
 				<a class="uppercase font-bold" href="/actualites">Dernieres actualites</a>
 			</div>
@@ -50,7 +50,7 @@
 				</div>
 			{/each}
 		</div>
-		<div class="w-1/5 text-white text-left">
+		<div class="sm:w-1/5 w-full sm:mt-0 mt-16 text-white text-left">
 			<div class="m-2">
 				<a class="uppercase font-bold" href="/contact">Nous contacter</a>
 			</div>

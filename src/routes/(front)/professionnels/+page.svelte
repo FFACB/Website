@@ -62,9 +62,9 @@
 		src="/images/GRANDVOINET.CHAPELLE.DES.BUIS.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[95%] w-2/5 flex-col justify-end items-center overflow-hidden">
+	<div class="relative sm:ml-32 ml-0 flex h-[95%] sm:w-2/5 w-full flex-col justify-end items-center overflow-hidden">
 		<img
-			class="absolute w-full top-0"
+			class="absolute w-full top-0 sm:block hidden "
 			alt="background"
 			src="/images/pictos/FFACB_formebleu.svg"
 		/>

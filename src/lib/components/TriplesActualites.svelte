@@ -12,9 +12,9 @@
 
 <div class="bg-lightgrey pb-4">
 	<h3 class="h2-blue font-bold text-center p-4">Nos dernières actualités</h3>
-	<div class="flex flex-row flex-wrap justify-center items-center w-full pr-32 pl-32">
+	<div class="flex flex-row flex-wrap justify-center items-center w-full  sm:pr-32 sm:pl-32 p-8">
 		{#each actualites as actualite}
-			<div class="basis-1/3 p-2"  style="height: -webkit-fill-available;">
+			<div class="sm:basis-1/3 basis-full p-2"  style="height: -webkit-fill-available;">
 				<div class="bg-white rounded-3xl flex flex-col justify-between items-start p-4 h-full">
 					<div class="w-full overflow-hidden mb-4">
 						<img

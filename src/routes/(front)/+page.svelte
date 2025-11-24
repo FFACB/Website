@@ -87,9 +87,9 @@
 	</div>
 	<div class="swiper-pagination-home swiper-pagination"></div>
 
-	<div class="relative ml-32 flex h-[95%] w-2/5 flex-col justify-end items-center overflow-hidden">
+	<div class="relative sm:ml-32 ml-0 flex h-[95%]  flex-col sm:w-2/5 w-full justify-end items-center overflow-hidden">
 		<img
-			class="absolute w-full top-0 z-10"
+			class="absolute w-full top-0 z-10 sm:block hidden "
 			alt="background"
 			src="/images/pictos/FFACB_formebleu.svg"
 		/>
@@ -140,8 +140,8 @@
 		/>
 	</div>
 </div>
-<div class="flex w-full flex-row">
-	<div class="text-white w-1/2 p-32 bg-dark flex justify-center items-center flex-col">
+<div class="flex w-full sm:flex-row flex-col">
+	<div class="text-white sm:w-1/2 w-full sm:p-32 p-8 bg-dark flex justify-center items-center flex-col">
 		<h3 class="h2-blue pr-16 pl-16 text-white font-bold text-center">
 			Vous êtes un professionnel du bâtiment ?
 		</h3>
@@ -152,7 +152,7 @@
 		</p>
 	</div>
 
-	<div class="text-white w-1/2 p-32 bg-blue flex justify-center items-center flex-col">
+	<div class="text-white sm:w-1/2 w-full sm:p-32 p-8 bg-blue flex justify-center items-center flex-col">
 		<h3 class="h2-blue pr-16 pl-16 text-white font-bold text-center">Vous êtes un particulier ?</h3>
 		<p class=" w-2/3 text-center">
 			Vous avez un projet de construction, de rénovation ou d'agrandissement, faites confiance à
@@ -161,7 +161,7 @@
 		</p>
 	</div>
 </div>
-<div class="bg-red flex justify-center items-center pt-9 pb-9">
+<div class="bg-red flex justify-center items-center pt-9 flex-col sm:flex-row pb-9 sm:p-32 p-8">
 	<div class="h-auto">
 		<img class="h-48" src="/images/carte-pin.jpg" alt="persona" />
 	</div>

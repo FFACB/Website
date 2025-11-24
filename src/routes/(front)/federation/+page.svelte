@@ -81,8 +81,13 @@
 		src="/images/AGC/Image10.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-[100%] w-2/5 flex-col justify-end items-center overflow-hidden">
-		<img class="absolute w-full top-0" alt="background" src="/images/pictos/FFACB_formebleu.svg" />
+	<div
+		class="relative sm:ml-32 ml-0 flex h-[100%] sm:w-2/5 w-full flex-col justify-end items-center overflow-hidden"
+	>
+		<img
+			class="absolute w-full top-0 sm:block hidden"
+		
+		alt="background" src="/images/pictos/FFACB_formebleu.svg" />
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">Une coopérative artisanale, c'est quoi ?</h1>
 			<div class="text-white">
@@ -103,8 +108,8 @@
 		</div>
 	</div>
 </div>
-<div class="font-Funnel Sans w-full flex flex-row">
-	<div class="bg-white w-1/2 p-16 pl-48">
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white sm:w-1/2 w-full p-16 sm:pl-48">
 		Le contexte est posé. Dans ce cadre, la <strong>
 			Fédération Française des Artisans Coopérateurs du Bâtiment</strong
 		>
@@ -116,7 +121,7 @@
 		<strong> outil de développement et d'ouverture à de nouveaux marchés</strong> et permet de développer
 		la force d'intervention grâce à l'organisation en équipe.
 	</div>
-	<div class="bg-[#DCEFFC] w-1/2 p-16 pr-48">
+	<div class="bg-[#DCEFFC] sm:w-1/2 w-full p-16 sm:pr-48">
 		Le modèle coopératif est adapté à tous les projets, toutes les activités et toutes les tailles
 		d'entreprise et doit être fondé sur un <strong>principe d'égalité des droits</strong> qui
 		s'exprime par la formule<br /> « <strong> associé = une voix</strong> ».
@@ -192,8 +197,8 @@
 		/>
 	</div>
 </div>
-<div class="flex bg-white p-16">
-	<div class="flex flex-col w-1/2 pl-32 pr-8">
+<div class="flex sm:flex-row flex-col bg-white p-16">
+	<div class="flex flex-col sm:w-1/2 w-full sm:pl-32 sm:pr-8">
 		<h2 class="h2-blue font-bold">La FFACB, c'est qui ?</h2>
 		<br />
 		<p class="font-semibold text-lg">
@@ -214,8 +219,8 @@
 			>
 		</p>
 	</div>
-	<div class="flex flex-col w-1/2 pr-32 pl-8">
-		<p class="p-8">
+	<div class="flex flex-col sm:w-1/2 w-full sm:pr-32 sm:pl-8">
+		<p class="sm:p-8">
 			Fédération d'avenir, la FFACB a développé son savoir-faire et rassemble ses adhérents à
 			travers des valeurs communes, une charte d'engagement, des services et un accompagnement
 			personnalisé mais aussi toute une Démarche Qualité soutenue à sa mise en place par la DECAS
@@ -224,7 +229,7 @@
 			secteur de la maison individuelle comme dans la rénovation du bâti existant.
 		</p>
 
-		<div class="m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
+		<div class="sm:mt-0 mt-8  m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Une mission ?</h3>
 			<p>
 				Promouvoir une solidarité professionnelle élargie afin d'assurer le développement économique
@@ -239,14 +244,14 @@
 </div>
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les atouts de la FFACB ?</h2>
-	<p class="font-semibold text-lg mt-6 mb-6 pr-48 pl-48">
+	<p class="font-semibold text-lg mt-6 mb-6 sm:pr-48 sm:pl-48">
 		La FFACB accompagne les coopératives artisanales, dès leur création, dans leur gestion et leur
 		développement, dans le respect de la législation, des statuts et du règlement intérieur de la
 		FFACB. Elle assure en outre leur suivi et les conseille tout au long de leur existence, en cas
 		de difficultés ou de litiges. Elle représente enfin un gage de confiance et de qualité pour les
 		clients.
 	</p>
-	<div class="flex flex-row">
+	<div class="flex sm:flex-row flex-col ">
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
 			<ul class="font-light">
@@ -276,7 +281,7 @@
 			</ul>
 		</div>
 	</div>
-	<p class="mt-6 mb-6 pr-48 pl-48">
+	<p class="mt-6 mb-6 sm:pr-48 sm:pl-48">
 		La FFACB accompagne ses coopératives tout au long de l'année, en leur proposant des réunions
 		d'informations, des newsletters, des formations complémentaires ainsi qu'un service juridique
 		leur permettant <strong
@@ -305,7 +310,7 @@
 	</div>
 </div>
 
-<div class="bg-white text-center pr-48 pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
+<div class="bg-white text-center pr-16 pl-16 sm:pr-48 sm:pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Les services de la FFACB</h2>
 	<p class="font-semibold text-lg mt-6 mb-6">
 		Outre son rôle de trait d'union et d'information auprès des coopératives et des partenaires du
@@ -331,8 +336,8 @@
 	</div>
 
 	<div class="overflow-hidden {activeServices ? 'h-auto' : 'h-0'}">
-		<div class="flex flex-row h-auto">
-			<div class="p-2 basis-1/3 h-auto">
+		<div class="flex flex-row sm:flex-nowrap flex-wrap h-auto">
+			<div class="p-2 sm:basis-1/3 basis-full h-auto">
 				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
 					<h3 class="uppercase font-bold text-xl h2-blue mb-4">Le service juridique et fiscal</h3>
 					<ul class="font-light text-left">
@@ -369,7 +374,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="p-2 basis-1/3 h-auto">
+			<div class="p-2 sm:basis-1/3 basis-full h-auto">
 				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
 					<h3 class="uppercase font-bold text-xl h2-blue mb-4">
 						Le service en charge des assurances
@@ -388,7 +393,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="p-2 basis-1/3 h-auto">
+			<div class="p-2 sm:basis-1/3 basis-full h-auto">
 				<div class="h-full flex flex-col p-8 rounded-3xl border border-blue">
 					<h3 class="uppercase font-bold text-xl h2-blue">
 						Le service réviseurs en lien avec l'ARCAB
@@ -473,7 +478,7 @@
 </div>
 
 <div
-	class="bg-[#DCEFFC] text-center pl-16 pr-16 pt-8 pb-8 flex flex-col justify-center items-center"
+	class="bg-[#DCEFFC] text-center pl-16 pr-16 pt-8 pb-8  flex-col justify-center items-center sm:flex hidden"
 >
 	<h2 class="h2-blue font-bold mb-4">Pour la petite histoire</h2>
 
@@ -517,14 +522,14 @@
 	</div>
 </div>
 
-<div class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center pl-32 pr-32">
+<div class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16">
 	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
 	<p class="text-white">
 		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
 		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
 		toutes une part importante de la construction de maisons individuelle en France.
 	</p>
-	<div class="flex w-full">
+	<div class="flex w-full sm:flex-row flex-col">
 		<div class="basis-1/3 p-4">
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
