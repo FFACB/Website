@@ -99,7 +99,7 @@
 					Tout en restant autonomes dans leurs activités propres, ils choisissent d'unir leurs
 					forces pour mieux répondre à leurs besoins économiques et sociaux.
 				</p>
-				<p class="font-Funnel-Sans-Italic font-medium text-lg">
+				<p class="font-Funnel-Sans-Italic font-medium text-lg sm:block hidden">
 					La coopérative artisanale est un modèle économique unique, fondé sur des principes de
 					partage et d'équité, qui permet de concilier performance économique, indépendance,
 					solidarité et valorisation des savoir-faire.
@@ -149,12 +149,12 @@
 	</div>
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="h-auto">
+	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="w-3/5 ml-7">
+	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
 			« Avec le système de la coopérative, nous n'avons pas besoin de faire appel à des
 			sous-traitants ou de manière exceptionnelle et tous les artisans partagent une philosophie et
@@ -290,12 +290,12 @@
 	</p>
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="h-auto">
+	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="w-3/5 ml-7">
+	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
 			« Il règne au sein de la FFACB un véritable esprit d'équipe et c'est agréable de se sentir
 			appartenir à un mouvement coopératif qui porte ce sens du collectif. Grâce à sa rigueur, la

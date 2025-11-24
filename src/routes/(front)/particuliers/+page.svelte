@@ -28,7 +28,7 @@
 	</div>
 </div>
 <div class="flex flex-row bg-white">
-	<div class="basis-full md:basis-1/2 p-16 pl-48">
+	<div class="basis-full md:basis-1/2 p-16 sm:pl-48">
 		<h2 class="h2-blue font-bold">
 			Des travaux de qualité, responsables et de proximité avec nos coopératives membres !
 		</h2>
@@ -89,7 +89,7 @@
 		</div>
 	</div>
 
-	<div class="basis-full md:basis-1/2 p-16 pr-48 md:pl-0 pl-48">
+	<div class="basis-full md:basis-1/2 p-16 sm:pr-48 pr-16 md:pl-0 sm:pl-48 sm:w-auto w-full">
 		<h2 class="h2-blue font-bold">Pourquoi faire appel à une coopérative membre de la FFACB ?</h2>
 		<br />
 		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
@@ -114,7 +114,7 @@
 			de sous-traitants afin de favoriser l'activité de ses membres.
 		</p>
 
-		<div class="w-max mt-8 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
+		<div class="sm:w-max w-full mt-8 p-4 pt-2 pb-2  font-bold text-white bg-red rounded-3xl">
 			<strong>Résultats :</strong> moins d'intermédiaires, un meilleur suivi,<br /> une communication
 			fluide et des chantiers plus sereins.
 		</div>
@@ -127,8 +127,8 @@
 	</div>
 </div>
 
-<div class="flex w-full flex-row">
-	<div class="text-white w-1/2 p-16 pl-48 bg-lightgrey flex flex-col">
+<div class="flex w-full sm:flex-row flex-col">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pl-48 bg-lightgrey flex flex-col">
 		<img src="/images/pictos/picto-interlocuteur.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN INTERLOCUTEUR UNIQUE</h3>
@@ -145,7 +145,7 @@
 		</p>
 	</div>
 
-	<div class="text-white w-1/2 p-16 pr-48 bg-white flex flex-col">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pr-48 bg-white flex flex-col">
 		<img src="/images/pictos/picto-justice.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE CONFORMITÉ À LA RÈGLEMENTATION</h3>
@@ -179,8 +179,8 @@
 		</p>
 	</div>
 </div>
-<div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="text-white w-1/2 p-16 pl-48 flex flex-col">
+<div class="bg-dark flex sm:flex-row flex-col justify-center items-center pt-9 pb-9">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pl-48 flex flex-col">
 		<img src="/images/pictos/picto-assur.svg" class="w-20" alt="picto assur" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN GAGE DE QUALITÉ ET DE SAVOIR-FAIRE</h3>
@@ -191,7 +191,7 @@
 		</p>
 	</div>
 
-	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pr-48 flex flex-col sm:pb-0 pb-48">
 		<div class="relative">
 			<div class="absolute bottom-full w-full flex">
 				<input
@@ -272,7 +272,7 @@
 	</div>
 </div>
 <div class="bg-white pb-4">
-	<div class="flex flex-col justify-center items-center p-16 pr-48 pl-48">
+	<div class="flex flex-col justify-center items-center p-16 sm:pr-48 sm:pl-48">
 		<img src="/images/pictos/picto-conformite.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE GARANTIE DE CONFORMITÉ DES TRAVAUX RÉALISÉS :</h3>
@@ -282,8 +282,8 @@
 		</p>
 	</div>
 
-	<div class="flex flex-row flex-wrap justify-center items-center w-full pr-32 pl-32">
-		<div class="basis-1/3 p-2" style="height: -webkit-fill-available;">
+	<div class="flex flex-row flex-wrap justify-center items-center w-full sm:pr-32 sm:pl-32">
+		<div class="sm:basis-1/3 basis-full sm:p-2 p-8" style="height: -webkit-fill-available;">
 			<div class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full">
 				<div class="text-center">
 					<p class="text-lg font-bold">LA GARANTIE DE PARFAIT ACHÈVEMENT (1 AN)</p>
@@ -294,7 +294,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="basis-1/3 p-2" style="height: -webkit-fill-available;">
+		<div class="sm:basis-1/3 basis-full sm:p-2 p-8" style="height: -webkit-fill-available;">
 			<div class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full">
 				<div class="text-center">
 					<p class="text-lg font-bold">
@@ -309,7 +309,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="basis-1/3 p-2" style="height: -webkit-fill-available;">
+		<div class="sm:basis-1/3 basis-full sm:p-2 p-8" style="height: -webkit-fill-available;">
 			<div class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full">
 				<div class="text-center">
 					<p class="text-lg font-bold">LA GARANTIE DÉCENNALE (10 ANS)</p>
@@ -324,8 +324,8 @@
 	</div>
 </div>
 
-<div class="bg-dark flex justify-center items-start pt-9 pb-9">
-	<div class="text-white w-1/2 p-16 pl-48 flex flex-col">
+<div class="bg-dark flex sm:flex-row flex-col justify-center items-start pt-9 pb-9">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pl-48 flex flex-col">
 		<img src="/images/pictos/picto-shake.svg" class="w-20" alt="picto shake" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN SUIVI ET UN ACCOMPAGNEMENT PERSONNALISÉS</h3>
@@ -343,7 +343,7 @@
 		</p>
 	</div>
 
-	<div class="text-white w-1/2 p-16 pr-48 flex flex-col">
+	<div class="text-white sm:w-1/2 w-full  p-16 sm:pr-48 flex flex-col">
 		<img src="/images/pictos/picto-quali.svg" class="w-20" alt="picto quali" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE DÉMARCHE QUALITÉ</h3>
@@ -357,7 +357,7 @@
 </div>
 
 <div class="bg-white pb-4">
-	<div class="flex flex-col justify-center items-center p-16 pr-48 pl-48 pb-48">
+	<div class="flex flex-col justify-center items-center p-16 sm:pr-48 sm:pl-48 sm:pb-48 pb-32">
 		<img src="/images/pictos/picto-conformite.svg" class="w-20" alt="picto justice" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">
@@ -369,8 +369,8 @@
 		</p>
 	</div>
 
-	<div class="flex flex-row flex-wrap justify-center items-center w-full pr-32 pl-32">
-		<div class="basis-1/2 p-2" style="height: -webkit-fill-available;">
+	<div class="flex flex-row flex-wrap justify-center items-center w-full sm:pr-32 sm:pl-32">
+		<div class="sm:basis-1/2 basis-full sm:p-2 p-8" style="height: -webkit-fill-available;">
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
@@ -398,7 +398,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="basis-1/2 p-2" style="height: -webkit-fill-available;">
+		<div class="sm:basis-1/2 basis-full sm:p-2 p-8" style="height: -webkit-fill-available;">
 			<div
 				class="bg-lightgrey rounded-3xl flex flex-col justify-center items-center p-8 h-full relative"
 			>
@@ -429,7 +429,7 @@
 </div>
 
 <div class="bg-red text-center p-16 flex flex-col justify-center items-center">
-	<div class="pr-48 pl-48 flex flex-col justify-center items-center">
+	<div class="sm:pr-48 sm:pl-48 flex flex-col justify-center items-center">
 		<h3 class="h2-blue text-white font-bold">Comment trouver une coopérative avec la FFACB ?</h3>
 
 		<p class="font-semibold text-lg text-white mt-4 mb-6">
@@ -455,12 +455,12 @@
 </div>
 
 <div class="bg-white flex justify-center items-center pt-12 pb-12">
-	<div class="h-auto">
+	<div class="h-auto sm:block hidden">
 		<div class=" border bg-dark border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="w-3/5 ml-7">
+	<div class="sm:w-3/5 w-full sm:p-0 p-16 sm:ml-7">
 		<div class="font-Funnel-Sans-Italic text-lg text-dark">
 			« J'ai réalisé mon 2d projet de construction de maison avec l'entreprise Myotte-Duquet dont la
 			coopérative est affiliée à la FFACB. Ayant moi-même une appétence pour le secteur de la

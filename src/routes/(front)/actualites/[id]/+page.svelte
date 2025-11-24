@@ -7,7 +7,7 @@
 
 <div class="bg-white">
 
-    <div class="flex flex-col justify-center items-center p-16 pr-48 pl-48 pb-48">
+    <div class="flex flex-col justify-center items-center p-16 sm:pr-48 sm:pl-48 pb-48">
 
         <h1 class="h2-blue font-bold text-center mb-16">
             {actualite?.titre}

@@ -76,8 +76,8 @@
 	</div>
 </div>
 
-<div class="font-Funnel Sans w-full flex flex-row">
-	<div class="bg-white w-1/2 p-16 pl-48 pr-16">
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white sm:w-1/2 w-full p-16 sm:pl-48 pr-16">
 		L'article 1 er de la loi n° 83-657 du 20 juillet 1983 stipule que « les Sociétés Coopératives
 		Artisanales ont pour objet la réalisation de toutes opérations et la prestation de tous services
 		susceptibles de contribuer, directement ou indirectement, au développement des activités
@@ -87,7 +87,7 @@
 		(SA). La coopérative doit être fondée sur un principe d'égalité des droits qui s'exprime sous la
 		formule <strong class="inline-block">« un associé = une voix »</strong>.
 	</div>
-	<div class="bg-white w-1/2 p-16 pr-48">
+	<div class="bg-white sm:w-1/2 w-full p-16 sm:pr-48">
 		Le plus souvent les coopératives et groupements d'artisans sont composés d'une équipe
 		opérationnelle réunissant les différents corps d'état, en moyenne une dizaine d'entreprises, qui
 		traitent dix à trente chantiers par an, voire plus selon le volume d'activité. Par ailleurs, ces
@@ -99,8 +99,8 @@
 	</div>
 </div>
 
-<div class="flex bg-white">
-	<div class="flex flex-col w-1/2 pr-8 p-16 pl-48">
+<div class="flex bg-white sm:flex-row flex-col">
+	<div class="flex flex-col sm:w-1/2 w-full pr-8 p-16 sm:pl-48">
 		<h2 class="h2-blue font-bold">Pourquoi se constituer en coopérative avec la FFACB ?</h2>
 		<br />
 		<p class="">
@@ -157,7 +157,7 @@
 			fonctionnement. C'est le rôle de la FFACB.
 		</p>
 	</div>
-	<div class="flex flex-col w-1/2 mt-64">
+	<div class="flex flex-col sm:w-1/2 w-full sm:mt-64">
 		<div class="bg-dark h-full relative">
 			<img
 				src="/images/profesionnel-droit.png"
@@ -165,7 +165,7 @@
 				class="w-auto h-full object-contain bg-contain absolute -translate-y-1/3 right-0 top-0 hidden md:block"
 			/>
 
-			<div class="flex flex-col w-full h-1/2 relative p-16">
+			<div class="sm:flex hidden flex-col w-full h-1/2 relative p-16">
 				<div class="relative h-full">
 					<div
 						class=" border bg-white border-black rounded-full p-8 w-1/5  object-cover bg-cover absolute bottom-0 left-0"
@@ -174,7 +174,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col w-full h-1/2 relative pl-16 pr-48">
+			<div class="flex flex-col w-full h-1/2 relative sm:pl-16 sm:pr-48 p-16 sm:p-0">
 				<p class="text-white text-lg font-Funnel-Sans-Italic">
 					« En travaillant en coopérative, nous avons l'immense avantage de connaitre parfaitement
 					notre réseau d'artisans et de maîtriser notre sujet de A à Z. Nous ne sommes pas juste des
@@ -195,12 +195,12 @@
 	</div>
 </div>
 
-<div class="bg-[#DCEFFC] text-center p-32 flex flex-col justify-center items-center">
+<div class="bg-[#DCEFFC] text-center sm:p-32 p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">
 		Quels sont les avantages à se constituer en coopérative et à adhérer à la fédération ?
 	</h2>
 	<br /><br />
-	<div class="flex flex-row">
+	<div class="flex sm:flex-row flex-col">
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl basis-1/3">
 			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
 			<br />
@@ -251,12 +251,12 @@
 </div>
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="h-auto">
+	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="w-3/5 ml-7">
+	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
 			« Parmi les principaux avantages de l'affiliation à la FFACB il y a évidemment le fait de
 			profiter du contrat de construction élaboré dans les règles de l'art. Mais au-delà de ça, les
@@ -272,12 +272,12 @@
 	</div>
 </div>
 
-<div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">
+<div class="bg-white text-center p-16  sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les services proposés par la FFACB ?</h2>
 	<br /><br />
 
-	<div class="relative mt-16">
-		<div class="absolute bottom-full translate-y-[1px] w-[95%] flex left-1/2 -translate-x-1/2 ">
+	<div class="relative mt-16 sm:w-auto w-full">
+		<div class="absolute bottom-full translate-y-[1px] w-[95%]  left-1/2 -translate-x-1/2 sm:flex hidden">
 			<input
 				type="button"
 				on:click={() => {
@@ -329,13 +329,13 @@
 			/>
 		</div>
 
-		<div id="block-0" class="blocks flex flex-row flex-wrap justify-center items-center">
-			<div class="border border-dark rounded-3xl">
-				<h3 class="h2-blue font-bold m-8 mt-16 text-2xl">
+		<div id="block-0" class="blocks flex flex-row flex-wrap justify-center items-center sm:w-auto w-full">
+			<div class="border border-dark rounded-3xl sm:w-auto w-full">
+				<h3 class="h2-blue font-bold sm:m-8 mt-16 text-2xl">
 					UN ACCOMPAGNEMENT JURIDIQUE, FISCAL ET COMPTABLE
 				</h3>
-				<div class="flex text-start">
-					<div class="basis-1/2 p-16 font-bold">
+				<div class="flex sm:flex-row flex-col sm:text-start text-center">
+					<div class="basis-1/2 sm:p-16 p-8 font-bold">
 						Le service juridique de la FFACB assure un rôle de conseil, d'accompagnement et de
 						représentation pour les coopératives artisanales du bâtiment, afin de garantir leur
 						conformité légale, leur bon fonctionnement et la protection de leurs intérêts.
@@ -347,7 +347,7 @@
 
 						<img src="/images/IMG_20240705_110605.jpg" class="mt-8 rounded-3xl" alt="" />
 					</div>
-					<div class="basis-1/2 p-16">
+					<div class="basis-1/2 sm:p-16 p-8">
 						<p class="font-semibold">Les missions principales du service juridique de la FFACB :</p>
 
 						<div class="flex mt-8">
@@ -681,7 +681,7 @@
 </div>
 <!-- TODO -->
 
-<div class="bg-red text-center p-16 pr-48 pl-48 flex flex-col justify-center items-center">
+<div class="bg-red text-center p-16 sm:pr-48 sm:pl-48  flex flex-col justify-center items-center">
 	<h3 class="h2-blue text-white font-bold">Comment créer une coopérative avec la FFACB ?</h3>
 
 	<p class="font-semibold text-lg text-white mt-4 mb-6">
@@ -708,13 +708,13 @@
 	></SimpleButton>
 </div>
 
-<div class="bg-white text-center p-16 pr-32 pl-32 flex flex-col justify-center items-center">
+<div class="bg-white text-center p-16 sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Principes fondateurs de la FFACB</h2>
 	<br /><br />
 	<div
 		class="flex flex-col flex-wrap justify-center items-center w-full bg-[#DCEFFC] rounded-3xl mb-8"
 	>
-		<div class=" flex-row justify-center items-start m-2 p-8 w-full flex">
+		<div class=" flex-row justify-center items-start m-2 p-8 w-full sm:flex flex-col">
 			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Liberté</h3>
 
@@ -788,7 +788,7 @@
 		</div>
 	</div>
 
-	<div class="pl-16 pr-16">
+	<div class="sm:pl-16 sm:pr-16">
 		À travers ses principes fondateurs, la FFACB assure une meilleure défense des intérêts des
 		coopératives artisanales, notamment vis-à-vis des pouvoirs publics et au regard des projets de
 		lois qui peuvent impacter la vie des artisans. En assurant un accompagnement régulier et une
@@ -805,12 +805,12 @@
 </div>
 
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="h-auto">
+	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="w-3/5 ml-7">
+	<div class="sm:w-3/5 w-full   sm:ml-7 sm:p-0 p-16">
 		<div class="text-white">
 			La solidarité et la mutualisation des moyens sont des atouts non négligeables pour faire face
 			à la concurrence :

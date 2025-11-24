@@ -15,10 +15,10 @@
 		src="/images/MAISON DB (3).jpg?width=1920&height=1080"
 		alt="federation"
 	/>
-	<div class="relative ml-32 flex h-full w-2/5 flex-col justify-center items-center">
+	<div class="relative sm:ml-32 flex h-full sm:w-2/5 sm:bg-transparent bg-blue w-full flex-col justify-center items-center">
 		<div class="absolute top-50 z-10">
 			<img
-				class="w-full h-full object-cover bg-cover scale-x-[2] scale-y-150"
+				class="w-full h-full object-cover bg-cover scale-x-[2] scale-y-150 sm:block hidden"
 				alt="background"
 				src="/images/pictos/FFACB_formebleu.svg"
 			/>

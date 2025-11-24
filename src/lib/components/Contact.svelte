@@ -22,7 +22,7 @@
 	action="/api/contact"
 	name="contact"
 	id="contact"
-	class="w-full pr-48 pl-48 z-20 block relative"
+	class="w-full sm:pr-48 sm:pl-48 z-20 block relative"
 	use:enhance={async ({ formData, cancel }) => {
 		try {
 			const { nom, prenom, email, telephone, message, ville, cp, rue } =
@@ -88,8 +88,8 @@
 	}}
 >
 	<div class="flex flex-col border border-blue rounded-3xl w-full">
-		<div class="flex flex-row w-full">
-			<div class="basis-1/2 p-8">
+		<div class="flex sm:flex-row flex-col w-full">
+			<div class="sm:basis-1/2 basis-full p-8">
 				<label class="label" for="nom">
 					<span class="ml-3 font-semibold w-full text-start uppercase block">Nom</span>
 					<input class="input w-full" name="nom" contenteditable="true" type="text" required />
