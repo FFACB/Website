@@ -714,7 +714,7 @@
 	<div
 		class="flex flex-col flex-wrap justify-center items-center w-full bg-[#DCEFFC] rounded-3xl mb-8"
 	>
-		<div class=" flex-row justify-center items-start m-2 p-8 w-full sm:flex flex-col">
+		<div class="flex  justify-center items-start m-2 p-8 w-full sm:flex-row flex-col">
 			<div class="p-4 basis-1/5">
 				<h3 class="uppercase font-bold text-blue text-xl">Liberté</h3>
 
