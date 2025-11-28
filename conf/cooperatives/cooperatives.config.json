@@ -519,6 +519,28 @@
 		"latitude": 48.6048489,
 		"longitude": 7.59326150000004
 	},
+
+	{
+		"cooperativeRegionId": "Grand Est",
+		"name": "ARTISANS A DOMICILE DU DOUBS",
+		"siren": "504425562",
+		"adresse": "5 ROUTE DE LYON",
+		"infoComplementaires": "",
+		"cp": "25720",
+		"ville": "BEURE",
+		"siteInternet": "http://www.artisansdudoubs.fr",
+		"telephone": "03 81 80 03 63",
+		"adresseMail": "contact@artisansdudoubs.fr",
+		"contact1Nom": "Fatiha ADELIA",
+		"contact1Telephone": "",
+		"contact1Email": "artisans-a-domicile25@orange.fr",
+		"contact2Nom": "",
+		"contact2Telephone": "",
+		"contact2Email": "",
+		"latitude": 47.2163015,
+		"longitude": 6.0098034
+	},
+
 	{
 		"cooperativeRegionId": "Guadeloupe",
 		"name": "CAB 97",
