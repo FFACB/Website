@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	<div class="flex justify-center items-center text-white font-light text-sm">
-		<a href="/donnees-personelles">Données personnelles</a>
+		<a href="/cookies">Politique de cookies</a>
 		|
 		<a href="/mentions">Mentions légales</a>
 		|

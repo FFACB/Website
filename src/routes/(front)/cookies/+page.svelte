@@ -12,7 +12,7 @@
 	<div>
 		<div class="privacy-policy">
 			<div>
-				<h1 class="h2-blue text-3xl font-bold mb-8">POLITIQUE DE CONFIDENTIALITÉ</h1>
+				<h1 class="h2-blue text-3xl font-bold mb-8">POLITIQUE DE COOKIES</h1>
 				<p>
 					<br /><br /><strong>{donneesPerso['$website$']}</strong><br />{donneesPerso[
 						'$nomEntreprise$'
