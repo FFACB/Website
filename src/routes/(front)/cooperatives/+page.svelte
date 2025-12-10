@@ -100,7 +100,7 @@
 								coop.siteInternet != ''
 									? `
 								<div>
-							 		<h3 class="h2-blue font-bold text-sm">Website :</h3>
+							 		<h3 class="h2-blue font-bold text-sm">Site web :</h3>
 									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet}">${coop.siteInternet}</a>
 								</div>
 							 	<br>
@@ -305,7 +305,7 @@
 	}
 </script>
 
-<div class="cooperatives-container flex bg-white shadow-inner">
+<div class="cooperatives-container flex md:flex-row flex-col bg-white shadow-inner">
 	<div class="p-16 min-w-[25%]">
 		<h1 class="h2-blue font-bold mb-8">Trouver votre coopérative</h1>
 		<div id="cooperatives-list" class="flex flex-col"></div>

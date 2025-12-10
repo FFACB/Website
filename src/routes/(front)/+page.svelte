@@ -114,28 +114,28 @@
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/AGC/Image2.jpg"
+			src="/images/photo home 01.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/AGC/Image3.jpg"
+			src="/images/photo home 02.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/AGC/Image4.jpg"
+			src="/images/photo home 03.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>
 	<div class="w-1/4">
 		<img
 			class="w-full h-full object-cover bg-cover"
-			src="/images/AGC/Image5.jpg"
+			src="/images/photo home 04.jpg"
 			alt="illustration réalisation"
 		/>
 	</div>

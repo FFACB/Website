@@ -21,7 +21,7 @@
 			class="absolute w-full top-0 sm:block hidden"
 		alt="background" src="/images/pictos/FFACB_formebleu.svg" />
 		<div class="z-10 p-16 flex flex-col justify-center mb-16">
-			<h1 class="w-full h1-white font-extrabold mb-8">Nos actualites</h1>
+			<h1 class="w-full h1-white font-extrabold mb-8">Nos actualités</h1>
 		</div>
 	</div>
 </div>
@@ -29,9 +29,9 @@
 <div class="bg-white sm:p-32 sm:pt-16  pb-16 flex flex-col justify-center items-center">
 	<div class="flex flex-row flex-wrap justify-center items-center w-full ">
 		{#each actualites as actualite}
-			<div class="sm:basis-1/3 basis-full p-2 h-full flex-1 max-h-[34rem]" style="height: -webkit-fill-available;">
+			<div class="sm:basis-1/3 basis-full p-2 h-full flex-1  " >
 				<div
-					class="bg-white rounded-3xl flex flex-col justify-between items-start p-4 h-full  border border-dark"
+					class="bg-white rounded-3xl flex flex-col justify-between items-start p-4  h-[34rem]  border border-dark"
 				>
 					<div class="w-full overflow-hidden mb-4">
 						<img

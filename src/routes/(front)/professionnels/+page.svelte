@@ -16,24 +16,26 @@
 
 		element.style.zIndex = servicesZIndex.toString();
 
-		htmlAccompagnement.style.backgroundColor = '#DCEFFC';
 		htmlAccompagnement.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlAssurances.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlArcab.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlFormations.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlPartage.style.borderBottomColor = 'rgb(13 28 48)';
+		htmlAccompagnement.style.backgroundColor = '#DCEFFC';
 		htmlAccompagnement.style.fontWeight = 'normal';
 		htmlAssurances.style.backgroundColor = '#DCEFFC';
-		htmlAssurances.style.borderBottomColor = 'rgb(13 28 48)';
 		htmlAssurances.style.fontWeight = 'normal';
 		htmlArcab.style.backgroundColor = '#DCEFFC';
-		htmlArcab.style.borderBottomColor = 'rgb(13 28 48)';
 		htmlArcab.style.fontWeight = 'normal';
 		htmlFormations.style.backgroundColor = '#DCEFFC';
-		htmlFormations.style.borderBottomColor = 'rgb(13 28 48)';
 		htmlFormations.style.fontWeight = 'normal';
 		htmlPartage.style.backgroundColor = '#DCEFFC';
-		htmlPartage.style.borderBottomColor = 'rgb(13 28 48)';
 		htmlPartage.style.fontWeight = 'normal';
 
 		element.style.backgroundColor = '#ffffff'; //"#DCEFFC";
-		element.style.borderBottomColor = '#ffffff';
+		if (window.innerWidth > 768) {
+			element.style.borderBottomColor = '#ffffff';
+		}
 		element.style.fontWeight = 'bold';
 
 		document.querySelectorAll('.blocks').forEach((element) => {
@@ -48,10 +50,8 @@
 	}
 
 	onMount(() => {
-
 		clickService(htmlAccompagnement, 0);
-
-	})
+	});
 </script>
 
 <div
@@ -62,9 +62,11 @@
 		src="/images/GRANDVOINET.CHAPELLE.DES.BUIS.jpg?width=1920&height=1080"
 		alt="federation"
 	/>
-	<div class="relative sm:ml-32 ml-0 flex h-[95%] sm:w-2/5 w-full flex-col justify-end items-center overflow-hidden">
+	<div
+		class="relative sm:ml-32 ml-0 flex h-[95%] sm:w-2/5 w-full flex-col justify-end items-center overflow-hidden"
+	>
 		<img
-			class="absolute w-full top-0 sm:block hidden "
+			class="absolute w-full top-0 sm:block hidden"
 			alt="background"
 			src="/images/pictos/FFACB_formebleu.svg"
 		/>
@@ -168,7 +170,7 @@
 			<div class="sm:flex hidden flex-col w-full h-1/2 relative p-16">
 				<div class="relative h-full">
 					<div
-						class=" border bg-white border-black rounded-full p-8 w-1/5  object-cover bg-cover absolute bottom-0 left-0"
+						class=" border bg-white border-black rounded-full p-8 w-1/5 object-cover bg-cover absolute bottom-0 left-0"
 					>
 						<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 					</div>
@@ -272,19 +274,21 @@
 	</div>
 </div>
 
-<div class="bg-white text-center p-16  sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
+<div class="bg-white text-center p-16 sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les services proposés par la FFACB ?</h2>
 	<br /><br />
 
 	<div class="relative mt-16 sm:w-auto w-full">
-		<div class="absolute bottom-full translate-y-[1px] w-[95%]  left-1/2 -translate-x-1/2 sm:flex hidden">
+		<div
+			class="sm:absolute bottom-full translate-y-[1px] sm:w-[95%] w-full sm:flex-row flex-col left-1/2 sm:-translate-x-1/2 translate-x-0 flex"
+		>
 			<input
 				type="button"
 				on:click={() => {
 					clickService(htmlAccompagnement, 0);
 				}}
 				bind:this={htmlAccompagnement}
-				class="uppercase absolute bottom-0 left-0 w-1/5 z-50 p-4 bg-white text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase sm:absolute block bottom-0 left-0 sm:w-1/5 w-full z-50 p-4 bg-white text-dark text-center rounded-3xl rounded-tl-3xl sm:rounded-tr-3xl sm:rounded-bl-none sm:rounded-br-none sm:mb-0 mb-4 cursor-pointer border border-dark"
 				value="ACCOMPAGNEMENT"
 			/>
 
@@ -294,7 +298,7 @@
 					clickService(htmlAssurances, 1);
 				}}
 				bind:this={htmlAssurances}
-				class="uppercase absolute bottom-0 left-[20%] w-1/5 z-40 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase sm:absolute block bottom-0 left-[20%] sm:w-1/5 w-full z-50 p-4 bg-white text-dark text-center rounded-3xl rounded-tl-3xl sm:rounded-tr-3xl sm:rounded-bl-none sm:rounded-br-none sm:mb-0 mb-4 cursor-pointer border border-dark"
 				value="ASSURANCES"
 			/>
 
@@ -304,7 +308,7 @@
 					clickService(htmlArcab, 2);
 				}}
 				bind:this={htmlArcab}
-				class="uppercase absolute bottom-0 left-[40%] w-1/5 z-30 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase sm:absolute block bottom-0 left-[40%] sm:w-1/5 w-full z-50 p-4 bg-white text-dark text-center rounded-3xl rounded-tl-3xl sm:rounded-tr-3xl sm:rounded-bl-none sm:rounded-br-none sm:mb-0 mb-4 cursor-pointer border border-dark"
 				value="ARCAB"
 			/>
 
@@ -314,7 +318,7 @@
 					clickService(htmlFormations, 3);
 				}}
 				bind:this={htmlFormations}
-				class="uppercase absolute bottom-0 left-[60%] w-1/5 z-20 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase sm:absolute block bottom-0 left-[60%] sm:w-1/5 w-full z-50 p-4 bg-white text-dark text-center rounded-3xl rounded-tl-3xl sm:rounded-tr-3xl sm:rounded-bl-none sm:rounded-br-none sm:mb-0 mb-4 cursor-pointer border border-dark"
 				value="FORMATIONS"
 			/>
 
@@ -324,12 +328,15 @@
 					clickService(htmlPartage, 4);
 				}}
 				bind:this={htmlPartage}
-				class="uppercase absolute bottom-0 left-[80%] w-1/5 z-10 p-4 bg-lightgrey text-dark text-center rounded-tl-3xl rounded-tr-3xl cursor-pointer border border-dark"
+				class="uppercase sm:absolute block bottom-0 left-[80%] sm:w-1/5 w-full z-50 p-4 bg-white text-dark text-center rounded-3xl rounded-tl-3xl sm:rounded-tr-3xl sm:rounded-bl-none sm:rounded-br-none sm:mb-0 mb-4 cursor-pointer border border-dark"
 				value="PARTAGE"
 			/>
 		</div>
 
-		<div id="block-0" class="blocks flex flex-row flex-wrap justify-center items-center sm:w-auto w-full">
+		<div
+			id="block-0"
+			class="blocks flex flex-row flex-wrap justify-center items-center sm:w-auto w-full"
+		>
 			<div class="border border-dark rounded-3xl sm:w-auto w-full">
 				<h3 class="h2-blue font-bold sm:m-8 mt-16 text-2xl">
 					UN ACCOMPAGNEMENT JURIDIQUE, FISCAL ET COMPTABLE
@@ -416,12 +423,12 @@
 			</div>
 		</div>
 
-		<div id="block-1" class="blocks flex-row flex-wrap justify-center items-center hidden">
+		<div id="block-1" class="blocks flex-row flex-wrap justify-center items-center sm:w-auto w-full hidden">
 			<div class="border border-dark rounded-3xl">
 				<h3 class="h2-blue font-bold m-8 mt-16 text-2xl uppercase">
 					Un service de gestion des produits d'assurances
 				</h3>
-				<div class="flex text-start">
+				<div class="flex flex-col sm:flex-row text-start">
 					<div class="basis-1/2 p-16 font-bold">
 						La FFACB a un rôle d'intermédiaire entre les coopératives et les partenaires en
 						assurances et garants. Elle sert ainsi de lien entre ces instances pour faciliter les
@@ -497,12 +504,12 @@
 			</div>
 		</div>
 
-		<div id="block-2" class="blocks flex-row flex-wrap justify-center items-center hidden">
+		<div id="block-2" class="blocks flex-row flex-wrap justify-center items-center sm:w-auto w-full hidden">
 			<div class="border border-dark rounded-3xl">
 				<h3 class="h2-blue font-bold m-8 mt-16 text-2xl uppercase">
 					Un service réviseurs en lien avec l'ARCAB
 				</h3>
-				<div class="flex text-start">
+				<div class="flex flex-col sm:flex-row text-start">
 					<div class="basis-1/2 p-16 font-bold">
 						La révision coopérative est un processus obligatoire d'examen critique et analytique de
 						la situation et du fonctionnement de la coopérative.
@@ -566,12 +573,12 @@
 			</div>
 		</div>
 
-		<div id="block-3" class="blocks flex-row flex-wrap justify-center items-center hidden">
+		<div id="block-3" class="blocks flex-row flex-wrap justify-center items-center sm:w-auto w-full hidden">
 			<div class="border border-dark rounded-3xl">
 				<h3 class="h2-blue font-bold m-8 mt-16 text-2xl uppercase">
 					Un service de formations en partenariat avec l'AFCAB
 				</h3>
-				<div class="flex text-start">
+				<div class="flex flex-col sm:flex-row text-start">
 					<div class="basis-1/2 p-16 font-bold">
 						Partenaire de l'AFCAB, Association de Formation des Coopératives Artisanales du
 						Bâtiment, la FFACB accompagne et soutient la gestion des groupements et coopératives par
@@ -625,10 +632,10 @@
 			</div>
 		</div>
 
-		<div id="block-4" class="blocks flex-row flex-wrap justify-center items-center hidden">
+		<div id="block-4" class="blocks flex-row flex-wrap justify-center items-center sm:w-auto w-full hidden">
 			<div class="border border-dark rounded-3xl">
 				<h3 class="h2-blue font-bold m-8 mt-16 text-2xl uppercase">Un partage d'expériences</h3>
-				<div class="flex text-start">
+				<div class="flex flex-col sm:flex-row text-start">
 					<div class="basis-1/2 p-16 font-bold">
 						À travers les différents outils communs mis en place, la FFACB sert de liant entre les
 						coopératives et peut les mettre en relation en fonction de leurs besoins.
@@ -657,20 +664,20 @@
 						<ul>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong> L'Assemblée Générale </strong> de la FFACB rassemble les adhérents
-								une fois par an, sauf exception liée au contexte économique ou sociétal.
+								></span><strong> L'Assemblée Générale </strong> de la FFACB rassemble les adhérents une
+								fois par an, sauf exception liée au contexte économique ou sociétal.
 							</li>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong>Des réunions régionales </strong> sont proposées de manière
-								ponctuelle avec les partenaires pour renforcer les échanges.
+								></span><strong>Des réunions régionales </strong> sont proposées de manière ponctuelle
+								avec les partenaires pour renforcer les échanges.
 							</li>
 							<li class="ml-4">
 								<span class="min-w-2 w-2 min-h-2 h-2 inline-block bg-blue rounded-full mr-2 mt-2"
-								></span><strong>Des webinaires </strong> liés à des sujets d'actualité ou des
-								problématiques majeures pour les adhérents sont régulièrement suggérés autour de
-								thèmes tels que le carnet d'information du logement ou encore les différents types
-								de marchés auxquels peuvent répondre les coopératives.
+								></span><strong>Des webinaires </strong> liés à des sujets d'actualité ou des problématiques
+								majeures pour les adhérents sont régulièrement suggérés autour de thèmes tels que le
+								carnet d'information du logement ou encore les différents types de marchés auxquels peuvent
+								répondre les coopératives.
 							</li>
 						</ul>
 					</div>
@@ -681,7 +688,7 @@
 </div>
 <!-- TODO -->
 
-<div class="bg-red text-center p-16 sm:pr-48 sm:pl-48  flex flex-col justify-center items-center">
+<div class="bg-red text-center p-16 sm:pr-48 sm:pl-48 flex flex-col justify-center items-center">
 	<h3 class="h2-blue text-white font-bold">Comment créer une coopérative avec la FFACB ?</h3>
 
 	<p class="font-semibold text-lg text-white mt-4 mb-6">
@@ -714,8 +721,8 @@
 	<div
 		class="flex flex-col flex-wrap justify-center items-center w-full bg-[#DCEFFC] rounded-3xl mb-8"
 	>
-		<div class="flex  justify-center items-start m-2 p-8 w-full sm:flex-row flex-col">
-			<div class="p-4 basis-1/5">
+		<div class="flex justify-center items-start m-2 p-8 w-full sm:flex-row flex-col">
+			<div class="p-4 basis-1/5 w-full">
 				<h3 class="uppercase font-bold text-blue text-xl">Liberté</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -730,7 +737,7 @@
 				</ul>
 			</div>
 
-			<div class="p-4 basis-1/5">
+			<div class="p-4 basis-1/5 w-full">
 				<h3 class="uppercase font-bold text-blue text-xl">Droits</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -742,7 +749,7 @@
 				</ul>
 			</div>
 
-			<div class="p-4 basis-1/5">
+			<div class="p-4 basis-1/5 w-full">
 				<h3 class="uppercase font-bold text-blue text-xl">Services</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -752,7 +759,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="p-4 basis-1/5">
+			<div class="p-4 basis-1/5 w-full">
 				<h3 class="uppercase font-bold text-blue text-xl">Obligations</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -766,7 +773,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="p-4 basis-1/5">
+			<div class="p-4 basis-1/5 w-full">
 				<h3 class="uppercase font-bold text-blue text-xl">Equité</h3>
 
 				<ul class="  text-dark mt-4 text-left">
@@ -810,7 +817,7 @@
 			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="sm:w-3/5 w-full   sm:ml-7 sm:p-0 p-16">
+	<div class="sm:w-3/5 w-full sm:ml-7 sm:p-0 p-16">
 		<div class="text-white">
 			La solidarité et la mutualisation des moyens sont des atouts non négligeables pour faire face
 			à la concurrence :
