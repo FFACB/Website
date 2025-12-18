@@ -86,8 +86,9 @@
 	>
 		<img
 			class="absolute w-full top-0 sm:block hidden"
-		
-		alt="background" src="/images/pictos/FFACB_formebleu.svg" />
+			alt="background"
+			src="/images/pictos/FFACB_formebleu.svg"
+		/>
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">Une coopérative artisanale, c'est quoi ?</h1>
 			<div class="text-white">
@@ -202,21 +203,16 @@
 		<h2 class="h2-blue font-bold">La FFACB, c'est qui ?</h2>
 		<br />
 		<p class="font-semibold text-lg">
-			La Fédération Française des Artisans Coopérateurs du Bâtiment est une Organisation
-			Professionnelle Nationale créée en 1988 qui rassemble les groupements et coopératives
-			d'artisans du bâtiment qui ont pour activité principale de construire des maisons
-			individuelles mais pas que. Les coopératives artisanales peuvent réaliser la construction, la
-			rénovation, la réhabilitation ou l'agrandissement de tous types de maisons ou de bâtiments
-			(cabinets médicaux, petits collectifs, etc.).
+			La <strong> Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB)</strong> est une
+			organisation professionnelle nationale créée en 1988. Elle regroupe des coopératives d'artisans
+			dans le secteur du bâtiment, principalement dans la construction et la rénovation de maisons individuelles,
+			mais également dans les marchés collectifs et les travaux publics.
 		</p>
 		<br />
 		<p>
-			Elles peuvent également répondre à des marchés publics et travailler en collaboration avec des
-			promoteurs immobiliers dans le cadre de projets en VEFA. En ce qui concerne la rénovation, les
-			coopératives peuvent intervenir dans le cadre de la rénovation énergétique dans la mesure où
-			elles sont éligibles à la qualification RGE 8632 <span class="inline-block"
-				>« rénovation offre globale ».</span
-			>
+			La FFACB représente un modèle unique : celui d'artisans qui coopèrent, tout en restant
+			indépendants, pour unir leurs compétences, partager des moyens et offrir une réponse complète
+			et fiable aux clients.
 		</p>
 	</div>
 	<div class="flex flex-col sm:w-1/2 w-full sm:pr-32 sm:pl-8">
@@ -229,7 +225,7 @@
 			secteur de la maison individuelle comme dans la rénovation du bâti existant.
 		</p>
 
-		<div class="sm:mt-0 mt-8  m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
+		<div class="sm:mt-0 mt-8 m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Une mission ?</h3>
 			<p>
 				Promouvoir une solidarité professionnelle élargie afin d'assurer le développement économique
@@ -251,7 +247,7 @@
 		de difficultés ou de litiges. Elle représente enfin un gage de confiance et de qualité pour les
 		clients.
 	</p>
-	<div class="flex sm:flex-row flex-col ">
+	<div class="flex sm:flex-row flex-col">
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl">
 			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
 			<ul class="font-light">
@@ -310,7 +306,9 @@
 	</div>
 </div>
 
-<div class="bg-white text-center pr-16 pl-16 sm:pr-48 sm:pl-48 pt-8 pb-8 flex flex-col justify-center items-center">
+<div
+	class="bg-white text-center pr-16 pl-16 sm:pr-48 sm:pl-48 pt-8 pb-8 flex flex-col justify-center items-center"
+>
 	<h2 class="h2-blue font-bold">Les services de la FFACB</h2>
 	<p class="font-semibold text-lg mt-6 mb-6">
 		Outre son rôle de trait d'union et d'information auprès des coopératives et des partenaires du
@@ -478,7 +476,7 @@
 </div>
 
 <div
-	class="bg-[#DCEFFC] text-center pl-16 pr-16 pt-8 pb-8  flex-col justify-center items-center sm:flex hidden"
+	class="bg-[#DCEFFC] text-center pl-16 pr-16 pt-8 pb-8 flex-col justify-center items-center sm:flex hidden"
 >
 	<h2 class="h2-blue font-bold mb-4">Pour la petite histoire</h2>
 
@@ -522,7 +520,9 @@
 	</div>
 </div>
 
-<div class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16">
+<div
+	class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16"
+>
 	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
 	<p class="text-white">
 		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
@@ -533,7 +533,7 @@
 		<div class="basis-1/3 p-4">
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
-				<p class="">Coopératives ou groupements adhérents actifs au 31/12/2024</p>
+				<p class="">Coopératives adhérentes</p>
 			</div>
 		</div>
 
@@ -550,8 +550,8 @@
 			<div class="w-full">
 				<h3 class="h2-blue text-9xl text-white font-bold">90</h3>
 				<p class="">
-					Millions de chiffre d'affaires réalisés par les coopératives et groupements membres de la
-					fédération.
+					Millions de chiffre d'affaires réalisés par les coopératives et groupements membres de
+					la fédération.
 				</p>
 			</div>
 		</div>
