@@ -109,44 +109,69 @@
 		</div>
 	</div>
 </div>
+
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white w-full p-16 sm:pl-48">
+		<h2 class="h2-blue font-bold">Qui sommes-nous ?</h2>
+		<br />
+
+		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB) est une organisation
+		professionnelle nationale créée en 1988. Elle regroupe des coopératives d'artisans dans le
+		secteur du bâtiment, principalement dans la construction et la rénovation de maisons
+		individuelles, mais également dans les marchés collectifs et les travaux publics. La FFACB
+		représente un modèle unique : celui d'artisans qui coopèrent, tout en restant indépendants, pour
+		unir leurs compétences, partager des moyens et offrir une réponse complète et fiable aux
+		clients.
+	</div>
+</div>
+
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white sm:w-1/2 w-full p-16 sm:pl-48">
-		Le contexte est posé. Dans ce cadre, la <strong>
-			Fédération Française des Artisans Coopérateurs du Bâtiment</strong
-		>
-		regroupe des artisans du secteur soucieux d'exercer une partie de leur activité au sein d'une coopérative
-		artisanale structurée tout en gardant leur indépendance. Au sein de la coopérative, chaque entreprise
-		conserve son autonomie et ses spécificités même si elle accepte un pouvoir central de coordination.<br
-		/><br />
-		La coopérative se présente comme un véritable
-		<strong> outil de développement et d'ouverture à de nouveaux marchés</strong> et permet de développer
-		la force d'intervention grâce à l'organisation en équipe.
-	</div>
-	<div class="bg-[#DCEFFC] sm:w-1/2 w-full p-16 sm:pr-48">
-		Le modèle coopératif est adapté à tous les projets, toutes les activités et toutes les tailles
-		d'entreprise et doit être fondé sur un <strong>principe d'égalité des droits</strong> qui
-		s'exprime par la formule<br /> « <strong> associé = une voix</strong> ».
+		<h2 class="text-2xl font-bold">Nos missions :</h2>
+		<br />
+		Notre rôle est d'accompagner, structurer et représenter nos Coopératives partout en France. Plus concrètement,
+		la FFACB s'engage à :
 		<br /><br />
-		Sous l'égide des coopératives et groupements, les artisans se structurent et :<br /><br />
 		<ul class="ml-16">
-			<li class="text-blue mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
-					>Partagent</strong
-				> leurs expertises
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong> Fédérer </strong>les coopératives artisanales autour de valeurs communes : qualité,
+				solidarité, responsabilité
 			</li>
-			<li class="text-blue mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
-					>Mutualisent</strong
-				> leurs savoir-faire
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong>Accompagner</strong> la création et le développement de coopératives locales
 			</li>
-			<li class="text-blue mb-4">
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong>Former</strong> les
+				artisans et les dirigeants aux spécificités du modèle coopératif (gestion, droit, assurance, etc.)
+			</li>
+			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
-					>Optimisent</strong
-				> leurs coûts
+					>Garantir la qualité</strong
+				> via une démarche qualité et un contrôle du respect de la réglementation
 			</li>
 		</ul>
-		<br />
-		Avec pour principales ambitions la qualité du travail réalisé et la satisfaction clients.
+	</div>
+	<div class="bg-[#DCEFFC] sm:w-1/2 w-full p-16 sm:pr-48">
+		<h2 class="text-2xl font-bold">Nos engagements :</h2>
+		<br /><br />
+		<ul class="ml-16">
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				Promouvoir une<strong> construction artisanale durable, responsable et humaine </strong>
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				Offrir un <strong>cadre structurant</strong> et des outils concrets (juridiques, commerciaux,
+				administratifs)
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Contribuer à la<strong
+					>pérennité des entreprises artisanales locales</strong
+				> face aux grands groupes
+			</li>
+		</ul>
 	</div>
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
@@ -200,44 +225,78 @@
 </div>
 <div class="flex sm:flex-row flex-col bg-white p-16">
 	<div class="flex flex-col sm:w-1/2 w-full sm:pl-32 sm:pr-8">
-		<h2 class="h2-blue font-bold">La FFACB, c'est qui ?</h2>
+		<h2 class="h2-blue font-bold">Avantages pour nos coopératives :</h2>
 		<br />
-		<p class="font-semibold text-lg">
-			La <strong> Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB)</strong> est une
-			organisation professionnelle nationale créée en 1988. Elle regroupe des coopératives d'artisans
-			dans le secteur du bâtiment, principalement dans la construction et la rénovation de maisons individuelles,
-			mais également dans les marchés collectifs et les travaux publics.
-		</p>
-		<br />
-		<p>
-			La FFACB représente un modèle unique : celui d'artisans qui coopèrent, tout en restant
-			indépendants, pour unir leurs compétences, partager des moyens et offrir une réponse complète
-			et fiable aux clients.
-		</p>
-	</div>
-	<div class="flex flex-col sm:w-1/2 w-full sm:pr-32 sm:pl-8">
-		<p class="sm:p-8">
-			Fédération d'avenir, la FFACB a développé son savoir-faire et rassemble ses adhérents à
-			travers des valeurs communes, une charte d'engagement, des services et un accompagnement
-			personnalisé mais aussi toute une Démarche Qualité soutenue à sa mise en place par la DECAS
-			(Direction des Entreprises Commerciales, Artisanales et de Services). Cette Démarche Qualité a
-			permis de mettre en place un processus de suivi et d'amélioration de la qualité dans le
-			secteur de la maison individuelle comme dans la rénovation du bâti existant.
-		</p>
+		<ul class="ml-16">
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong> Indépendance préservée</strong> mais avec la <strong>force d'un collectif</strong>
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong>Accès aux marchés</strong> (publics, privés, promoteurs, etc.)
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
+					>Sécurité juridique :</strong
+				>
+				contrat de construction (CCMI), garanties obligatoires et facultatives (Décennale, Garantie de
+				Livraison, Dommage-Ouvrages etc.)
+			</li>
 
-		<div class="sm:mt-0 mt-8 m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
-			<h3 class="uppercase font-bold text-xl">Une mission ?</h3>
-			<p>
-				Promouvoir une solidarité professionnelle élargie afin d'assurer le développement économique
-				de la coopération artisanale.
-			</p>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
+					>Formations et accompagnement</strong
+				> personnalisés
+			</li>
+
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
+					>Réseau
+				</strong>d'entraide, de partage d'expérience et d'innovation
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div
+	class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16"
+>
+	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
+	<p class="text-white">
+		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
+		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
+		toutes une part importante de la construction de maisons individuelle en France.
+	</p>
+	<div class="flex w-full sm:flex-row flex-col">
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
+				<p class="">Coopératives adhérentes</p>
+			</div>
 		</div>
-		<div class="m-2 p-4 pt-2 pb-2 font-bold text-white bg-blue rounded-3xl">
-			<h3 class="uppercase font-bold text-xl">Un objectif ?</h3>
-			<p>Défendre les intérêts professionnels des coopératives artisanales du bâtiment.</p>
+
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">713</h3>
+				<p class="">
+					Entreprises artisanales (hors Tiers Non Associés) qui emploient 3 500 salariés.
+				</p>
+			</div>
+		</div>
+
+		<div class="basis-1/3 p-4">
+			<div class="w-full">
+				<h3 class="h2-blue text-9xl text-white font-bold">90</h3>
+				<p class="">
+					Millions de chiffre d'affaires réalisés par les coopératives et groupements membres de la
+					fédération.
+				</p>
+			</div>
 		</div>
 	</div>
 </div>
+
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les atouts de la FFACB ?</h2>
 	<p class="font-semibold text-lg mt-6 mb-6 sm:pr-48 sm:pl-48">
@@ -285,6 +344,18 @@
 		> avec les meilleures garanties du marché.
 	</p>
 </div>
+
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white w-full p-16 sm:pl-48">
+		<h2 class="h2-blue font-bold">En résumé :</h2>
+		<br />
+
+		La FFACB est un des principaux réseaux de coopératives artisanales du bâtiment en France,
+		offrant à la fois autonomie individuelle et force collective. Elle fédère un large nombre
+		d’artisans engagés dans la construction ou la rénovation, en leur fournissant les outils,
+		garanties et formations nécessaires à un modèle coopératif performant.
+	</div>
+</div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
@@ -315,8 +386,8 @@
 		secteur y compris sur le plan technique et l'application des nouvelles réglementations, la FFACB
 		assure <strong>conseil et appui juridique.</strong><br />
 		La fédération permet aux coopératives d'accéder à des produits d'assurances de la construction et
-		met son personnel à disposition de l'ARCAB pour réaliser les travaux de révision quinquennale et
-		de l'AFCAB pour dispenser des formations à ses membres.
+		met son personnel à disposition de l'ARCAB pour réaliser les travaux de révision quinquennale et de
+		l'AFCAB pour dispenser des formations à ses membres.
 	</p>
 
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -427,8 +498,8 @@
 				</li>
 				<li>
 					<br />
-					Partenaire de cet organisme, la FFACB met à disposition son personnel qualifié et soutient
-					la gestion des groupements et coopératives par des formations adaptées :
+					Partenaire de cet organisme, la FFACB met à disposition son personnel qualifié et soutient la
+					gestion des groupements et coopératives par des formations adaptées :
 					<br /><br />
 					<ul class="ml-16">
 						<li>
@@ -463,11 +534,10 @@
 				</li>
 				<li>
 					<br />
-					Certifiée QUALIOPI, l'AFCAB remplit les 6 critères qualité exigés par le Décret n°2015-790
-					du 30 juin 2015 relatif à la qualité des actions de formation professionnelle continue.<br
-					/>
-					L'AFCAB est certifiée selon le Référentiel National sur la Qualité des actions concourants
-					au développement des compétences mentionné à l'article L.6316-3 du code du travail et le PS-FOR-PRO-001
+					Certifiée QUALIOPI, l'AFCAB remplit les 6 critères qualité exigés par le Décret n°2015-790 du
+					30 juin 2015 relatif à la qualité des actions de formation professionnelle continue.<br />
+					L'AFCAB est certifiée selon le Référentiel National sur la Qualité des actions concourants au
+					développement des compétences mentionné à l'article L.6316-3 du code du travail et le PS-FOR-PRO-001
 					- Programme de certification des prestataires concourant au développement des compétences applicable.
 				</li>
 			</ul>
@@ -478,7 +548,7 @@
 <div
 	class="bg-[#DCEFFC] text-center pl-16 pr-16 pt-8 pb-8 flex-col justify-center items-center sm:flex hidden"
 >
-	<h2 class="h2-blue font-bold mb-4">Pour la petite histoire</h2>
+	<h2 class="h2-blue font-bold mb-4">Nos faits marquants</h2>
 
 	<div class="relative w-full">
 		<div class="flex justify-center items-center relative h-80 w-full">
@@ -516,44 +586,6 @@
 				></div>
 			{/each}
 			<div class="h-[2px] w-[90%] bg-blue top-[65%] -translate-y-1/2 absolute"></div>
-		</div>
-	</div>
-</div>
-
-<div
-	class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16"
->
-	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
-	<p class="text-white">
-		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
-		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
-		toutes une part importante de la construction de maisons individuelle en France.
-	</p>
-	<div class="flex w-full sm:flex-row flex-col">
-		<div class="basis-1/3 p-4">
-			<div class="w-full">
-				<h3 class="h2-blue text-9xl text-white font-bold">73</h3>
-				<p class="">Coopératives adhérentes</p>
-			</div>
-		</div>
-
-		<div class="basis-1/3 p-4">
-			<div class="w-full">
-				<h3 class="h2-blue text-9xl text-white font-bold">713</h3>
-				<p class="">
-					Entreprises artisanales (hors Tiers Non Associés) qui emploient 3 500 salariés.
-				</p>
-			</div>
-		</div>
-
-		<div class="basis-1/3 p-4">
-			<div class="w-full">
-				<h3 class="h2-blue text-9xl text-white font-bold">90</h3>
-				<p class="">
-					Millions de chiffre d'affaires réalisés par les coopératives et groupements membres de
-					la fédération.
-				</p>
-			</div>
 		</div>
 	</div>
 </div>

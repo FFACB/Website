@@ -7,8 +7,10 @@
 </script>
 
 <footer class="flex flex-col pl-16 pr-16 pt-4 pb-4 shadow-lg bg-dark">
-	<div class="flex w-full h-full sm:flex-row flex-col justify-between items-start sm:text-start text-center">
-		<div class="sm:w-1/5 w-full sm:h-full h-56 p-8 ">
+	<div
+		class="flex w-full h-full sm:flex-row flex-col justify-between items-start sm:text-start text-center"
+	>
+		<div class="sm:w-1/5 w-full sm:h-full h-56 p-8">
 			<a href="/">
 				<img
 					class="w-full h-full bg-contain object-contain"
@@ -34,7 +36,7 @@
 				<a class="uppercase" href="/contact">contact</a>
 			</div>
 			<div class=" m-2 text-red">
-				<a class="uppercase" href="/federation">ma cooperative</a>
+				<a class="uppercase" href="/federation">ma coopérative</a>
 			</div>
 			<div class=" m-2 text-blue">
 				<a class="uppercase" href="/professionnels">votre espace</a>
@@ -42,17 +44,17 @@
 		</div>
 		<div class="sm:w-1/5 w-full sm:mt-0 mt-16 text-white">
 			<div class=" m-2">
-				<a class="uppercase font-bold" href="/actualites">Dernieres actualites</a>
+				<a class="uppercase font-bold text-blue" href="/actualites">Dernières actualités</a>
 			</div>
 			{#each actualites as actualite}
 				<div class=" m-2">
-					<a class="uppercase" href="/actualites/{actualite.id}">{actualite.titre}</a>
+					<a class="uppercase text-xs" href="/actualites/{actualite.id}"><span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>{actualite.titre}</a>
 				</div>
 			{/each}
 		</div>
 		<div class="sm:w-1/5 w-full sm:mt-0 mt-16 text-white text-left">
 			<div class="m-2">
-				<a class="uppercase font-bold" href="/contact">Nous contacter</a>
+				<a class="uppercase font-bold text-blue" href="/contact">Nous contacter</a>
 			</div>
 			<div class="m-2 flex mb-4">
 				<img src="/images/pictos/FFACB_picto_phone.svg" class="w-6 h-6 rounded-full" alt="Tel" />
