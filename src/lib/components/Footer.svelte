@@ -48,7 +48,10 @@
 			</div>
 			{#each actualites as actualite}
 				<div class=" m-2">
-					<a class="uppercase text-xs" href="/actualites/{actualite.id}"><span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>{actualite.titre}</a>
+					<a class="uppercase text-xs" href="/actualites/{actualite.id}"
+						><span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"
+						></span>{actualite.titre}</a
+					>
 				</div>
 			{/each}
 		</div>
@@ -71,6 +74,10 @@
 					href="https://www.google.com/maps/@45.9234846,6.0915712,15z?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"
 					>Siège social <br /> 3 bis avenue Sainte Foy,<br /> 24500 Eymet</a
 				>
+			</div>
+			<div class="m-2 flex mb-4">
+				<img src="/images/linkedin.png" class="w-6 h-6 rounded-full" alt="Tel" />
+				<a class="uppercase ml-4" target="_blank" href="https://fr.linkedin.com/company/ffacb">linkedin FFACB</a>
 			</div>
 		</div>
 	</div>

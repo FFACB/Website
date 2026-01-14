@@ -180,8 +180,8 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
-		<div class=" border bg-white border-black rounded-full p-8 w-32">
-			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		<div class=" border bg-white border-black rounded-full p-4 w-32">
+			<img src="/images/homme.png" class="" alt="picto quali" />
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
@@ -363,8 +363,8 @@
 </div>
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
-		<div class=" border bg-white border-black rounded-full p-8 w-32">
-			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		<div class=" border bg-white border-black rounded-full p-4 w-32">
+			<img src="/images/homme.png" class="" alt="picto quali" />
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">

@@ -377,7 +377,7 @@
 				<div
 					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
 				>
-					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
+					<img src="/images/homme.png" class="rounded-full" alt="picto quali" />
 				</div>
 
 				<div class="text-center mt-16">
@@ -405,7 +405,7 @@
 				<div
 					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
 				>
-					<img src="/images/pictos/FFACB_bonhomme.svg" class="" alt="picto quali" />
+					<img src="/images/femme.png" class="rounded-full" alt="picto quali" />
 				</div>
 				<div class="text-center mt-16">
 					<p class="font-Funnel-Sans-Italic">
@@ -456,8 +456,8 @@
 
 <div class="bg-white flex justify-center items-center pt-12 pb-12">
 	<div class="h-auto sm:block hidden">
-		<div class=" border bg-dark border-black rounded-full p-8 w-32">
-			<img src="/images/pictos/picto-interlocuteur.svg" class="" alt="picto quali" />
+		<div class=" border bg-dark border-black rounded-full p-4 w-32">
+			<img src="/images/homme.png" class="" alt="picto quali" />
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full sm:p-0 p-16 sm:ml-7">
