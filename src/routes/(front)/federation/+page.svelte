@@ -151,6 +151,11 @@
 					>Garantir la qualité</strong
 				> via une démarche qualité et un contrôle du respect de la réglementation
 			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
+					>Représenter et défendre
+				</strong> les intérêts des coopératives auprès des pouvoirs publics et des institutions professionnelles
+			</li>
 		</ul>
 	</div>
 	<div class="bg-[#DCEFFC] sm:w-1/2 w-full p-16 sm:pr-48">
@@ -159,7 +164,7 @@
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Promouvoir une<strong> construction artisanale durable, responsable et humaine </strong>
+				Promouvoir une <strong> construction artisanale durable, responsable et humaine </strong>
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
@@ -167,9 +172,8 @@
 				administratifs)
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Contribuer à la<strong
-					>pérennité des entreprises artisanales locales</strong
-				> face aux grands groupes
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Contribuer à la
+				<strong>pérennité des entreprises artisanales locales</strong> face aux grands groupes
 			</li>
 		</ul>
 	</div>
@@ -251,9 +255,8 @@
 			</li>
 
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong
-					>Réseau
-				</strong>d'entraide, de partage d'expérience et d'innovation
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong>Réseau </strong> d'entraide,
+				de partage d'expérience et d'innovation
 			</li>
 		</ul>
 	</div>
@@ -262,7 +265,8 @@
 <div
 	class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16"
 >
-	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés</h2>
+	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés*</h2>
+
 	<p class="text-white">
 		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
 		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
@@ -295,6 +299,7 @@
 			</div>
 		</div>
 	</div>
+	<p class="italic text-sm">* Chiffres clés de 2024</p>
 </div>
 
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
@@ -396,11 +401,11 @@
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div
 			on:click={() => {
-				activeServices = true;
+				activeServices = !activeServices;
 			}}
 			class="m-2 p-4 pt-2 pb-2 font-bold text-white border-2 bg-dark border-dark rounded-full hover:bg-white hover:text-black transition-all duration-300"
 		>
-			Découvrir
+			{ activeServices ? 'Masquer' : 'Découvrir' }
 		</div>
 	</div>
 

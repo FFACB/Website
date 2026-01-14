@@ -77,7 +77,7 @@
 			</h1>
 			<div class="text-white">
 				<p class="font-Funnel-Sans-Italic font-medium text-lg sm:block hidden">
-					Une coopérative d’artisans est une structure qui permet à plusieurs artisans indépendants
+					Une coopérative d'artisans est une structure qui permet à plusieurs artisans indépendants
 					de travailler ensemble, tout en conservant leur autonomie juridique et leur entreprise
 					propre. Elle fonctionne selon les principes de la coopération : mutualisation, solidarité,
 					gouvernance démocratique.
@@ -100,8 +100,8 @@
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
 				Statut juridique : Société Coopérative Artisanale constituée sous forme SARL à capital variable.
-				(Il existe des coopératives artisanales sous forme SA. Cependant, la FFACB n’en créé pas en raison
-				des risques et responsabilités liée à cette forme juridique).
+				(Il existe des coopératives artisanales sous forme SA. Cependant, la FFACB n'en créé pas en raison
+				des risques et responsabilités liés à cette forme juridique).
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Parts sociales réparties
@@ -121,9 +121,9 @@
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Fonctionnement démocratique : chaque associé dispose d’une voix dans la prise de décision, quel
-				que soit son chiffre d’affaires et son nombre de dirigeants (principe coopératif : 1 associé =
-				1 voix)
+				Fonctionnement démocratique : chaque associé dispose d'une voix dans la prise de décision, quels
+				que soient son chiffre d'affaires et son nombre de dirigeants (principe coopératif : 1 associé
+				= 1 voix).
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
@@ -132,8 +132,8 @@
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Répartition des
 				responsabilités entre les associés pour la gestion quotidienne (commerciale, administrative,
-				technique…). La gérance n’est là que pour faciliter la gestion quotidienne de la
-				coopérative, mais tous les associés doivent s’investir. La Coopérative peut également
+				technique…). La gérance n'est là que pour faciliter la gestion quotidienne de la
+				coopérative, mais tous les associés doivent s'investir. La Coopérative peut également
 				engager des salariés ou prestataires indépendants pour assurer certaines missions de support
 				administratif.
 			</li>
@@ -147,26 +147,26 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-lightgrey sm:w-1/2 w-full p-16 sm:pl-48 pr-16">
-		<h2 class="text-2xl font-bold">3. Activités mutualisées au sein de la Coopérative :</h2>
+		<h2 class="text-2xl font-bold">3. Activités mutualisées au sein de la Coopérative :</h2>
 		<br />
 
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Administratives et juridiques : Mise en place et gestion des contrats, assurances, facturation,
-				préparation des Assemblée Générale etc.
+				Administratives et juridiques : mise en place et gestion des contrats, assurances, facturation,
+				préparation des Assemblées Générales, etc.
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Commerciales : relation avec les clients, réponses à des appels d’offres etc.
+				Commerciales : relation avec les clients, réponses à des appels d'offres, etc.
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Technique :
-				planification et suivi des chantiers, réunion entre les associés etc.
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Technique :
+				planification et suivi des chantiers, réunion entre les associés, etc.
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Communication et
-				marketing : site web, logo, plaquettes etc.
+				marketing : site web, logo, plaquettes, etc.
 			</li>
 		</ul>
 	</div>
@@ -178,7 +178,7 @@
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
 				Le client signe un seul contrat avec la coopérative (et non avec chaque artisan séparément) dont
-				elle est l’interlocuteur unique. Les artisans quant à eux soumettent leurs devis à la Coopérative
+				elle est l'interlocuteur unique. Les artisans quant à eux soumettent leurs devis à la Coopérative
 				pour lui permettre de chiffrer un contrat.
 			</li>
 			<li class=" mb-4">
@@ -187,10 +187,10 @@
 				pour un CCMI)
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>L’artisan est mandaté
-				par la coopérative pour exécuter ses lots dans les règles de l’art. L’artisan ne peut pas
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>L'artisan est mandaté
+				par la coopérative pour exécuter ses lots dans les règles de l'art. L'artisan ne peut pas
 				sous-traiter son lot. Seule la Coopérative peut avoir un sous-traitant appelé un
-				Tiers-Non-Associés. L’appel à des Tiers Non Associés est limité à 20% du Chiffre d’affaires
+				Tiers-Non-Associés. L'appel à des Tiers Non Associés est limité à 20% du Chiffre d'affaires
 				annuel de la Coopérative.
 			</li>
 		</ul>
@@ -203,8 +203,8 @@
 		<br />
 
 		<p class="ml-16">
-			Les résultats dégagés à la fin de l’exercice social doivent être répartis entre les associés
-			de la coopérative au prorata du chiffre d’affaires qu’ils ont réalisé avec la Coopérative.
+			Les résultats dégagés à la fin de l'exercice social doivent être répartis entre les associés
+			de la coopérative au prorata du chiffre d'affaires qu'ils ont réalisé avec cette dernière.
 		</p>
 	</div>
 	<div class="bg-lightgrey sm:w-1/2 w-full p-16 sm:pr-48">
@@ -214,7 +214,7 @@
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Exonération de l’impôt sur les sociétés (IS) *
+				Exonération de l'impôt sur les sociétés (IS) *
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
@@ -223,13 +223,13 @@
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Exonération de la Taxe
-				d’Apprentissage *
+				d'Apprentissage *
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Exonération de la
 				Contribution Sociale de Solidarité des Sociétés (C3S) * = sauf pour la quote-part de
-				résultat issue de l’activité réalisée avec les sous-traitants.
+				résultat issue de l'activité réalisée avec les sous-traitants.
 			</li>
 		</ul>
 	</div>
@@ -237,14 +237,14 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48">
-		<h2 class="h2-blue font-bold">Les points de vigilance à prendre en compte :</h2>
+		<h2 class="h2-blue font-bold">Les points de vigilance à prendre en compte :</h2>
 		<br />
 
 		<p>
 			- Bonne entente et gouvernance essentielle (les conflits internes peuvent pénaliser
-			l’activité)
+			l'activité)
 		</p>
-		<p>- Nécessite une vision partagée et une gestion rigoureuse</p>
+		<p>- Vision partagée et gestion rigoureuse</p>
 		<p>- Implication régulière demandée (temps, réunions, décisions collectives etc.)</p>
 	</div>
 </div>
@@ -334,7 +334,9 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-lightgrey w-full p-16 sm:pl-48 pr-16">
-		<h2 class="text-2xl font-bold">Quels avantages de se constituer en coopérative ?</h2>
+		<h2 class="text-2xl text-blue font-bold">
+			Quels sont les principaux avantages de modèle coopératif ?
+		</h2>
 		<br />
 
 		<ul class="ml-16">
@@ -351,12 +353,12 @@
 				savoir-faire et monter en compétence ensemble
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Rompre l’isolement
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Rompre l'isolement
 				professionnel qui peut parfois peser sur les entreprises
 			</li>
 
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>S’assurer une nouvelle
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>S'assurer une nouvelle
 				source de marchés et renforcer sa situation économique
 			</li>
 
@@ -376,19 +378,23 @@
 			</li>
 		</ul>
 
-		<p class="italic">« Seul on va plus vite, ensemble on va plus loin. »</p>
+		<p class="italic text-lg w-full text-center">
+			« Seul on va plus vite, ensemble on va plus loin. »
+		</p>
 	</div>
 </div>
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48">
-		<h2 class="text-2xl font-bold">Pourquoi se créer en coopérative avec la FFACB ?</h2>
+		<h2 class="text-2xl text-blue text-center font-bold">
+			Entreprendre autrement : les atouts de la coopérative avec la FFACB
+		</h2>
 		<br />
 
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Etablissement et modifications des statuts ;
+				Etablissement et modifications des statuts ;
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
@@ -396,79 +402,79 @@
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement pour
-				l’établissement et les modifications du Règlement Intérieur (une trame adaptée au système
-				coopératif est fournie aux nouveaux Adhérents) ;
+				l'établissement et les modifications du Règlement Intérieur (une trame adaptée au système
+				coopératif est fournie aux nouveaux Adhérents) ;
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Préparation des
-				documents pour les Assemblées Générales de la coopérative ;
+				documents pour les Assemblées Générales de la coopérative ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise à disposition de
-				divers contrats : Contrat de Construction de Maison Individuelle, (CCMI) Contrat de
-				sous-traitance, Marché de Travaux, Contrat de réservation (VEFA), contrat d’apporteur
-				d’affaires etc. ;
+				divers contrats : Contrat de Construction de Maison Individuelle, (CCMI) Contrat de
+				sous-traitance, Marché de Travaux, Contrat de réservation (VEFA), contrat d'apporteur
+				d'affaires etc. ;
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Informations sur les DTU
-				et normes du bâtiment ;
+				et normes du bâtiment ;
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise en relation avec
-				nos partenaires et suivi des dossiers d’assurances (Décennale, Responsabilité Civile,
+				nos partenaires et suivi des dossiers d'assurances (Décennale, Responsabilité Civile,
 				professionnelle, Dommages-Ouvrage) et de garanties (garantie de remboursement des acomptes,
 				garantie de livraison, garantie de paiement des sous-traitants, garantie de futur
-				achèvement) pour la coopérative ;
+				achèvement) pour la coopérative ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Traitements des
-				garanties (sous réserve d’acceptation du dossier par les Garants) ;
+				garanties (sous réserve d'acceptation du dossier par les Garants) ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement pour le
-				recouvrement des impayés ;
+				recouvrement des impayés ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Référencement auprès
-				d’un Médiateur de la Consommation ;
+				d'un Médiateur de la Consommation ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise à disposition des
-				Partenariats FFACB le cas échéant ;
+				Partenariats FFACB le cas échéant ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-				juridique, fiscal et comptable ;
+				juridique, fiscal et comptable ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Veille juridique sur la
-				règlementation des Coopératives et du CCMI ;
+				règlementation des Coopératives et du CCMI ;
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sollicitation des
 				pouvoirs publics et élus locaux sur les problèmes rencontrés par les Coopératives et leurs
-				Artisans ;
+				Artisans ;
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement dans la
-				procédure collective de dissolution de la Coopérative ;
+				procédure collective de dissolution de la Coopérative ;
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l’AFCAB,
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l'AFCAB,
 				Association de Formation émanant de la FFACB, permettant la dispense de formations
-				spécifiques (sur le CCMI pour exemple) aux membres des coopératives adhérentes FFACB ;
+				spécifiques (sur le CCMI pour exemple) aux membres des coopératives adhérentes FFACB ;
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l’ARCAB,
-				Association de Révision émanant de la FFACB, permettant l’accès à la révision coopérative
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l'ARCAB,
+				Association de Révision émanant de la FFACB, permettant l'accès à la révision coopérative
 				(révision quinquennale obligatoire).
 			</li>
 		</ul>
@@ -476,9 +482,7 @@
 </div>
 
 <div class="bg-[#DCEFFC] text-center sm:p-32 p-16 flex flex-col justify-center items-center">
-	<h2 class="h2-blue font-bold">
-		Quels sont les avantages à se constituer en coopérative et à adhérer à la fédération ?
-	</h2>
+	<h2 class="h2-blue font-bold">Pourquoi adhérer à la FFACB ?</h2>
 	<br /><br />
 	<div class="flex sm:flex-row flex-col">
 		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl basis-1/3">
@@ -562,12 +566,12 @@
 	</p>
 	<p class="font-light text-lg text-white mt-4 mb-6">
 		Après de premiers échanges sur les éléments clés pour constituer une coopérative, une formation
-		axée sur le statut coopératif sera organisée pour permettre aux futurs associés d’appréhender au
+		axée sur le statut coopératif sera organisée pour permettre aux futurs associés d'appréhender au
 		mieux son fonctionnement, ses particularités et ses enjeux
 	</p>
 	<p class="font-light text-lg text-white mt-4 mb-6">
-		Cette formation est l’occasion pour les participants d’évaluer l’opportunité pour eux de créer
-		une coopérative et d’adhérer à la FFACB. Le cas échéant, la Fédération prépare et établit les
+		Cette formation est l'occasion pour les participants d'évaluer l'opportunité pour eux de créer
+		une coopérative et d'adhérer à la FFACB. Le cas échéant, la Fédération prépare et établit les
 		statuts à déposer et se charge de présenter les dossiers aux partenaires.
 	</p>
 
@@ -675,6 +679,18 @@
 	</div>
 </div> -->
 
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white w-full p-16 sm:pl-48 pr-16">
+		<h2 class="text-2xl font-bold">Bénéficiez d'un partage d'expérience</h2>
+		<br />
+
+		<p class="ml-16">
+			À travers les différents outils communs mis en place, la FFACB sert de liant entre les
+			coopératives et peut les mettre en relation en fonction de leurs besoins.
+		</p>
+	</div>
+</div>
+
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-8 w-32">
@@ -682,20 +698,15 @@
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full sm:ml-7 sm:p-0 p-16">
-		<div class="text-white">
-			À travers les différents outils communs mis en place, la FFACB sert de liant entre les
-			coopératives et peut les mettre en relation en fonction de leurs besoins.
-		</div>
-		<br />
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
-			« Avec le système des coopératives, nous nous inscrivons dans des modèles d’économie sociale
+			« Avec le système des coopératives, nous nous inscrivons dans des modèles d'économie sociale
 			et solidaire. Pouvoir intégrer un groupe qui partage ses expériences du quotidien, échanger
-			sur nos difficultés mais aussi prendre du recul est enrichissant pour tout le monde. C’est le
-			sens de la dynamique dans laquelle nous voulons aller »,
+			sur nos difficultés mais aussi prendre du recul est enrichissant pour tout le monde. C'est le
+			sens de la dynamique dans laquelle nous voulons aller »,
 		</div>
 		<br />
 		<div class="text-blue text-sm">
-			Anne Lang, gérante d’Avenir et Bois, constructeur de maisons passives en bois en Alsace, relié
+			Anne Lang, gérante d'Avenir et Bois, constructeur de maisons passives en bois en Alsace, relié
 			à la coopérative ARTCOPA.
 		</div>
 	</div>

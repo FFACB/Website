@@ -95,7 +95,7 @@
 			/>
 			<div class="z-10 p-16 flex flex-col justify-center">
 				<h1 class="w-full h1-white font-extrabold mb-8">
-					La Féderation française des artisans Coopérateurs du Bâtiment
+					La Féderation Française des artisans Coopérateurs du Bâtiment
 				</h1>
 			</div>
 		</div>
