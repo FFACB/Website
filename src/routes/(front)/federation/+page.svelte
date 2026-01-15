@@ -92,15 +92,15 @@
 		<div class="z-10 p-16 flex flex-col justify-center">
 			<h1 class="w-full h1-white font-extrabold mb-8">Une coopérative artisanale, c'est quoi ?</h1>
 			<div class="text-white">
-				<p class="font-semibold">
+				<p class="font-light">
 					Une coopérative artisanale est un groupement de plusieurs artisans qui décident de
 					s'associer en créant une structure qu'ils dirigent de façon démocratique.
 				</p>
-				<p class="font-Funnel-Sans-Italic font-light">
+				<p class="font-Funnel-Sans font-light">
 					Tout en restant autonomes dans leurs activités propres, ils choisissent d'unir leurs
 					forces pour mieux répondre à leurs besoins économiques et sociaux.
 				</p>
-				<p class="font-Funnel-Sans-Italic font-medium text-lg sm:block hidden">
+				<p class="font-Funnel-Sans font-light sm:block hidden">
 					La coopérative artisanale est un modèle économique unique, fondé sur des principes de
 					partage et d'équité, qui permet de concilier performance économique, indépendance,
 					solidarité et valorisation des savoir-faire.
@@ -135,7 +135,7 @@
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				<strong> Fédérer </strong>les coopératives artisanales autour de valeurs communes : qualité,
+				<strong> Fédérer </strong> les coopératives artisanales autour de valeurs communes : qualité,
 				solidarité, responsabilité
 			</li>
 			<li class=" mb-4">
@@ -265,8 +265,8 @@
 <div
 	class="bg-blue text-center pt-8 pb-8 flex flex-col justify-center items-center sm:pl-32 sm:pr-32 pr-16 pl-16"
 >
-	<h2 class="h2-blue text-dark font-bold mb-4">Quelques chiffres clés*</h2>
-
+	<h2 class="h2-blue text-dark font-bold ">Quelques chiffres clés*</h2>
+	<p class="italic text-sm mb-4">* En 2024</p>
 	<p class="text-white">
 		La Fédération Française des Artisans Coopérateurs du Bâtiment (FFACB),<br /> branche « bâtiment
 		- construction » <br /> regroupe des coopératives artisanales du bâtiment qui représentent à elles
@@ -299,7 +299,7 @@
 			</div>
 		</div>
 	</div>
-	<p class="italic text-sm">* Chiffres clés de 2024</p>
+
 </div>
 
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">

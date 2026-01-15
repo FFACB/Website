@@ -76,7 +76,7 @@
 				Comment fonctionne une coopérative d'artisans ?
 			</h1>
 			<div class="text-white">
-				<p class="font-Funnel-Sans-Italic font-medium text-lg sm:block hidden">
+				<p class="font-Funnel-Sans font-light sm:block hidden">
 					Une coopérative d'artisans est une structure qui permet à plusieurs artisans indépendants
 					de travailler ensemble, tout en conservant leur autonomie juridique et leur entreprise
 					propre. Elle fonctionne selon les principes de la coopération : mutualisation, solidarité,
@@ -139,7 +139,7 @@
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Les membres sont à la
-				fois associés et utilisateurs de la coopérative
+				fois associés et utilisateurs de la coopérative.
 			</li>
 		</ul>
 	</div>
@@ -178,7 +178,7 @@
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
 				Le client signe un seul contrat avec la coopérative (et non avec chaque artisan séparément) dont
-				elle est l'interlocuteur unique. Les artisans quant à eux soumettent leurs devis à la Coopérative
+				elle est l'interlocuteur unique. Les artisans quant à eux soumettent leurs devis à la coopérative
 				pour lui permettre de chiffrer un contrat.
 			</li>
 			<li class=" mb-4">
@@ -189,9 +189,9 @@
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>L'artisan est mandaté
 				par la coopérative pour exécuter ses lots dans les règles de l'art. L'artisan ne peut pas
-				sous-traiter son lot. Seule la Coopérative peut avoir un sous-traitant appelé un
-				Tiers-Non-Associés. L'appel à des Tiers Non Associés est limité à 20% du Chiffre d'affaires
-				annuel de la Coopérative.
+				sous-traiter son lot. Seule la coopérative peut avoir un sous-traitant appelé un Tiers Non
+				Associé. L'appel à des Tiers Non Associés est limité à 20% du Chiffre d'affaires annuel de
+				la coopérative.
 			</li>
 		</ul>
 	</div>
@@ -237,7 +237,7 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48">
-		<h2 class="h2-blue font-bold">Les points de vigilance à prendre en compte :</h2>
+		<h2 class="text-2xl text-blue font-bold">Les points de vigilance à prendre en compte :</h2>
 		<br />
 
 		<p>
@@ -311,7 +311,7 @@
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-4 w-32">
-			<img src="/images/homme.png" class="" alt="picto quali" />
+			<img src="/images/femme.png" class="" alt="picto quali" />
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
@@ -334,8 +334,8 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-lightgrey w-full p-16 sm:pl-48 pr-16">
-		<h2 class="text-2xl text-blue font-bold">
-			Quels sont les principaux avantages de modèle coopératif ?
+		<h2 class="h2-blue font-bold text-center">
+			Quels sont les principaux avantages du modèle coopératif ?
 		</h2>
 		<br />
 
@@ -386,7 +386,7 @@
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48">
-		<h2 class="text-2xl text-blue text-center font-bold">
+		<h2 class="h2-blue font-bold text-center">
 			Entreprendre autrement : les atouts de la coopérative avec la FFACB
 		</h2>
 		<br />
@@ -481,6 +481,27 @@
 	</div>
 </div>
 
+<div class="bg-dark flex justify-center items-center pt-9 pb-9">
+	<div class="h-auto sm:block hidden">
+		<div class=" border bg-white border-black rounded-full p-4 w-32">
+			<img src="/images/homme.png" class="" alt="picto quali" />
+		</div>
+	</div>
+	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
+		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
+			« Parmi les principaux avantages de l'affiliation à la FFACB il y a évidemment le fait de
+			profiter du contrat de construction élaboré dans les règles de l'art. Mais au-delà de ça, les
+			services de la FFACB nous permettent de profiter de conseils juridiques très pointus, d'être
+			au courant des dernières réglementations et d'avoir toujours un interlocuteur pour répondre
+			rapidement aux problématiques du quotidien »,
+		</div>
+		<br />
+		<div class="text-blue text-sm">
+			Benjamin Houseaux, Vision Bois, constructeur de maisons en ossature bois basé à Chambéry (73)
+			et membre de la coopérative Tout Habitat.
+		</div>
+	</div>
+</div>
 <div class="bg-[#DCEFFC] text-center sm:p-32 p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Pourquoi adhérer à la FFACB ?</h2>
 	<br /><br />
@@ -534,24 +555,59 @@
 	</div>
 </div>
 
+
+<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
+	<div class="bg-white w-full p-16 sm:pl-48 pr-16">
+		<h2 class="text-2xl font-bold">Bénéficiez d'un partage d'expérience</h2>
+		<br />
+
+		<p class="">
+			À travers les différents outils communs mis en place, la FFACB sert de liant entre les
+			coopératives et peut les mettre en relation en fonction de leurs besoins.
+		</p>
+		<p>
+			Des temps d’échange et de partage sont organisés régulièrement afin de créer du lien et des
+			espaces de dialogue entre les coopératives adhérentes :
+		</p>
+		<br>
+		<ul class="ml-16">
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong>
+				L'Assemblée Générale </strong> de la FFACB rassemble les adhérents une fois par an, sauf exception liée
+				au contexte économique ou sociétal.
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong>Des réunions régionales </strong> sont proposées de manière ponctuelle avec les partenaires pour renforcer
+				les échanges.
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				<strong>Des webinaires </strong> liés à des sujets d’actualité ou des problématiques majeures pour les adhérents
+				sont régulièrement suggérés autour de thèmes tels que le carnet d’information du logement ou encore
+				les différents types de marchés auxquels peuvent répondre les coopératives.
+			</li>
+		</ul>
+	</div>
+</div>
+
 <div class="bg-dark flex justify-center items-center pt-9 pb-9">
 	<div class="h-auto sm:block hidden">
 		<div class=" border bg-white border-black rounded-full p-4 w-32">
 			<img src="/images/homme.png" class="" alt="picto quali" />
 		</div>
 	</div>
-	<div class="sm:w-3/5 w-full p-16 sm:p-0 sm:ml-7">
+	<div class="sm:w-3/5 w-full sm:ml-7 sm:p-0 p-16">
 		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
-			« Parmi les principaux avantages de l'affiliation à la FFACB il y a évidemment le fait de
-			profiter du contrat de construction élaboré dans les règles de l'art. Mais au-delà de ça, les
-			services de la FFACB nous permettent de profiter de conseils juridiques très pointus, d'être
-			au courant des dernières réglementations et d'avoir toujours un interlocuteur pour répondre
-			rapidement aux problématiques du quotidien »,
+			« Avec le système des coopératives, nous nous inscrivons dans des modèles d'économie sociale
+			et solidaire. Pouvoir intégrer un groupe qui partage ses expériences du quotidien, échanger
+			sur nos difficultés mais aussi prendre du recul est enrichissant pour tout le monde. C'est le
+			sens de la dynamique dans laquelle nous voulons aller »,
 		</div>
 		<br />
 		<div class="text-blue text-sm">
-			Benjamin Houseaux, Vision Bois, constructeur de maisons en ossature bois basé à Chambéry (73)
-			et membre de la coopérative Tout Habitat.
+			Anne Lang, gérante d'Avenir et Bois, constructeur de maisons passives en bois en Alsace, relié
+			à la coopérative ARTCOPA.
 		</div>
 	</div>
 </div>
@@ -678,39 +734,6 @@
 		très concurrentiel.
 	</div>
 </div> -->
-
-<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
-	<div class="bg-white w-full p-16 sm:pl-48 pr-16">
-		<h2 class="text-2xl font-bold">Bénéficiez d'un partage d'expérience</h2>
-		<br />
-
-		<p class="ml-16">
-			À travers les différents outils communs mis en place, la FFACB sert de liant entre les
-			coopératives et peut les mettre en relation en fonction de leurs besoins.
-		</p>
-	</div>
-</div>
-
-<div class="bg-dark flex justify-center items-center pt-9 pb-9">
-	<div class="h-auto sm:block hidden">
-		<div class=" border bg-white border-black rounded-full p-4 w-32">
-			<img src="/images/homme.png" class="" alt="picto quali" />
-		</div>
-	</div>
-	<div class="sm:w-3/5 w-full sm:ml-7 sm:p-0 p-16">
-		<div class="font-Funnel-Sans-Italic font-medium text-lg text-white">
-			« Avec le système des coopératives, nous nous inscrivons dans des modèles d'économie sociale
-			et solidaire. Pouvoir intégrer un groupe qui partage ses expériences du quotidien, échanger
-			sur nos difficultés mais aussi prendre du recul est enrichissant pour tout le monde. C'est le
-			sens de la dynamique dans laquelle nous voulons aller »,
-		</div>
-		<br />
-		<div class="text-blue text-sm">
-			Anne Lang, gérante d'Avenir et Bois, constructeur de maisons passives en bois en Alsace, relié
-			à la coopérative ARTCOPA.
-		</div>
-	</div>
-</div>
 
 <div class="bg-white text-center p-16 sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les services proposés par la FFACB ?</h2>
