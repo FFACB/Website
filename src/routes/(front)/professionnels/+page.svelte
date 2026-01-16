@@ -384,100 +384,117 @@
 	</div>
 </div>
 
-<div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
-	<div class="bg-white w-full p-16 sm:pl-48">
-		<h2 class="h2-blue font-bold text-center">
-			Entreprendre autrement : les atouts de la coopérative avec la FFACB
-		</h2>
-		<br />
+<div class="font-Funnel Sans w-full flex flex-col bg-white">
+	<h2 class="h2-blue font-bold text-center mt-16">
+		Entreprendre autrement : les atouts de la coopérative avec la FFACB
+	</h2>
+	<br />
 
-		<ul class="ml-16">
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Etablissement et modifications des statuts ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Une Cogérance tripartite est exigée pour les coopératives membres de la FFACB.
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement pour
-				l'établissement et les modifications du Règlement Intérieur (une trame adaptée au système
-				coopératif est fournie aux nouveaux Adhérents) ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Préparation des
-				documents pour les Assemblées Générales de la coopérative ;
-			</li>
+	<div class="w-full flex sm:flex-row flex-col">
+		<div class=" sm:w-1/2 w-full p-16 sm:pl-48">
+			<ul class="ml-16">
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Etablissement et modifications des statuts ;
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise à disposition de
-				divers contrats : Contrat de Construction de Maison Individuelle, (CCMI) Contrat de
-				sous-traitance, Marché de Travaux, Contrat de réservation (VEFA), contrat d'apporteur
-				d'affaires etc. ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Informations sur les DTU
-				et normes du bâtiment ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise en relation avec
-				nos partenaires et suivi des dossiers d'assurances (Décennale, Responsabilité Civile,
-				professionnelle, Dommages-Ouvrage) et de garanties (garantie de remboursement des acomptes,
-				garantie de livraison, garantie de paiement des sous-traitants, garantie de futur
-				achèvement) pour la coopérative ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Exigence d'une <strong>cogérance tripartite</strong> pour les coopératives membres de la FFACB.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Traitements des
-				garanties (sous réserve d'acceptation du dossier par les Garants) ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Accompagnement pour l'établissement et les modifications du
+					<strong>Règlement Intérieur</strong> (trame adaptée au système coopératif fournie aux nouveaux
+					adhérents).
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement pour le
-				recouvrement des impayés ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Préparation des documents pour les <strong>Assemblées Générales</strong> de la coopérative.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Référencement auprès
-				d'un Médiateur de la Consommation ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Accompagnement juridique, fiscal et comptable.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise à disposition des
-				Partenariats FFACB le cas échéant ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Veille juridique sur la <strong>réglementation des coopératives et du CCMI</strong>.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement
-				juridique, fiscal et comptable ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Sollicitation des <strong>pouvoirs publics et élus locaux</strong> sur les problématiques rencontrées
+					par les coopératives et leurs artisans.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Veille juridique sur la
-				règlementation des Coopératives et du CCMI ;
-			</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Accompagnement dans la <strong>procédure collective de dissolution</strong> de la coopérative.
+				</li>
 
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sollicitation des
-				pouvoirs publics et élus locaux sur les problèmes rencontrés par les Coopératives et leurs
-				Artisans ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement dans la
-				procédure collective de dissolution de la Coopérative ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l'AFCAB,
-				Association de Formation émanant de la FFACB, permettant la dispense de formations
-				spécifiques (sur le CCMI pour exemple) aux membres des coopératives adhérentes FFACB ;
-			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l'ARCAB,
-				Association de Révision émanant de la FFACB, permettant l'accès à la révision coopérative
-				(révision quinquennale obligatoire).
-			</li>
-		</ul>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Adhésion à l'<strong>ARCAB</strong>, Association de Révision émanant de la FFACB, donnant
+					accès à la <strong>révision coopérative quinquennale obligatoire</strong>.
+				</li>
+			</ul>
+		</div>
+		<div class="bg-white sm:w-1/2 w-full p-16 sm:pr-48">
+			<ul class="ml-16">
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+					Mise à disposition de <strong>contrats types</strong> : CCMI, contrat de sous-traitance, marché
+					de travaux, contrat de réservation (VEFA), contrat d'apporteur d'affaires, etc.
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Informations sur les
+					<strong>DTU et normes du bâtiment</strong>.
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise en relation avec
+					les partenaires et <strong>suivi des dossiers d'assurances</strong> (décennale, responsabilité
+					civile professionnelle, dommages-ouvrage).
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise en place et
+					traitement des <strong>garanties</strong> : garantie de remboursement des acomptes, garantie
+					de livraison, garantie de paiement des sous-traitants, garantie de futur achèvement (sous réserve
+					d'acceptation du dossier par les garants).
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Accompagnement pour le
+					<strong>recouvrement des impayés</strong>.
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Référencement auprès
+					d'un <strong>Médiateur de la Consommation</strong>.
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Mise à disposition des
+					<strong>partenariats FFACB</strong>, le cas échéant.
+				</li>
+
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Adhésion à l'<strong
+						>AFCAB</strong
+					>, Association de Formation émanant de la FFACB, permettant
+				</li>
+				<li class=" mb-4">
+					<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>l'accès à des
+					<strong>formations spécifiques</strong> (ex. CCMI).
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -555,7 +572,6 @@
 	</div>
 </div>
 
-
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48 pr-16">
 		<h2 class="text-2xl font-bold">Bénéficiez d'un partage d'expérience</h2>
@@ -566,26 +582,27 @@
 			coopératives et peut les mettre en relation en fonction de leurs besoins.
 		</p>
 		<p>
-			Des temps d’échange et de partage sont organisés régulièrement afin de créer du lien et des
+			Des temps d'échange et de partage sont organisés régulièrement afin de créer du lien et des
 			espaces de dialogue entre les coopératives adhérentes :
 		</p>
-		<br>
+		<br />
 		<ul class="ml-16">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span><strong>
-				L'Assemblée Générale </strong> de la FFACB rassemble les adhérents une fois par an, sauf exception liée
-				au contexte économique ou sociétal.
+					L'Assemblée Générale
+				</strong> de la FFACB rassemble les adhérents une fois par an, sauf exception liée au contexte
+				économique ou sociétal.
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				<strong>Des réunions régionales </strong> sont proposées de manière ponctuelle avec les partenaires pour renforcer
-				les échanges.
+				<strong>Des réunions régionales </strong> sont proposées de manière ponctuelle avec les partenaires
+				pour renforcer les échanges.
 			</li>
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				<strong>Des webinaires </strong> liés à des sujets d’actualité ou des problématiques majeures pour les adhérents
-				sont régulièrement suggérés autour de thèmes tels que le carnet d’information du logement ou encore
-				les différents types de marchés auxquels peuvent répondre les coopératives.
+				<strong>Des webinaires </strong> liés à des sujets d'actualité ou des problématiques majeures
+				pour les adhérents sont régulièrement suggérés autour de thèmes tels que le carnet d'information
+				du logement ou encore les différents types de marchés auxquels peuvent répondre les coopératives.
 			</li>
 		</ul>
 	</div>
