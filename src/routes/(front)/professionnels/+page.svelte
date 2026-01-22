@@ -217,24 +217,22 @@
 				Exonération de l'impôt sur les sociétés (IS) *
 			</li>
 			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
-				Exonération de Contribution Économique Territoriale (CFE et CVAE), ancienne Taxe Professionnelle
-				*
-			</li>
-			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Exonération de la Taxe
 				d'Apprentissage *
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
+				Exonération de Contribution Économique Territoriale (CFE et CVAE), ancienne Taxe Professionnelle
 			</li>
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Exonération de la
 				Contribution Sociale de Solidarité des Sociétés
 			</li>
-			<li class=" mb-4">
-				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sauf pour la quote-part
-				de résultat issue de l'activité réalisée avec les sous-traitants.
-			</li>
 		</ul>
+		<p class="italic text-sm ml-16">
+			* Sauf pour la quote-part de résultat issue de l'activité réalisée avec les sous-traitants.
+		</p>
 	</div>
 </div>
 
@@ -524,7 +522,7 @@
 </div>
 <div class="bg-[#DCEFFC] text-center sm:p-32 p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Pourquoi adhérer à la FFACB ?</h2>
-	<br /><br /><br>
+	<br /><br /><br />
 	<div class="flex sm:flex-row flex-col">
 		<div class="flex flex-col m-2 p-8 text-white bg-red rounded-3xl basis-1/2">
 			<h3 class="uppercase font-bold text-xl">Les avantages juridiques</h3>

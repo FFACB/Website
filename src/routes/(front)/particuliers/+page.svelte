@@ -187,7 +187,7 @@
 		<p class="text-white">
 			Les coopératives regroupent des artisans qualifiés, et expérimentés. Ces professionnels
 			maîtrisent parfaitement les techniques traditionnelles et modernes du bâtiment, disposent de
-			compétences avérées et s'adaptent aux exigences spécifiques de chaque projet
+			compétences avérées et s'adaptent aux exigences spécifiques de chaque projet.
 		</p>
 	</div>
 
