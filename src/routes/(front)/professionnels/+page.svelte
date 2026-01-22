@@ -228,8 +228,11 @@
 
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Exonération de la
-				Contribution Sociale de Solidarité des Sociétés (C3S) * = sauf pour la quote-part de
-				résultat issue de l'activité réalisée avec les sous-traitants.
+				Contribution Sociale de Solidarité des Sociétés
+			</li>
+			<li class=" mb-4">
+				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>Sauf pour la quote-part
+				de résultat issue de l'activité réalisée avec les sous-traitants.
 			</li>
 		</ul>
 	</div>
@@ -521,25 +524,9 @@
 </div>
 <div class="bg-[#DCEFFC] text-center sm:p-32 p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Pourquoi adhérer à la FFACB ?</h2>
-	<br /><br />
+	<br /><br /><br>
 	<div class="flex sm:flex-row flex-col">
-		<div class="flex flex-col m-2 p-8 text-white bg-dark rounded-3xl basis-1/3">
-			<h3 class="uppercase font-bold text-xl">Des principes fondateurs</h3>
-			<br />
-			<ul class="font-light">
-				<li>Exonération de l'impôt sur les sociétés (IS) *</li>
-				<li>
-					Exonération de Contribution Économique Territoriale (CFE et CVAE), ancienne Taxe
-					Professionnelle *
-				</li>
-				<li>Exonération de la Taxe d'Apprentissage *</li>
-				<li>
-					Exonération de la Contribution Sociale de Solidarité des Sociétés (C3S) * = sauf pour la
-					quote-part de résultat issue de l'activité réalisée avec les sous-traitants.
-				</li>
-			</ul>
-		</div>
-		<div class="flex flex-col m-2 p-8 text-white bg-red rounded-3xl basis-1/3">
+		<div class="flex flex-col m-2 p-8 text-white bg-red rounded-3xl basis-1/2">
 			<h3 class="uppercase font-bold text-xl">Les avantages juridiques</h3>
 			<br />
 			<ul class="font-light">
@@ -550,8 +537,8 @@
 				<li>Défense des intérêts des artisans coopérateurs.</li>
 			</ul>
 		</div>
-		<div class="flex flex-col m-2 p-8 text-white bg-blue rounded-3xl basis-1/3">
-			<h3 class="uppercase font-bold text-xl">Des atouts majeurs</h3>
+		<div class="flex flex-col m-2 p-8 text-white bg-blue rounded-3xl basis-1/2">
+			<h3 class="uppercase font-bold text-xl">Les avantages logistiques</h3>
 			<br />
 			<ul class="font-light">
 				<li>Établissement des statuts et du règlement intérieur.</li>
@@ -751,7 +738,7 @@
 		très concurrentiel.
 	</div>
 </div> -->
-
+<!-- 
 <div class="bg-white text-center p-16 sm:pr-32 sm:pl-32 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les services proposés par la FFACB ?</h2>
 	<br /><br />
@@ -1175,4 +1162,4 @@
 		</div>
 	</div>
 </div>
-<!-- TODO -->
+TODO -->

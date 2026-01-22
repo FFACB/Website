@@ -92,14 +92,14 @@
 	<div class="basis-full md:basis-1/2 p-16 sm:pr-48 pr-16 md:pl-0 sm:pl-48 sm:w-auto w-full">
 		<h2 class="h2-blue font-bold">Pourquoi faire appel à une coopérative membre de la FFACB ?</h2>
 		<br />
-		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
+		<!-- <img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UN GAGE DE QUALITÉ ET DE SAVOIR-FAIRE</h3>
 		<p class="text-white">
 			Les coopératives regroupent des artisans qualifiés, et expérimentés. Ces professionnels
 			maîtrisent parfaitement les techniques traditionnelles et modernes du bâtiment, disposent de
 			compétences avérées et s'adaptent aux exigences spécifiques de chaque projet
-		</p>
+		</p> -->
 		<br />
 		<img src="/images/pictos/picto-certif.svg" class="w-20" alt="picto certif" />
 		<br />

@@ -50,16 +50,16 @@
 			description:
 				"L'organisme de formation émanant de la FFACB, l'AFCAB, obtient la certification qualité, CERTIBAT Formation Professionnelle (N° du certificat FP1611)."
 		},
-		{
-			date: '2020',
-			description:
-				"Signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour la formation professionnelle."
-		},
-		{
-			date: '2021',
-			description:
-				'Signature de la convention entre S2C et la FFACB pour la délivrance des garanties de remboursement, de livraison à prix et délais convenus et de paiement des sous-traitants auprès de ses adhérents.'
-		},
+		// {
+		// 	date: '2020',
+		// 	description:
+		// 		"Signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour la formation professionnelle."
+		// },
+		// {
+		// 	date: '2021',
+		// 	description:
+		// 		'Signature de la convention entre S2C et la FFACB pour la délivrance des garanties de remboursement, de livraison à prix et délais convenus et de paiement des sous-traitants auprès de ses adhérents.'
+		// },
 		{
 			date: '2023',
 			description: 'Didier Fabignon est élu président de la FFACB.'
@@ -132,7 +132,7 @@
 		Notre rôle est d'accompagner, structurer et représenter nos Coopératives partout en France. Plus concrètement,
 		la FFACB s'engage à :
 		<br /><br />
-		<ul class="ml-16">
+		<ul class="">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
 				<strong> Fédérer </strong> les coopératives artisanales autour de valeurs communes : qualité,
@@ -161,7 +161,7 @@
 	<div class="bg-[#DCEFFC] sm:w-1/2 w-full p-16 sm:pr-48">
 		<h2 class="text-2xl font-bold">Nos engagements :</h2>
 		<br /><br />
-		<ul class="ml-16">
+		<ul class="">
 			<li class=" mb-4">
 				<span class="w-2 h-2 inline-block bg-blue rounded-full mr-2"></span>
 				Promouvoir une <strong> construction artisanale durable, responsable et humaine </strong>
@@ -230,6 +230,7 @@
 <div class="flex sm:flex-row flex-col bg-white p-16">
 	<div class="flex flex-col sm:w-1/2 w-full sm:pl-32 sm:pr-8">
 		<h2 class="h2-blue font-bold">Avantages pour nos coopératives :</h2>
+		<br>
 		<br />
 		<ul class="ml-16">
 			<li class=" mb-4">
@@ -301,7 +302,7 @@
 	</div>
 
 </div>
-
+<!-- 
 <div class="bg-[#DCEFFC] text-center p-16 flex flex-col justify-center items-center">
 	<h2 class="h2-blue font-bold">Quels sont les atouts de la FFACB ?</h2>
 	<p class="font-semibold text-lg mt-6 mb-6 sm:pr-48 sm:pl-48">
@@ -348,7 +349,7 @@
 			>de pouvoir accompagner leurs clients dans un projet durable et sécurisé</strong
 		> avec les meilleures garanties du marché.
 	</p>
-</div>
+</div> -->
 
 <div class="font-Funnel Sans w-full flex sm:flex-row flex-col">
 	<div class="bg-white w-full p-16 sm:pl-48">
