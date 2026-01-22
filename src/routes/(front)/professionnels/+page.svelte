@@ -1,57 +1,57 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 
-	let servicesActiveIndex = 0;
-	let servicesZIndex = 60;
-	let htmlAccompagnement: HTMLInputElement;
+	// let servicesActiveIndex = 0;
+	// let servicesZIndex = 60;
+	// let htmlAccompagnement: HTMLInputElement;
 
-	let htmlAssurances: HTMLInputElement;
-	let htmlArcab: HTMLInputElement;
-	let htmlFormations: HTMLInputElement;
-	let htmlPartage: HTMLInputElement;
+	// let htmlAssurances: HTMLInputElement;
+	// let htmlArcab: HTMLInputElement;
+	// let htmlFormations: HTMLInputElement;
+	// let htmlPartage: HTMLInputElement;
 
-	function clickService(element: HTMLInputElement, id: number) {
-		servicesZIndex++;
+	// function clickService(element: HTMLInputElement, id: number) {
+	// 	servicesZIndex++;
 
-		element.style.zIndex = servicesZIndex.toString();
+	// 	element.style.zIndex = servicesZIndex.toString();
 
-		htmlAccompagnement.style.borderBottomColor = 'rgb(13 28 48)';
-		htmlAssurances.style.borderBottomColor = 'rgb(13 28 48)';
-		htmlArcab.style.borderBottomColor = 'rgb(13 28 48)';
-		htmlFormations.style.borderBottomColor = 'rgb(13 28 48)';
-		htmlPartage.style.borderBottomColor = 'rgb(13 28 48)';
-		htmlAccompagnement.style.backgroundColor = '#DCEFFC';
-		htmlAccompagnement.style.fontWeight = 'normal';
-		htmlAssurances.style.backgroundColor = '#DCEFFC';
-		htmlAssurances.style.fontWeight = 'normal';
-		htmlArcab.style.backgroundColor = '#DCEFFC';
-		htmlArcab.style.fontWeight = 'normal';
-		htmlFormations.style.backgroundColor = '#DCEFFC';
-		htmlFormations.style.fontWeight = 'normal';
-		htmlPartage.style.backgroundColor = '#DCEFFC';
-		htmlPartage.style.fontWeight = 'normal';
+	// 	htmlAccompagnement.style.borderBottomColor = 'rgb(13 28 48)';
+	// 	htmlAssurances.style.borderBottomColor = 'rgb(13 28 48)';
+	// 	htmlArcab.style.borderBottomColor = 'rgb(13 28 48)';
+	// 	htmlFormations.style.borderBottomColor = 'rgb(13 28 48)';
+	// 	htmlPartage.style.borderBottomColor = 'rgb(13 28 48)';
+	// 	htmlAccompagnement.style.backgroundColor = '#DCEFFC';
+	// 	htmlAccompagnement.style.fontWeight = 'normal';
+	// 	htmlAssurances.style.backgroundColor = '#DCEFFC';
+	// 	htmlAssurances.style.fontWeight = 'normal';
+	// 	htmlArcab.style.backgroundColor = '#DCEFFC';
+	// 	htmlArcab.style.fontWeight = 'normal';
+	// 	htmlFormations.style.backgroundColor = '#DCEFFC';
+	// 	htmlFormations.style.fontWeight = 'normal';
+	// 	htmlPartage.style.backgroundColor = '#DCEFFC';
+	// 	htmlPartage.style.fontWeight = 'normal';
 
-		element.style.backgroundColor = '#ffffff'; //"#DCEFFC";
-		if (window.innerWidth > 768) {
-			element.style.borderBottomColor = '#ffffff';
-		}
-		element.style.fontWeight = 'bold';
+	// 	element.style.backgroundColor = '#ffffff'; //"#DCEFFC";
+	// 	if (window.innerWidth > 768) {
+	// 		element.style.borderBottomColor = '#ffffff';
+	// 	}
+	// 	element.style.fontWeight = 'bold';
 
-		document.querySelectorAll('.blocks').forEach((element) => {
-			if (element instanceof HTMLElement) {
-				if (element.id.toString() === 'block-' + id.toString()) {
-					element.style.display = 'flex';
-				} else {
-					element.style.display = 'none';
-				}
-			}
-		});
-	}
+	// 	document.querySelectorAll('.blocks').forEach((element) => {
+	// 		if (element instanceof HTMLElement) {
+	// 			if (element.id.toString() === 'block-' + id.toString()) {
+	// 				element.style.display = 'flex';
+	// 			} else {
+	// 				element.style.display = 'none';
+	// 			}
+	// 		}
+	// 	});
+	// }
 
-	onMount(() => {
-		clickService(htmlAccompagnement, 0);
-	});
+	// onMount(() => {
+	// 	clickService(htmlAccompagnement, 0);
+	// });
 </script>
 
 <div
