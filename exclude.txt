@@ -1,0 +1,196 @@
+<div class="flex flex-row h-40">
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1988</h3>
+				<p>
+					création de l'Union Nationale des Artisans Coopérateurs de la Construction (UNACC) par
+					Michel Dreano.
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1990</h3>
+				<p>
+					l'UNACC devient la Fédération Nationale des Artisans Coopérateurs du Bâtiment (FNACB).
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1997</h3>
+				<p>
+					création de l'ARCAB, Association de Révision des Coopératives Artisanales du Bâtiment.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-row h-40">
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">1998</h3>
+				<p>lancement de la Démarche Qualité dans les Sociétés Coopératives Artisanales (SCA).</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2003</h3>
+				<p>
+					création de l'AFCAB, Association de Formation des Coopératives Artisanales du Bâtiment.
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2005</h3>
+				<p>mise en place de l'assurance sous-traitance pour les adhérents de la FFACB.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-row h-40">
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2009</h3>
+				<p>
+					Inscription de la FFACB à l'Orias (Registre Unique des Intermédiaires en assurances,
+					banques et finances).
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2013</h3>
+				<p>
+					Mise en place du RGE pour les coopératives artisanales du bâtiment en partenariat avec le
+					Ministère du Développement Durable et Qualibat. Création de la marque FFACB.
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2015</h3>
+				<p>création du Club des Partenaires et la FFACB devient adhérente de Qualibat.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-row h-40">
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2016</h3>
+				<p>
+					l'organisme de formation émanant de la FFACB, l'AFCAB, obtient la certification qualité,
+					CERTIBAT Formation Professionnelle (N° du certificat FP1611).
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2020</h3>
+				<p>
+					signature de la convention entre GROUPAMA CAUTION et la FFACB pour la délivrance de
+					garanties auprès de ses adhérents. Obtention par l'AFCAB de la certification Qualiopi pour
+					la formation professionnelle.
+				</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2021</h3>
+				<p>
+					signature de la convention entre S2C et la FFACB pour la délivrance des garanties de
+					remboursement, de livraison à prix et délais convenus et de paiement des sous-traitants
+					auprès de ses adhérents.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-row w-full h-40">
+		<div class="p-2 basis-1/3 w-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2023</h3>
+				<p>Didier Fabignon est élu président de la FFACB.</p>
+			</div>
+		</div>
+		<div class="p-2 basis-1/3 w-1/3 h-full">
+			<div class="h-full flex flex-col p-4 rounded-3xl text-left bg-white">
+				<h3 class="uppercase font-bold text-xl h2-blue mb-2">2024-2025</h3>
+				<p>restructuration interne et refonte des outils de communication.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	//professionnelle
+		<div class="p-2 basis-1/3">
+			<div
+				class="flex flex-col justify-center items-center m-2 p-8 bg-[#DCEFFC] rounded-3xl basis-1/3"
+			>
+				<h3 class="uppercase font-bold text-dark text-xl">
+					Un accompagnement juridique, fiscal et comptable
+				</h3>
+				<br />
+				<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-full">
+					<span class="uppercase cursor-pointer">En savoir plus</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="p-2 basis-1/3">
+			<div
+				class="flex flex-col justify-center items-center m-2 p-8 bg-[#DCEFFC] rounded-3xl basis-1/3"
+			>
+				<h3 class="uppercase font-bold text-dark text-xl">
+					Un service de gestion des produits d'assurances
+				</h3>
+				<br />
+				<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-full">
+					<span class="uppercase cursor-pointer">En savoir plus</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="p-2 basis-1/3">
+			<div
+				class="flex flex-col justify-center items-center m-2 p-8 bg-[#DCEFFC] rounded-3xl basis-1/3"
+			>
+				<h3 class="uppercase font-bold text-dark text-xl">
+					Un service réviseurs en lien avec l'ARCAB
+				</h3>
+				<br />
+				<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-full">
+					<span class="uppercase cursor-pointer">En savoir plus</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="p-2 basis-1/3">
+			<div
+				class="flex flex-col justify-center items-center m-2 p-8 bg-[#DCEFFC] rounded-3xl basis-1/3"
+			>
+				<h3 class="uppercase font-bold text-dark text-xl">
+					Un service de formations en partenariat avec l'AFCAB
+				</h3>
+				<br />
+				<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-full">
+					<span class="uppercase cursor-pointer">En savoir plus</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="p-2 basis-1/3">
+			<div
+				class="flex flex-col justify-center items-center m-2 p-8 bg-[#DCEFFC] rounded-3xl basis-1/3"
+			>
+				<h3 class="uppercase font-bold text-dark text-xl">Un partage d'expériences</h3>
+				<br />
+				<div class="w-max m-2 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-full">
+					<span class="uppercase cursor-pointer">En savoir plus</span>
+				</div>
+			</div>
+		</div>
