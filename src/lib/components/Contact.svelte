@@ -22,16 +22,21 @@
 	action="/api/contact"
 	name="contact"
 	id="contact"
+	class="w-full sm:pr-48 sm:pl-48 z-20 block relative"
 	use:enhance={async ({ formData, cancel }) => {
 		try {
-			const { nom, prenom, email, telephone, message } = Object.fromEntries(formData);
+			const { nom, prenom, email, telephone, message, ville, cp, rue } =
+				Object.fromEntries(formData);
 
 			if (
 				IsEmptyString(nom) ||
 				IsEmptyString(prenom) ||
 				IsEmptyString(email) ||
 				IsEmptyString(telephone) ||
-				IsEmptyString(message)
+				IsEmptyString(message) ||
+				IsEmptyString(ville) ||
+				IsEmptyString(cp) ||
+				IsEmptyString(rue)
 			) {
 				cancel();
 				return;
@@ -82,38 +87,65 @@
 		};
 	}}
 >
-	<label class="label" for="nom">
-		<span class="ml-3 font-semibold">Nom</span>
-		<input class="input" name="nom" contenteditable="true" type="text" required />
-	</label>
+	<div class="flex flex-col border border-blue rounded-3xl w-full">
+		<div class="flex sm:flex-row flex-col w-full">
+			<div class="sm:basis-1/2 basis-full p-8">
+				<label class="label" for="nom">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Nom</span>
+					<input class="input w-full" name="nom" contenteditable="true" type="text" required />
+				</label>
 
-	<label class="label" for="prenom">
-		<span class="ml-3 font-semibold">Prenom</span>
-		<input class="input" name="prenom" contenteditable="true" type="text" required />
-	</label>
+				<label class="label" for="prenom">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Prenom</span>
+					<input class="input w-full" name="prenom" contenteditable="true" type="text" required />
+				</label>
 
-	<label class="label" for="email">
-		<span class="ml-3 font-semibold">E-mail</span>
-		<input class="input" name="email" contenteditable="true" type="email" required />
-	</label>
+				<label class="label" for="rue">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Rue</span>
+					<input class="input w-full" name="rue" contenteditable="true" type="text" required />
+				</label>
 
-	<label class="label" for="telephone">
-		<span class="ml-3 font-semibold">Téléphone</span>
-		<input class="input" name="telephone" type="tel" required />
-	</label>
+				<label class="label" for="cp">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Code Postal</span>
+					<input class="input w-full" name="cp" contenteditable="true" type="text" required />
+				</label>
 
-	<label class="label" for="message">
-		<span class="ml-3 font-semibold">Message</span>
-		<input class="input" name="message" type="text" required />
-	</label>
+				<label class="label" for="ville">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Ville</span>
+					<input class="input w-full" name="ville" contenteditable="true" type="text" required />
+				</label>
 
-	<div class="error" aria-live="polite">
-		{#if errorMsg && errorMsg.length > 0}
-			<p>{errorMsg}</p>
-		{/if}
+				<label class="label" for="email">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">E-mail</span>
+					<input class="input w-full" name="email" contenteditable="true" type="email" required />
+				</label>
+
+				<label class="label" for="telephone">
+					<span class="ml-3 font-semibold w-full text-start uppercase block">Téléphone</span>
+					<input class="input w-full" name="telephone" type="tel" required />
+				</label>
+			</div>
+			<div class="basis-1/2 flex flex-col p-8">
+				<div class="h-4/5">
+					<label class="label h-full" for="message">
+						<span class="ml-3 font-semibold w-full text-start uppercase block">Message</span>
+						<textarea class="input h-full rounded-3xl w-full" name="message"   required ></textarea>
+					</label>
+				</div>
+
+				<div class="h-1/5 flex flex-col justify-end items-start">
+					<div class="w-max  p-8 pt-2 pb-2 font-semibold text-white bg-blue rounded-full">
+						<label class="label" for="envoyer">
+							<button type="submit">Envoyer</button>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="error" aria-live="polite">
+			{#if errorMsg && errorMsg.length > 0}
+				<p>{errorMsg}</p>
+			{/if}
+		</div>
 	</div>
-
-	<label class="label" for="envoyer">
-		<button type="submit">Envoyer</button>
-	</label>
 </form>

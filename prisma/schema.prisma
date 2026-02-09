@@ -34,11 +34,7 @@ model Actualite {
   id                        String   @id @default(uuid())
   titre                     String
   pictureAssetId_Principale String
-  fileAssetId_Externe       String
-  videoAssetId_Slide        String
-  redacteur                 String
-  tempsLecture              String
-  descriptionCourte         String
+  description               String
   contenu                   String
   createdAt                 DateTime @default(now())
 }
@@ -50,6 +46,9 @@ model Contact {
   nom       String
   prenom    String
   telephone String
+  rue       String
+  cp        String
+  ville     String
   message   String
   createdAt DateTime @default(now())
 }
@@ -104,4 +103,39 @@ model FileAsset {
   assetId   String
   name      String
   asset     Asset    @relation(fields: [assetId], references: [id], onDelete: Cascade)
+}
+
+model CooperativeRegion {
+  id        String   @id @default(uuid())
+  name      String  @unique
+  createdAt DateTime @default(now())
+  cooperatives  Cooperative[]
+}
+
+model Cooperative {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  cooperativeRegionId  String
+  cooperativeRegion    CooperativeRegion @relation(fields: [cooperativeRegionId], references: [id], onDelete: Cascade)
+  siren String  @default("")
+  adresse String  @default("")
+  infoComplementaire String  @default("")
+  cp Int  @default(0)
+  ville String  @default("")
+  siteInternet String  @default("")
+  adresseMail String  @default("")
+  telephone String  @default("")
+  contact1Nom String @default("")
+  contact1telephone String @default("")
+  contact1Email String @default("")
+  contact2Nom String @default("")
+  contact2telephone String @default("")
+  contact2Email String @default("")
+  latitude String @default("0")
+  longitude String @default("0")
+  pictureAsset1Id_Principale String @default("")
+  pictureAsset2Id_Principale String @default("")
+  pictureAsset3Id_Principale String @default("")
+  lienVideo String  @default("")
 }

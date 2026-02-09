@@ -20,25 +20,11 @@ export const load: PageServerLoad = async (event) => {
 		}
 	});
 
-	const fileAsset = await prisma.fileAsset.findUnique({
-		where: {
-			id: actualite?.fileAssetId_Externe ?? ''
-		}
-	});
-
-	const videoAsset = await prisma.videoAsset.findUnique({
-		where: {
-			id: actualite?.videoAssetId_Slide ?? ''
-		}
-	});
-
 	return {
 		backlink: '/admin/actualites',
 		active: 'actualites',
 		actualite: actualite as Actualite | null,
 		pictureAsset: pictureAsset as PictureAsset | null,
-		fileAsset: fileAsset as FileAsset | null,
-		videoAsset: videoAsset as VideoAsset | null
 	};
 };
 

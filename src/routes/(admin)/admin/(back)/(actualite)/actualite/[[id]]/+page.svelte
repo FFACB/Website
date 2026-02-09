@@ -20,27 +20,20 @@
 		SUPRESSION_FAILED,
 		SUPRESSION_SUCCES
 	} from '$lib/client/toasts/toasts.js';
-	import FilePicker from '$lib/components/admin/assets/files/FilePicker.svelte';
-	import VideoPicker from '$lib/components/admin/assets/videos/VideoPicker.svelte';
 	import Text from '$lib/components/admin/modules/detail/Text.svelte';
-	import Number from '$lib/components/admin/modules/detail/Number.svelte';
 	import Textarea from '$lib/components/admin/modules/detail/Textarea.svelte';
 
 	const toastStore = getToastStore();
 
 	let { data } = $props();
 
-	let { actualite, pictureAsset, fileAsset, videoAsset } = $state(data);
+	let { actualite, pictureAsset } = $state(data);
 
 	let writer: Writer | null = $state(null);
 
 	let picturePicker: PicturePicker | null = $state(null);
-	let filePicker: FilePicker | null = $state(null);
-	let videoPicker: VideoPicker | null = $state(null);
 	onMount(() => {
 		writer?.loadContenu(actualite?.contenu ?? '');
-		filePicker?.loadAssetRelation(fileAsset);
-		videoPicker?.loadAssetRelation(videoAsset);
 		picturePicker?.loadAssetRelation(pictureAsset);
 	});
 
@@ -51,7 +44,7 @@
 		formData: FormData;
 		cancel: () => void;
 	}) => {
-		const { titre, redacteur, tempsLecture, descriptionCourte } = Object.fromEntries(formData);
+		const { titre, description } = Object.fromEntries(formData);
 
 		if (IsEmptyString(titre)) {
 			toastStore.trigger(FAILED.addMessage('Le titre ne doit pas être vide').toToast());
@@ -59,19 +52,7 @@
 			return;
 		}
 
-		if (IsEmptyString(redacteur)) {
-			toastStore.trigger(FAILED.addMessage('Le rédacteur ne doit pas être vide').toToast());
-			cancel();
-			return;
-		}
-
-		if (IsEmptyString(tempsLecture)) {
-			toastStore.trigger(FAILED.addMessage('Le temps de lecture ne doit pas être vide').toToast());
-			cancel();
-			return;
-		}
-
-		if (IsEmptyString(descriptionCourte)) {
+		if (IsEmptyString(description)) {
 			toastStore.trigger(FAILED.addMessage('La description ne doit pas être vide').toToast());
 			cancel();
 			return;
@@ -90,10 +71,6 @@
 					if (typeof result.data !== 'undefined') {
 						actualite = result.data.actualite;
 						pictureAsset = result.data.pictureAsset;
-						fileAsset = result.data.fileAsset;
-						videoAsset = result.data.videoAsset;
-						videoPicker?.loadAssetRelation(videoAsset);
-						filePicker?.loadAssetRelation(fileAsset);
 						picturePicker?.loadAssetRelation(pictureAsset);
 					}
 
@@ -174,20 +151,7 @@
 		>
 			<Text name="Titre" identifier="titre" value={actualite?.titre} />
 			<PicturePicker bind:this={picturePicker} assetName="Photo Principale" />
-			<FilePicker bind:this={filePicker} assetName="Fichier externe" />
-			<VideoPicker bind:this={videoPicker} assetName="Video Slider" />
-			<Text name="Rédacteur" identifier="redacteur" value={actualite?.redacteur} />
-			<Number
-				name="Temps de Lecture (en minutes)"
-				identifier="tempsLecture"
-				value={actualite?.tempsLecture}
-			/>
-			<Textarea
-				name="Description courte"
-				identifier="descriptionCourte"
-				value={actualite?.descriptionCourte}
-				maxlength={200}
-			/>
+			<Textarea name="Description courte" identifier="description" value={actualite?.description} />
 
 			<label class="label" for="contenu">
 				<span class="ml-3 font-semibold">Contenu</span>

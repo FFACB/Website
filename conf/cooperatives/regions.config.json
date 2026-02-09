@@ -1,0 +1,76 @@
+{
+	"regions": [
+		{
+			"nom": "Auvergne-Rhône-Alpes",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Bourgogne-Franche-Comté",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Bretagne",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Centre-Val de Loire",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Corse",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Grand Est",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Hauts-de-France",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Île-de-France",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Normandie",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Nouvelle-Aquitaine",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Occitanie",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Pays de la Loire",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Provence-Alpes-Côte d'Azur",
+			"type": "métropolitaine"
+		},
+		{
+			"nom": "Guadeloupe",
+			"type": "outre-mer"
+		},
+		{
+			"nom": "Guyane",
+			"type": "outre-mer"
+		},
+		{
+			"nom": "Martinique",
+			"type": "outre-mer"
+		},
+		{
+			"nom": "Mayotte",
+			"type": "outre-mer"
+		},
+		{
+			"nom": "La Réunion",
+			"type": "outre-mer"
+		}
+	]
+}

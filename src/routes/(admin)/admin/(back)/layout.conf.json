@@ -16,6 +16,12 @@
 			"items": []
 		},
 		{
+			"bartitle": "Coopératives",
+			"slug": "/cooperatives",
+			"linkactive": "cooperatives",
+			"items": []
+		},
+		{
 			"bartitle": "Formulaires",
 			"linkactive": "formulaires",
 			"items": [

@@ -72,7 +72,7 @@
 						>
 						<span class="flex-auto">
 							<dt>{actualite.titre}</dt>
-							<dd>{actualite.descriptionCourte ?? 'Aucune description'}</dd>
+							<dd>{actualite.description ?? 'Aucune description'}</dd>
 						</span>
 					</div>
 					<div class="h-full !p-0">

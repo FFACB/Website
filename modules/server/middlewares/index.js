@@ -13,7 +13,7 @@ dotenv.config();
 
 const middlewares = function (app, dirname) {
 	app.use(['/uploads', '/images'], (req, res, next) => {
-		const imageRegex = /\.(jpg|jpeg|png|bmp|webp|avif|svg)$/i;
+		const imageRegex = /\.(jpg|jpeg|png|bmp|webp|avif)$/i;
 
 		if (imageRegex.test(req.url)) {
 			const { width, height } = req.query;

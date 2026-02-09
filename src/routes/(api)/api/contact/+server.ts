@@ -8,7 +8,8 @@ import Mailer from '$lib/server/mail';
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	try {
 		const formData = await request.formData();
-		const { nom, prenom, email, telephone, message, token } = Object.fromEntries(formData);
+		const { nom, prenom, email, telephone, message, cp, rue, ville, token } =
+			Object.fromEntries(formData);
 
 		const ParamReCapchaSecret = await getParametre('SECRET_RECAPCHA_SITEKEY');
 
@@ -52,6 +53,30 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 			);
 		}
 
+		if (IsEmptyString(cp)) {
+			logger.warn({}, 'Le code postal ne doit pas être vide', '/api/contact');
+			return new Response(
+				JSON.stringify({ type: 'failure', errorMsg: 'Le code postal ne doit pas être vide' }),
+				{ status: 400 }
+			);
+		}
+
+		if (IsEmptyString(rue)) {
+			logger.warn({}, 'Le rue ne doit pas être vide', '/api/contact');
+			return new Response(
+				JSON.stringify({ type: 'failure', errorMsg: 'Le rue ne doit pas être vide' }),
+				{ status: 400 }
+			);
+		}
+
+		if (IsEmptyString(ville)) {
+			logger.warn({}, 'La ville ne doit pas être vide', '/api/contact');
+			return new Response(
+				JSON.stringify({ type: 'failure', errorMsg: 'La ville ne doit pas être vide' }),
+				{ status: 400 }
+			);
+		}
+
 		if (IsEmptyString(telephone)) {
 			logger.warn({}, 'Le telephone ne doit pas être vide', '/api/contact');
 			return new Response(
@@ -86,7 +111,10 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 				prenom: prenom as string,
 				email: email as string,
 				telephone: telephone as string,
-				message: message as string
+				message: message as string,
+				cp: cp as string,
+				rue: rue as string,
+				ville: ville as string
 			}
 		});
 
