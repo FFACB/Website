@@ -101,7 +101,7 @@
 									? `
 								<div>
 							 		<h3 class="h2-blue font-bold text-sm">Site web :</h3>
-									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet}">${coop.siteInternet}</a>
+									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet.startsWith('www') ? `https://${coop.siteInternet}` : coop.siteInternet}">${coop.siteInternet}</a>
 								</div>
 							 	<br>
 								`
