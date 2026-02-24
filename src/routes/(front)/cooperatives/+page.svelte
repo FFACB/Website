@@ -291,7 +291,7 @@
                     <span class="w-2 h-2 inline-block mt-2 bg-blue rounded-full mr-2"></span>
                     <div class="flex flex-col">
                         <div class="w-full text-left">
-                            <h2 class="h2-blue font-bold text-sm">${coop.data.name}</h2>
+                            <h2 class="h2-blue font-bold text-sm">${ coop.data.siteInternet != '' ? `<a href="${coop.data.siteInternet.startsWith('www') ? `https://${coop.data.siteInternet}` : coop.data.siteInternet}" target="_blank">${coop.data.name}</a>` : coop.data.name}</h2>
                             <p class="font-light">${coop.data.adresse}</p>
                              <p class="font-light">${coop.data.cp} ${coop.data.ville}</p>
                              <a class="h2-blue font-bold text-sm" href="mailto:${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}">${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}</a>
