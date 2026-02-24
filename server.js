@@ -26,6 +26,13 @@ app.all(/.*/, function (req, res, next) {
 	}
 });
 
+app.use((req, res, next) => {
+	if (req.url.includes('index.php')) {
+		return res.redirect(301, '/');
+	}
+	next();
+});
+
 middlewares(app, __dirname);
 
 app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}`, express.static(PUBLIC_UPLOADS_FOLDER_NAME));
