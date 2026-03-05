@@ -260,7 +260,7 @@
 
 		window.toggleListItem = function (region: string) {
 			const coop_list = document.getElementById('cooperatives-list');
-
+			
 			coop_list?.querySelectorAll('.cooperative-active').forEach((item) => {
 				item.classList.remove('cooperative-active');
 				item.classList.add('cooperative-inactive');
@@ -272,14 +272,28 @@
 				});
 			});
 
+			const middle = {
+				lats : [],
+				lngs : [],
+				count : 0
+			}
+
 			coop_list.querySelectorAll('.region-' + region).forEach((item) => {
 				item.classList.add('cooperative-active');
 				item.classList.remove('cooperative-inactive');
 				markers[region].forEach((marker) => {
 					marker.marker.setMap(map);
+					middle.lats.push(parseFloat(marker.data.latitude));
+					middle.lngs.push(parseFloat(marker.data.longitude));
+					middle.count++;
 				});
 			});
 
+			const middleLat = middle.lats.reduce((a, b) => a + b, 0) / middle.count;
+			const middleLng = middle.lngs.reduce((a, b) => a + b, 0) / middle.count;
+
+			map.setCenter({ lat: middleLat, lng: middleLng });
+			
 			const coop_title = document.getElementById('cooperative-title');
 			coop_title.innerHTML = markers[region][0].data.cooperativeRegion.name;
 			const cooperatives_display = document.getElementById('cooperatives-display');
