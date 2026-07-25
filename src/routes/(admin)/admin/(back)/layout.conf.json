@@ -22,6 +22,12 @@
 			"items": []
 		},
 		{
+			"bartitle": "Partenaires",
+			"slug": "/partenaires",
+			"linkactive": "partenaires",
+			"items": []
+		},
+		{
 			"bartitle": "Formulaires",
 			"linkactive": "formulaires",
 			"items": [
