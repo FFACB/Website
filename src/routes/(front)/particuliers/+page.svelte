@@ -114,7 +114,7 @@
 			de sous-traitants afin de favoriser l'activité de ses membres.
 		</p>
 
-		<div class="sm:w-max w-full mt-8 p-4 pt-2 pb-2  font-bold text-white bg-red rounded-3xl">
+		<div class="sm:w-max w-full mt-8 p-4 pt-2 pb-2 font-bold text-white bg-red rounded-3xl">
 			<strong>Résultats :</strong> moins d'intermédiaires, un meilleur suivi,<br /> une communication
 			fluide et des chantiers plus sereins.
 		</div>
@@ -155,9 +155,9 @@
 			révision quinquennale est par ailleurs réalisée afin d'évaluer le fonctionnement de la
 			coopérative et lui indiquer les éventuelles corrections à effectuer.
 			<br /><br />
-			La FFACB met à disposition de ses membres divers supports et documents contractuels (contrats,
-			avenants, protocoles etc.) conformes à la règlementation leur permettant d'exercer leur activité,
-			notamment :
+			La FFACB met à disposition de ses membres divers supports et documents contractuels (contrats, avenants,
+			protocoles etc.) conformes à la règlementation leur permettant d'exercer leur activité, notamment
+			:
 		</p>
 		<br />
 		<ul class="">
@@ -343,7 +343,7 @@
 		</p>
 	</div>
 
-	<div class="text-white sm:w-1/2 w-full  p-16 sm:pr-48 flex flex-col">
+	<div class="text-white sm:w-1/2 w-full p-16 sm:pr-48 flex flex-col">
 		<img src="/images/pictos/picto-quali.svg" class="w-20" alt="picto quali" />
 		<br />
 		<h3 class="h2-blue font-bold text-base">UNE DÉMARCHE QUALITÉ</h3>
@@ -377,7 +377,11 @@
 				<div
 					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
 				>
-					<img src="/images/homme.png" class="rounded-full" alt="picto quali" />
+					<img
+						src="/images/pictos/picto-femme.svg"
+						class="fill-blue p-2 text-blue"
+						alt="picto quali"
+					/>
 				</div>
 
 				<div class="text-center mt-16">
@@ -405,22 +409,27 @@
 				<div
 					class="absolute top-0 -translate-y-1/2 border bg-white border-black rounded-full w-32 p-4"
 				>
-					<img src="/images/femme.png" class="rounded-full" alt="picto quali" />
+					<img
+						src="/images/pictos/picto-interlocuteur.svg"
+						class="fill-blue p-4 text-blue"
+						alt="picto quali"
+					/>
 				</div>
 				<div class="text-center mt-16">
 					<p class="font-Funnel-Sans-Italic">
-						« À travers notre modèle d'économie sociale et solidaire, nous incitons les clients à
-						être consomm'acteurs. De notre côté, en adhérant à la FFACB, nous leur offrons un cadre
-						juridique et réglementaire sécurisant. Les professionnels de la FFACB sont de vrais
-						experts en matière de CCMI, ils sont très pointilleux et nous obligent à être
-						exemplaires dans notre gestion des contrats. En cas de doute, de litige ou de
-						problématique, ils répondent de manière très réactive à nos questions. C'est protecteur
-						pour tout le monde, les artisans et les clients »
+						« J'ai réalisé mon 2d projet de construction de maison avec l'entreprise Myotte-Duquet
+						dont la coopérative est affiliée à la FFACB. Ayant moi-même une appétence pour le
+						secteur de la construction dans lequel je travaille à présent, j'ai souhaité gérer
+						certains lots et faire appel à des artisans que je connaissais sur mon secteur. Grâce au
+						système de la coopérative, j'ai pu avoir accès à un fonctionnement à tiroirs. Pouvoir
+						s'adapter à différents besoins et clients est une force. La souplesse de cette mise en
+						œuvre a vraiment été une plus-value pour moi qui souhaitait garder la main sur certaines
+						choses »
 					</p>
 					<br />
+
 					<p class="text-blue font-semibold">
-						Témoigne Anne Lang, gérante d'Avenir et Bois et membre de la coopérative ARTCOPA en
-						Alsace.
+						Explique Sylvain Martin, propriétaire dans le Pays de Gex.
 					</p>
 				</div>
 			</div>
@@ -456,21 +465,22 @@
 
 <div class="bg-white flex justify-center items-center pt-12 pb-12">
 	<div class="h-auto sm:block hidden">
-		<div class=" border bg-dark border-black rounded-full p-4 w-32">
-			<img src="/images/homme.png" class="" alt="picto quali" />
+		<div class=" border bg-dark border-black rounded-full p-8 w-32">
+			<img src="/images/pictos/picto-femme.svg" class="" alt="picto quali" />
 		</div>
 	</div>
 	<div class="sm:w-3/5 w-full sm:p-0 p-16 sm:ml-7">
 		<div class="font-Funnel-Sans-Italic text-lg text-dark">
-			« J'ai réalisé mon 2d projet de construction de maison avec l'entreprise Myotte-Duquet dont la
-			coopérative est affiliée à la FFACB. Ayant moi-même une appétence pour le secteur de la
-			construction dans lequel je travaille à présent, j'ai souhaité gérer certains lots et faire
-			appel à des artisans que je connaissais sur mon secteur. Grâce au système de la coopérative,
-			j'ai pu avoir accès à un fonctionnement à tiroirs. Pouvoir s'adapter à différents besoins et
-			clients est une force. La souplesse de cette mise en œuvre a vraiment été une plus-value pour
-			moi qui souhaitait garder la main sur certaines choses »
+			« À travers notre modèle d'économie sociale et solidaire, nous incitons les clients à être
+			consomm'acteurs. De notre côté, en adhérant à la FFACB, nous leur offrons un cadre juridique
+			et réglementaire sécurisant. Les professionnels de la FFACB sont de vrais experts en matière
+			de CCMI, ils sont très pointilleux et nous obligent à être exemplaires dans notre gestion des
+			contrats. En cas de doute, de litige ou de problématique, ils répondent de manière très
+			réactive à nos questions. C'est protecteur pour tout le monde, les artisans et les clients »
 		</div>
 		<br />
-		<div class="text-blue text-sm">explique Sylvain Martin, propriétaire dans le Pays de Gex.</div>
+		<div class="text-blue text-sm">
+			Témoigne Anne Lang, gérante d'Avenir et Bois et membre de la coopérative ARTCOPA en Alsace.
+		</div>
 	</div>
 </div>

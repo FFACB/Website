@@ -17,6 +17,22 @@ const port = PORT | 3000;
 const app = express();
 const server = createServer(app);
 
+app.all(/.*/, function (req, res, next) {
+	var host = req.header('host');
+	if (host.match(/^www\..*/i)) {
+		next();
+	} else {
+		res.redirect(301, 'http://www.' + host + req.url);
+	}
+});
+
+app.use((req, res, next) => {
+	if (req.url.includes('index.php')) {
+		return res.redirect(301, '/');
+	}
+	next();
+});
+
 middlewares(app, __dirname);
 
 app.use(`/${PUBLIC_UPLOADS_FOLDER_NAME}`, express.static(PUBLIC_UPLOADS_FOLDER_NAME));

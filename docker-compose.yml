@@ -2,6 +2,8 @@ version: '3.8'
 services:
   website:
     container_name: ${PROJECT_NAME}
+#    ports:
+#      - "443:3000"
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,9 +11,9 @@ services:
       - traefik-net
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.${PROJECT_NAME}.rule=Host(`${FULL_DOMAIN_NAME}`)'
+      - 'traefik.http.routers.${PROJECT_NAME}.rule=Host(`${FULL_DOMAIN_NAME}`,`${DOMAIN_SDL}.${DOMAIN_TLD}`)'
       - 'traefik.http.routers.${PROJECT_NAME}.entrypoints=http'
-      - 'traefik.http.routers.${PROJECT_NAME}-secure.rule=Host(`${FULL_DOMAIN_NAME}`)'
+      - 'traefik.http.routers.${PROJECT_NAME}-secure.rule=Host(`${FULL_DOMAIN_NAME}`,`${DOMAIN_SDL}.${DOMAIN_TLD}`)'
       - 'traefik.http.routers.${PROJECT_NAME}-secure.entrypoints=https'
       - 'traefik.http.routers.${PROJECT_NAME}-secure.tls=false'
       - 'traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=3000'

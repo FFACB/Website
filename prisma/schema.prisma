@@ -105,6 +105,17 @@ model FileAsset {
   asset     Asset    @relation(fields: [assetId], references: [id], onDelete: Cascade)
 }
 
+//BO (Partenaires)
+model Partenaire {
+  id                  String   @id @default(uuid())
+  name                String
+  description         String   @default("")
+  siteInternet        String   @default("")
+  pictureAssetId_Logo String   @default("")
+  ordre               Int      @default(0)
+  createdAt           DateTime @default(now())
+}
+
 model CooperativeRegion {
   id        String   @id @default(uuid())
   name      String  @unique

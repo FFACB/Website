@@ -7,9 +7,10 @@
 	import 'swiper/css';
 	import 'swiper/css/pagination';
 	import TriplesActualites from '$lib/components/TriplesActualites.svelte';
+	import Partenaires from '$lib/components/Partenaires.svelte';
 
 	export let data;
-	const { actualites } = data;
+	const { actualites, partenaires } = data;
 
 	onMount(() => {
 		loadSwiper();
@@ -18,7 +19,7 @@
 	function loadSwiper() {
 		if (browser) {
 			swiper.use([Autoplay, EffectFade, Pagination]);
-			let swiperRef = new swiper('.swiper', {
+			let swiperRef = new swiper('.swiper-home', {
 				slidesPerView: 1,
 				spaceBetween: 0,
 				loop: true,
@@ -44,7 +45,7 @@
 	<div
 		class="w-full h-[calc(100vh-112px)] flex flex-col justify-end items-start relative shadow-inner"
 	>
-		<div class="swiper w-full h-full !absolute">
+		<div class="swiper swiper-home w-full h-full !absolute">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<img
@@ -95,7 +96,7 @@
 			/>
 			<div class="z-10 p-16 flex flex-col justify-center">
 				<h1 class="w-full h1-white font-extrabold mb-8">
-					La Fédération Française des Artisans Coopérateurs du Bâtiment
+					La Féderation Française des Artisans Coopérateurs du Bâtiment
 				</h1>
 			</div>
 		</div>
@@ -192,3 +193,4 @@
 		</div>
 	</div>
 	<TriplesActualites {actualites}></TriplesActualites>
+	<Partenaires {partenaires}></Partenaires>

@@ -101,7 +101,7 @@
 									? `
 								<div>
 							 		<h3 class="h2-blue font-bold text-sm">Site web :</h3>
-									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet}">${coop.siteInternet}</a>
+									<a class="text-dark underline font-semibold text-xs ml-4" target="_blank" href="${coop.siteInternet.startsWith('www') ? `https://${coop.siteInternet}` : coop.siteInternet}">${coop.siteInternet}</a>
 								</div>
 							 	<br>
 								`
@@ -272,13 +272,27 @@
 				});
 			});
 
+			const middle = {
+				lats: [],
+				lngs: [],
+				count: 0
+			};
+
 			coop_list.querySelectorAll('.region-' + region).forEach((item) => {
 				item.classList.add('cooperative-active');
 				item.classList.remove('cooperative-inactive');
 				markers[region].forEach((marker) => {
 					marker.marker.setMap(map);
+					middle.lats.push(parseFloat(marker.data.latitude));
+					middle.lngs.push(parseFloat(marker.data.longitude));
+					middle.count++;
 				});
 			});
+
+			const middleLat = middle.lats.reduce((a, b) => a + b, 0) / middle.count;
+			const middleLng = middle.lngs.reduce((a, b) => a + b, 0) / middle.count;
+
+			map.setCenter({ lat: middleLat, lng: middleLng });
 
 			const coop_title = document.getElementById('cooperative-title');
 			coop_title.innerHTML = markers[region][0].data.cooperativeRegion.name;
@@ -291,7 +305,7 @@
                     <span class="w-2 h-2 inline-block mt-2 bg-blue rounded-full mr-2"></span>
                     <div class="flex flex-col">
                         <div class="w-full text-left">
-                            <h2 class="h2-blue font-bold text-sm">${coop.data.name}</h2>
+                            <h2 class="h2-blue font-bold text-sm">${coop.data.siteInternet != '' ? `<a href="${coop.data.siteInternet.startsWith('www') ? `https://${coop.data.siteInternet}` : coop.data.siteInternet}" target="_blank">${coop.data.name}</a>` : coop.data.name}</h2>
                             <p class="font-light">${coop.data.adresse}</p>
                              <p class="font-light">${coop.data.cp} ${coop.data.ville}</p>
                              <a class="h2-blue font-bold text-sm" href="mailto:${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}">${coop.data.adresseMail == '' ? coop.data.contact1Email : coop.data.adresseMail}</a>

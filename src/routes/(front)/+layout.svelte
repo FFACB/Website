@@ -65,6 +65,32 @@
 	{#if PUBLIC_HEAD_TAG_MANAGER && PUBLIC_HEAD_TAG_MANAGER.value != null && PUBLIC_HEAD_TAG_MANAGER.value.length > 0}
 		{@html PUBLIC_HEAD_TAG_MANAGER.value}
 	{/if}
+
+	<link rel="icon" type="image/svg" href="/favicon.png" />
+
+	<title
+		>La Fédération Française des Artisans Coopérateurs du Bâtiment est une Organisation
+		Professionnelle Nationale créée en 1988</title
+	>
+	<meta
+		name="description"
+		content="La Fédération Française des Artisans Coopérateurs du Bâtiment est une Organisation Professionnelle Nationale créée en 1988"
+	/>
+	<meta
+		property="og:title"
+		content="La Fédération Française des Artisans Coopérateurs du Bâtiment."
+	/>
+	<meta
+		property="og:description"
+		content="La Fédération Française des Artisans Coopérateurs du Bâtiment est une Organisation Professionnelle Nationale créée en 1988"
+	/>
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://www.ffacb.fr/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="FFACB" />
+	<meta property="og:locale" content="fr_FR" />
+
+	<link rel="canonical" href="http://www.ffacb.fr/" />
 </svelte:head>
 
 {#if PUBLIC_BODY_TAG_MANAGER && PUBLIC_BODY_TAG_MANAGER.value != null && PUBLIC_BODY_TAG_MANAGER.value.length > 0}
@@ -75,6 +101,4 @@
 
 {@render children?.()}
 
-<Footer
-	actualites={actualites}
-/>
+<Footer {actualites} />
