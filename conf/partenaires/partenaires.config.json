@@ -1,0 +1,107 @@
+[
+	{
+		"name": "AQC",
+		"description": "L'Agence Qualité Construction regroupe l'ensemble des organisations professionnelles autour d'une mission collective : prévenir les désordres dans le bâtiment et améliorer la qualité de la construction.",
+		"siteInternet": "https://qualiteconstruction.com/",
+		"logo": "AQC.jpg",
+		"ordre": 0
+	},
+	{
+		"name": "L'AUXILIAIRE",
+		"description": "Mutuelle d'Assurances du BTP, assurance construction, assurance BTP.",
+		"siteInternet": "http://www.auxiliaire.fr/",
+		"logo": "L'AUXILIAIRE BTP.jpg",
+		"ordre": 1
+	},
+	{
+		"name": "BE3C",
+		"description": "Bureau d'études en chauffage et climatisation. Audit énergétique, Gestion du risque légionellose. Contrôle de disconnecteurs.",
+		"siteInternet": "https://www.be3c.com/",
+		"logo": "BE3C.jpg",
+		"ordre": 2
+	},
+	{
+		"name": "CROSS COURTAGE",
+		"description": "Cabinet de courtage spécialisé dans l'assurance construction.",
+		"siteInternet": "https://www.cross-courtage.fr/",
+		"logo": "CROSS COURTAGE.jpg",
+		"ordre": 3
+	},
+	{
+		"name": "FIXIT",
+		"description": "Un concentré de solutions numériques pour tous vos besoins.",
+		"siteInternet": "https://fixit.re/",
+		"logo": "FIXIT.png",
+		"ordre": 4
+	},
+	{
+		"name": "HEERO",
+		"description": "Financez votre rénovation énergétique de A à Z.",
+		"siteInternet": "https://heero.fr/",
+		"logo": "HEERO.png",
+		"ordre": 5
+	},
+	{
+		"name": "KELVIN°",
+		"description": "Plateforme commerciale pour la rénovation énergétique.",
+		"siteInternet": "https://www.go-kelvin.com/",
+		"logo": "KELVIN.png",
+		"ordre": 6
+	},
+	{
+		"name": "LEGRAND",
+		"description": "Produits et systèmes pour installations électriques et réseaux d'information.",
+		"siteInternet": "http://www.legrand.fr/",
+		"logo": "LEGRAND.png",
+		"ordre": 7
+	},
+	{
+		"name": "LITEM2C",
+		"description": "Cabinet de courtage d'assurance ou de réassurance.",
+		"siteInternet": "https://litem2c.com/",
+		"logo": "LITEM2C.png",
+		"ordre": 8
+	},
+	{
+		"name": "LUABS",
+		"description": "Groupement de fournisseurs.",
+		"siteInternet": "https://www.luabs.fr/",
+		"logo": "LOGO LUABS 2.jpg",
+		"ordre": 9
+	},
+	{
+		"name": "OPERA ENERGIE",
+		"description": "Leader du courtage en énergie pour les entreprises, les industries et les collectivités.",
+		"siteInternet": "https://pages.opera-energie.com/",
+		"logo": "OPERA ENERGIE.png",
+		"ordre": 10
+	},
+	{
+		"name": "QUALIBAT",
+		"description": "Premier organisme de qualification des métiers du bâtiment.",
+		"siteInternet": "https://www.qualibat.com/",
+		"logo": "QUALIBAT.png",
+		"ordre": 11
+	},
+	{
+		"name": "SOGO COM",
+		"description": "Agence de communication.",
+		"siteInternet": "https://www.sogocom.fr/",
+		"logo": "SOGO COM.png",
+		"ordre": 12
+	},
+	{
+		"name": "SRDM",
+		"description": "SRDM s'adresse uniquement aux Coopératives de construction ainsi qu'aux menuisiers faisant partie de ces Coopératives. Notre société permet à l'artisan d'avoir un large choix de produits avec nos fournisseurs référencés, mais aussi de disposer de prix compétitifs.",
+		"siteInternet": "mailto:mathilde.frechou64@gmail.com",
+		"logo": "SRDM.jpg",
+		"ordre": 13
+	},
+	{
+		"name": "SYNAMBU CONSULTING",
+		"description": "Cabinet de Paie et de Conseil RH qui accompagne dirigeants et responsables d'entreprise.",
+		"siteInternet": "https://synambu.com/",
+		"logo": "SYNAMBU LOGO.png",
+		"ordre": 14
+	}
+]
