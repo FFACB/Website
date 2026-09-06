@@ -3,28 +3,28 @@
 		"name": "AQC",
 		"description": "L'Agence Qualité Construction regroupe l'ensemble des organisations professionnelles autour d'une mission collective : prévenir les désordres dans le bâtiment et améliorer la qualité de la construction.",
 		"siteInternet": "https://qualiteconstruction.com/",
-		"logo": "AQC.jpg",
+		"logo": "AQC.png",
 		"ordre": 0
 	},
 	{
 		"name": "L'AUXILIAIRE",
 		"description": "Mutuelle d'Assurances du BTP, assurance construction, assurance BTP.",
 		"siteInternet": "http://www.auxiliaire.fr/",
-		"logo": "L'AUXILIAIRE BTP.jpg",
+		"logo": "L'AUXILIAIRE BTP.png",
 		"ordre": 1
 	},
 	{
 		"name": "BE3C",
 		"description": "Bureau d'études en chauffage et climatisation. Audit énergétique, Gestion du risque légionellose. Contrôle de disconnecteurs.",
 		"siteInternet": "https://www.be3c.com/",
-		"logo": "BE3C.jpg",
+		"logo": "BE3C.png",
 		"ordre": 2
 	},
 	{
 		"name": "CROSS COURTAGE",
 		"description": "Cabinet de courtage spécialisé dans l'assurance construction.",
 		"siteInternet": "https://www.cross-courtage.fr/",
-		"logo": "CROSS COURTAGE.jpg",
+		"logo": "CROSS COURTAGE.png",
 		"ordre": 3
 	},
 	{
@@ -37,7 +37,7 @@
 	{
 		"name": "HEERO",
 		"description": "Financez votre rénovation énergétique de A à Z.",
-		"siteInternet": "https://heero.fr/",
+		"siteInternet": "https://prime-heero.fr/",
 		"logo": "HEERO.png",
 		"ordre": 5
 	},
@@ -66,7 +66,7 @@
 		"name": "LUABS",
 		"description": "Groupement de fournisseurs.",
 		"siteInternet": "https://www.luabs.fr/",
-		"logo": "LOGO LUABS 2.jpg",
+		"logo": "LOGO LUABS 2.png",
 		"ordre": 9
 	},
 	{
@@ -94,7 +94,7 @@
 		"name": "SRDM",
 		"description": "SRDM s'adresse uniquement aux Coopératives de construction ainsi qu'aux menuisiers faisant partie de ces Coopératives. Notre société permet à l'artisan d'avoir un large choix de produits avec nos fournisseurs référencés, mais aussi de disposer de prix compétitifs.",
 		"siteInternet": "mailto:mathilde.frechou64@gmail.com",
-		"logo": "SRDM.jpg",
+		"logo": "SRDM.png",
 		"ordre": 13
 	},
 	{
