@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { Autoplay, FreeMode } from 'swiper/modules';
+	import { Autoplay } from 'swiper/modules';
 	import swiper from 'swiper';
 	import 'swiper/css';
-	import 'swiper/css/free-mode';
 
 	type Partenaire = {
 		id: string;
@@ -32,11 +31,10 @@
 				)
 	);
 
-	// Le défilement continu repose sur une chaîne d'évènements Swiper (transitionend -> resume).
-	// Elle se rompt définitivement quand on clique un logo : l'onglet passe en arrière-plan pendant
-	// qu'une transition est en cours, et le drapeau interne `pausedByPointerEnter` fait sortir
-	// `onTransitionEnd` sans relancer la boucle. On surveille donc le mouvement réel du bandeau
-	// pour le redémarrer, plutôt que de se fier aux états internes de la librairie.
+	// Le défilement continu repose sur une chaîne d'évènements Swiper (transitionend -> resume) qui
+	// peut se rompre : un `visibilitychange` ou un glissement tactile fait sortir `onTransitionEnd`
+	// sans relancer la boucle, et le bandeau reste figé. On surveille donc son mouvement réel pour
+	// le redémarrer, plutôt que de se fier aux états internes de la librairie.
 	const IMMOBILE_MS = 1500;
 	const PERIODE_CONTROLE_MS = 500;
 	// Le clic ouvre un onglet : on laisse au navigateur le temps de basculer avant de relancer.
@@ -65,23 +63,25 @@
 
 		const mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-		swiper.use([Autoplay, FreeMode]);
+		swiper.use([Autoplay]);
 		swiperRef = new swiper(swiperElement, {
 			slidesPerView: 2,
 			spaceBetween: 24,
 			loop: true,
 			speed: mouvementReduit ? 600 : 4000,
-			allowTouchMove: true,
-			freeMode: {
-				enabled: true,
-				momentum: false
-			},
+			// Bandeau purement décoratif, non manipulable : un clic sur un logo était sinon traité
+			// comme un début de glissement, ce qui figeait `animating` à true et rompait la boucle
+			// de défilement sans que Swiper ne se déclare arrêté pour autant.
+			allowTouchMove: false,
 			autoplay: mouvementReduit
 				? false
 				: {
 						delay: 0,
 						disableOnInteraction: false,
-						pauseOnMouseEnter: true,
+						// Le bandeau ne s'arrête jamais, pas même au survol : après un clic sur un logo,
+						// le curseur reste posé sur celui-ci au retour sur l'onglet, et la pause au survol
+						// donnait alors un bandeau qui semblait bloqué tant que la souris ne bougeait pas.
+						pauseOnMouseEnter: false,
 						waitForTransition: true
 					},
 			breakpoints: {
@@ -118,31 +118,15 @@
 		swiperRef = null;
 	}
 
-	/**
-	 * La pause au survol reste volontaire : elle laisse le temps de viser un logo. On interroge
-	 * `:hover` plutôt qu'un drapeau maison, qui resterait armé si le navigateur n'émet pas le
-	 * `mouseleave` au retour sur l'onglet. `(hover: hover)` écarte le survol fantôme du tactile.
-	 */
-	function survolReel() {
-		return (
-			swiperElement != null &&
-			window.matchMedia('(hover: hover)').matches &&
-			swiperElement.matches(':hover')
-		);
-	}
-
 	function relancerDefilement() {
-		if (swiperRef == null || swiperRef.destroyed || swiperElement == null) return;
-		if (survolReel()) return;
+		if (swiperRef == null || swiperRef.destroyed) return;
 
-		// Tant que `pausedByPointerEnter` est armé (swiper/modules/autoplay.mjs), ni `resume()` ni
-		// `stop()/start()` ne redémarrent la boucle : tous repassent par `onTransitionEnd`, qui sort
-		// sur ce drapeau. Rejouer le `pointerleave` qu'écoute la librairie est le seul moyen de le
-		// désarmer depuis l'extérieur.
-		swiperElement.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }));
-
-		if (!swiperRef.autoplay.running) swiperRef.autoplay.start();
-		else if (swiperRef.autoplay.paused) swiperRef.autoplay.resume();
+		// Swiper peut se déclarer en lecture (`running` vrai, `paused` faux) alors que la boucle est
+		// morte, `animating` étant resté bloqué à true. Ni `start()` ni `resume()` ne repartent dans
+		// cet état : on remet le drapeau à plat et on redémarre l'autoplay sans condition.
+		swiperRef.animating = false;
+		swiperRef.autoplay.stop();
+		swiperRef.autoplay.start();
 	}
 
 	function surVisibilite() {
@@ -164,11 +148,7 @@
 	function controlerDefilement() {
 		if (swiperRef == null || swiperRef.destroyed || swiperRef.wrapperEl == null) return;
 
-		if (document.hidden || survolReel()) {
-			dernierMouvement = Date.now();
-			return;
-		}
-
+		// Aucune exception, onglet masqué compris : dès que le bandeau cesse de bouger, on le relance.
 		// `swiperRef.translate` ne change qu'à la fin de chaque transition, soit toutes les 4 s :
 		// la matrice calculée du wrapper, elle, suit la valeur animée image par image.
 		const matrice = getComputedStyle(swiperRef.wrapperEl).transform;
